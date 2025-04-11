@@ -4,11 +4,11 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  /*
-  @include media('reducemotion') {
-      scroll-behavior: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-      */
 }
 
 body {
