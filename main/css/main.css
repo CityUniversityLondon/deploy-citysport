@@ -1,9 +1,69 @@
-body {
-  background-color: green;
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  /*
+  @include media('reducemotion') {
+      scroll-behavior: auto;
+  }
+      */
 }
 
-div {
-  z-index: 3;
+body {
+  min-height: 100vh;
+  position: relative;
+  scroll-behavior: smooth;
+  /*
+  @include media('reducemotion') {
+      scroll-behavior: auto;
+  }
+      */
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.logo {
+  display: block;
+  width: 4rem;
+}
+
+main article {
+  background-color: #ffffff;
+  grid-column: 1/-1;
+  height: max-content;
+}
+main article .content {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  /*
+  @include media('>between') {
+      margin-left: $measure--small2;
+      margin-right: $measure--small2;
+  }
+      */
+  grid-column: 1/-1;
+  padding: 0.5rem;
+  /*
+  @include media('>=small') {
+      grid-column: 2/-2;
+      margin: 0;
+  }*/
+}
+main .navigation--secondary {
+  grid-column: 1/span 6;
+}
+main .navigation--secondary + article {
+  grid-column: 7/span 18;
+}
+
+.js .nojs-only {
+  display: none;
 }
 
 .global-footer {
