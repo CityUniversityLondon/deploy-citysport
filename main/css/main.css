@@ -11,19 +11,15 @@ html {
       */
 }
 
-div.test12 {
-  /* Inclusive and exclusive operators for a finer control over the intervals */
-}
-@media (min-width: 769px) {
-  div.test12 {
-    width: 100%;
-  }
-}
-
 body {
   min-height: 100vh;
   position: relative;
   scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  body {
+    scroll-behavior: auto;
+  }
 }
 
 *,
