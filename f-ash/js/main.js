@@ -5223,8 +5223,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 
 
-function launch(el, i) {
-  console.log('accordion');
+function launch(el) {
+  console.log('accordion-ash');
 }
 var className = 'accordion';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5778,8 +5778,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     _patterns_js__WEBPACK_IMPORTED_MODULE_11__["default"].forEach(launchPattern);
     var parameters = (0,_util_js__WEBPACK_IMPORTED_MODULE_12__.parametersToObject)(location.search);
-    parameters['dev'] && (0,_patterns_devcorate_devcorate_js__WEBPACK_IMPORTED_MODULE_13__.devcorate)(document.querySelector('body'), 'dev', parameters['dev']);
-    parameters['rel'] && (0,_patterns_devcorate_devcorate_js__WEBPACK_IMPORTED_MODULE_13__.devcorate)(document.querySelector('body'), 'rel', parameters['rel']);
+    parameters['test'] && (0,_patterns_devcorate_devcorate_js__WEBPACK_IMPORTED_MODULE_13__.devcorate)(document.querySelector('body'), 'test', parameters['test']);
+    parameters['prod'] && (0,_patterns_devcorate_devcorate_js__WEBPACK_IMPORTED_MODULE_13__.devcorate)(document.querySelector('body'), 'prod', parameters['prod']);
   }
 }, false);
 })();
