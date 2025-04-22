@@ -1060,18 +1060,18 @@ hr {
     display: none;
   }
 }
-.global-header .sec-nav {
+.global-header .navigation--secondary {
   grid-column-start: 6;
   grid-column-end: 14;
   grid-row-start: 2;
 }
 @media (max-width: 767px) {
-  .global-header .sec-nav {
+  .global-header .navigation--secondary {
     display: none;
   }
 }
 @media (min-width: 768px) {
-  .global-header .mobile-nav {
+  .global-header .navigation--mobile {
     display: none;
   }
 }
