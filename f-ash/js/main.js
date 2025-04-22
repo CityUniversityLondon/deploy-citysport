@@ -5268,7 +5268,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @module patterns/devcorate/devcorate
  * @author Web Development
- * @copyright City, University of London 2018
+ * @copyright City St George's, University of London 2025
  */
 
 
@@ -5720,7 +5720,7 @@ __webpack_require__.r(__webpack_exports__);
  * Main entry
  *
  * @author Web Development
- * @copyright City, University of London 2022
+ * @copyright City St George's, University of London 2025
  */
 
 
