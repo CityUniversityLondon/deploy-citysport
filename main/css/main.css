@@ -198,6 +198,7 @@ html {
   font-weight: 400;
   line-height: 1;
   text-rendering: optimizeLegibility;
+  font-family: "ibm-plex-sans", sans-serif;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   html {
