@@ -5195,6 +5195,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./patterns/accordion/accordion.js */ "./src/patterns/accordion/accordion.js");
 /* harmony import */ var _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./patterns/notice-ribbon/notice-ribbon.js */ "./src/patterns/notice-ribbon/notice-ribbon.js");
+/* harmony import */ var _patterns_navigation_navigation_mobile_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./patterns/navigation/navigation--mobile.js */ "./src/patterns/navigation/navigation--mobile.js");
 
 
 /**
@@ -5209,7 +5210,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_mobile_js__WEBPACK_IMPORTED_MODULE_2__["default"]]);
 
 /***/ }),
 
@@ -5293,6 +5295,41 @@ function devcorate(elem, param, value) {
 
 /***/ }),
 
+/***/ "./src/patterns/navigation/navigation--mobile.js":
+/*!*******************************************************!*\
+  !*** ./src/patterns/navigation/navigation--mobile.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+function menuSetter(menu, button) {
+  var buttonText = button.querySelector('.menu__button__text');
+  var isOpen = menu.dataset.open === 'true';
+  menu.dataset.open = isOpen ? 'false' : 'true';
+  buttonText.innerText = isOpen ? 'Menu' : 'Close';
+  button.setAttribute('aria-expanded', !isOpen);
+}
+function launchMobileNav(el) {
+  var button = el.querySelector('.menu__display__button__button');
+  button.setAttribute('aria-expanded', 'false');
+  el.dataset.open = 'false';
+  button.addEventListener('click', function () {
+    menuSetter(el, button);
+  });
+}
+var className = 'navigation--mobile';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  launchFn: launchMobileNav,
+  launchQuery: ".".concat(className)
+});
+
+/***/ }),
+
 /***/ "./src/patterns/notice-ribbon/notice-ribbon.js":
 /*!*****************************************************!*\
   !*** ./src/patterns/notice-ribbon/notice-ribbon.js ***!
@@ -5306,7 +5343,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function launchRibbonNotice(el) {
-  console.log('launchRibbonNotice');
   var closeButton = el.querySelectorAll('.global-header__ribbon__close')[0];
   closeButton.addEventListener('click', function () {
     console.log('cliecked');
@@ -5314,9 +5350,6 @@ function launchRibbonNotice(el) {
   });
 }
 var className = 'global-header__ribbon';
-
-//  global-header__ribbon__close
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: launchRibbonNotice,
   launchQuery: ".".concat(className)
@@ -5797,6 +5830,7 @@ function launchPattern(pattern) {
   }
 }
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('this launched');
   if (/(Trident|MSIE)/.test(navigator.userAgent)) {
     return;
   } else {
