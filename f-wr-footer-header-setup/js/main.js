@@ -5194,6 +5194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./patterns/accordion/accordion.js */ "./src/patterns/accordion/accordion.js");
+/* harmony import */ var _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./patterns/notice-ribbon/notice-ribbon.js */ "./src/patterns/notice-ribbon/notice-ribbon.js");
 
 
 /**
@@ -5207,7 +5208,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"]]);
 
 /***/ }),
 
@@ -5288,6 +5290,37 @@ function devcorate(elem, param, value) {
     }
   });
 }
+
+/***/ }),
+
+/***/ "./src/patterns/notice-ribbon/notice-ribbon.js":
+/*!*****************************************************!*\
+  !*** ./src/patterns/notice-ribbon/notice-ribbon.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+function launchRibbonNotice(el) {
+  console.log('launchRibbonNotice');
+  var closeButton = el.querySelectorAll('.global-header__ribbon__close')[0];
+  closeButton.addEventListener('click', function () {
+    console.log('cliecked');
+    el.remove();
+  });
+}
+var className = 'global-header__ribbon';
+
+//  global-header__ribbon__close
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  launchFn: launchRibbonNotice,
+  launchQuery: ".".concat(className)
+});
 
 /***/ }),
 
