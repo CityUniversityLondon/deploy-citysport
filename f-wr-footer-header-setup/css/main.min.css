@@ -1075,7 +1075,6 @@ hr {
   }
 }
 .global-header .navigation--mobile {
-  border: thin solid white;
   grid-column-end: 25;
   grid-column-start: 14;
 }
@@ -1169,21 +1168,76 @@ hr {
   background: white;
 }
 
-.js .navigation--mobile .menu__content {
+/* burger bun */
+.navigation--mobile .burger-bun {
+  display: block;
+}
+.navigation--mobile .burger-bun span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+.navigation--mobile .burger-bun span:nth-last-child(3) {
+  margin-top: 0.425rem;
+}
+.navigation--mobile .burger-bun span:nth-last-child(1) {
+  transform-origin: 0% 100%;
+}
+
+.js .navigation--mobile[data-open=true] .burger-bun span {
+  opacity: 1;
+  transform: rotate(45deg) translate(7px, -2px);
+  background: #ffffff;
+}
+.js .navigation--mobile[data-open=true] .burger-bun span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+.js .navigation--mobile[data-open=true] .burger-bun span:nth-last-child(1) {
+  transform: rotate(-45deg) translate(1px, 8px);
+}
+
+.no-js .menu .burger-bun input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(7px, -2px);
+  background: #ffffff;
+}
+.no-js .menu .burger-bun input:checked ~ span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+.no-js .menu .burger-bun input:checked ~ span:nth-last-child(1) {
+  transform: rotate(-45deg) translate(1px, 8px);
+}
+
+/* end burger bun */
+.navigation--mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.navigation--mobile .menu__content {
   display: none;
   background-color: #0c0c0e;
 }
-.js .navigation--mobile[data-open=true] .menu__content {
+.navigation--mobile[data-open=true] .menu__content {
   box-shadow: 0 0.5rem 1.25rem 0 rgba(0, 0, 0, 0.3);
   display: flex;
   left: 0;
   position: absolute;
   right: 0;
 }
-.js .navigation--mobile[data-open=true] .menu__content .navigation__level1 {
+.navigation--mobile[data-open=true] .menu__content .navigation__level1 {
   flex-direction: column;
 }
-.js .navigation--mobile[data-open=true] .menu__content .navigation__level1 a {
+.navigation--mobile[data-open=true] .menu__content .navigation__level1 a {
   margin: 0.75rem;
   display: flex;
 }
