@@ -1169,6 +1169,11 @@ hr {
 }
 
 /* burger bun */
+.navigation--mobile .menu__display__button__button__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .navigation--mobile .burger-bun {
   display: block;
 }
