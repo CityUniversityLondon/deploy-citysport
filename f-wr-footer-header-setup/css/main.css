@@ -1059,7 +1059,7 @@ hr {
   grid-column-end: 14;
   grid-row-start: 1;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .global-header .navigation--primary {
     display: none;
   }
@@ -1069,13 +1069,13 @@ hr {
   grid-column-end: 14;
   grid-row-start: 2;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .global-header .navigation--secondary {
     display: none;
   }
 }
 .global-header .navigation--mobile {
-  border: thick solid lime;
+  border: thin solid white;
   grid-column-end: 25;
   grid-column-start: 14;
 }
