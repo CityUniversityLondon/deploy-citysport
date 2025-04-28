@@ -2923,9 +2923,16 @@ iframe[src*=issuu], iframe[src*=prezi] {
   letter-spacing: -0.5px;
   font-size: 2.5rem;
   font-family: "ff-meta-web", Arial, Helvetica, sans-serif;
+  display: flex;
 }
-.global-footer__header-logo:visited {
+.global-footer__header-logo a:visited {
   color: #ffffff;
+}
+.global-footer__header-logo a:focus, .global-footer__header-logo a:active {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
 }
 .global-footer__header-logo span.global-footer__logo-style {
   font-weight: 700;
@@ -3260,9 +3267,21 @@ hr {
   display: inherit;
   grid-column-start: 1;
   grid-column-end: 5;
+  display: flex;
 }
-.global-header__logo:visited {
+@media (max-width: 767px) {
+  .global-header__logo {
+    grid-column-end: 9;
+  }
+}
+.global-header__logo a:visited {
   color: #ffffff;
+}
+.global-header__logo a:focus, .global-header__logo a:active {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
 }
 .global-header__logo span.global-header__logo-style {
   font-weight: 700;
