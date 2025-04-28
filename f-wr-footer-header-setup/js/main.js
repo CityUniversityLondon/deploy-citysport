@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/core-js/internals/a-callable.js":
@@ -8,6 +7,7 @@
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_modules/core-js/internals/try-to-string.js");
@@ -29,6 +29,7 @@ module.exports = function (argument) {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
 var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_modules/core-js/internals/try-to-string.js");
@@ -50,6 +51,7 @@ module.exports = function (argument) {
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isPossiblePrototype = __webpack_require__(/*! ../internals/is-possible-prototype */ "./node_modules/core-js/internals/is-possible-prototype.js");
 
@@ -70,6 +72,7 @@ module.exports = function (argument) {
   \**************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
@@ -101,6 +104,7 @@ module.exports = function (key) {
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var charAt = (__webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt);
 
@@ -119,6 +123,7 @@ module.exports = function (S, index, unicode) {
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
@@ -134,12 +139,35 @@ module.exports = function (argument) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/array-buffer-non-extensible.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-buffer-non-extensible.js ***!
+  \***********************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+// FF26- bug: ArrayBuffers are non-extensible, but Object.isExtensible does not report it
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+module.exports = fails(function () {
+  if (typeof ArrayBuffer == 'function') {
+    var buffer = new ArrayBuffer(8);
+    // eslint-disable-next-line es/no-object-isextensible, es/no-object-defineproperty -- safe
+    if (Object.isExtensible(buffer)) Object.defineProperty(buffer, 'a', { value: 8 });
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/array-for-each.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/internals/array-for-each.js ***!
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $forEach = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").forEach);
 var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
@@ -162,6 +190,7 @@ module.exports = !STRICT_METHOD ? function forEach(callbackfn /* , thisArg */) {
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
@@ -218,6 +247,7 @@ module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undef
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
 var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
@@ -262,6 +292,7 @@ module.exports = {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -346,6 +377,7 @@ module.exports = {
   \****************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
@@ -376,6 +408,7 @@ module.exports = function (METHOD_NAME) {
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
@@ -396,6 +429,7 @@ module.exports = function (METHOD_NAME, argument) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 
@@ -410,6 +444,7 @@ module.exports = uncurryThis([].slice);
   \*********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
 var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
@@ -443,6 +478,7 @@ module.exports = function (originalArray) {
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var arraySpeciesConstructor = __webpack_require__(/*! ../internals/array-species-constructor */ "./node_modules/core-js/internals/array-species-constructor.js");
 
@@ -461,6 +497,7 @@ module.exports = function (originalArray, length) {
   \****************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
@@ -483,6 +520,7 @@ module.exports = function (iterator, fn, value, ENTRIES) {
   \**************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
@@ -534,6 +572,7 @@ module.exports = function (exec, SKIP_CLOSING) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 
@@ -553,6 +592,7 @@ module.exports = function (it) {
   \***************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -593,6 +633,7 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
   \***********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
 var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
@@ -620,6 +661,7 @@ module.exports = function (target, source, exceptions) {
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
@@ -639,6 +681,7 @@ module.exports = !fails(function () {
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // `CreateIterResultObject` abstract operation
 // https://tc39.es/ecma262/#sec-createiterresultobject
@@ -655,6 +698,7 @@ module.exports = function (value, done) {
   \**************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
@@ -676,6 +720,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 module.exports = function (bitmap, value) {
   return {
@@ -695,6 +740,7 @@ module.exports = function (bitmap, value) {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
@@ -714,6 +760,7 @@ module.exports = function (object, key, value) {
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var makeBuiltIn = __webpack_require__(/*! ../internals/make-built-in */ "./node_modules/core-js/internals/make-built-in.js");
 var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
@@ -733,6 +780,7 @@ module.exports = function (target, name, descriptor) {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
@@ -771,6 +819,7 @@ module.exports = function (O, key, value, options) {
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 
@@ -794,6 +843,7 @@ module.exports = function (key, value) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
@@ -812,6 +862,7 @@ module.exports = !fails(function () {
   \*******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
@@ -833,6 +884,7 @@ module.exports = function (it) {
   \************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 var $TypeError = TypeError;
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF; // 2 ** 53 - 1 == 9007199254740991
@@ -851,6 +903,7 @@ module.exports = function (it) {
   \*********************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // iterable DOM collections
 // flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
@@ -897,6 +950,7 @@ module.exports = {
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 // in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
 var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
@@ -915,6 +969,7 @@ module.exports = DOMTokenListPrototype === Object.prototype ? undefined : DOMTok
   \*********************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // IE8- don't enum bug keys
 module.exports = [
@@ -936,6 +991,7 @@ module.exports = [
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 
@@ -953,6 +1009,7 @@ module.exports = userAgent ? String(userAgent) : '';
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/core-js/internals/environment-user-agent.js");
@@ -985,12 +1042,45 @@ module.exports = version;
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/environment.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/environment.js ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* global Bun, Deno -- detection */
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/core-js/internals/environment-user-agent.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+
+var userAgentStartsWith = function (string) {
+  return userAgent.slice(0, string.length) === string;
+};
+
+module.exports = (function () {
+  if (userAgentStartsWith('Bun/')) return 'BUN';
+  if (userAgentStartsWith('Cloudflare-Workers')) return 'CLOUDFLARE';
+  if (userAgentStartsWith('Deno/')) return 'DENO';
+  if (userAgentStartsWith('Node.js/')) return 'NODE';
+  if (globalThis.Bun && typeof Bun.version == 'string') return 'BUN';
+  if (globalThis.Deno && typeof Deno.version == 'object') return 'DENO';
+  if (classof(globalThis.process) === 'process') return 'NODE';
+  if (globalThis.window && globalThis.document) return 'BROWSER';
+  return 'REST';
+})();
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/export.js":
 /*!**************************************************!*\
   !*** ./node_modules/core-js/internals/export.js ***!
   \**************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var getOwnPropertyDescriptor = (__webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f);
@@ -1056,6 +1146,7 @@ module.exports = function (options, source) {
   \*************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 module.exports = function (exec) {
   try {
@@ -1074,6 +1165,7 @@ module.exports = function (exec) {
   \******************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
 __webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
@@ -1154,12 +1246,31 @@ module.exports = function (KEY, exec, FORCED, SHAM) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/freezing.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/freezing.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+module.exports = !fails(function () {
+  // eslint-disable-next-line es/no-object-isextensible, es/no-object-preventextensions -- required for testing
+  return Object.isExtensible(Object.preventExtensions({}));
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/function-apply.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/internals/function-apply.js ***!
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/core-js/internals/function-bind-native.js");
 
@@ -1181,6 +1292,7 @@ module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? c
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this-clause */ "./node_modules/core-js/internals/function-uncurry-this-clause.js");
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
@@ -1205,6 +1317,7 @@ module.exports = function (fn, that) {
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
@@ -1224,6 +1337,7 @@ module.exports = !fails(function () {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/core-js/internals/function-bind-native.js");
 
@@ -1242,6 +1356,7 @@ module.exports = NATIVE_BIND ? call.bind(call) : function () {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -1270,6 +1385,7 @@ module.exports = {
   \**************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
@@ -1290,6 +1406,7 @@ module.exports = function (object, key, method) {
   \************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -1310,6 +1427,7 @@ module.exports = function (fn) {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/core-js/internals/function-bind-native.js");
 
@@ -1333,6 +1451,7 @@ module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -1354,6 +1473,7 @@ module.exports = function (namespace, method) {
   \***************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
 var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
@@ -1378,6 +1498,7 @@ module.exports = function (it) {
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
@@ -1402,6 +1523,7 @@ module.exports = function (argument, usingIterator) {
   \**********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
@@ -1442,6 +1564,7 @@ module.exports = function (replacer) {
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
 var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/core-js/internals/is-null-or-undefined.js");
@@ -1462,6 +1585,7 @@ module.exports = function (V, P) {
   \*******************************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+"use strict";
 
 var check = function (it) {
   return it && it.Math === Math && it;
@@ -1488,6 +1612,7 @@ module.exports =
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
@@ -1510,6 +1635,7 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
   \*******************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 module.exports = {};
 
@@ -1522,6 +1648,7 @@ module.exports = {};
   \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
 
@@ -1536,6 +1663,7 @@ module.exports = getBuiltIn('document', 'documentElement');
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -1558,6 +1686,7 @@ module.exports = !DESCRIPTORS && !fails(function () {
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -1584,6 +1713,7 @@ module.exports = fails(function () {
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -1603,12 +1733,114 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/internal-metadata.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/internal-metadata.js ***!
+  \*************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+var defineProperty = (__webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f);
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertyNamesExternalModule = __webpack_require__(/*! ../internals/object-get-own-property-names-external */ "./node_modules/core-js/internals/object-get-own-property-names-external.js");
+var isExtensible = __webpack_require__(/*! ../internals/object-is-extensible */ "./node_modules/core-js/internals/object-is-extensible.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/core-js/internals/freezing.js");
+
+var REQUIRED = false;
+var METADATA = uid('meta');
+var id = 0;
+
+var setMetadata = function (it) {
+  defineProperty(it, METADATA, { value: {
+    objectID: 'O' + id++, // object ID
+    weakData: {}          // weak collections IDs
+  } });
+};
+
+var fastKey = function (it, create) {
+  // return a primitive with prefix
+  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+  if (!hasOwn(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return 'F';
+    // not necessary to add metadata
+    if (!create) return 'E';
+    // add missing metadata
+    setMetadata(it);
+  // return object ID
+  } return it[METADATA].objectID;
+};
+
+var getWeakData = function (it, create) {
+  if (!hasOwn(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return true;
+    // not necessary to add metadata
+    if (!create) return false;
+    // add missing metadata
+    setMetadata(it);
+  // return the store of weak collections IDs
+  } return it[METADATA].weakData;
+};
+
+// add metadata on freeze-family methods calling
+var onFreeze = function (it) {
+  if (FREEZING && REQUIRED && isExtensible(it) && !hasOwn(it, METADATA)) setMetadata(it);
+  return it;
+};
+
+var enable = function () {
+  meta.enable = function () { /* empty */ };
+  REQUIRED = true;
+  var getOwnPropertyNames = getOwnPropertyNamesModule.f;
+  var splice = uncurryThis([].splice);
+  var test = {};
+  test[METADATA] = 1;
+
+  // prevent exposing of metadata key
+  if (getOwnPropertyNames(test).length) {
+    getOwnPropertyNamesModule.f = function (it) {
+      var result = getOwnPropertyNames(it);
+      for (var i = 0, length = result.length; i < length; i++) {
+        if (result[i] === METADATA) {
+          splice(result, i, 1);
+          break;
+        }
+      } return result;
+    };
+
+    $({ target: 'Object', stat: true, forced: true }, {
+      getOwnPropertyNames: getOwnPropertyNamesExternalModule.f
+    });
+  }
+};
+
+var meta = module.exports = {
+  enable: enable,
+  fastKey: fastKey,
+  getWeakData: getWeakData,
+  onFreeze: onFreeze
+};
+
+hiddenKeys[METADATA] = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/internal-state.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/internals/internal-state.js ***!
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/weak-map-basic-detection */ "./node_modules/core-js/internals/weak-map-basic-detection.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -1690,6 +1922,7 @@ module.exports = {
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
@@ -1711,6 +1944,7 @@ module.exports = function (it) {
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 
@@ -1730,6 +1964,7 @@ module.exports = Array.isArray || function isArray(argument) {
   \*******************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
 var documentAll = typeof document == 'object' && document.all;
@@ -1752,6 +1987,7 @@ module.exports = typeof documentAll == 'undefined' && documentAll !== undefined 
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -1814,6 +2050,7 @@ module.exports = !construct || fails(function () {
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -1847,6 +2084,7 @@ module.exports = isForced;
   \****************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // we can't use just `it == null` since of `document.all` special case
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
@@ -1863,6 +2101,7 @@ module.exports = function (it) {
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 
@@ -1879,6 +2118,7 @@ module.exports = function (it) {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
@@ -1895,6 +2135,7 @@ module.exports = function (argument) {
   \***************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 module.exports = false;
 
@@ -1907,6 +2148,7 @@ module.exports = false;
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -1931,6 +2173,7 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
@@ -1965,6 +2208,7 @@ module.exports = function (iterator, kind, value) {
   \***********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var IteratorPrototype = (__webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype);
 var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
@@ -1991,6 +2235,7 @@ module.exports = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
@@ -2103,6 +2348,7 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -2162,6 +2408,7 @@ module.exports = {
   \*****************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 module.exports = {};
 
@@ -2174,6 +2421,7 @@ module.exports = {};
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 
@@ -2192,6 +2440,7 @@ module.exports = function (obj) {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -2257,6 +2506,7 @@ Function.prototype.toString = makeBuiltIn(function toString() {
   \******************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 var ceil = Math.ceil;
 var floor = Math.floor;
@@ -2278,6 +2528,7 @@ module.exports = Math.trunc || function trunc(x) {
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -2311,6 +2562,7 @@ module.exports = FORCED ? function parseInt(string, radix) {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* global ActiveXObject -- old IE, WSH */
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
@@ -2406,6 +2658,7 @@ module.exports = Object.create || function create(O, Properties) {
   \********************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(/*! ../internals/v8-prototype-define-bug */ "./node_modules/core-js/internals/v8-prototype-define-bug.js");
@@ -2437,6 +2690,7 @@ exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : 
   \******************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
@@ -2491,6 +2745,7 @@ exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P
   \******************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
@@ -2524,6 +2779,7 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable es/no-object-getownpropertynames -- safe */
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
@@ -2558,6 +2814,7 @@ module.exports.f = function getOwnPropertyNames(it) {
   \*************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
 var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
@@ -2580,6 +2837,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   \***************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
 exports.f = Object.getOwnPropertySymbols;
@@ -2593,6 +2851,7 @@ exports.f = Object.getOwnPropertySymbols;
   \*******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -2619,12 +2878,41 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/object-is-extensible.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-is-extensible.js ***!
+  \****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var ARRAY_BUFFER_NON_EXTENSIBLE = __webpack_require__(/*! ../internals/array-buffer-non-extensible */ "./node_modules/core-js/internals/array-buffer-non-extensible.js");
+
+// eslint-disable-next-line es/no-object-isextensible -- safe
+var $isExtensible = Object.isExtensible;
+var FAILS_ON_PRIMITIVES = fails(function () { $isExtensible(1); });
+
+// `Object.isExtensible` method
+// https://tc39.es/ecma262/#sec-object.isextensible
+module.exports = (FAILS_ON_PRIMITIVES || ARRAY_BUFFER_NON_EXTENSIBLE) ? function isExtensible(it) {
+  if (!isObject(it)) return false;
+  if (ARRAY_BUFFER_NON_EXTENSIBLE && classof(it) === 'ArrayBuffer') return false;
+  return $isExtensible ? $isExtensible(it) : true;
+} : $isExtensible;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/object-is-prototype-of.js":
 /*!******************************************************************!*\
   !*** ./node_modules/core-js/internals/object-is-prototype-of.js ***!
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 
@@ -2639,6 +2927,7 @@ module.exports = uncurryThis({}.isPrototypeOf);
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -2670,6 +2959,7 @@ module.exports = function (object, names) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
 var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
@@ -2690,6 +2980,7 @@ module.exports = Object.keys || function keys(O) {
   \*************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 var $propertyIsEnumerable = {}.propertyIsEnumerable;
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -2714,6 +3005,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   \*******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable no-proto -- safe */
 var uncurryThisAccessor = __webpack_require__(/*! ../internals/function-uncurry-this-accessor */ "./node_modules/core-js/internals/function-uncurry-this-accessor.js");
@@ -2753,6 +3045,7 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
 var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
@@ -2772,6 +3065,7 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -2798,6 +3092,7 @@ module.exports = function (input, pref) {
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -2823,6 +3118,7 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 
@@ -2837,6 +3133,7 @@ module.exports = globalThis;
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
@@ -2868,6 +3165,7 @@ module.exports = function (R, S) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
 /* eslint-disable regexp/no-useless-quantifier -- testing */
@@ -2995,6 +3293,7 @@ module.exports = patchedExec;
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 
@@ -3023,6 +3322,7 @@ module.exports = function () {
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -3046,6 +3346,7 @@ module.exports = function (R) {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -3087,6 +3388,7 @@ module.exports = {
   \**********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -3108,6 +3410,7 @@ module.exports = fails(function () {
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -3130,6 +3433,7 @@ module.exports = fails(function () {
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/core-js/internals/is-null-or-undefined.js");
 
@@ -3151,6 +3455,7 @@ module.exports = function (it) {
   \******************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // `SameValue` abstract operation
 // https://tc39.es/ecma262/#sec-samevalue
@@ -3163,12 +3468,55 @@ module.exports = Object.is || function is(x, y) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/schedulers-fix.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/schedulers-fix.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var apply = __webpack_require__(/*! ../internals/function-apply */ "./node_modules/core-js/internals/function-apply.js");
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var ENVIRONMENT = __webpack_require__(/*! ../internals/environment */ "./node_modules/core-js/internals/environment.js");
+var USER_AGENT = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/core-js/internals/environment-user-agent.js");
+var arraySlice = __webpack_require__(/*! ../internals/array-slice */ "./node_modules/core-js/internals/array-slice.js");
+var validateArgumentsLength = __webpack_require__(/*! ../internals/validate-arguments-length */ "./node_modules/core-js/internals/validate-arguments-length.js");
+
+var Function = globalThis.Function;
+// dirty IE9- and Bun 0.3.0- checks
+var WRAP = /MSIE .\./.test(USER_AGENT) || ENVIRONMENT === 'BUN' && (function () {
+  var version = globalThis.Bun.version.split('.');
+  return version.length < 3 || version[0] === '0' && (version[1] < 3 || version[1] === '3' && version[2] === '0');
+})();
+
+// IE9- / Bun 0.3.0- setTimeout / setInterval / setImmediate additional parameters fix
+// https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers
+// https://github.com/oven-sh/bun/issues/1633
+module.exports = function (scheduler, hasTimeArg) {
+  var firstParamIndex = hasTimeArg ? 2 : 1;
+  return WRAP ? function (handler, timeout /* , ...arguments */) {
+    var boundArgs = validateArgumentsLength(arguments.length, 1) > firstParamIndex;
+    var fn = isCallable(handler) ? handler : Function(handler);
+    var params = boundArgs ? arraySlice(arguments, firstParamIndex) : [];
+    var callback = boundArgs ? function () {
+      apply(fn, this, params);
+    } : fn;
+    return hasTimeArg ? scheduler(callback, timeout) : scheduler(callback);
+  } : scheduler;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/set-to-string-tag.js":
 /*!*************************************************************!*\
   !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var defineProperty = (__webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f);
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -3192,6 +3540,7 @@ module.exports = function (target, TAG, STATIC) {
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
 var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
@@ -3211,6 +3560,7 @@ module.exports = function (key) {
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -3236,6 +3586,7 @@ var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, 
   \**************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
 
@@ -3252,6 +3603,7 @@ module.exports = function (key, value) {
   \***************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var aConstructor = __webpack_require__(/*! ../internals/a-constructor */ "./node_modules/core-js/internals/a-constructor.js");
@@ -3277,6 +3629,7 @@ module.exports = function (O, defaultConstructor) {
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/core-js/internals/to-integer-or-infinity.js");
@@ -3324,6 +3677,7 @@ module.exports = {
   \**************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var PROPER_FUNCTION_NAME = (__webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").PROPER);
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -3350,6 +3704,7 @@ module.exports = function (METHOD_NAME) {
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
@@ -3391,6 +3746,7 @@ module.exports = {
   \************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
 var V8_VERSION = __webpack_require__(/*! ../internals/environment-v8-version */ "./node_modules/core-js/internals/environment-v8-version.js");
@@ -3420,6 +3776,7 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   \**********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
@@ -3451,6 +3808,7 @@ module.exports = function () {
   \*********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/symbol-constructor-detection */ "./node_modules/core-js/internals/symbol-constructor-detection.js");
 
@@ -3466,6 +3824,7 @@ module.exports = NATIVE_SYMBOL && !!Symbol['for'] && !!Symbol.keyFor;
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/core-js/internals/to-integer-or-infinity.js");
 
@@ -3489,6 +3848,7 @@ module.exports = function (index, length) {
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 // toObject with fallback for non-array-like ES3 strings
 var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
@@ -3507,6 +3867,7 @@ module.exports = function (it) {
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var trunc = __webpack_require__(/*! ../internals/math-trunc */ "./node_modules/core-js/internals/math-trunc.js");
 
@@ -3527,6 +3888,7 @@ module.exports = function (argument) {
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/core-js/internals/to-integer-or-infinity.js");
 
@@ -3548,6 +3910,7 @@ module.exports = function (argument) {
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 
@@ -3568,6 +3931,7 @@ module.exports = function (argument) {
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
@@ -3604,6 +3968,7 @@ module.exports = function (input, pref) {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
@@ -3624,6 +3989,7 @@ module.exports = function (argument) {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
@@ -3643,6 +4009,7 @@ module.exports = String(test) === '[object z]';
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
 
@@ -3662,6 +4029,7 @@ module.exports = function (argument) {
   \*********************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 var $String = String;
 
@@ -3682,6 +4050,7 @@ module.exports = function (argument) {
   \***********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 
@@ -3702,6 +4071,7 @@ module.exports = function (key) {
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable es/no-symbol -- required for testing */
 var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/symbol-constructor-detection */ "./node_modules/core-js/internals/symbol-constructor-detection.js");
@@ -3719,6 +4089,7 @@ module.exports = NATIVE_SYMBOL &&
   \*******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -3736,12 +4107,31 @@ module.exports = DESCRIPTORS && fails(function () {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/validate-arguments-length.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/core-js/internals/validate-arguments-length.js ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+var $TypeError = TypeError;
+
+module.exports = function (passed, required) {
+  if (passed < required) throw new $TypeError('Not enough arguments');
+  return passed;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/weak-map-basic-detection.js":
 /*!********************************************************************!*\
   !*** ./node_modules/core-js/internals/weak-map-basic-detection.js ***!
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
@@ -3759,6 +4149,7 @@ module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
   \********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -3781,6 +4172,7 @@ module.exports = function (NAME) {
   \*********************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
@@ -3795,6 +4187,7 @@ exports.f = wellKnownSymbol;
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
@@ -3824,6 +4217,7 @@ module.exports = function (name) {
   \*******************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 // a string of all valid unicode whitespaces
 module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
@@ -3838,6 +4232,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -3906,6 +4301,7 @@ $({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var $filter = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").filter);
@@ -3931,6 +4327,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/core-js/internals/array-for-each.js");
@@ -3951,6 +4348,7 @@ $({ target: 'Array', proto: true, forced: [].forEach !== forEach }, {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var from = __webpack_require__(/*! ../internals/array-from */ "./node_modules/core-js/internals/array-from.js");
@@ -3976,6 +4374,7 @@ $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 /* eslint-disable es/no-array-prototype-indexof -- required for testing */
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
@@ -4009,6 +4408,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
@@ -4028,6 +4428,7 @@ $({ target: 'Array', stat: true }, {
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
 var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
@@ -4100,6 +4501,7 @@ if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -4129,6 +4531,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
   \******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var $map = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").map);
@@ -4154,6 +4557,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   \********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
@@ -4213,6 +4617,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 // TODO: Remove from `core-js@4`
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -4243,6 +4648,7 @@ if (String(new Date(NaN)) !== INVALID_DATE) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var FUNCTION_NAME_EXISTS = (__webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").EXISTS);
@@ -4279,6 +4685,7 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
@@ -4356,12 +4763,42 @@ if ($stringify) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.object.freeze.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.freeze.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/core-js/internals/freezing.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var onFreeze = (__webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js").onFreeze);
+
+// eslint-disable-next-line es/no-object-freeze -- safe
+var $freeze = Object.freeze;
+var FAILS_ON_PRIMITIVES = fails(function () { $freeze(1); });
+
+// `Object.freeze` method
+// https://tc39.es/ecma262/#sec-object.freeze
+$({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !FREEZING }, {
+  freeze: function freeze(it) {
+    return $freeze && isObject(it) ? $freeze(onFreeze(it)) : it;
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.object.get-own-property-symbols.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/core-js/modules/es.object.get-own-property-symbols.js ***!
   \****************************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/symbol-constructor-detection */ "./node_modules/core-js/internals/symbol-constructor-detection.js");
@@ -4391,6 +4828,7 @@ $({ target: 'Object', stat: true, forced: FORCED }, {
   \********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
@@ -4416,6 +4854,7 @@ $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
   \*************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
 var defineBuiltIn = __webpack_require__(/*! ../internals/define-built-in */ "./node_modules/core-js/internals/define-built-in.js");
@@ -4436,6 +4875,7 @@ if (!TO_STRING_TAG_SUPPORT) {
   \******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var $parseInt = __webpack_require__(/*! ../internals/number-parse-int */ "./node_modules/core-js/internals/number-parse-int.js");
@@ -4455,6 +4895,7 @@ $({ global: true, forced: parseInt !== $parseInt }, {
   \********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
@@ -4474,6 +4915,7 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   \*************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var PROPER_FUNCTION_NAME = (__webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").PROPER);
 var defineBuiltIn = __webpack_require__(/*! ../internals/define-built-in */ "./node_modules/core-js/internals/define-built-in.js");
@@ -4510,6 +4952,7 @@ if (NOT_GENERIC || INCORRECT_NAME) {
   \************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var charAt = (__webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt);
 var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
@@ -4551,6 +4994,7 @@ defineIterator(String, 'String', function (iterated) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
@@ -4599,6 +5043,7 @@ fixRegExpWellKnownSymbolLogic('search', function (SEARCH, nativeSearch, maybeCal
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
@@ -4720,6 +5165,7 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
   \********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var $trim = (__webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim);
@@ -4742,6 +5188,7 @@ $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
   \***************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
@@ -5015,6 +5462,7 @@ hiddenKeys[HIDDEN] = true;
   \*******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
@@ -5048,6 +5496,7 @@ $({ target: 'Symbol', stat: true, forced: !NATIVE_SYMBOL_REGISTRY }, {
   \************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var defineWellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol-define */ "./node_modules/core-js/internals/well-known-symbol-define.js");
 
@@ -5064,6 +5513,7 @@ defineWellKnownSymbol('iterator');
   \***************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
 __webpack_require__(/*! ../modules/es.symbol.constructor */ "./node_modules/core-js/modules/es.symbol.constructor.js");
@@ -5081,6 +5531,7 @@ __webpack_require__(/*! ../modules/es.object.get-own-property-symbols */ "./node
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
@@ -5109,6 +5560,7 @@ $({ target: 'Symbol', stat: true, forced: !NATIVE_SYMBOL_REGISTRY }, {
   \**********************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
@@ -5142,6 +5594,7 @@ handlePrototype(DOMTokenListPrototype);
   \**********************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
 var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
@@ -5183,12 +5636,2160 @@ handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/web.set-interval.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/web.set-interval.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var schedulersFix = __webpack_require__(/*! ../internals/schedulers-fix */ "./node_modules/core-js/internals/schedulers-fix.js");
+
+var setInterval = schedulersFix(globalThis.setInterval, true);
+
+// Bun / IE9- setInterval additional parameters fix
+// https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval
+$({ global: true, bind: true, forced: globalThis.setInterval !== setInterval }, {
+  setInterval: setInterval
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/web.set-timeout.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/web.set-timeout.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var schedulersFix = __webpack_require__(/*! ../internals/schedulers-fix */ "./node_modules/core-js/internals/schedulers-fix.js");
+
+var setTimeout = schedulersFix(globalThis.setTimeout, true);
+
+// Bun / IE9- setTimeout additional parameters fix
+// https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout
+$({ global: true, bind: true, forced: globalThis.setTimeout !== setTimeout }, {
+  setTimeout: setTimeout
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/web.timers.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/modules/web.timers.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+// TODO: Remove this module from `core-js@4` since it's split to modules listed below
+__webpack_require__(/*! ../modules/web.set-interval */ "./node_modules/core-js/modules/web.set-interval.js");
+__webpack_require__(/*! ../modules/web.set-timeout */ "./node_modules/core-js/modules/web.set-timeout.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/focus-trap/dist/focus-trap.esm.js":
+/*!********************************************************!*\
+  !*** ./node_modules/focus-trap/dist/focus-trap.esm.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createFocusTrap: () => (/* binding */ createFocusTrap)
+/* harmony export */ });
+/* harmony import */ var tabbable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tabbable */ "./node_modules/tabbable/dist/index.esm.js");
+/*!
+* focus-trap 7.6.4
+* @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
+*/
+
+
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
+}
+function _defineProperty(e, r, t) {
+  return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+    value: t,
+    enumerable: true,
+    configurable: true,
+    writable: true
+  }) : e[r] = t, e;
+}
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function ownKeys(e, r) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function (r) {
+      return Object.getOwnPropertyDescriptor(e, r).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread2(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys(Object(t), true).forEach(function (r) {
+      _defineProperty(e, r, t[r]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) {
+      Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+    });
+  }
+  return e;
+}
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
+}
+function _toPrimitive(t, r) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (undefined !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != typeof i) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : undefined;
+  }
+}
+
+var activeFocusTraps = {
+  activateTrap: function activateTrap(trapStack, trap) {
+    if (trapStack.length > 0) {
+      var activeTrap = trapStack[trapStack.length - 1];
+      if (activeTrap !== trap) {
+        activeTrap._setPausedState(true);
+      }
+    }
+    var trapIndex = trapStack.indexOf(trap);
+    if (trapIndex === -1) {
+      trapStack.push(trap);
+    } else {
+      // move this existing trap to the front of the queue
+      trapStack.splice(trapIndex, 1);
+      trapStack.push(trap);
+    }
+  },
+  deactivateTrap: function deactivateTrap(trapStack, trap) {
+    var trapIndex = trapStack.indexOf(trap);
+    if (trapIndex !== -1) {
+      trapStack.splice(trapIndex, 1);
+    }
+    if (trapStack.length > 0 && !trapStack[trapStack.length - 1]._isManuallyPaused()) {
+      trapStack[trapStack.length - 1]._setPausedState(false);
+    }
+  }
+};
+var isSelectableInput = function isSelectableInput(node) {
+  return node.tagName && node.tagName.toLowerCase() === 'input' && typeof node.select === 'function';
+};
+var isEscapeEvent = function isEscapeEvent(e) {
+  return (e === null || e === undefined ? undefined : e.key) === 'Escape' || (e === null || e === undefined ? undefined : e.key) === 'Esc' || (e === null || e === undefined ? undefined : e.keyCode) === 27;
+};
+var isTabEvent = function isTabEvent(e) {
+  return (e === null || e === undefined ? undefined : e.key) === 'Tab' || (e === null || e === undefined ? undefined : e.keyCode) === 9;
+};
+
+// checks for TAB by default
+var isKeyForward = function isKeyForward(e) {
+  return isTabEvent(e) && !e.shiftKey;
+};
+
+// checks for SHIFT+TAB by default
+var isKeyBackward = function isKeyBackward(e) {
+  return isTabEvent(e) && e.shiftKey;
+};
+var delay = function delay(fn) {
+  return setTimeout(fn, 0);
+};
+
+/**
+ * Get an option's value when it could be a plain value, or a handler that provides
+ *  the value.
+ * @param {*} value Option's value to check.
+ * @param {...*} [params] Any parameters to pass to the handler, if `value` is a function.
+ * @returns {*} The `value`, or the handler's returned value.
+ */
+var valueOrHandler = function valueOrHandler(value) {
+  for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    params[_key - 1] = arguments[_key];
+  }
+  return typeof value === 'function' ? value.apply(undefined, params) : value;
+};
+var getActualTarget = function getActualTarget(event) {
+  // NOTE: If the trap is _inside_ a shadow DOM, event.target will always be the
+  //  shadow host. However, event.target.composedPath() will be an array of
+  //  nodes "clicked" from inner-most (the actual element inside the shadow) to
+  //  outer-most (the host HTML document). If we have access to composedPath(),
+  //  then use its first element; otherwise, fall back to event.target (and
+  //  this only works for an _open_ shadow DOM; otherwise,
+  //  composedPath()[0] === event.target always).
+  return event.target.shadowRoot && typeof event.composedPath === 'function' ? event.composedPath()[0] : event.target;
+};
+
+// NOTE: this must be _outside_ `createFocusTrap()` to make sure all traps in this
+//  current instance use the same stack if `userOptions.trapStack` isn't specified
+var internalTrapStack = [];
+var createFocusTrap = function createFocusTrap(elements, userOptions) {
+  // SSR: a live trap shouldn't be created in this type of environment so this
+  //  should be safe code to execute if the `document` option isn't specified
+  var doc = (userOptions === null || userOptions === undefined ? undefined : userOptions.document) || document;
+  var trapStack = (userOptions === null || userOptions === undefined ? undefined : userOptions.trapStack) || internalTrapStack;
+  var config = _objectSpread2({
+    returnFocusOnDeactivate: true,
+    escapeDeactivates: true,
+    delayInitialFocus: true,
+    isKeyForward: isKeyForward,
+    isKeyBackward: isKeyBackward
+  }, userOptions);
+  var state = {
+    // containers given to createFocusTrap()
+    // @type {Array<HTMLElement>}
+    containers: [],
+    // list of objects identifying tabbable nodes in `containers` in the trap
+    // NOTE: it's possible that a group has no tabbable nodes if nodes get removed while the trap
+    //  is active, but the trap should never get to a state where there isn't at least one group
+    //  with at least one tabbable node in it (that would lead to an error condition that would
+    //  result in an error being thrown)
+    // @type {Array<{
+    //   container: HTMLElement,
+    //   tabbableNodes: Array<HTMLElement>, // empty if none
+    //   focusableNodes: Array<HTMLElement>, // empty if none
+    //   posTabIndexesFound: boolean,
+    //   firstTabbableNode: HTMLElement|undefined,
+    //   lastTabbableNode: HTMLElement|undefined,
+    //   firstDomTabbableNode: HTMLElement|undefined,
+    //   lastDomTabbableNode: HTMLElement|undefined,
+    //   nextTabbableNode: (node: HTMLElement, forward: boolean) => HTMLElement|undefined
+    // }>}
+    containerGroups: [],
+    // same order/length as `containers` list
+
+    // references to objects in `containerGroups`, but only those that actually have
+    //  tabbable nodes in them
+    // NOTE: same order as `containers` and `containerGroups`, but __not necessarily__
+    //  the same length
+    tabbableGroups: [],
+    nodeFocusedBeforeActivation: null,
+    mostRecentlyFocusedNode: null,
+    active: false,
+    paused: false,
+    manuallyPaused: false,
+    // timer ID for when delayInitialFocus is true and initial focus in this trap
+    //  has been delayed during activation
+    delayInitialFocusTimer: undefined,
+    // the most recent KeyboardEvent for the configured nav key (typically [SHIFT+]TAB), if any
+    recentNavEvent: undefined
+  };
+  var trap; // eslint-disable-line prefer-const -- some private functions reference it, and its methods reference private functions, so we must declare here and define later
+
+  /**
+   * Gets a configuration option value.
+   * @param {Object|undefined} configOverrideOptions If true, and option is defined in this set,
+   *  value will be taken from this object. Otherwise, value will be taken from base configuration.
+   * @param {string} optionName Name of the option whose value is sought.
+   * @param {string|undefined} [configOptionName] Name of option to use __instead of__ `optionName`
+   *  IIF `configOverrideOptions` is not defined. Otherwise, `optionName` is used.
+   */
+  var getOption = function getOption(configOverrideOptions, optionName, configOptionName) {
+    return configOverrideOptions && configOverrideOptions[optionName] !== undefined ? configOverrideOptions[optionName] : config[configOptionName || optionName];
+  };
+
+  /**
+   * Finds the index of the container that contains the element.
+   * @param {HTMLElement} element
+   * @param {Event} [event] If available, and `element` isn't directly found in any container,
+   *  the event's composed path is used to see if includes any known trap containers in the
+   *  case where the element is inside a Shadow DOM.
+   * @returns {number} Index of the container in either `state.containers` or
+   *  `state.containerGroups` (the order/length of these lists are the same); -1
+   *  if the element isn't found.
+   */
+  var findContainerIndex = function findContainerIndex(element, event) {
+    var composedPath = typeof (event === null || event === undefined ? undefined : event.composedPath) === 'function' ? event.composedPath() : undefined;
+    // NOTE: search `containerGroups` because it's possible a group contains no tabbable
+    //  nodes, but still contains focusable nodes (e.g. if they all have `tabindex=-1`)
+    //  and we still need to find the element in there
+    return state.containerGroups.findIndex(function (_ref) {
+      var container = _ref.container,
+        tabbableNodes = _ref.tabbableNodes;
+      return container.contains(element) || (// fall back to explicit tabbable search which will take into consideration any
+      //  web components if the `tabbableOptions.getShadowRoot` option was used for
+      //  the trap, enabling shadow DOM support in tabbable (`Node.contains()` doesn't
+      //  look inside web components even if open)
+      composedPath === null || composedPath === undefined ? undefined : composedPath.includes(container)) || tabbableNodes.find(function (node) {
+        return node === element;
+      });
+    });
+  };
+
+  /**
+   * Gets the node for the given option, which is expected to be an option that
+   *  can be either a DOM node, a string that is a selector to get a node, `false`
+   *  (if a node is explicitly NOT given), or a function that returns any of these
+   *  values.
+   * @param {string} optionName
+   * @param {Object} options
+   * @param {boolean} [options.hasFallback] True if the option could be a selector string
+   *  and the option allows for a fallback scenario in the case where the selector is
+   *  valid but does not match a node (i.e. the queried node doesn't exist in the DOM).
+   * @param {Array} [options.params] Params to pass to the option if it's a function.
+   * @returns {undefined | null | false | HTMLElement | SVGElement} Returns
+   *  `undefined` if the option is not specified; `null` if the option didn't resolve
+   *  to a node but `options.hasFallback=true`, `false` if the option resolved to `false`
+   *  (node explicitly not given); otherwise, the resolved DOM node.
+   * @throws {Error} If the option is set, not `false`, and is not, or does not
+   *  resolve to a node, unless the option is a selector string and `options.hasFallback=true`.
+   */
+  var getNodeForOption = function getNodeForOption(optionName) {
+    var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref2$hasFallback = _ref2.hasFallback,
+      hasFallback = _ref2$hasFallback === undefined ? false : _ref2$hasFallback,
+      _ref2$params = _ref2.params,
+      params = _ref2$params === undefined ? [] : _ref2$params;
+    var optionValue = config[optionName];
+    if (typeof optionValue === 'function') {
+      optionValue = optionValue.apply(undefined, _toConsumableArray(params));
+    }
+    if (optionValue === true) {
+      optionValue = undefined; // use default value
+    }
+    if (!optionValue) {
+      if (optionValue === undefined || optionValue === false) {
+        return optionValue;
+      }
+      // else, empty string (invalid), null (invalid), 0 (invalid)
+
+      throw new Error("`".concat(optionName, "` was specified but was not a node, or did not return a node"));
+    }
+    var node = optionValue; // could be HTMLElement, SVGElement, or non-empty string at this point
+
+    if (typeof optionValue === 'string') {
+      try {
+        node = doc.querySelector(optionValue); // resolve to node, or null if fails
+      } catch (err) {
+        throw new Error("`".concat(optionName, "` appears to be an invalid selector; error=\"").concat(err.message, "\""));
+      }
+      if (!node) {
+        if (!hasFallback) {
+          throw new Error("`".concat(optionName, "` as selector refers to no known node"));
+        }
+        // else, `node` MUST be `null` because that's what `Document.querySelector()` returns
+        //  if the selector is valid but doesn't match anything
+      }
+    }
+    return node;
+  };
+  var getInitialFocusNode = function getInitialFocusNode() {
+    var node = getNodeForOption('initialFocus', {
+      hasFallback: true
+    });
+
+    // false explicitly indicates we want no initialFocus at all
+    if (node === false) {
+      return false;
+    }
+    if (node === undefined || node && !(0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isFocusable)(node, config.tabbableOptions)) {
+      // option not specified nor focusable: use fallback options
+      if (findContainerIndex(doc.activeElement) >= 0) {
+        node = doc.activeElement;
+      } else {
+        var firstTabbableGroup = state.tabbableGroups[0];
+        var firstTabbableNode = firstTabbableGroup && firstTabbableGroup.firstTabbableNode;
+
+        // NOTE: `fallbackFocus` option function cannot return `false` (not supported)
+        node = firstTabbableNode || getNodeForOption('fallbackFocus');
+      }
+    } else if (node === null) {
+      // option is a VALID selector string that doesn't yield a node: use the `fallbackFocus`
+      //  option instead of the default behavior when the option isn't specified at all
+      node = getNodeForOption('fallbackFocus');
+    }
+    if (!node) {
+      throw new Error('Your focus-trap needs to have at least one focusable element');
+    }
+    return node;
+  };
+  var updateTabbableNodes = function updateTabbableNodes() {
+    state.containerGroups = state.containers.map(function (container) {
+      var tabbableNodes = (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.tabbable)(container, config.tabbableOptions);
+
+      // NOTE: if we have tabbable nodes, we must have focusable nodes; focusable nodes
+      //  are a superset of tabbable nodes since nodes with negative `tabindex` attributes
+      //  are focusable but not tabbable
+      var focusableNodes = (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.focusable)(container, config.tabbableOptions);
+      var firstTabbableNode = tabbableNodes.length > 0 ? tabbableNodes[0] : undefined;
+      var lastTabbableNode = tabbableNodes.length > 0 ? tabbableNodes[tabbableNodes.length - 1] : undefined;
+      var firstDomTabbableNode = focusableNodes.find(function (node) {
+        return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(node);
+      });
+      var lastDomTabbableNode = focusableNodes.slice().reverse().find(function (node) {
+        return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(node);
+      });
+      var posTabIndexesFound = !!tabbableNodes.find(function (node) {
+        return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.getTabIndex)(node) > 0;
+      });
+      return {
+        container: container,
+        tabbableNodes: tabbableNodes,
+        focusableNodes: focusableNodes,
+        /** True if at least one node with positive `tabindex` was found in this container. */
+        posTabIndexesFound: posTabIndexesFound,
+        /** First tabbable node in container, __tabindex__ order; `undefined` if none. */
+        firstTabbableNode: firstTabbableNode,
+        /** Last tabbable node in container, __tabindex__ order; `undefined` if none. */
+        lastTabbableNode: lastTabbableNode,
+        // NOTE: DOM order is NOT NECESSARILY "document position" order, but figuring that out
+        //  would require more than just https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition
+        //  because that API doesn't work with Shadow DOM as well as it should (@see
+        //  https://github.com/whatwg/dom/issues/320) and since this first/last is only needed, so far,
+        //  to address an edge case related to positive tabindex support, this seems like a much easier,
+        //  "close enough most of the time" alternative for positive tabindexes which should generally
+        //  be avoided anyway...
+        /** First tabbable node in container, __DOM__ order; `undefined` if none. */
+        firstDomTabbableNode: firstDomTabbableNode,
+        /** Last tabbable node in container, __DOM__ order; `undefined` if none. */
+        lastDomTabbableNode: lastDomTabbableNode,
+        /**
+         * Finds the __tabbable__ node that follows the given node in the specified direction,
+         *  in this container, if any.
+         * @param {HTMLElement} node
+         * @param {boolean} [forward] True if going in forward tab order; false if going
+         *  in reverse.
+         * @returns {HTMLElement|undefined} The next tabbable node, if any.
+         */
+        nextTabbableNode: function nextTabbableNode(node) {
+          var forward = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+          var nodeIdx = tabbableNodes.indexOf(node);
+          if (nodeIdx < 0) {
+            // either not tabbable nor focusable, or was focused but not tabbable (negative tabindex):
+            //  since `node` should at least have been focusable, we assume that's the case and mimic
+            //  what browsers do, which is set focus to the next node in __document position order__,
+            //  regardless of positive tabindexes, if any -- and for reasons explained in the NOTE
+            //  above related to `firstDomTabbable` and `lastDomTabbable` properties, we fall back to
+            //  basic DOM order
+            if (forward) {
+              return focusableNodes.slice(focusableNodes.indexOf(node) + 1).find(function (el) {
+                return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(el);
+              });
+            }
+            return focusableNodes.slice(0, focusableNodes.indexOf(node)).reverse().find(function (el) {
+              return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(el);
+            });
+          }
+          return tabbableNodes[nodeIdx + (forward ? 1 : -1)];
+        }
+      };
+    });
+    state.tabbableGroups = state.containerGroups.filter(function (group) {
+      return group.tabbableNodes.length > 0;
+    });
+
+    // throw if no groups have tabbable nodes and we don't have a fallback focus node either
+    if (state.tabbableGroups.length <= 0 && !getNodeForOption('fallbackFocus') // returning false not supported for this option
+    ) {
+      throw new Error('Your focus-trap must have at least one container with at least one tabbable node in it at all times');
+    }
+
+    // NOTE: Positive tabindexes are only properly supported in single-container traps because
+    //  doing it across multiple containers where tabindexes could be all over the place
+    //  would require Tabbable to support multiple containers, would require additional
+    //  specialized Shadow DOM support, and would require Tabbable's multi-container support
+    //  to look at those containers in document position order rather than user-provided
+    //  order (as they are treated in Focus-trap, for legacy reasons). See discussion on
+    //  https://github.com/focus-trap/focus-trap/issues/375 for more details.
+    if (state.containerGroups.find(function (g) {
+      return g.posTabIndexesFound;
+    }) && state.containerGroups.length > 1) {
+      throw new Error("At least one node with a positive tabindex was found in one of your focus-trap's multiple containers. Positive tabindexes are only supported in single-container focus-traps.");
+    }
+  };
+
+  /**
+   * Gets the current activeElement. If it's a web-component and has open shadow-root
+   * it will recursively search inside shadow roots for the "true" activeElement.
+   *
+   * @param {Document | ShadowRoot} el
+   *
+   * @returns {HTMLElement} The element that currently has the focus
+   **/
+  var _getActiveElement = function getActiveElement(el) {
+    var activeElement = el.activeElement;
+    if (!activeElement) {
+      return;
+    }
+    if (activeElement.shadowRoot && activeElement.shadowRoot.activeElement !== null) {
+      return _getActiveElement(activeElement.shadowRoot);
+    }
+    return activeElement;
+  };
+  var _tryFocus = function tryFocus(node) {
+    if (node === false) {
+      return;
+    }
+    if (node === _getActiveElement(document)) {
+      return;
+    }
+    if (!node || !node.focus) {
+      _tryFocus(getInitialFocusNode());
+      return;
+    }
+    node.focus({
+      preventScroll: !!config.preventScroll
+    });
+    // NOTE: focus() API does not trigger focusIn event so set MRU node manually
+    state.mostRecentlyFocusedNode = node;
+    if (isSelectableInput(node)) {
+      node.select();
+    }
+  };
+  var getReturnFocusNode = function getReturnFocusNode(previousActiveElement) {
+    var node = getNodeForOption('setReturnFocus', {
+      params: [previousActiveElement]
+    });
+    return node ? node : node === false ? false : previousActiveElement;
+  };
+
+  /**
+   * Finds the next node (in either direction) where focus should move according to a
+   *  keyboard focus-in event.
+   * @param {Object} params
+   * @param {Node} [params.target] Known target __from which__ to navigate, if any.
+   * @param {KeyboardEvent|FocusEvent} [params.event] Event to use if `target` isn't known (event
+   *  will be used to determine the `target`). Ignored if `target` is specified.
+   * @param {boolean} [params.isBackward] True if focus should move backward.
+   * @returns {Node|undefined} The next node, or `undefined` if a next node couldn't be
+   *  determined given the current state of the trap.
+   */
+  var findNextNavNode = function findNextNavNode(_ref3) {
+    var target = _ref3.target,
+      event = _ref3.event,
+      _ref3$isBackward = _ref3.isBackward,
+      isBackward = _ref3$isBackward === undefined ? false : _ref3$isBackward;
+    target = target || getActualTarget(event);
+    updateTabbableNodes();
+    var destinationNode = null;
+    if (state.tabbableGroups.length > 0) {
+      // make sure the target is actually contained in a group
+      // NOTE: the target may also be the container itself if it's focusable
+      //  with tabIndex='-1' and was given initial focus
+      var containerIndex = findContainerIndex(target, event);
+      var containerGroup = containerIndex >= 0 ? state.containerGroups[containerIndex] : undefined;
+      if (containerIndex < 0) {
+        // target not found in any group: quite possible focus has escaped the trap,
+        //  so bring it back into...
+        if (isBackward) {
+          // ...the last node in the last group
+          destinationNode = state.tabbableGroups[state.tabbableGroups.length - 1].lastTabbableNode;
+        } else {
+          // ...the first node in the first group
+          destinationNode = state.tabbableGroups[0].firstTabbableNode;
+        }
+      } else if (isBackward) {
+        // REVERSE
+
+        // is the target the first tabbable node in a group?
+        var startOfGroupIndex = state.tabbableGroups.findIndex(function (_ref4) {
+          var firstTabbableNode = _ref4.firstTabbableNode;
+          return target === firstTabbableNode;
+        });
+        if (startOfGroupIndex < 0 && (containerGroup.container === target || (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isFocusable)(target, config.tabbableOptions) && !(0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(target, config.tabbableOptions) && !containerGroup.nextTabbableNode(target, false))) {
+          // an exception case where the target is either the container itself, or
+          //  a non-tabbable node that was given focus (i.e. tabindex is negative
+          //  and user clicked on it or node was programmatically given focus)
+          //  and is not followed by any other tabbable node, in which
+          //  case, we should handle shift+tab as if focus were on the container's
+          //  first tabbable node, and go to the last tabbable node of the LAST group
+          startOfGroupIndex = containerIndex;
+        }
+        if (startOfGroupIndex >= 0) {
+          // YES: then shift+tab should go to the last tabbable node in the
+          //  previous group (and wrap around to the last tabbable node of
+          //  the LAST group if it's the first tabbable node of the FIRST group)
+          var destinationGroupIndex = startOfGroupIndex === 0 ? state.tabbableGroups.length - 1 : startOfGroupIndex - 1;
+          var destinationGroup = state.tabbableGroups[destinationGroupIndex];
+          destinationNode = (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.getTabIndex)(target) >= 0 ? destinationGroup.lastTabbableNode : destinationGroup.lastDomTabbableNode;
+        } else if (!isTabEvent(event)) {
+          // user must have customized the nav keys so we have to move focus manually _within_
+          //  the active group: do this based on the order determined by tabbable()
+          destinationNode = containerGroup.nextTabbableNode(target, false);
+        }
+      } else {
+        // FORWARD
+
+        // is the target the last tabbable node in a group?
+        var lastOfGroupIndex = state.tabbableGroups.findIndex(function (_ref5) {
+          var lastTabbableNode = _ref5.lastTabbableNode;
+          return target === lastTabbableNode;
+        });
+        if (lastOfGroupIndex < 0 && (containerGroup.container === target || (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isFocusable)(target, config.tabbableOptions) && !(0,tabbable__WEBPACK_IMPORTED_MODULE_0__.isTabbable)(target, config.tabbableOptions) && !containerGroup.nextTabbableNode(target))) {
+          // an exception case where the target is the container itself, or
+          //  a non-tabbable node that was given focus (i.e. tabindex is negative
+          //  and user clicked on it or node was programmatically given focus)
+          //  and is not followed by any other tabbable node, in which
+          //  case, we should handle tab as if focus were on the container's
+          //  last tabbable node, and go to the first tabbable node of the FIRST group
+          lastOfGroupIndex = containerIndex;
+        }
+        if (lastOfGroupIndex >= 0) {
+          // YES: then tab should go to the first tabbable node in the next
+          //  group (and wrap around to the first tabbable node of the FIRST
+          //  group if it's the last tabbable node of the LAST group)
+          var _destinationGroupIndex = lastOfGroupIndex === state.tabbableGroups.length - 1 ? 0 : lastOfGroupIndex + 1;
+          var _destinationGroup = state.tabbableGroups[_destinationGroupIndex];
+          destinationNode = (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.getTabIndex)(target) >= 0 ? _destinationGroup.firstTabbableNode : _destinationGroup.firstDomTabbableNode;
+        } else if (!isTabEvent(event)) {
+          // user must have customized the nav keys so we have to move focus manually _within_
+          //  the active group: do this based on the order determined by tabbable()
+          destinationNode = containerGroup.nextTabbableNode(target);
+        }
+      }
+    } else {
+      // no groups available
+      // NOTE: the fallbackFocus option does not support returning false to opt-out
+      destinationNode = getNodeForOption('fallbackFocus');
+    }
+    return destinationNode;
+  };
+
+  // This needs to be done on mousedown and touchstart instead of click
+  // so that it precedes the focus event.
+  var checkPointerDown = function checkPointerDown(e) {
+    var target = getActualTarget(e);
+    if (findContainerIndex(target, e) >= 0) {
+      // allow the click since it ocurred inside the trap
+      return;
+    }
+    if (valueOrHandler(config.clickOutsideDeactivates, e)) {
+      // immediately deactivate the trap
+      trap.deactivate({
+        // NOTE: by setting `returnFocus: false`, deactivate() will do nothing,
+        //  which will result in the outside click setting focus to the node
+        //  that was clicked (and if not focusable, to "nothing"); by setting
+        //  `returnFocus: true`, we'll attempt to re-focus the node originally-focused
+        //  on activation (or the configured `setReturnFocus` node), whether the
+        //  outside click was on a focusable node or not
+        returnFocus: config.returnFocusOnDeactivate
+      });
+      return;
+    }
+
+    // This is needed for mobile devices.
+    // (If we'll only let `click` events through,
+    // then on mobile they will be blocked anyways if `touchstart` is blocked.)
+    if (valueOrHandler(config.allowOutsideClick, e)) {
+      // allow the click outside the trap to take place
+      return;
+    }
+
+    // otherwise, prevent the click
+    e.preventDefault();
+  };
+
+  // In case focus escapes the trap for some strange reason, pull it back in.
+  // NOTE: the focusIn event is NOT cancelable, so if focus escapes, it may cause unexpected
+  //  scrolling if the node that got focused was out of view; there's nothing we can do to
+  //  prevent that from happening by the time we discover that focus escaped
+  var checkFocusIn = function checkFocusIn(event) {
+    var target = getActualTarget(event);
+    var targetContained = findContainerIndex(target, event) >= 0;
+
+    // In Firefox when you Tab out of an iframe the Document is briefly focused.
+    if (targetContained || target instanceof Document) {
+      if (targetContained) {
+        state.mostRecentlyFocusedNode = target;
+      }
+    } else {
+      // escaped! pull it back in to where it just left
+      event.stopImmediatePropagation();
+
+      // focus will escape if the MRU node had a positive tab index and user tried to nav forward;
+      //  it will also escape if the MRU node had a 0 tab index and user tried to nav backward
+      //  toward a node with a positive tab index
+      var nextNode; // next node to focus, if we find one
+      var navAcrossContainers = true;
+      if (state.mostRecentlyFocusedNode) {
+        if ((0,tabbable__WEBPACK_IMPORTED_MODULE_0__.getTabIndex)(state.mostRecentlyFocusedNode) > 0) {
+          // MRU container index must be >=0 otherwise we wouldn't have it as an MRU node...
+          var mruContainerIdx = findContainerIndex(state.mostRecentlyFocusedNode);
+          // there MAY not be any tabbable nodes in the container if there are at least 2 containers
+          //  and the MRU node is focusable but not tabbable (focus-trap requires at least 1 container
+          //  with at least one tabbable node in order to function, so this could be the other container
+          //  with nothing tabbable in it)
+          var tabbableNodes = state.containerGroups[mruContainerIdx].tabbableNodes;
+          if (tabbableNodes.length > 0) {
+            // MRU tab index MAY not be found if the MRU node is focusable but not tabbable
+            var mruTabIdx = tabbableNodes.findIndex(function (node) {
+              return node === state.mostRecentlyFocusedNode;
+            });
+            if (mruTabIdx >= 0) {
+              if (config.isKeyForward(state.recentNavEvent)) {
+                if (mruTabIdx + 1 < tabbableNodes.length) {
+                  nextNode = tabbableNodes[mruTabIdx + 1];
+                  navAcrossContainers = false;
+                }
+                // else, don't wrap within the container as focus should move to next/previous
+                //  container
+              } else {
+                if (mruTabIdx - 1 >= 0) {
+                  nextNode = tabbableNodes[mruTabIdx - 1];
+                  navAcrossContainers = false;
+                }
+                // else, don't wrap within the container as focus should move to next/previous
+                //  container
+              }
+              // else, don't find in container order without considering direction too
+            }
+          }
+          // else, no tabbable nodes in that container (which means we must have at least one other
+          //  container with at least one tabbable node in it, otherwise focus-trap would've thrown
+          //  an error the last time updateTabbableNodes() was run): find next node among all known
+          //  containers
+        } else {
+          // check to see if there's at least one tabbable node with a positive tab index inside
+          //  the trap because focus seems to escape when navigating backward from a tabbable node
+          //  with tabindex=0 when this is the case (instead of wrapping to the tabbable node with
+          //  the greatest positive tab index like it should)
+          if (!state.containerGroups.some(function (g) {
+            return g.tabbableNodes.some(function (n) {
+              return (0,tabbable__WEBPACK_IMPORTED_MODULE_0__.getTabIndex)(n) > 0;
+            });
+          })) {
+            // no containers with tabbable nodes with positive tab indexes which means the focus
+            //  escaped for some other reason and we should just execute the fallback to the
+            //  MRU node or initial focus node, if any
+            navAcrossContainers = false;
+          }
+        }
+      } else {
+        // no MRU node means we're likely in some initial condition when the trap has just
+        //  been activated and initial focus hasn't been given yet, in which case we should
+        //  fall through to trying to focus the initial focus node, which is what should
+        //  happen below at this point in the logic
+        navAcrossContainers = false;
+      }
+      if (navAcrossContainers) {
+        nextNode = findNextNavNode({
+          // move FROM the MRU node, not event-related node (which will be the node that is
+          //  outside the trap causing the focus escape we're trying to fix)
+          target: state.mostRecentlyFocusedNode,
+          isBackward: config.isKeyBackward(state.recentNavEvent)
+        });
+      }
+      if (nextNode) {
+        _tryFocus(nextNode);
+      } else {
+        _tryFocus(state.mostRecentlyFocusedNode || getInitialFocusNode());
+      }
+    }
+    state.recentNavEvent = undefined; // clear
+  };
+
+  // Hijack key nav events on the first and last focusable nodes of the trap,
+  // in order to prevent focus from escaping. If it escapes for even a
+  // moment it can end up scrolling the page and causing confusion so we
+  // kind of need to capture the action at the keydown phase.
+  var checkKeyNav = function checkKeyNav(event) {
+    var isBackward = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    state.recentNavEvent = event;
+    var destinationNode = findNextNavNode({
+      event: event,
+      isBackward: isBackward
+    });
+    if (destinationNode) {
+      if (isTabEvent(event)) {
+        // since tab natively moves focus, we wouldn't have a destination node unless we
+        //  were on the edge of a container and had to move to the next/previous edge, in
+        //  which case we want to prevent default to keep the browser from moving focus
+        //  to where it normally would
+        event.preventDefault();
+      }
+      _tryFocus(destinationNode);
+    }
+    // else, let the browser take care of [shift+]tab and move the focus
+  };
+  var checkTabKey = function checkTabKey(event) {
+    if (config.isKeyForward(event) || config.isKeyBackward(event)) {
+      checkKeyNav(event, config.isKeyBackward(event));
+    }
+  };
+
+  // we use a different event phase for the Escape key to allow canceling the event and checking for this in escapeDeactivates
+  var checkEscapeKey = function checkEscapeKey(event) {
+    if (isEscapeEvent(event) && valueOrHandler(config.escapeDeactivates, event) !== false) {
+      event.preventDefault();
+      trap.deactivate();
+    }
+  };
+  var checkClick = function checkClick(e) {
+    var target = getActualTarget(e);
+    if (findContainerIndex(target, e) >= 0) {
+      return;
+    }
+    if (valueOrHandler(config.clickOutsideDeactivates, e)) {
+      return;
+    }
+    if (valueOrHandler(config.allowOutsideClick, e)) {
+      return;
+    }
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  };
+
+  //
+  // EVENT LISTENERS
+  //
+
+  var addListeners = function addListeners() {
+    if (!state.active) {
+      return;
+    }
+
+    // There can be only one listening focus trap at a time
+    activeFocusTraps.activateTrap(trapStack, trap);
+
+    // Delay ensures that the focused element doesn't capture the event
+    // that caused the focus trap activation.
+    state.delayInitialFocusTimer = config.delayInitialFocus ? delay(function () {
+      _tryFocus(getInitialFocusNode());
+    }) : _tryFocus(getInitialFocusNode());
+    doc.addEventListener('focusin', checkFocusIn, true);
+    doc.addEventListener('mousedown', checkPointerDown, {
+      capture: true,
+      passive: false
+    });
+    doc.addEventListener('touchstart', checkPointerDown, {
+      capture: true,
+      passive: false
+    });
+    doc.addEventListener('click', checkClick, {
+      capture: true,
+      passive: false
+    });
+    doc.addEventListener('keydown', checkTabKey, {
+      capture: true,
+      passive: false
+    });
+    doc.addEventListener('keydown', checkEscapeKey);
+    return trap;
+  };
+  var removeListeners = function removeListeners() {
+    if (!state.active) {
+      return;
+    }
+    doc.removeEventListener('focusin', checkFocusIn, true);
+    doc.removeEventListener('mousedown', checkPointerDown, true);
+    doc.removeEventListener('touchstart', checkPointerDown, true);
+    doc.removeEventListener('click', checkClick, true);
+    doc.removeEventListener('keydown', checkTabKey, true);
+    doc.removeEventListener('keydown', checkEscapeKey);
+    return trap;
+  };
+
+  //
+  // MUTATION OBSERVER
+  //
+
+  var checkDomRemoval = function checkDomRemoval(mutations) {
+    var isFocusedNodeRemoved = mutations.some(function (mutation) {
+      var removedNodes = Array.from(mutation.removedNodes);
+      return removedNodes.some(function (node) {
+        return node === state.mostRecentlyFocusedNode;
+      });
+    });
+
+    // If the currently focused is removed then browsers will move focus to the
+    // <body> element. If this happens, try to move focus back into the trap.
+    if (isFocusedNodeRemoved) {
+      _tryFocus(getInitialFocusNode());
+    }
+  };
+
+  // Use MutationObserver - if supported - to detect if focused node is removed
+  // from the DOM.
+  var mutationObserver = typeof window !== 'undefined' && 'MutationObserver' in window ? new MutationObserver(checkDomRemoval) : undefined;
+  var updateObservedNodes = function updateObservedNodes() {
+    if (!mutationObserver) {
+      return;
+    }
+    mutationObserver.disconnect();
+    if (state.active && !state.paused) {
+      state.containers.map(function (container) {
+        mutationObserver.observe(container, {
+          subtree: true,
+          childList: true
+        });
+      });
+    }
+  };
+
+  //
+  // TRAP DEFINITION
+  //
+
+  trap = {
+    get active() {
+      return state.active;
+    },
+    get paused() {
+      return state.paused;
+    },
+    activate: function activate(activateOptions) {
+      if (state.active) {
+        return this;
+      }
+      var onActivate = getOption(activateOptions, 'onActivate');
+      var onPostActivate = getOption(activateOptions, 'onPostActivate');
+      var checkCanFocusTrap = getOption(activateOptions, 'checkCanFocusTrap');
+      if (!checkCanFocusTrap) {
+        updateTabbableNodes();
+      }
+      state.active = true;
+      state.paused = false;
+      state.nodeFocusedBeforeActivation = doc.activeElement;
+      onActivate === null || onActivate === undefined || onActivate();
+      var finishActivation = function finishActivation() {
+        if (checkCanFocusTrap) {
+          updateTabbableNodes();
+        }
+        addListeners();
+        updateObservedNodes();
+        onPostActivate === null || onPostActivate === undefined || onPostActivate();
+      };
+      if (checkCanFocusTrap) {
+        checkCanFocusTrap(state.containers.concat()).then(finishActivation, finishActivation);
+        return this;
+      }
+      finishActivation();
+      return this;
+    },
+    deactivate: function deactivate(deactivateOptions) {
+      if (!state.active) {
+        return this;
+      }
+      var options = _objectSpread2({
+        onDeactivate: config.onDeactivate,
+        onPostDeactivate: config.onPostDeactivate,
+        checkCanReturnFocus: config.checkCanReturnFocus
+      }, deactivateOptions);
+      clearTimeout(state.delayInitialFocusTimer); // noop if undefined
+      state.delayInitialFocusTimer = undefined;
+      removeListeners();
+      state.active = false;
+      state.paused = false;
+      updateObservedNodes();
+      activeFocusTraps.deactivateTrap(trapStack, trap);
+      var onDeactivate = getOption(options, 'onDeactivate');
+      var onPostDeactivate = getOption(options, 'onPostDeactivate');
+      var checkCanReturnFocus = getOption(options, 'checkCanReturnFocus');
+      var returnFocus = getOption(options, 'returnFocus', 'returnFocusOnDeactivate');
+      onDeactivate === null || onDeactivate === undefined || onDeactivate();
+      var finishDeactivation = function finishDeactivation() {
+        delay(function () {
+          if (returnFocus) {
+            _tryFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation));
+          }
+          onPostDeactivate === null || onPostDeactivate === undefined || onPostDeactivate();
+        });
+      };
+      if (returnFocus && checkCanReturnFocus) {
+        checkCanReturnFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation)).then(finishDeactivation, finishDeactivation);
+        return this;
+      }
+      finishDeactivation();
+      return this;
+    },
+    pause: function pause(pauseOptions) {
+      if (!state.active) {
+        return this;
+      }
+      state.manuallyPaused = true;
+      return this._setPausedState(true, pauseOptions);
+    },
+    unpause: function unpause(unpauseOptions) {
+      if (!state.active) {
+        return this;
+      }
+      state.manuallyPaused = false;
+      if (trapStack[trapStack.length - 1] !== this) {
+        return this;
+      }
+      return this._setPausedState(false, unpauseOptions);
+    },
+    updateContainerElements: function updateContainerElements(containerElements) {
+      var elementsAsArray = [].concat(containerElements).filter(Boolean);
+      state.containers = elementsAsArray.map(function (element) {
+        return typeof element === 'string' ? doc.querySelector(element) : element;
+      });
+      if (state.active) {
+        updateTabbableNodes();
+      }
+      updateObservedNodes();
+      return this;
+    }
+  };
+  Object.defineProperties(trap, {
+    _isManuallyPaused: {
+      value: function value() {
+        return state.manuallyPaused;
+      }
+    },
+    _setPausedState: {
+      value: function value(paused, options) {
+        if (state.paused === paused) {
+          return this;
+        }
+        state.paused = paused;
+        if (paused) {
+          var onPause = getOption(options, 'onPause');
+          var onPostPause = getOption(options, 'onPostPause');
+          onPause === null || onPause === undefined || onPause();
+          removeListeners();
+          updateObservedNodes();
+          onPostPause === null || onPostPause === undefined || onPostPause();
+        } else {
+          var onUnpause = getOption(options, 'onUnpause');
+          var onPostUnpause = getOption(options, 'onPostUnpause');
+          onUnpause === null || onUnpause === undefined || onUnpause();
+          updateTabbableNodes();
+          addListeners();
+          updateObservedNodes();
+          onPostUnpause === null || onPostUnpause === undefined || onPostUnpause();
+        }
+        return this;
+      }
+    }
+  });
+
+  // initialize container elements
+  trap.updateContainerElements(elements);
+  return trap;
+};
+
+
+//# sourceMappingURL=focus-trap.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/tabbable/dist/index.esm.js":
+/*!*************************************************!*\
+  !*** ./node_modules/tabbable/dist/index.esm.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   focusable: () => (/* binding */ focusable),
+/* harmony export */   getTabIndex: () => (/* binding */ getTabIndex),
+/* harmony export */   isFocusable: () => (/* binding */ isFocusable),
+/* harmony export */   isTabbable: () => (/* binding */ isTabbable),
+/* harmony export */   tabbable: () => (/* binding */ tabbable)
+/* harmony export */ });
+/*!
+* tabbable 6.2.0
+* @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
+*/
+// NOTE: separate `:not()` selectors has broader browser support than the newer
+//  `:not([inert], [inert] *)` (Feb 2023)
+// CAREFUL: JSDom does not support `:not([inert] *)` as a selector; using it causes
+//  the entire query to fail, resulting in no nodes found, which will break a lot
+//  of things... so we have to rely on JS to identify nodes inside an inert container
+var candidateSelectors = ['input:not([inert])', 'select:not([inert])', 'textarea:not([inert])', 'a[href]:not([inert])', 'button:not([inert])', '[tabindex]:not(slot):not([inert])', 'audio[controls]:not([inert])', 'video[controls]:not([inert])', '[contenteditable]:not([contenteditable="false"]):not([inert])', 'details>summary:first-of-type:not([inert])', 'details:not([inert])'];
+var candidateSelector = /* #__PURE__ */candidateSelectors.join(',');
+var NoElement = typeof Element === 'undefined';
+var matches = NoElement ? function () {} : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+var getRootNode = !NoElement && Element.prototype.getRootNode ? function (element) {
+  var _element$getRootNode;
+  return element === null || element === void 0 ? void 0 : (_element$getRootNode = element.getRootNode) === null || _element$getRootNode === void 0 ? void 0 : _element$getRootNode.call(element);
+} : function (element) {
+  return element === null || element === void 0 ? void 0 : element.ownerDocument;
+};
+
+/**
+ * Determines if a node is inert or in an inert ancestor.
+ * @param {Element} [node]
+ * @param {boolean} [lookUp] If true and `node` is not inert, looks up at ancestors to
+ *  see if any of them are inert. If false, only `node` itself is considered.
+ * @returns {boolean} True if inert itself or by way of being in an inert ancestor.
+ *  False if `node` is falsy.
+ */
+var isInert = function isInert(node, lookUp) {
+  var _node$getAttribute;
+  if (lookUp === void 0) {
+    lookUp = true;
+  }
+  // CAREFUL: JSDom does not support inert at all, so we can't use the `HTMLElement.inert`
+  //  JS API property; we have to check the attribute, which can either be empty or 'true';
+  //  if it's `null` (not specified) or 'false', it's an active element
+  var inertAtt = node === null || node === void 0 ? void 0 : (_node$getAttribute = node.getAttribute) === null || _node$getAttribute === void 0 ? void 0 : _node$getAttribute.call(node, 'inert');
+  var inert = inertAtt === '' || inertAtt === 'true';
+
+  // NOTE: this could also be handled with `node.matches('[inert], :is([inert] *)')`
+  //  if it weren't for `matches()` not being a function on shadow roots; the following
+  //  code works for any kind of node
+  // CAREFUL: JSDom does not appear to support certain selectors like `:not([inert] *)`
+  //  so it likely would not support `:is([inert] *)` either...
+  var result = inert || lookUp && node && isInert(node.parentNode); // recursive
+
+  return result;
+};
+
+/**
+ * Determines if a node's content is editable.
+ * @param {Element} [node]
+ * @returns True if it's content-editable; false if it's not or `node` is falsy.
+ */
+var isContentEditable = function isContentEditable(node) {
+  var _node$getAttribute2;
+  // CAREFUL: JSDom does not support the `HTMLElement.isContentEditable` API so we have
+  //  to use the attribute directly to check for this, which can either be empty or 'true';
+  //  if it's `null` (not specified) or 'false', it's a non-editable element
+  var attValue = node === null || node === void 0 ? void 0 : (_node$getAttribute2 = node.getAttribute) === null || _node$getAttribute2 === void 0 ? void 0 : _node$getAttribute2.call(node, 'contenteditable');
+  return attValue === '' || attValue === 'true';
+};
+
+/**
+ * @param {Element} el container to check in
+ * @param {boolean} includeContainer add container to check
+ * @param {(node: Element) => boolean} filter filter candidates
+ * @returns {Element[]}
+ */
+var getCandidates = function getCandidates(el, includeContainer, filter) {
+  // even if `includeContainer=false`, we still have to check it for inertness because
+  //  if it's inert, all its children are inert
+  if (isInert(el)) {
+    return [];
+  }
+  var candidates = Array.prototype.slice.apply(el.querySelectorAll(candidateSelector));
+  if (includeContainer && matches.call(el, candidateSelector)) {
+    candidates.unshift(el);
+  }
+  candidates = candidates.filter(filter);
+  return candidates;
+};
+
+/**
+ * @callback GetShadowRoot
+ * @param {Element} element to check for shadow root
+ * @returns {ShadowRoot|boolean} ShadowRoot if available or boolean indicating if a shadowRoot is attached but not available.
+ */
+
+/**
+ * @callback ShadowRootFilter
+ * @param {Element} shadowHostNode the element which contains shadow content
+ * @returns {boolean} true if a shadow root could potentially contain valid candidates.
+ */
+
+/**
+ * @typedef {Object} CandidateScope
+ * @property {Element} scopeParent contains inner candidates
+ * @property {Element[]} candidates list of candidates found in the scope parent
+ */
+
+/**
+ * @typedef {Object} IterativeOptions
+ * @property {GetShadowRoot|boolean} getShadowRoot true if shadow support is enabled; falsy if not;
+ *  if a function, implies shadow support is enabled and either returns the shadow root of an element
+ *  or a boolean stating if it has an undisclosed shadow root
+ * @property {(node: Element) => boolean} filter filter candidates
+ * @property {boolean} flatten if true then result will flatten any CandidateScope into the returned list
+ * @property {ShadowRootFilter} shadowRootFilter filter shadow roots;
+ */
+
+/**
+ * @param {Element[]} elements list of element containers to match candidates from
+ * @param {boolean} includeContainer add container list to check
+ * @param {IterativeOptions} options
+ * @returns {Array.<Element|CandidateScope>}
+ */
+var getCandidatesIteratively = function getCandidatesIteratively(elements, includeContainer, options) {
+  var candidates = [];
+  var elementsToCheck = Array.from(elements);
+  while (elementsToCheck.length) {
+    var element = elementsToCheck.shift();
+    if (isInert(element, false)) {
+      // no need to look up since we're drilling down
+      // anything inside this container will also be inert
+      continue;
+    }
+    if (element.tagName === 'SLOT') {
+      // add shadow dom slot scope (slot itself cannot be focusable)
+      var assigned = element.assignedElements();
+      var content = assigned.length ? assigned : element.children;
+      var nestedCandidates = getCandidatesIteratively(content, true, options);
+      if (options.flatten) {
+        candidates.push.apply(candidates, nestedCandidates);
+      } else {
+        candidates.push({
+          scopeParent: element,
+          candidates: nestedCandidates
+        });
+      }
+    } else {
+      // check candidate element
+      var validCandidate = matches.call(element, candidateSelector);
+      if (validCandidate && options.filter(element) && (includeContainer || !elements.includes(element))) {
+        candidates.push(element);
+      }
+
+      // iterate over shadow content if possible
+      var shadowRoot = element.shadowRoot ||
+      // check for an undisclosed shadow
+      typeof options.getShadowRoot === 'function' && options.getShadowRoot(element);
+
+      // no inert look up because we're already drilling down and checking for inertness
+      //  on the way down, so all containers to this root node should have already been
+      //  vetted as non-inert
+      var validShadowRoot = !isInert(shadowRoot, false) && (!options.shadowRootFilter || options.shadowRootFilter(element));
+      if (shadowRoot && validShadowRoot) {
+        // add shadow dom scope IIF a shadow root node was given; otherwise, an undisclosed
+        //  shadow exists, so look at light dom children as fallback BUT create a scope for any
+        //  child candidates found because they're likely slotted elements (elements that are
+        //  children of the web component element (which has the shadow), in the light dom, but
+        //  slotted somewhere _inside_ the undisclosed shadow) -- the scope is created below,
+        //  _after_ we return from this recursive call
+        var _nestedCandidates = getCandidatesIteratively(shadowRoot === true ? element.children : shadowRoot.children, true, options);
+        if (options.flatten) {
+          candidates.push.apply(candidates, _nestedCandidates);
+        } else {
+          candidates.push({
+            scopeParent: element,
+            candidates: _nestedCandidates
+          });
+        }
+      } else {
+        // there's not shadow so just dig into the element's (light dom) children
+        //  __without__ giving the element special scope treatment
+        elementsToCheck.unshift.apply(elementsToCheck, element.children);
+      }
+    }
+  }
+  return candidates;
+};
+
+/**
+ * @private
+ * Determines if the node has an explicitly specified `tabindex` attribute.
+ * @param {HTMLElement} node
+ * @returns {boolean} True if so; false if not.
+ */
+var hasTabIndex = function hasTabIndex(node) {
+  return !isNaN(parseInt(node.getAttribute('tabindex'), 10));
+};
+
+/**
+ * Determine the tab index of a given node.
+ * @param {HTMLElement} node
+ * @returns {number} Tab order (negative, 0, or positive number).
+ * @throws {Error} If `node` is falsy.
+ */
+var getTabIndex = function getTabIndex(node) {
+  if (!node) {
+    throw new Error('No node provided');
+  }
+  if (node.tabIndex < 0) {
+    // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
+    // `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
+    // yet they are still part of the regular tab order; in FF, they get a default
+    // `tabIndex` of 0; since Chrome still puts those elements in the regular tab
+    // order, consider their tab index to be 0.
+    // Also browsers do not return `tabIndex` correctly for contentEditable nodes;
+    // so if they don't have a tabindex attribute specifically set, assume it's 0.
+    if ((/^(AUDIO|VIDEO|DETAILS)$/.test(node.tagName) || isContentEditable(node)) && !hasTabIndex(node)) {
+      return 0;
+    }
+  }
+  return node.tabIndex;
+};
+
+/**
+ * Determine the tab index of a given node __for sort order purposes__.
+ * @param {HTMLElement} node
+ * @param {boolean} [isScope] True for a custom element with shadow root or slot that, by default,
+ *  has tabIndex -1, but needs to be sorted by document order in order for its content to be
+ *  inserted into the correct sort position.
+ * @returns {number} Tab order (negative, 0, or positive number).
+ */
+var getSortOrderTabIndex = function getSortOrderTabIndex(node, isScope) {
+  var tabIndex = getTabIndex(node);
+  if (tabIndex < 0 && isScope && !hasTabIndex(node)) {
+    return 0;
+  }
+  return tabIndex;
+};
+var sortOrderedTabbables = function sortOrderedTabbables(a, b) {
+  return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
+};
+var isInput = function isInput(node) {
+  return node.tagName === 'INPUT';
+};
+var isHiddenInput = function isHiddenInput(node) {
+  return isInput(node) && node.type === 'hidden';
+};
+var isDetailsWithSummary = function isDetailsWithSummary(node) {
+  var r = node.tagName === 'DETAILS' && Array.prototype.slice.apply(node.children).some(function (child) {
+    return child.tagName === 'SUMMARY';
+  });
+  return r;
+};
+var getCheckedRadio = function getCheckedRadio(nodes, form) {
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].checked && nodes[i].form === form) {
+      return nodes[i];
+    }
+  }
+};
+var isTabbableRadio = function isTabbableRadio(node) {
+  if (!node.name) {
+    return true;
+  }
+  var radioScope = node.form || getRootNode(node);
+  var queryRadios = function queryRadios(name) {
+    return radioScope.querySelectorAll('input[type="radio"][name="' + name + '"]');
+  };
+  var radioSet;
+  if (typeof window !== 'undefined' && typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function') {
+    radioSet = queryRadios(window.CSS.escape(node.name));
+  } else {
+    try {
+      radioSet = queryRadios(node.name);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('Looks like you have a radio button with a name attribute containing invalid CSS selector characters and need the CSS.escape polyfill: %s', err.message);
+      return false;
+    }
+  }
+  var checked = getCheckedRadio(radioSet, node.form);
+  return !checked || checked === node;
+};
+var isRadio = function isRadio(node) {
+  return isInput(node) && node.type === 'radio';
+};
+var isNonTabbableRadio = function isNonTabbableRadio(node) {
+  return isRadio(node) && !isTabbableRadio(node);
+};
+
+// determines if a node is ultimately attached to the window's document
+var isNodeAttached = function isNodeAttached(node) {
+  var _nodeRoot;
+  // The root node is the shadow root if the node is in a shadow DOM; some document otherwise
+  //  (but NOT _the_ document; see second 'If' comment below for more).
+  // If rootNode is shadow root, it'll have a host, which is the element to which the shadow
+  //  is attached, and the one we need to check if it's in the document or not (because the
+  //  shadow, and all nodes it contains, is never considered in the document since shadows
+  //  behave like self-contained DOMs; but if the shadow's HOST, which is part of the document,
+  //  is hidden, or is not in the document itself but is detached, it will affect the shadow's
+  //  visibility, including all the nodes it contains). The host could be any normal node,
+  //  or a custom element (i.e. web component). Either way, that's the one that is considered
+  //  part of the document, not the shadow root, nor any of its children (i.e. the node being
+  //  tested).
+  // To further complicate things, we have to look all the way up until we find a shadow HOST
+  //  that is attached (or find none) because the node might be in nested shadows...
+  // If rootNode is not a shadow root, it won't have a host, and so rootNode should be the
+  //  document (per the docs) and while it's a Document-type object, that document does not
+  //  appear to be the same as the node's `ownerDocument` for some reason, so it's safer
+  //  to ignore the rootNode at this point, and use `node.ownerDocument`. Otherwise,
+  //  using `rootNode.contains(node)` will _always_ be true we'll get false-positives when
+  //  node is actually detached.
+  // NOTE: If `nodeRootHost` or `node` happens to be the `document` itself (which is possible
+  //  if a tabbable/focusable node was quickly added to the DOM, focused, and then removed
+  //  from the DOM as in https://github.com/focus-trap/focus-trap-react/issues/905), then
+  //  `ownerDocument` will be `null`, hence the optional chaining on it.
+  var nodeRoot = node && getRootNode(node);
+  var nodeRootHost = (_nodeRoot = nodeRoot) === null || _nodeRoot === void 0 ? void 0 : _nodeRoot.host;
+
+  // in some cases, a detached node will return itself as the root instead of a document or
+  //  shadow root object, in which case, we shouldn't try to look further up the host chain
+  var attached = false;
+  if (nodeRoot && nodeRoot !== node) {
+    var _nodeRootHost, _nodeRootHost$ownerDo, _node$ownerDocument;
+    attached = !!((_nodeRootHost = nodeRootHost) !== null && _nodeRootHost !== void 0 && (_nodeRootHost$ownerDo = _nodeRootHost.ownerDocument) !== null && _nodeRootHost$ownerDo !== void 0 && _nodeRootHost$ownerDo.contains(nodeRootHost) || node !== null && node !== void 0 && (_node$ownerDocument = node.ownerDocument) !== null && _node$ownerDocument !== void 0 && _node$ownerDocument.contains(node));
+    while (!attached && nodeRootHost) {
+      var _nodeRoot2, _nodeRootHost2, _nodeRootHost2$ownerD;
+      // since it's not attached and we have a root host, the node MUST be in a nested shadow DOM,
+      //  which means we need to get the host's host and check if that parent host is contained
+      //  in (i.e. attached to) the document
+      nodeRoot = getRootNode(nodeRootHost);
+      nodeRootHost = (_nodeRoot2 = nodeRoot) === null || _nodeRoot2 === void 0 ? void 0 : _nodeRoot2.host;
+      attached = !!((_nodeRootHost2 = nodeRootHost) !== null && _nodeRootHost2 !== void 0 && (_nodeRootHost2$ownerD = _nodeRootHost2.ownerDocument) !== null && _nodeRootHost2$ownerD !== void 0 && _nodeRootHost2$ownerD.contains(nodeRootHost));
+    }
+  }
+  return attached;
+};
+var isZeroArea = function isZeroArea(node) {
+  var _node$getBoundingClie = node.getBoundingClientRect(),
+    width = _node$getBoundingClie.width,
+    height = _node$getBoundingClie.height;
+  return width === 0 && height === 0;
+};
+var isHidden = function isHidden(node, _ref) {
+  var displayCheck = _ref.displayCheck,
+    getShadowRoot = _ref.getShadowRoot;
+  // NOTE: visibility will be `undefined` if node is detached from the document
+  //  (see notes about this further down), which means we will consider it visible
+  //  (this is legacy behavior from a very long way back)
+  // NOTE: we check this regardless of `displayCheck="none"` because this is a
+  //  _visibility_ check, not a _display_ check
+  if (getComputedStyle(node).visibility === 'hidden') {
+    return true;
+  }
+  var isDirectSummary = matches.call(node, 'details>summary:first-of-type');
+  var nodeUnderDetails = isDirectSummary ? node.parentElement : node;
+  if (matches.call(nodeUnderDetails, 'details:not([open]) *')) {
+    return true;
+  }
+  if (!displayCheck || displayCheck === 'full' || displayCheck === 'legacy-full') {
+    if (typeof getShadowRoot === 'function') {
+      // figure out if we should consider the node to be in an undisclosed shadow and use the
+      //  'non-zero-area' fallback
+      var originalNode = node;
+      while (node) {
+        var parentElement = node.parentElement;
+        var rootNode = getRootNode(node);
+        if (parentElement && !parentElement.shadowRoot && getShadowRoot(parentElement) === true // check if there's an undisclosed shadow
+        ) {
+          // node has an undisclosed shadow which means we can only treat it as a black box, so we
+          //  fall back to a non-zero-area test
+          return isZeroArea(node);
+        } else if (node.assignedSlot) {
+          // iterate up slot
+          node = node.assignedSlot;
+        } else if (!parentElement && rootNode !== node.ownerDocument) {
+          // cross shadow boundary
+          node = rootNode.host;
+        } else {
+          // iterate up normal dom
+          node = parentElement;
+        }
+      }
+      node = originalNode;
+    }
+    // else, `getShadowRoot` might be true, but all that does is enable shadow DOM support
+    //  (i.e. it does not also presume that all nodes might have undisclosed shadows); or
+    //  it might be a falsy value, which means shadow DOM support is disabled
+
+    // Since we didn't find it sitting in an undisclosed shadow (or shadows are disabled)
+    //  now we can just test to see if it would normally be visible or not, provided it's
+    //  attached to the main document.
+    // NOTE: We must consider case where node is inside a shadow DOM and given directly to
+    //  `isTabbable()` or `isFocusable()` -- regardless of `getShadowRoot` option setting.
+
+    if (isNodeAttached(node)) {
+      // this works wherever the node is: if there's at least one client rect, it's
+      //  somehow displayed; it also covers the CSS 'display: contents' case where the
+      //  node itself is hidden in place of its contents; and there's no need to search
+      //  up the hierarchy either
+      return !node.getClientRects().length;
+    }
+
+    // Else, the node isn't attached to the document, which means the `getClientRects()`
+    //  API will __always__ return zero rects (this can happen, for example, if React
+    //  is used to render nodes onto a detached tree, as confirmed in this thread:
+    //  https://github.com/facebook/react/issues/9117#issuecomment-284228870)
+    //
+    // It also means that even window.getComputedStyle(node).display will return `undefined`
+    //  because styles are only computed for nodes that are in the document.
+    //
+    // NOTE: THIS HAS BEEN THE CASE FOR YEARS. It is not new, nor is it caused by tabbable
+    //  somehow. Though it was never stated officially, anyone who has ever used tabbable
+    //  APIs on nodes in detached containers has actually implicitly used tabbable in what
+    //  was later (as of v5.2.0 on Apr 9, 2021) called `displayCheck="none"` mode -- essentially
+    //  considering __everything__ to be visible because of the innability to determine styles.
+    //
+    // v6.0.0: As of this major release, the default 'full' option __no longer treats detached
+    //  nodes as visible with the 'none' fallback.__
+    if (displayCheck !== 'legacy-full') {
+      return true; // hidden
+    }
+    // else, fallback to 'none' mode and consider the node visible
+  } else if (displayCheck === 'non-zero-area') {
+    // NOTE: Even though this tests that the node's client rect is non-zero to determine
+    //  whether it's displayed, and that a detached node will __always__ have a zero-area
+    //  client rect, we don't special-case for whether the node is attached or not. In
+    //  this mode, we do want to consider nodes that have a zero area to be hidden at all
+    //  times, and that includes attached or not.
+    return isZeroArea(node);
+  }
+
+  // visible, as far as we can tell, or per current `displayCheck=none` mode, we assume
+  //  it's visible
+  return false;
+};
+
+// form fields (nested) inside a disabled fieldset are not focusable/tabbable
+//  unless they are in the _first_ <legend> element of the top-most disabled
+//  fieldset
+var isDisabledFromFieldset = function isDisabledFromFieldset(node) {
+  if (/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(node.tagName)) {
+    var parentNode = node.parentElement;
+    // check if `node` is contained in a disabled <fieldset>
+    while (parentNode) {
+      if (parentNode.tagName === 'FIELDSET' && parentNode.disabled) {
+        // look for the first <legend> among the children of the disabled <fieldset>
+        for (var i = 0; i < parentNode.children.length; i++) {
+          var child = parentNode.children.item(i);
+          // when the first <legend> (in document order) is found
+          if (child.tagName === 'LEGEND') {
+            // if its parent <fieldset> is not nested in another disabled <fieldset>,
+            // return whether `node` is a descendant of its first <legend>
+            return matches.call(parentNode, 'fieldset[disabled] *') ? true : !child.contains(node);
+          }
+        }
+        // the disabled <fieldset> containing `node` has no <legend>
+        return true;
+      }
+      parentNode = parentNode.parentElement;
+    }
+  }
+
+  // else, node's tabbable/focusable state should not be affected by a fieldset's
+  //  enabled/disabled state
+  return false;
+};
+var isNodeMatchingSelectorFocusable = function isNodeMatchingSelectorFocusable(options, node) {
+  if (node.disabled ||
+  // we must do an inert look up to filter out any elements inside an inert ancestor
+  //  because we're limited in the type of selectors we can use in JSDom (see related
+  //  note related to `candidateSelectors`)
+  isInert(node) || isHiddenInput(node) || isHidden(node, options) ||
+  // For a details element with a summary, the summary element gets the focus
+  isDetailsWithSummary(node) || isDisabledFromFieldset(node)) {
+    return false;
+  }
+  return true;
+};
+var isNodeMatchingSelectorTabbable = function isNodeMatchingSelectorTabbable(options, node) {
+  if (isNonTabbableRadio(node) || getTabIndex(node) < 0 || !isNodeMatchingSelectorFocusable(options, node)) {
+    return false;
+  }
+  return true;
+};
+var isValidShadowRootTabbable = function isValidShadowRootTabbable(shadowHostNode) {
+  var tabIndex = parseInt(shadowHostNode.getAttribute('tabindex'), 10);
+  if (isNaN(tabIndex) || tabIndex >= 0) {
+    return true;
+  }
+  // If a custom element has an explicit negative tabindex,
+  // browsers will not allow tab targeting said element's children.
+  return false;
+};
+
+/**
+ * @param {Array.<Element|CandidateScope>} candidates
+ * @returns Element[]
+ */
+var sortByOrder = function sortByOrder(candidates) {
+  var regularTabbables = [];
+  var orderedTabbables = [];
+  candidates.forEach(function (item, i) {
+    var isScope = !!item.scopeParent;
+    var element = isScope ? item.scopeParent : item;
+    var candidateTabindex = getSortOrderTabIndex(element, isScope);
+    var elements = isScope ? sortByOrder(item.candidates) : element;
+    if (candidateTabindex === 0) {
+      isScope ? regularTabbables.push.apply(regularTabbables, elements) : regularTabbables.push(element);
+    } else {
+      orderedTabbables.push({
+        documentOrder: i,
+        tabIndex: candidateTabindex,
+        item: item,
+        isScope: isScope,
+        content: elements
+      });
+    }
+  });
+  return orderedTabbables.sort(sortOrderedTabbables).reduce(function (acc, sortable) {
+    sortable.isScope ? acc.push.apply(acc, sortable.content) : acc.push(sortable.content);
+    return acc;
+  }, []).concat(regularTabbables);
+};
+var tabbable = function tabbable(container, options) {
+  options = options || {};
+  var candidates;
+  if (options.getShadowRoot) {
+    candidates = getCandidatesIteratively([container], options.includeContainer, {
+      filter: isNodeMatchingSelectorTabbable.bind(null, options),
+      flatten: false,
+      getShadowRoot: options.getShadowRoot,
+      shadowRootFilter: isValidShadowRootTabbable
+    });
+  } else {
+    candidates = getCandidates(container, options.includeContainer, isNodeMatchingSelectorTabbable.bind(null, options));
+  }
+  return sortByOrder(candidates);
+};
+var focusable = function focusable(container, options) {
+  options = options || {};
+  var candidates;
+  if (options.getShadowRoot) {
+    candidates = getCandidatesIteratively([container], options.includeContainer, {
+      filter: isNodeMatchingSelectorFocusable.bind(null, options),
+      flatten: true,
+      getShadowRoot: options.getShadowRoot
+    });
+  } else {
+    candidates = getCandidates(container, options.includeContainer, isNodeMatchingSelectorFocusable.bind(null, options));
+  }
+  return candidates;
+};
+var isTabbable = function isTabbable(node, options) {
+  options = options || {};
+  if (!node) {
+    throw new Error('No node provided');
+  }
+  if (matches.call(node, candidateSelector) === false) {
+    return false;
+  }
+  return isNodeMatchingSelectorTabbable(options, node);
+};
+var focusableCandidateSelector = /* #__PURE__ */candidateSelectors.concat('iframe').join(',');
+var isFocusable = function isFocusable(node, options) {
+  options = options || {};
+  if (!node) {
+    throw new Error('No node provided');
+  }
+  if (matches.call(node, focusableCandidateSelector) === false) {
+    return false;
+  }
+  return isNodeMatchingSelectorFocusable(options, node);
+};
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/zenscroll/zenscroll.js":
+/*!*********************************************!*\
+  !*** ./node_modules/zenscroll/zenscroll.js ***!
+  \*********************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * Zenscroll 4.0.2
+ * https://github.com/zengabor/zenscroll/
+ *
+ * Copyright 2015–2018 Gabor Lenard
+ *
+ * This is free and unencumbered software released into the public domain.
+ * 
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ * 
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * For more information, please refer to <http://unlicense.org>
+ * 
+ */
+
+/*jshint devel:true, asi:true */
+
+/*global define, module */
+
+
+(function (root, factory) {
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory()),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+	} else {}
+}(this, function () {
+	"use strict"
+
+
+	// Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
+	var isNativeSmoothScrollEnabledOn = function (elem) {
+		return elem && "getComputedStyle" in window &&
+			window.getComputedStyle(elem)["scroll-behavior"] === "smooth"
+	}
+
+
+	// Exit if it’s not a browser environment:
+	if (typeof window === "undefined" || !("document" in window)) {
+		return {}
+	}
+
+
+	var makeScroller = function (container, defaultDuration, edgeOffset) {
+
+		// Use defaults if not provided
+		defaultDuration = defaultDuration || 999 //ms
+		if (!edgeOffset && edgeOffset !== 0) {
+			// When scrolling, this amount of distance is kept from the edges of the container:
+			edgeOffset = 9 //px
+		}
+
+		// Handling the life-cycle of the scroller
+		var scrollTimeoutId
+		var setScrollTimeoutId = function (newValue) {
+			scrollTimeoutId = newValue
+		}
+
+		/**
+		 * Stop the current smooth scroll operation immediately
+		 */
+		var stopScroll = function () {
+			clearTimeout(scrollTimeoutId)
+			setScrollTimeoutId(0)
+		}
+
+		var getTopWithEdgeOffset = function (elem) {
+			return Math.max(0, container.getTopOf(elem) - edgeOffset)
+		}
+
+		/**
+		 * Scrolls to a specific vertical position in the document.
+		 *
+		 * @param {targetY} The vertical position within the document.
+		 * @param {duration} Optionally the duration of the scroll operation.
+		 *        If not provided the default duration is used.
+		 * @param {onDone} An optional callback function to be invoked once the scroll finished.
+		 */
+		var scrollToY = function (targetY, duration, onDone) {
+			stopScroll()
+			if (duration === 0 || (duration && duration < 0) || isNativeSmoothScrollEnabledOn(container.body)) {
+				container.toY(targetY)
+				if (onDone) {
+					onDone()
+				}
+			} else {
+				var startY = container.getY()
+				var distance = Math.max(0, targetY) - startY
+				var startTime = new Date().getTime()
+				duration = duration || Math.min(Math.abs(distance), defaultDuration);
+				(function loopScroll() {
+					setScrollTimeoutId(setTimeout(function () {
+						// Calculate percentage:
+						var p = Math.min(1, (new Date().getTime() - startTime) / duration)
+						// Calculate the absolute vertical position:
+						var y = Math.max(0, Math.floor(startY + distance*(p < 0.5 ? 2*p*p : p*(4 - p*2)-1)))
+						container.toY(y)
+						if (p < 1 && (container.getHeight() + y) < container.body.scrollHeight) {
+							loopScroll()
+						} else {
+							setTimeout(stopScroll, 99) // with cooldown time
+							if (onDone) {
+								onDone()
+							}
+						}
+					}, 9))
+				})()
+			}
+		}
+
+		/**
+		 * Scrolls to the top of a specific element.
+		 *
+		 * @param {elem} The element to scroll to.
+		 * @param {duration} Optionally the duration of the scroll operation.
+		 * @param {onDone} An optional callback function to be invoked once the scroll finished.
+		 */
+		var scrollToElem = function (elem, duration, onDone) {
+			scrollToY(getTopWithEdgeOffset(elem), duration, onDone)
+		}
+
+		/**
+		 * Scrolls an element into view if necessary.
+		 *
+		 * @param {elem} The element.
+		 * @param {duration} Optionally the duration of the scroll operation.
+		 * @param {onDone} An optional callback function to be invoked once the scroll finished.
+		 */
+		var scrollIntoView = function (elem, duration, onDone) {
+			var elemHeight = elem.getBoundingClientRect().height
+			var elemBottom = container.getTopOf(elem) + elemHeight
+			var containerHeight = container.getHeight()
+			var y = container.getY()
+			var containerBottom = y + containerHeight
+			if (getTopWithEdgeOffset(elem) < y || (elemHeight + edgeOffset) > containerHeight) {
+				// Element is clipped at top or is higher than screen.
+				scrollToElem(elem, duration, onDone)
+			} else if ((elemBottom + edgeOffset) > containerBottom) {
+				// Element is clipped at the bottom.
+				scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone)
+			} else if (onDone) {
+				onDone()
+			}
+		}
+
+		/**
+		 * Scrolls to the center of an element.
+		 *
+		 * @param {elem} The element.
+		 * @param {duration} Optionally the duration of the scroll operation.
+		 * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+		 *        A value of 0 is ignored.
+		 * @param {onDone} An optional callback function to be invoked once the scroll finished.
+		 */
+		var scrollToCenterOf = function (elem, duration, offset, onDone) {
+			scrollToY(Math.max(0, container.getTopOf(elem) - container.getHeight()/2 + (offset || elem.getBoundingClientRect().height/2)), duration, onDone)
+		}
+
+		/**
+		 * Changes default settings for this scroller.
+		 *
+		 * @param {newDefaultDuration} Optionally a new value for default duration, used for each scroll method by default.
+		 *        Ignored if null or undefined.
+		 * @param {newEdgeOffset} Optionally a new value for the edge offset, used by each scroll method by default. Ignored if null or undefined.
+		 * @returns An object with the current values.
+		 */
+		var setup = function (newDefaultDuration, newEdgeOffset) {
+			if (newDefaultDuration === 0 || newDefaultDuration) {
+				defaultDuration = newDefaultDuration
+			}
+			if (newEdgeOffset === 0 || newEdgeOffset) {
+				edgeOffset = newEdgeOffset
+			}
+			return {
+				defaultDuration: defaultDuration,
+				edgeOffset: edgeOffset
+			}
+		}
+
+		return {
+			setup: setup,
+			to: scrollToElem,
+			toY: scrollToY,
+			intoView: scrollIntoView,
+			center: scrollToCenterOf,
+			stop: stopScroll,
+			moving: function () { return !!scrollTimeoutId },
+			getY: container.getY,
+			getTopOf: container.getTopOf
+		}
+
+	}
+
+
+	var docElem = document.documentElement
+	var getDocY = function () { return window.scrollY || docElem.scrollTop }
+
+	// Create a scroller for the document:
+	var zenscroll = makeScroller({
+		body: document.scrollingElement || document.body,
+		toY: function (y) { window.scrollTo(0, y) },
+		getY: getDocY,
+		getHeight: function () { return window.innerHeight || docElem.clientHeight },
+		getTopOf: function (elem) { return elem.getBoundingClientRect().top + getDocY() - docElem.offsetTop }
+	})
+
+
+	/**
+	 * Creates a scroller from the provided container element (e.g., a DIV)
+	 *
+	 * @param {scrollContainer} The vertical position within the document.
+	 * @param {defaultDuration} Optionally a value for default duration, used for each scroll method by default.
+	 *        Ignored if 0 or null or undefined.
+	 * @param {edgeOffset} Optionally a value for the edge offset, used by each scroll method by default. 
+	 *        Ignored if null or undefined.
+	 * @returns A scroller object, similar to `zenscroll` but controlling the provided element.
+	 */
+	zenscroll.createScroller = function (scrollContainer, defaultDuration, edgeOffset) {
+		return makeScroller({
+			body: scrollContainer,
+			toY: function (y) { scrollContainer.scrollTop = y },
+			getY: function () { return scrollContainer.scrollTop },
+			getHeight: function () { return Math.min(scrollContainer.clientHeight, window.innerHeight || docElem.clientHeight) },
+			getTopOf: function (elem) { return elem.offsetTop }
+		}, defaultDuration, edgeOffset)
+	}
+
+
+	// Automatic link-smoothing on achors
+	// Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
+	if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
+
+		var isHistorySupported = "history" in window && "pushState" in history
+		var isScrollRestorationSupported = isHistorySupported && "scrollRestoration" in history
+
+		// On first load & refresh make sure the browser restores the position first
+		if (isScrollRestorationSupported) {
+			history.scrollRestoration = "auto"
+		}
+
+		window.addEventListener("load", function () {
+
+			if (isScrollRestorationSupported) {
+				// Set it to manual
+				setTimeout(function () { history.scrollRestoration = "manual" }, 9)
+				window.addEventListener("popstate", function (event) {
+					if (event.state && "zenscrollY" in event.state) {
+						zenscroll.toY(event.state.zenscrollY)
+					}
+				}, false)
+			}
+
+			// Add edge offset on first load if necessary
+			// This may not work on IE (or older computer?) as it requires more timeout, around 100 ms
+			if (window.location.hash) {
+				setTimeout(function () {
+					// Adjustment is only needed if there is an edge offset:
+					var edgeOffset = zenscroll.setup().edgeOffset
+					if (edgeOffset) {
+						var targetElem = document.getElementById(window.location.href.split("#")[1])
+						if (targetElem) {
+							var targetY = Math.max(0, zenscroll.getTopOf(targetElem) - edgeOffset)
+							var diff = zenscroll.getY() - targetY
+							// Only do the adjustment if the browser is very close to the element:
+							if (0 <= diff && diff < 9 ) {
+								window.scrollTo(0, targetY)
+							}
+						}
+					}
+				}, 9)
+			}
+
+		}, false)
+
+		// Handling clicks on anchors
+		var RE_noZensmooth = new RegExp("(^|\\s)noZensmooth(\\s|$)")
+		window.addEventListener("click", function (event) {
+			var anchor = event.target
+			while (anchor && anchor.tagName !== "A") {
+				anchor = anchor.parentNode
+			}
+			// Let the browser handle the click if it wasn't with the primary button, or with some modifier keys:
+			if (!anchor || event.which !== 1 || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
+				return
+			}
+			// Save the current scrolling position so it can be used for scroll restoration:
+			if (isScrollRestorationSupported) {
+				var historyState = history.state && typeof history.state === "object" ? history.state : {}
+				historyState.zenscrollY = zenscroll.getY()
+				try {
+					history.replaceState(historyState, "")
+				} catch (e) {
+					// Avoid the Chrome Security exception on file protocol, e.g., file://index.html
+				}
+			}
+			// Find the referenced ID:
+			var href = anchor.getAttribute("href") || ""
+			if (href.indexOf("#") === 0 && !RE_noZensmooth.test(anchor.className)) {
+				var targetY = 0
+				var targetElem = document.getElementById(href.substring(1))
+				if (href !== "#") {
+					if (!targetElem) {
+						// Let the browser handle the click if the target ID is not found.
+						return
+					}
+					targetY = zenscroll.getTopOf(targetElem)
+				}
+				event.preventDefault()
+				// By default trigger the browser's `hashchange` event...
+				var onDone = function () { window.location = href }
+				// ...unless there is an edge offset specified
+				var edgeOffset = zenscroll.setup().edgeOffset
+				if (edgeOffset) {
+					targetY = Math.max(0, targetY - edgeOffset)
+					if (isHistorySupported) {
+						onDone = function () { history.pushState({}, "", href) }
+					}
+				}
+				zenscroll.toY(targetY, null, onDone)
+			}
+		}, false)
+
+	}
+
+
+	return zenscroll
+
+
+}));
+
+
+/***/ }),
+
+/***/ "./src/aria-attributes.js":
+/*!********************************!*\
+  !*** ./src/aria-attributes.js ***!
+  \********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_object_freeze_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.object.freeze.js */ "./node_modules/core-js/modules/es.object.freeze.js");
+
+
+
+/**
+ * WAI-ARIA attributes
+ *
+ * Quicker to type, intellisensible, documents what they're for, and saves a
+ * tiny amount of code by replacing the string 'aria-' with a minifiable
+ * variable and dot notation.
+ *
+ * @module aria-attributes
+ * @author Web Development
+ * @copyright City, University of London 2025
+ */
+
+/**
+ * @readonly
+ * @enum {string}
+ */
+var aria = {
+  /** Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. */
+  activeDescendant: 'aria-activedescendant',
+  /** Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. */
+  atomic: 'aria-atomic',
+  /** Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be presented if they are made. */
+  autoComplete: 'aria-autocomplete',
+  /** Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user. */
+  busy: 'aria-busy',
+  /** Indicates the current "checked" state of checkboxes, radio buttons, and other widgets. */
+  checked: 'aria-checked',
+  /** Defines the total number of columns in a table, grid, or treegrid. */
+  colCount: 'aria-colcount',
+  /** Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. */
+  colIndex: 'aria-colindex',
+  /** Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. */
+  colSpan: 'aria-colspan',
+  /** Identifies the element (or elements) whose contents or presence are controlled by the current element. */
+  controls: 'aria-controls',
+  /** Indicates the element that represents the current item within a container or set of related elements. */
+  current: 'aria-current',
+  /** Identifies the element (or elements) that describes the object. */
+  describedBy: 'aria-describedby',
+  /** Identifies the element that provides a detailed, extended description for the object. */
+  details: 'aria-details',
+  /** Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. */
+  disabled: 'aria-disabled',
+  /** [Deprecated in ARIA 1.1] Indicates what functions can be performed when a dragged object is released on the drop target. */
+  dropEffect: 'aria-dropeffect',
+  /** Identifies the element that provides an error message for the object. */
+  errorMessage: 'aria-errormessage',
+  /** Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed. */
+  expanded: 'aria-expanded',
+  /** Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion, allows assistive technology to override the general default of reading in document source order. */
+  flowTo: 'aria-flowto',
+  /** [Deprecated in ARIA 1.1] Indicates an element's "grabbed" state in a drag-and-drop operation. */
+  grabbed: 'aria-grabbed',
+  /** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
+  hasPopup: 'aria-haspopup',
+  /** Indicates whether the element is exposed to an accessibility API. */
+  hidden: 'aria-hidden',
+  /** Indicates the entered value does not conform to the format expected by the application. */
+  invalid: 'aria-invalid',
+  /** Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. */
+  keyShortcuts: 'aria-keyshortcuts',
+  /** Defines a string value that labels the current element. */
+  label: 'aria-label',
+  /** Identifies the element (or elements) that labels the current element. */
+  labelledBy: 'aria-labelledby',
+  /** Defines the hierarchical level of an element within a structure. */
+  level: 'aria-level',
+  /** Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. */
+  live: 'aria-live',
+  /** Indicates whether an element is modal when displayed. */
+  modal: 'aria-modal',
+  /** Indicates whether a text box accepts multiple lines of input or only a single line. */
+  multiLine: 'aria-multiline',
+  /** Indicates that the user may select more than one item from the current selectable descendants. */
+  multiSelectable: 'aria-multiselectable',
+  /** Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous. */
+  orientation: 'aria-orientation',
+  /** Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship between DOM elements where the DOM hierarchy cannot be used to represent the relationship. */
+  owns: 'aria-owns',
+  /** Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value. A hint could be a sample value or a brief description of the expected format. */
+  placeholder: 'aria-placeholder',
+  /** Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. */
+  posInset: 'aria-posinset',
+  /** Indicates the current "pressed" state of toggle buttons. */
+  pressed: 'aria-pressed',
+  /** Indicates that the element is not editable, but is otherwise operable. */
+  readOnly: 'aria-readonly',
+  /** Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. */
+  relevant: 'aria-relevant',
+  /** Indicates that user input is required on the element before a form may be submitted. */
+  required: 'aria-required',
+  /** Defines a human-readable, author-localized description for the role of an element. */
+  roleDescription: 'aria-roledescription',
+  /** Defines the total number of rows in a table, grid, or treegrid. */
+  rowCount: 'aria-rowcount',
+  /** Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. */
+  rowIndex: 'aria-rowindex',
+  /** Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid. */
+  rowSpan: 'aria-rowspan',
+  /** Indicates the current "selected" state of various widgets. */
+  selected: 'aria-selected',
+  /** Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. */
+  setSize: 'aria-setsize',
+  /** Indicates if items in a table or grid are sorted in ascending or descending order. */
+  sort: 'aria-sort',
+  /** Defines the maximum allowed value for a range widget. */
+  valueMax: 'aria-valuemax',
+  /** Defines the minimum allowed value for a range widget. */
+  valueMin: 'aria-valuemin',
+  /** Defines the current value for a range widget. */
+  valueNow: 'aria-valuenow',
+  /** Defines the human readable text alternative of aria-valuenow for a range widget. */
+  valueText: 'aria-valuetext'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.freeze(aria));
+
+/***/ }),
+
 /***/ "./src/patterns.js":
 /*!*************************!*\
   !*** ./src/patterns.js ***!
   \*************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5221,6 +7822,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5244,6 +7846,7 @@ var className = 'accordion';
   \*********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   devcorate: () => (/* binding */ devcorate)
@@ -5295,38 +7898,383 @@ function devcorate(elem, param, value) {
 
 /***/ }),
 
+/***/ "./src/patterns/navigation/navigation--mobile-formatter.js":
+/*!*****************************************************************!*\
+  !*** ./src/patterns/navigation/navigation--mobile-formatter.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   listenForNavigationToggles: () => (/* binding */ listenForNavigationToggles),
+/* harmony export */   prepareNavigation: () => (/* binding */ prepareNavigation),
+/* harmony export */   prepareSideNavigation: () => (/* binding */ prepareSideNavigation)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var zenscroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! zenscroll */ "./node_modules/zenscroll/zenscroll.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
+/* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
+
+
+
+
+
+
+
+
+
+/**
+ * Generic navigation functions for menu and secondary navigation.
+ *
+ * @module menu-formatters
+ * @author Web Development
+ * @copyright City, University of London 2020
+ */
+
+
+
+
+var oneSecond = 1000,
+  scrollDuration = (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.reduceMotion)() ? 0 : oneSecond;
+
+/**
+ * Set sub-menu button attributes for the open/closed state.
+ *
+ * @param {HTMLButtonElement} button - The button to decorate.
+ * @param {boolean} open - Should it be open?
+ * @param {string} buttonTextClassName - The class of the text span.
+ */
+function setNavigationItemButtonDetails(button, open, rootClass) {
+  var navigationItem = button.closest('li'),
+    sectionText = navigationItem.dataset.title + ' section',
+    buttonClassName = rootClass + '__button',
+    buttonTextClassName = buttonClassName + '__text',
+    textSpan = button.querySelector(".".concat(buttonTextClassName)),
+    text = open ? 'Close ' : 'Open ';
+  open && Array.from(button.closest('ul').querySelectorAll('button')).forEach(function (button) {
+    return setNavigationItemButtonDetails(button, false, rootClass);
+  });
+  navigationItem.dataset.open = open;
+  button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].expanded, open);
+  button.title = text + sectionText;
+  textSpan.innerText = text + sectionText;
+}
+
+/**
+ * Toggle a sub-navigation open or closed.
+ */
+function toggleSubNavigation(button, rootClass) {
+  var expanded = button.getAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].expanded);
+
+  // Menu slide open/close animation for mobile menu
+  if (expanded === 'true') {
+    button.parentNode.parentNode.classList.remove('menu-animation__slideOpen');
+    button.parentNode.parentNode.classList.add('menu-animation__slideClose');
+    setTimeout(function () {
+      button.parentNode.parentNode.classList.remove('menu-animation__slideClose');
+    }, 1000); // fixes a bug with sub menu, when opening and closing burger bun after interaction already took place inside the menu
+  } else {
+    button.parentNode.parentNode.classList.remove('menu-animation__slideClose');
+    button.parentNode.parentNode.classList.add('menu-animation__slideOpen');
+  }
+  (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.toBool)(expanded) ? setNavigationItemButtonDetails(button, false, rootClass) : setNavigationItemButtonDetails(button, true, rootClass);
+  zenscroll__WEBPACK_IMPORTED_MODULE_7__.intoView(button.closest('li'), scrollDuration);
+}
+
+/**
+ * Decorate sub-navigation element with the appropriate attributes.
+ *
+ * @param {HTMLLIElement} navigationItem - The list item representing button navigation item.
+ * @param {string} rootClass - The class of the navigation element.
+ */
+function prepareSubNavigation(navigationItem, rootClass) {
+  var navigationItemBtn = document.createElement('button'),
+    iconSpan = document.createElement('span'),
+    textSpan = document.createElement('span'),
+    controlsClassName = rootClass + '__controls',
+    buttonClassName = rootClass + '__button',
+    buttonTextClassName = buttonClassName + '__text',
+    buttonIconClassName = buttonClassName + '__icon',
+    currentClassName = rootClass + '__current',
+    hierarchyClassName = rootClass + '__hierarchy',
+    controlsWrapper = navigationItem.querySelector(".".concat(controlsClassName));
+  navigationItemBtn.setAttribute('type', 'button');
+  iconSpan.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].hidden, 'true');
+  iconSpan.className = "".concat(buttonIconClassName, " fal fa-sharp fa-fw");
+  textSpan.className = "".concat(buttonTextClassName);
+  (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.appendAll)(navigationItemBtn, [iconSpan, textSpan]);
+  controlsWrapper.appendChild(navigationItemBtn);
+  if (navigationItem.className.indexOf(currentClassName) >= 0 || navigationItem.className.indexOf(hierarchyClassName) >= 0) {
+    setNavigationItemButtonDetails(navigationItemBtn, true, rootClass);
+  } else {
+    setNavigationItemButtonDetails(navigationItemBtn, false, rootClass);
+  }
+}
+
+/**
+ * Iterate over the navigation lists, transforming them into the initial
+ * navigation with the current asset lineage open.
+ *
+ * @param {HTMLElement} navigation - The navigation container.
+ * @param {string} rootClass - The class of the navigation element.
+ */
+function prepareNavigation(navigation, rootClass) {
+  Array.from(navigation.querySelectorAll('li')).forEach(function (navigationItem) {
+    var subNavigation = navigationItem.querySelector('ul');
+    subNavigation && subNavigation.firstElementChild && prepareSubNavigation(navigationItem, rootClass);
+  });
+}
+
+/**
+ * Iterate over the navigation lists, transforming them into the initial
+ * navigation with the current asset lineage open. When side navigation it creates extra control elements.
+ *
+ * @param {HTMLElement} navigation - The navigation container.
+ * @param {string} rootClass - The class of the navigation element.
+ */
+function prepareSideNavigation(navigation, rootClass) {
+  var controlsClassName = rootClass + '__controls';
+  Array.from(navigation.querySelectorAll('li')).forEach(function (navigationItem) {
+    var link = navigationItem.querySelector('a'),
+      subNavigation = navigationItem.querySelector('ul'),
+      linkText = 'Visit ' + navigationItem.dataset.title,
+      textWrapper = document.createElement('span'),
+      controlsWrapper = document.createElement('div');
+    controlsWrapper.className = controlsClassName;
+    textWrapper.appendChild(link.firstChild.cloneNode(true));
+    link.replaceChild(textWrapper, link.firstChild);
+    link.title = linkText;
+    navigationItem.replaceChild(controlsWrapper, link);
+    controlsWrapper.appendChild(link);
+    subNavigation && subNavigation.firstElementChild && prepareSubNavigation(navigationItem, rootClass);
+  });
+}
+
+/**
+ * Open/close the sub-menu when its button is clicked.
+ *
+ * @param {HTMLUListElement} subNavigation - Toggle the sub-navigation when its button is clicked.
+ * @param {string} rootClass - The class of the navigation element.
+ */
+function listenForNavigationToggles(subNavigation, rootClass) {
+  Array.from(subNavigation.querySelectorAll('button')).forEach(function (button) {
+    return button.addEventListener('click', function () {
+      return toggleSubNavigation(button, rootClass);
+    }, true);
+  });
+}
+
+/***/ }),
+
 /***/ "./src/patterns/navigation/navigation--mobile.js":
 /*!*******************************************************!*\
   !*** ./src/patterns/navigation/navigation--mobile.js ***!
   \*******************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.join.js */ "./node_modules/core-js/modules/es.array.join.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var focus_trap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! focus-trap */ "./node_modules/focus-trap/dist/focus-trap.esm.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
+/* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
+/* harmony import */ var _navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navigation--mobile-formatter.js */ "./src/patterns/navigation/navigation--mobile-formatter.js");
 
 
+
+
+
+
+
+
+
+
+/**
+ * Global menu
+ *
+ * @module patterns/menu/menu
+ * @author Web Development
+ * @copyright City, University of London 2018-2020
+ */
+
+//import createFocusTrap from 'focus-trap';
+
+
+
+var className = 'menu',
+  hierarchyClassName = className + '__hierarchy',
+  currentClassName = className + '__current',
+  veilClassName = className + '__veil',
+  contentClassName = className + '__content',
+  contentHeaderClassName = contentClassName + '__header',
+  currentPage = contentHeaderClassName + '--current',
+  controlsClassName = className + '__controls',
+  buttonDisplayClassName = className + '__display__button',
+  buttonClassName = className + '__button',
+  level1ClassName = className + '__level1',
+  buttonTextClassName = buttonClassName + '__text';
+
+/**
+ * Creates a function for setting a menu to be open or closed.
+ *
+ * @param {HTMLElement} menu - The menu container.
+ * @param {HTMLButtonElement} button - The button that toggles the menu.
+ * @returns {Function} A function that will set the menu to be open/closed.
+ */
 function menuSetter(menu, button) {
-  var buttonText = button.querySelector('.menu__button__text');
-  var isOpen = menu.dataset.open === 'true';
-  menu.dataset.open = isOpen ? 'false' : 'true';
-  buttonText.innerText = isOpen ? 'Menu' : 'Close';
-  button.setAttribute('aria-expanded', !isOpen);
+  /**
+   * @param {boolean} open - Set the menu to be open?
+   */
+  var setMenu = function setMenu(open) {
+    var buttonText = button.querySelector(".".concat(buttonTextClassName));
+    menu.dataset.open = open;
+    buttonText.innerText = open ? 'Close' : 'Menu';
+    button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].expanded, open);
+  };
+  return setMenu;
 }
-function launchMobileNav(el) {
-  var button = el.querySelector('.menu__display__button__button');
-  button.setAttribute('aria-expanded', 'false');
-  el.dataset.open = 'false';
-  button.addEventListener('click', function () {
-    menuSetter(el, button);
+
+/**
+ * Opens or closes the menu, (de)activates the focus trap if provided, and
+ * scrolls the sub-menus so that the current page lineage or open menus are in
+ * view.
+ *
+ * @param {HTMLButtonElement} button - The button for toggling the menu.
+ * @param {Function} setMenu - A function for setting menu attributes to be open/closed.
+ * @param {object} trap - The focus trap object.
+ * @param {HTMLElement} veil - The veiling element.
+ */
+function toggleMenu(button, setMenu, trap, veil) {
+  var expanded = button.getAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].expanded);
+  if ((0,_util_js__WEBPACK_IMPORTED_MODULE_8__.toBool)(expanded)) {
+    trap.deactivate();
+    veil.dataset.on = 'false';
+    setMenu(false);
+  } else {
+    setMenu(true);
+    veil.dataset.on = 'true';
+    trap.activate();
+  }
+}
+
+/**
+ * Turn the menu label into a button to toggle the menu open and closed.
+ *
+ * While the menu is open, a focus trap should limit tab indexing to the menu
+ * and its button.
+ *
+ * @param {HTMLElement} label - The menu label.
+ * @param {HTMLButtonElement} button - A button element.
+ * @param {Function} setMenu - A function to open/close the menu.
+ * @param {HTMLElement} veil - The veiling element.
+ */
+function createMenuToggle(label, button, setMenu, veil) {
+  var buttonWrapper = document.createElement('div'),
+    menu = label.closest(".".concat(className));
+  button.className = 'menu__display__button__button';
+  buttonWrapper.className = 'menu__display__button__button__wrapper';
+  button.setAttribute('type', 'button');
+  button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].hasPopup, 'menu');
+  button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].label, 'Toggle menu');
+  Array.from(label.childNodes).forEach(function (child) {
+    return buttonWrapper.appendChild(child);
   });
+  button.appendChild(buttonWrapper);
+  var trap = focus_trap__WEBPACK_IMPORTED_MODULE_11__.createFocusTrap(menu, {
+    /**
+     * Initial focus should be whichever of: the current page; a menu item
+     * in the asset lineage or; the first item in the last column appears
+     * last in the DOM and is visible.
+     */
+    initialFocus: function initialFocus() {
+      var open = Array.from(menu.querySelectorAll([".".concat(contentHeaderClassName, " > span"), ".".concat(currentClassName, " > .").concat(controlsClassName, " > a"), ".".concat(hierarchyClassName, " > .").concat(controlsClassName, " > a"), ".".concat(level1ClassName, " > ul > li:first-of-type > .").concat(controlsClassName, " > a"), ".".concat(currentPage, " > a")].join(','))).filter(function (elem) {
+        return (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.isVisible)(elem);
+      });
+      return open[open.length - 1];
+    },
+    onDeactivate: function onDeactivate() {
+      return toggleMenu(button, setMenu, trap, veil);
+    },
+    clickOutsideDeactivates: true
+  });
+  button.addEventListener('click', function () {
+    return toggleMenu(button, setMenu, trap, veil);
+  }, true);
 }
-var className = 'navigation--mobile';
+
+/**
+ * Transform the Matrix-generated menu lists into an interactive menu.
+ *
+ * @param {HTMLElement} menu - The menu element.
+ */
+function launchMenu(menu) {
+  // During testing only: remove 'under construction' indicators globally
+  //     menu.innerHTML = menu.innerHTML.replace(/\(\( /g, '').replace(/ \)\)/g, '');
+
+  var label = menu.querySelector(".".concat(buttonDisplayClassName)),
+    button = document.createElement('button'),
+    veil = document.createElement('div'),
+    setMenu = menuSetter(menu, button);
+  veil.className = veilClassName;
+  veil.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__["default"].hidden, 'true');
+  document.querySelector('body').insertBefore(veil, document.querySelector('main'));
+  createMenuToggle(label, button, setMenu, veil);
+  label.appendChild(button);
+  setMenu(false);
+  (0,_navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__.prepareNavigation)(menu.querySelector(".".concat(level1ClassName)), className);
+  (0,_navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__.listenForNavigationToggles)(menu.querySelector(".".concat(level1ClassName)), className);
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  launchFn: launchMobileNav,
+  launchFn: launchMenu,
   launchQuery: ".".concat(className)
 });
+
+/*
+function menuSetter(menu, button) {
+    const buttonText = button.querySelector('.menu__button__text');
+    const isOpen = menu.dataset.open === 'true';
+
+    menu.dataset.open = isOpen ? 'false' : 'true';
+    buttonText.innerText = isOpen ? 'Menu' : 'Close';
+    button.setAttribute('aria-expanded', !isOpen);
+  
+}
+
+function launchMobileNav(el) {
+
+    const button = el.querySelector('.menu__display__button__button');
+    button.setAttribute('aria-expanded', 'false');
+    el.dataset.open = 'false';
+
+    button.addEventListener('click', function () {
+        menuSetter(el, button) 
+    })
+}
+
+const className = 'navigation--mobile';
+
+export default {
+    launchFn: launchMobileNav,
+    launchQuery: `.${className}`,
+};
+*/
 
 /***/ }),
 
@@ -5336,6 +8284,7 @@ var className = 'navigation--mobile';
   \*****************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5363,6 +8312,7 @@ var className = 'global-header__ribbon';
   \*********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   appendAll: () => (/* binding */ appendAll),
@@ -5370,6 +8320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createHTMLElement: () => (/* binding */ createHTMLElement),
 /* harmony export */   detectIE: () => (/* binding */ detectIE),
 /* harmony export */   gaEvent: () => (/* binding */ gaEvent),
+/* harmony export */   isVisible: () => (/* binding */ isVisible),
 /* harmony export */   objectToParameters: () => (/* binding */ objectToParameters),
 /* harmony export */   parametersToObject: () => (/* binding */ parametersToObject),
 /* harmony export */   reduceMotion: () => (/* binding */ reduceMotion),
@@ -5675,6 +8626,18 @@ function screenWidth(size) {
   }
 }
 
+/**
+* Predicate testing whether an element is currently visible, as opposed to
+* displayed: none; or similar. Doesn't necessarily mean it's visible in the
+* window.
+*
+* @param {HTMLElement} elem - An HTML element.
+* @returns {boolean} - Is it visible?
+*/
+function isVisible(elem) {
+  return elem.offsetHeight !== 0 && elem.offsetWidth !== 0 ? true : false;
+}
+
 /***/ })
 
 /******/ 	});
@@ -5746,8 +8709,9 @@ function screenWidth(size) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
+"use strict";
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
