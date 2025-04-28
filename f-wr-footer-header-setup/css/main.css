@@ -959,6 +959,8 @@ hr {
 
 .global-header__wrap {
   width: 100%;
+  position: relative;
+  z-index: 4;
 }
 
 .global-header__ribbon {
@@ -1074,12 +1076,12 @@ hr {
     display: none;
   }
 }
-.global-header .navigation--mobile {
+.global-header .menu {
   grid-column-end: 25;
   grid-column-start: 14;
 }
 @media (min-width: 769px) {
-  .global-header .navigation--mobile {
+  .global-header .menu {
     display: none;
   }
 }
@@ -1168,6 +1170,11 @@ hr {
   background: white;
 }
 
+.global-header .menu__display__button {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* burger bun */
 .menu .burger-bun {
   display: block;
@@ -1183,9 +1190,6 @@ hr {
   z-index: 1;
   transform-origin: 4px 0px;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
-}
-.menu .burger-bun span:nth-last-child(3) {
-  margin-top: 0.425rem;
 }
 .menu .burger-bun span:nth-last-child(1) {
   transform-origin: 0% 100%;
@@ -1242,6 +1246,21 @@ hr {
     content: "\f078";
     font-weight: 300;
   }
+  .menu .menu__level1 > li > .menu__controls > button .menu__button__text,
+  .menu .menu__level2 > li > .menu__controls > button .menu__button__text,
+  .menu .menu__level3 > li > .menu__controls > button .menu__button__text,
+  .menu .menu__level4 > li > .menu__controls > button .menu__button__text,
+  .menu .menu__level5 > li > .menu__controls > button .menu__button__text,
+  .menu .menu__level6 > li > .menu__controls > button .menu__button__text {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
   .menu .menu__level1 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
   .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
   .menu .menu__level3 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
@@ -1272,6 +1291,13 @@ hr {
   .menu .menu__level2 li.menu__current > .menu__controls > span:focus {
     outline: none;
   }
+  .menu .menu__level1 li.menu__current > .menu__controls > span:focus > span,
+  .menu .menu__level2 li.menu__current > .menu__controls > span:focus > span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
   .menu .menu__level3 li,
   .menu .menu__level4 li,
   .menu .menu__level5 li,
@@ -1291,6 +1317,15 @@ hr {
   .menu .menu__level6 li.menu__current > .menu__controls > span:focus {
     outline: none;
   }
+  .menu .menu__level3 li.menu__current > .menu__controls > span:focus > span,
+  .menu .menu__level4 li.menu__current > .menu__controls > span:focus > span,
+  .menu .menu__level5 li.menu__current > .menu__controls > span:focus > span,
+  .menu .menu__level6 li.menu__current > .menu__controls > span:focus > span {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
   .menu .menu__level1 {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -1302,28 +1337,154 @@ hr {
     border-bottom: 0.0625rem solid #494949;
   }
   .menu .menu__level1 > li > .menu__controls > a {
-    /*
-    @include navigation-anchor(
-        $color: $color-purewhite,
-        $background: $color-gray10,
-        $hover-color: $color-purewhite,
-        $hover-background: $color-gray8,
-        $outline: $color-purewhite
-    );
-    */
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level1 > li > .menu__controls > a:focus, .menu .menu__level1 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level1 > li > .menu__controls > a {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level1 > li > .menu__controls > a:focus, .menu .menu__level1 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .menu .menu__level1 > li > .menu__controls > a:focus span, .menu .menu__level1 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level1 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #1e1e1e;
+    border: 0.25rem solid #1e1e1e;
+    border-bottom: 0.25rem solid #1e1e1e;
+    width: 2rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level1 > li > .menu__controls > button:focus, .menu .menu__level1 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level1 > li > .menu__controls > button:focus, .menu .menu__level1 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
   }
   .menu .menu__level1 > li > .menu__controls > button {
-    /*
-    @include navigation-button(
-         $color-purewhite,
-         $color-gray10,
-         $color-gray8,
-         $color-purewhite
-     );
-     @include navigation-button-transition-helper(
-         $color-gray10
-     );
-     */
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level1 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level1 > li > .menu__controls > button:focus, .menu .menu__level1 > li > .menu__controls > button:active, .menu .menu__level1 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #1e1e1e;
   }
   .menu .menu__level1 > li > .menu__controls > a, .menu .menu__level1 > li > .menu__controls > span {
     padding-left: 0.5rem;
@@ -1342,28 +1503,154 @@ hr {
     border-bottom: 0.0625rem solid #696969;
   }
   .menu .menu__level2 > li > .menu__controls > a {
-    /*
-    @include navigation-anchor(
-        $color: $color-purewhite,
-        $background: $color-gray9,
-        $hover-color: $color-purewhite,
-        $hover-background: $color-gray7,
-        $outline: $color-purewhite
-    );
-    */
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level2 > li > .menu__controls > a:focus, .menu .menu__level2 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level2 > li > .menu__controls > a {
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level2 > li > .menu__controls > a:focus, .menu .menu__level2 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .menu .menu__level2 > li > .menu__controls > a:focus span, .menu .menu__level2 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level2 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #303030;
+    border: 0.25rem solid #303030;
+    border-bottom: 0.25rem solid #303030;
+    width: 2rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level2 > li > .menu__controls > button:focus, .menu .menu__level2 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level2 > li > .menu__controls > button:focus, .menu .menu__level2 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
   }
   .menu .menu__level2 > li > .menu__controls > button {
-    /*
-    @include navigation-button(
-        $color-purewhite,
-        $color-gray9,
-        $color-gray7,
-        $color-purewhite
-    );
-    @include navigation-button-transition-helper(
-        $color-gray9
-    );
-    */
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level2 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level2 > li > .menu__controls > button:focus, .menu .menu__level2 > li > .menu__controls > button:active, .menu .menu__level2 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #303030;
   }
   .menu .menu__level2 > li > .menu__controls > a, .menu .menu__level2 > li > .menu__controls > span {
     padding-left: 1rem;
@@ -1376,26 +1663,154 @@ hr {
     color: #0c0c0e;
   }
   .menu .menu__level3 > li > .menu__controls > a {
-    /*
-    @include navigation-anchor(
-        $color: $color-nearblack,
-        $background: $color-gray1,
-        $hover-color: $color-nearblack,
-        $hover-background: $color-gray3,
-        $outline: $color-nearblack
-    );
-    */
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level3 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level3 > li > .menu__controls > a {
+    background-color: #f2f2f2;
+    color: #0c0c0e;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
+    color: #0c0c0e;
+  }
+  .menu .menu__level3 > li > .menu__controls > a:focus span, .menu .menu__level3 > li > .menu__controls > a:active span {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level3 > li > .menu__controls > a:hover {
+    background-color: #d8d8d8;
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level3 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #f2f2f2;
+    border: 0.25rem solid #f2f2f2;
+    border-bottom: 0.25rem solid #f2f2f2;
+    width: 2rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level3 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
   }
   .menu .menu__level3 > li > .menu__controls > button {
-    /*
-    @include navigation-button(
-        $color-nearblack,
-        $color-gray1,
-        $color-gray3,
-        $color-nearblack
-    );
-    @include navigation-button-transition-helper($color-gray1);
-    */
+    background-color: #f2f2f2;
+    color: #0c0c0e;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level3 > li > .menu__controls > button:focus span {
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level3 > li > .menu__controls > button:hover {
+    background-color: #d8d8d8;
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active, .menu .menu__level3 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #f2f2f2;
   }
   .menu .menu__level3 > li > .menu__controls > a, .menu .menu__level3 > li > .menu__controls > span {
     padding-left: 1.5rem;
@@ -1405,26 +1820,154 @@ hr {
     color: #0c0c0e;
   }
   .menu .menu__level4 > li > .menu__controls > a {
-    /*
-    @include navigation-anchor(
-        $color: $color-nearblack,
-        $background: $color-gray2,
-        $hover-color: $color-nearblack,
-        $hover-background: $color-gray4,
-        $outline: $color-nearblack
-    );
-    */
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level4 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level4 > li > .menu__controls > a {
+    background-color: #e5e5e5;
+    color: #0c0c0e;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
+    color: #0c0c0e;
+  }
+  .menu .menu__level4 > li > .menu__controls > a:focus span, .menu .menu__level4 > li > .menu__controls > a:active span {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level4 > li > .menu__controls > a:hover {
+    background-color: #cbcbcb;
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level4 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #e5e5e5;
+    border: 0.25rem solid #e5e5e5;
+    border-bottom: 0.25rem solid #e5e5e5;
+    width: 2rem;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level4 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
   }
   .menu .menu__level4 > li > .menu__controls > button {
-    /*
-    @include navigation-button(
-        $color-nearblack,
-        $color-gray2,
-        $color-gray4,
-        $color-nearblack
-    );
-    @include navigation-button-transition-helper($color-gray2);
-    */
+    background-color: #e5e5e5;
+    color: #0c0c0e;
+    transition: background-color ease-out 0.2s;
+  }
+  .menu .menu__level4 > li > .menu__controls > button:focus span {
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) and (hover: hover) {
+  .menu .menu__level4 > li > .menu__controls > button:hover {
+    background-color: #cbcbcb;
+    color: #0c0c0e;
+  }
+}
+@media (max-width: 1023px) {
+  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active, .menu .menu__level4 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #e5e5e5;
   }
   .menu .menu__level4 > li > .menu__controls > a, .menu .menu__level4 > li > .menu__controls > span {
     padding-left: 2rem;
@@ -1782,65 +2325,95 @@ hr {
   visibility: hidden;
   max-height: 0;
 }
-.js .menu .menu__content .menu__utility {
-  background-color: #e7ebed;
-  border-top: 0.25rem solid #d61726;
-  color: #0c0c0e;
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
+.js .menu .menu__content .menu__level1 .menu-animation__slideClose > ul {
+  animation-duration: 0.4s;
+  animation-name: slideClose;
 }
-.js .menu .menu__content .menu__utility ul {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100%;
-  justify-content: space-around;
-  list-style: none;
-  margin-left: 0;
-  margin-top: 0;
-  max-width: unset;
-}
-.js .menu .menu__content .menu__utility ul li {
-  font-weight: 500;
-  margin-top: 0;
-}
-.js .menu .menu__content .menu__utility ul li a {
-  /*
-  @include underline-transition--subelement(
-      $color-gray8,
-      $color-nearblack,
-      $border-width-thick,
-      $color-nearblack,
-      'global-header__utility__text'
-  );
-  */
-  height: 100%;
-}
-.js .menu .menu__content .menu__utility ul li a .global-header__utility__icon {
-  color: #494949;
-  margin-left: 0.25rem;
-  top: -0.125rem;
-}
-@media (hover: hover) {
-  .js .menu .menu__content .menu__utility ul li a:hover .global-header__utility__icon {
-    color: #0c0c0e;
+@keyframes slideClose {
+  0% {
+    max-height: 100vh;
+    visibility: visible;
+  }
+  100% {
+    max-height: 0;
+    visibility: hidden;
   }
 }
 .js .menu[data-open=true] {
   z-index: 5;
 }
 .js .menu[data-open=true] > .menu__display__button > button {
-  /*
-  @include cta--basic--subelement(
-      $color-purewhite,
-      $color-gray10,
-      $color-purewhite,
-      $color-gray8,
-      $color-purewhite,
-      square
-  );
-  */
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  .js .menu[data-open=true] > .menu__display__button > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+.js .menu[data-open=true] > .menu__display__button > button:focus, .js .menu[data-open=true] > .menu__display__button > button:active {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+.js .menu[data-open=true] > .menu__display__button > button {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  transition: background-color 0.6s;
+}
+.js .menu[data-open=true] > .menu__display__button > button, .js .menu[data-open=true] > .menu__display__button > button:focus, .js .menu[data-open=true] > .menu__display__button > button:active {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+.js .menu[data-open=true] > .menu__display__button > button:focus .text {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+@media (hover: hover) {
+  .js .menu[data-open=true] > .menu__display__button > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+.js .menu[data-open=true] > .menu__display__button > button {
   display: flex;
   padding-bottom: 0;
   padding-left: 0;
@@ -1872,11 +2445,23 @@ hr {
   visibility: visible;
   max-height: inherit;
 }
+.js .menu[data-open=true] > .menu__content ul .menu-animation__slideOpen > ul {
+  animation-duration: 0.4s;
+  animation-name: slideOpen;
+}
+@keyframes slideOpen {
+  0% {
+    max-height: 0;
+    visibility: visible;
+  }
+  100% {
+    max-height: 100vh;
+  }
+}
 .js .menu > .menu__display__button {
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
 }
 @media (min-width: 1024px) {
   .js .menu > .menu__display__button {
@@ -1884,22 +2469,84 @@ hr {
   }
 }
 .js .menu > .menu__display__button .menu__display__button__button {
-  /*
-  @include cta--basic--subelement(
-      $color-purewhite,
-      $color-red50,
-      $color-purewhite,
-      $color-red70,
-      $color-purewhite,
-      square
-  );
-  */
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  .js .menu > .menu__display__button .menu__display__button__button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+.js .menu > .menu__display__button .menu__display__button__button:focus, .js .menu > .menu__display__button .menu__display__button__button:active {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+.js .menu > .menu__display__button .menu__display__button__button {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  transition: background-color 0.6s;
+}
+.js .menu > .menu__display__button .menu__display__button__button, .js .menu > .menu__display__button .menu__display__button__button:focus, .js .menu > .menu__display__button .menu__display__button__button:active {
+  background-color: inherit;
+  color: #ffffff;
+}
+.js .menu > .menu__display__button .menu__display__button__button:focus .text {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+@media (hover: hover) {
+  .js .menu > .menu__display__button .menu__display__button__button:hover {
+    background-color: inherit;
+    color: #ffffff;
+  }
+}
+.js .menu > .menu__display__button .menu__display__button__button {
   align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   height: 4rem;
   justify-content: center;
+  min-height: 3rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -2037,6 +2684,43 @@ hr {
 }
 .js .menu .menu__content__header span:focus {
   outline: none;
+}
+.js .menu .menu__content__header span:focus > span {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+.js .menu__veil {
+  background-color: rgba(30, 30, 30, 0.3);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: z-index("veil");
+}
+.js .menu__veil[data-on=true] {
+  display: block;
+}
+@keyframes veilFadeIn {
+  0% {
+    background-color: rgba(30, 30, 30, 0);
+    visibility: visible;
+  }
+  100% {
+    background-color: rgba(30, 30, 30, 0.3);
+  }
+}
+@keyframes veilFadeOut {
+  0% {
+    background-color: rgba(30, 30, 30, 0.3);
+    visibility: visible;
+  }
+  100% {
+    background-color: rgba(30, 30, 30, 0);
+  }
 }
 @media (min-width: 1024px) {
   .js .menu__veil[data-on=true] {
