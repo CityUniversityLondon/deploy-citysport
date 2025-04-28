@@ -8114,7 +8114,6 @@ __webpack_require__.r(__webpack_exports__);
  * @copyright City, University of London 2018-2020
  */
 
-//import createFocusTrap from 'focus-trap';
 
 
 
@@ -8245,36 +8244,6 @@ function launchMenu(menu) {
   launchFn: launchMenu,
   launchQuery: ".".concat(className)
 });
-
-/*
-function menuSetter(menu, button) {
-    const buttonText = button.querySelector('.menu__button__text');
-    const isOpen = menu.dataset.open === 'true';
-
-    menu.dataset.open = isOpen ? 'false' : 'true';
-    buttonText.innerText = isOpen ? 'Menu' : 'Close';
-    button.setAttribute('aria-expanded', !isOpen);
-  
-}
-
-function launchMobileNav(el) {
-
-    const button = el.querySelector('.menu__display__button__button');
-    button.setAttribute('aria-expanded', 'false');
-    el.dataset.open = 'false';
-
-    button.addEventListener('click', function () {
-        menuSetter(el, button) 
-    })
-}
-
-const className = 'navigation--mobile';
-
-export default {
-    launchFn: launchMobileNav,
-    launchQuery: `.${className}`,
-};
-*/
 
 /***/ }),
 
