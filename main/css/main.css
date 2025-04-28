@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .standard-grid-wrapper {
   display: grid;
 }
@@ -126,6 +127,1050 @@ main article .content {
 
 .js .nojs-only {
   display: none;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+.fa {
+  font-family: var(--fa-style-family, "Font Awesome 6 Pro");
+  font-weight: var(--fa-style, 900);
+}
+
+.fas,
+.fass,
+.far,
+.fasr,
+.fal,
+.fasl,
+.fat,
+.fast,
+.fad,
+.fadr,
+.fadl,
+.fadt,
+.fasds,
+.fasdr,
+.fasdl,
+.fasdt,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-light,
+.fa-thin,
+.fa-brands,
+.fa-classic,
+.fa-duotone,
+.fa-sharp,
+.fa-sharp-duotone,
+.fa {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.fas::before,
+.fass::before,
+.far::before,
+.fasr::before,
+.fal::before,
+.fasl::before,
+.fat::before,
+.fast::before,
+.fad::before,
+.fadr::before,
+.fadl::before,
+.fadt::before,
+.fasds::before,
+.fasdr::before,
+.fasdl::before,
+.fasdt::before,
+.fab::before,
+.fa-solid::before,
+.fa-regular::before,
+.fa-light::before,
+.fa-thin::before,
+.fa-brands::before,
+.fa-classic::before,
+.fa-duotone::before,
+.fa-sharp::before,
+.fa-sharp-duotone::before,
+.fa::before {
+  content: var(--fa);
+}
+
+.fad::after,
+.fa-duotone.fa-solid::after,
+.fa-duotone::after,
+.fadr::after,
+.fa-duotone.fa-regular::after,
+.fadl::after,
+.fa-duotone.fa-light::after,
+.fadt::after,
+.fa-duotone.fa-thin::after,
+.fasds::after,
+.fa-sharp-duotone.fa-solid::after,
+.fa-sharp-duotone::after,
+.fasdr::after,
+.fa-sharp-duotone.fa-regular::after,
+.fasdl::after,
+.fa-sharp-duotone.fa-light::after,
+.fasdt::after,
+.fa-sharp-duotone.fa-thin::after {
+  content: var(--fa--fa);
+}
+
+.fa-classic.fa-duotone {
+  font-family: "Font Awesome 6 Duotone";
+}
+
+.fass,
+.fa-sharp {
+  font-weight: 900;
+}
+
+.fad,
+.fa-duotone {
+  font-weight: 900;
+}
+
+.fasds,
+.fa-sharp-duotone {
+  font-weight: 900;
+}
+
+.fa-classic,
+.fas,
+.fa-solid,
+.far,
+.fa-regular,
+.fal,
+.fa-light,
+.fat,
+.fa-thin {
+  font-family: "Font Awesome 6 Pro";
+}
+
+.fa-duotone,
+.fad,
+.fadr,
+.fadl,
+.fadt {
+  font-family: "Font Awesome 6 Duotone";
+}
+
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands";
+}
+
+.fa-sharp,
+.fass,
+.fasr,
+.fasl,
+.fast {
+  font-family: "Font Awesome 6 Sharp";
+}
+
+.fa-sharp-duotone,
+.fasds,
+.fasdr,
+.fasdl,
+.fasdt {
+  font-family: "Font Awesome 6 Sharp Duotone";
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+  .fa-bounce,
+  .fa-fade,
+  .fa-beat-fade,
+  .fa-flip,
+  .fa-pulse,
+  .fa-shake,
+  .fa-spin,
+  .fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  vertical-align: middle;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.fa-stack-1x {
+  line-height: inherit;
+}
+
+.fa-stack-2x {
+  font-size: 2em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+readers do not read off random characters that represent icons */
+.fa-arrow-down {
+  --fa: "\f063";
+  --fa--fa: "\f063\f063";
+}
+
+.fa-arrow-left {
+  --fa: "\f060";
+  --fa--fa: "\f060\f060";
+}
+
+.fa-arrow-right {
+  --fa: "\f061";
+  --fa--fa: "\f061\f061";
+}
+
+.fa-arrow-up {
+  --fa: "\f062";
+  --fa--fa: "\f062\f062";
+}
+
+.fa-building {
+  --fa: "\f1ad";
+  --fa--fa: "\f1ad\f1ad";
+}
+
+.fa-calendar-days {
+  --fa: "\f073";
+  --fa--fa: "\f073\f073";
+}
+
+.fa-calendar-alt {
+  --fa: "\f073";
+  --fa--fa: "\f073\f073";
+}
+
+.fa-chevron-down {
+  --fa: "\f078";
+  --fa--fa: "\f078\f078";
+}
+
+.fa-chevron-left {
+  --fa: "\f053";
+  --fa--fa: "\f053\f053";
+}
+
+.fa-chevron-right {
+  --fa: "\f054";
+  --fa--fa: "\f054\f054";
+}
+
+.fa-chevron-up {
+  --fa: "\f077";
+  --fa--fa: "\f077\f077";
+}
+
+.fa-clock {
+  --fa: "\f017";
+  --fa--fa: "\f017\f017";
+}
+
+.fa-clock-four {
+  --fa: "\f017";
+  --fa--fa: "\f017\f017";
+}
+
+.fa-envelope {
+  --fa: "\f0e0";
+  --fa--fa: "\f0e0\f0e0";
+}
+
+.fa-graduation-cap {
+  --fa: "\f19d";
+  --fa--fa: "\f19d\f19d";
+}
+
+.fa-mortar-board {
+  --fa: "\f19d";
+  --fa--fa: "\f19d\f19d";
+}
+
+.fa-location-dot {
+  --fa: "\f3c5";
+  --fa--fa: "\f3c5\f3c5";
+}
+
+.fa-map-marker-alt {
+  --fa: "\f3c5";
+  --fa--fa: "\f3c5\f3c5";
+}
+
+.fa-lock-keyhole {
+  --fa: "\f30d";
+  --fa--fa: "\f30d\f30d";
+}
+
+.fa-lock-alt {
+  --fa: "\f30d";
+  --fa--fa: "\f30d\f30d";
+}
+
+.fa-magnifying-glass {
+  --fa: "\f002";
+  --fa--fa: "\f002\f002";
+}
+
+.fa-search {
+  --fa: "\f002";
+  --fa--fa: "\f002\f002";
+}
+
+.fa-minus {
+  --fa: "\f068";
+  --fa--fa: "\f068\f068";
+}
+
+.fa-subtract {
+  --fa: "\f068";
+  --fa--fa: "\f068\f068";
+}
+
+.fa-plus {
+  --fa: "\+";
+  --fa--fa: "\+\+";
+}
+
+.fa-add {
+  --fa: "\+";
+  --fa--fa: "\+\+";
+}
+
+.fa-school {
+  --fa: "\f549";
+  --fa--fa: "\f549\f549";
+}
+
+.fa-user {
+  --fa: "\f007";
+  --fa--fa: "\f007\f007";
+}
+
+.fa-users {
+  --fa: "\f0c0";
+  --fa--fa: "\f0c0\f0c0";
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
+}
+.fab,
+.fa-brands {
+  font-weight: 400;
+}
+
+.fa-facebook-f {
+  --fa: "\f39e";
+}
+
+.fa-instagram {
+  --fa: "\f16d";
+}
+
+.fa-linkedin-in {
+  --fa: "\f0e1";
+}
+
+.fa-tiktok {
+  --fa: "\e07b";
+}
+
+.fa-weibo {
+  --fa: "\f18a";
+}
+
+.fa-weixin {
+  --fa: "\f1d7";
+}
+
+.fa-x-twitter {
+  --fa: "\e61b";
+}
+
+.fa-youtube {
+  --fa: "\f167";
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-classic: "Font Awesome 6 Pro";
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Pro";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
+}
+.fas,
+.fa-solid {
+  font-weight: 900;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-classic: "Font Awesome 6 Pro";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Pro";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
+}
+.far,
+.fa-regular {
+  font-weight: 400;
+}
+
+.alpha-type {
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .alpha-type {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .alpha-type {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .alpha-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .alpha-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.beta-type {
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.008em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .beta-type {
+    letter-spacing: -0.011em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .beta-type {
+    letter-spacing: -0.014em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .beta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .beta-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.gamma-type {
+  font-size: 1.266rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.011em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .gamma-type {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .gamma-type {
+    letter-spacing: -0.015em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .gamma-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .gamma-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.delta-type {
+  font-size: 1.424rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.013em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .delta-type {
+    letter-spacing: -0.015em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .delta-type {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .delta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .delta-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.epsilon-type {
+  font-size: 1.602rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.015em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .epsilon-type {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .epsilon-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .epsilon-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .epsilon-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.zeta-type {
+  font-size: 1.802rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.016em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .zeta-type {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .zeta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .zeta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .zeta-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.eta-type {
+  font-size: 2.027rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.016em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .eta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .eta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .eta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .eta-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.theta-type {
+  font-size: 2.28rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.017em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .theta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .theta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .theta-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .theta-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.small-type {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .small-type {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .small-type {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .small-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .small-type {
+    letter-spacing: -0.017em;
+  }
+}
+
+.extra-small-type {
+  font-size: 0.79rem;
+  line-height: 1.625;
+  letter-spacing: 0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .extra-small-type {
+    letter-spacing: 0em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .extra-small-type {
+    letter-spacing: -0.007em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .extra-small-type {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .extra-small-type {
+    letter-spacing: -0.017em;
+  }
 }
 
 .cta,
@@ -709,6 +1754,1096 @@ html {
   html {
     font-size: 92px;
   }
+}
+
+u {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+  -webkit-font-smoothing: antialiased;
+}
+
+.sans {
+  font-weight: 400;
+  font-family: "ibm-plex-sans", sans-serif;
+}
+.sans b,
+.sans strong {
+  font-weight: 700;
+}
+.sans i,
+.sans em {
+  font-style: italic;
+}
+
+.serif {
+  font-weight: 400;
+  font-family: "ibm-plex-serif", serif;
+}
+.serif b,
+.serif strong {
+  font-weight: 700;
+}
+.serif i,
+.serif em {
+  font-style: italic;
+}
+
+.mono {
+  font-weight: 400;
+  font-family: "ibm-plex-mono", monospace;
+}
+.mono b,
+.mono strong {
+  font-weight: 700;
+}
+.mono i,
+.mono em {
+  font-style: italic;
+}
+
+.meta {
+  font-weight: 400;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.meta i,
+.meta em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.meta b,
+.meta strong {
+  font-weight: 700;
+}
+.meta i,
+.meta em {
+  font-style: italic;
+}
+
+.weight-hairline {
+  font-weight: 100;
+}
+
+.weight-thin {
+  font-weight: 200;
+}
+
+.weight-light {
+  font-weight: 300;
+}
+
+.weight-normal {
+  font-weight: 400;
+}
+
+.weight-text {
+  font-weight: 400;
+}
+
+.weight-book {
+  font-weight: 500;
+}
+
+.weight-medium {
+  font-weight: 600;
+}
+
+.weight-bold {
+  font-weight: 700;
+}
+
+.weight-black {
+  font-weight: 800;
+}
+
+.weight-extrablack {
+  font-weight: 900;
+}
+
+.style-fraction {
+  /**
+   * IBM Plex OpenType stylistic sets:
+   *
+   * ss01: 0/1 double-storey/simple 'a'
+   * ss02: 0/1 double-storey/simple 'g'
+   * ss03: 0/1 plain/slashed '0'
+   * ss04: 0/1 plain/dotted '0'
+   */
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 1, "liga" 1;
+}
+.style-fraction i,
+.style-fraction em {
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 1, "liga" 1;
+}
+
+.content-style {
+  max-width: 55ch;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "ibm-plex-sans", sans-serif;
+}
+.content-style {
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .content-style {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .content-style {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .content-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .content-style {
+    letter-spacing: -0.017em;
+  }
+}
+.content-style {
+  /**
+   * IBM Plex OpenType stylistic sets:
+   *
+   * ss01: 0/1 double-storey/simple 'a'
+   * ss02: 0/1 double-storey/simple 'g'
+   * ss03: 0/1 plain/slashed '0'
+   * ss04: 0/1 plain/dotted '0'
+   */
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+.content-style i,
+.content-style em {
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+.content-style b,
+.content-style strong {
+  font-weight: 700;
+}
+.content-style i,
+.content-style em {
+  font-style: italic;
+}
+
+code,
+pre {
+  letter-spacing: 0;
+  max-width: unset;
+  font-family: "ibm-plex-mono", monospace;
+}
+code,
+pre {
+  max-width: 55ch;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "ibm-plex-sans", sans-serif;
+}
+code,
+pre {
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  code,
+  pre {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  code,
+  pre {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  code,
+  pre {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  code,
+  pre {
+    letter-spacing: -0.017em;
+  }
+}
+code,
+pre {
+  /**
+   * IBM Plex OpenType stylistic sets:
+   *
+   * ss01: 0/1 double-storey/simple 'a'
+   * ss02: 0/1 double-storey/simple 'g'
+   * ss03: 0/1 plain/slashed '0'
+   * ss04: 0/1 plain/dotted '0'
+   */
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+code i,
+code em,
+pre i,
+pre em {
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+code b,
+code strong,
+pre b,
+pre strong {
+  font-weight: 700;
+}
+code i,
+code em,
+pre i,
+pre em {
+  font-style: italic;
+}
+
+p code {
+  background: #303030;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+h6,
+.h6-style {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3333333333;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+h6 i,
+h6 em,
+.h6-style i,
+.h6-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h6 b,
+h6 strong,
+.h6-style b,
+.h6-style strong {
+  font-weight: inherit;
+}
+h6 i,
+h6 em,
+.h6-style i,
+.h6-style em {
+  font-style: italic;
+}
+h6 u,
+.h6-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h6,
+  .h6-style {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h6,
+  .h6-style {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h6,
+  .h6-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h6,
+  .h6-style {
+    letter-spacing: -0.017em;
+  }
+}
+h6 b,
+h6 strong,
+.h6-style b,
+.h6-style strong {
+  font-weight: 600;
+}
+
+h5,
+.h5-style {
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.008em;
+}
+h5 i,
+h5 em,
+.h5-style i,
+.h5-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h5 b,
+h5 strong,
+.h5-style b,
+.h5-style strong {
+  font-weight: inherit;
+}
+h5 i,
+h5 em,
+.h5-style i,
+.h5-style em {
+  font-style: italic;
+}
+h5 u,
+.h5-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h5,
+  .h5-style {
+    letter-spacing: -0.011em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h5,
+  .h5-style {
+    letter-spacing: -0.014em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h5,
+  .h5-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h5,
+  .h5-style {
+    letter-spacing: -0.017em;
+  }
+}
+h5 b,
+h5 strong,
+.h5-style b,
+.h5-style strong {
+  font-weight: 600;
+}
+
+h4,
+.h4-style {
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.266rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.011em;
+}
+h4 i,
+h4 em,
+.h4-style i,
+.h4-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h4 b,
+h4 strong,
+.h4-style b,
+.h4-style strong {
+  font-weight: inherit;
+}
+h4 i,
+h4 em,
+.h4-style i,
+.h4-style em {
+  font-style: italic;
+}
+h4 u,
+.h4-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h4,
+  .h4-style {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h4,
+  .h4-style {
+    letter-spacing: -0.015em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h4,
+  .h4-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h4,
+  .h4-style {
+    letter-spacing: -0.017em;
+  }
+}
+h4 b,
+h4 strong,
+.h4-style b,
+.h4-style strong {
+  font-weight: 600;
+}
+
+h3,
+.h3-style {
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.424rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.013em;
+}
+h3 i,
+h3 em,
+.h3-style i,
+.h3-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h3 b,
+h3 strong,
+.h3-style b,
+.h3-style strong {
+  font-weight: inherit;
+}
+h3 i,
+h3 em,
+.h3-style i,
+.h3-style em {
+  font-style: italic;
+}
+h3 u,
+.h3-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h3,
+  .h3-style {
+    letter-spacing: -0.015em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h3,
+  .h3-style {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h3,
+  .h3-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h3,
+  .h3-style {
+    letter-spacing: -0.017em;
+  }
+}
+h3 b,
+h3 strong,
+.h3-style b,
+.h3-style strong {
+  font-weight: 600;
+}
+
+h2,
+.h2-style {
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.602rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.015em;
+}
+h2 i,
+h2 em,
+.h2-style i,
+.h2-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h2 b,
+h2 strong,
+.h2-style b,
+.h2-style strong {
+  font-weight: inherit;
+}
+h2 i,
+h2 em,
+.h2-style i,
+.h2-style em {
+  font-style: italic;
+}
+h2 u,
+.h2-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h2,
+  .h2-style {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h2,
+  .h2-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h2,
+  .h2-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h2,
+  .h2-style {
+    letter-spacing: -0.017em;
+  }
+}
+h2 b,
+h2 strong,
+.h2-style b,
+.h2-style strong {
+  font-weight: 600;
+}
+
+h1,
+.h1-style {
+  font-style: normal;
+  font-weight: 600;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.802rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.016em;
+}
+h1 i,
+h1 em,
+.h1-style i,
+.h1-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+h1 b,
+h1 strong,
+.h1-style b,
+.h1-style strong {
+  font-weight: inherit;
+}
+h1 i,
+h1 em,
+.h1-style i,
+.h1-style em {
+  font-style: italic;
+}
+h1 u,
+.h1-style u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+  h1,
+  .h1-style {
+    font-size: 2.027rem;
+    line-height: 1.3333333333;
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) and (min-width: 1280px) and (max-width: 1919px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) and (min-width: 1920px) and (max-width: 3839px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) and (min-width: 3840px) and (max-width: 7679px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) and (min-width: 7680px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 901px) {
+  h1,
+  .h1-style {
+    font-size: 2.28rem;
+    line-height: 1.3333333333;
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 901px) and (min-width: 1280px) and (max-width: 1919px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 901px) and (min-width: 1920px) and (max-width: 3839px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 901px) and (min-width: 3840px) and (max-width: 7679px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 901px) and (min-width: 7680px) {
+  h1,
+  .h1-style {
+    letter-spacing: -0.017em;
+  }
+}
+h1 b,
+h1 strong,
+.h1-style b,
+.h1-style strong {
+  font-weight: 600;
+}
+
+h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h2,
+h2 + h3,
+h2 + h4,
+h2 + h5,
+h2 + h6,
+h3 + h2,
+h3 + h3,
+h3 + h4,
+h3 + h5,
+h3 + h6,
+h4 + h2,
+h4 + h3,
+h4 + h4,
+h4 + h5,
+h4 + h6,
+h5 + h2,
+h5 + h3,
+h5 + h4,
+h5 + h5,
+h5 + h6,
+h6 + h2,
+h6 + h3,
+h6 + h4,
+h6 + h5,
+h6 + h6 {
+  margin-top: 1rem;
+}
+
+hr {
+  border-top: 0.0625rem dotted #919191;
+  border-bottom: 0;
+}
+
+main {
+  position: relative;
+}
+main p,
+main ol,
+main ul,
+main dl,
+main blockquote {
+  max-width: 55ch;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "ibm-plex-sans", sans-serif;
+}
+main p,
+main ol,
+main ul,
+main dl,
+main blockquote {
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  main p,
+  main ol,
+  main ul,
+  main dl,
+  main blockquote {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  main p,
+  main ol,
+  main ul,
+  main dl,
+  main blockquote {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  main p,
+  main ol,
+  main ul,
+  main dl,
+  main blockquote {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  main p,
+  main ol,
+  main ul,
+  main dl,
+  main blockquote {
+    letter-spacing: -0.017em;
+  }
+}
+main p,
+main ol,
+main ul,
+main dl,
+main blockquote {
+  /**
+   * IBM Plex OpenType stylistic sets:
+   *
+   * ss01: 0/1 double-storey/simple 'a'
+   * ss02: 0/1 double-storey/simple 'g'
+   * ss03: 0/1 plain/slashed '0'
+   * ss04: 0/1 plain/dotted '0'
+   */
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+main p i,
+main p em,
+main ol i,
+main ol em,
+main ul i,
+main ul em,
+main dl i,
+main dl em,
+main blockquote i,
+main blockquote em {
+  font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+}
+main p b,
+main p strong,
+main ol b,
+main ol strong,
+main ul b,
+main ul strong,
+main dl b,
+main dl strong,
+main blockquote b,
+main blockquote strong {
+  font-weight: 700;
+}
+main p i,
+main p em,
+main ol i,
+main ol em,
+main ul i,
+main ul em,
+main dl i,
+main dl em,
+main blockquote i,
+main blockquote em {
+  font-style: italic;
+}
+main p,
+main ol,
+main ul,
+main dl,
+main blockquote,
+main figure {
+  margin-top: 0.75rem;
+}
+main sup,
+main sub {
+  font-size: 0.7em;
+  line-height: 0.7em;
+}
+main header p {
+  font-weight: 300;
+  margin-top: 0;
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.602rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.015em;
+}
+main header p i,
+main header p em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+main header p b,
+main header p strong {
+  font-weight: inherit;
+}
+main header p i,
+main header p em {
+  font-style: italic;
+}
+main header p u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  main header p {
+    letter-spacing: -0.016em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  main header p {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  main header p {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  main header p {
+    letter-spacing: -0.017em;
+  }
+}
+main header p b,
+main header p strong {
+  font-weight: 600;
+}
+main .standfirst,
+main .standfirst-style {
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.625;
+  margin-top: 0.75rem;
+  max-width: 55ch;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1.266rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.011em;
+}
+main .standfirst i,
+main .standfirst em,
+main .standfirst-style i,
+main .standfirst-style em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  main .standfirst,
+  main .standfirst-style {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  main .standfirst,
+  main .standfirst-style {
+    letter-spacing: -0.015em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  main .standfirst,
+  main .standfirst-style {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  main .standfirst,
+  main .standfirst-style {
+    letter-spacing: -0.017em;
+  }
+}
+main p > img {
+  margin-top: 0.75rem;
+}
+main ol,
+main ul {
+  margin-left: 2.5rem;
+  max-width: calc(55ch - 2.5rem);
+}
+main dl {
+  max-width: 55ch;
+}
+main ul {
+  list-style: disc;
+}
+main ul ul {
+  list-style: circle;
+}
+main dt {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3333333333;
+  margin-top: 1rem;
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
+}
+main dt i,
+main dt em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+main dt b,
+main dt strong {
+  font-weight: inherit;
+}
+main dt i,
+main dt em {
+  font-style: italic;
+}
+main dt u {
+  text-decoration: none;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  main dt {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  main dt {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  main dt {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  main dt {
+    letter-spacing: -0.017em;
+  }
+}
+main dt b,
+main dt strong {
+  font-weight: 600;
+}
+main dt:first-of-type {
+  margin-top: 0;
+}
+main li {
+  margin-top: 0.75rem;
+}
+main table {
+  display: block;
+  margin-top: 0.75rem;
+  min-width: 66%;
+  max-width: 100%;
+  overflow-x: scroll;
+  border-collapse: collapse;
+  font-weight: 400;
+}
+main table tr th,
+main table tr td {
+  border: 0.0625rem solid #d8d8d8;
+  vertical-align: top;
+}
+main table tr th:first-child,
+main table tr td:first-child {
+  text-align: left;
+}
+main table tr th:not(:first-child),
+main table tr td:not(:first-child) {
+  text-align: right;
+}
+main table th,
+main table strong {
+  font-weight: 600;
+}
+main table thead tr {
+  color: #ffffff;
+}
+main table thead tr:first-child th {
+  background: #3e1031;
+}
+main table thead tr:nth-child(2) th {
+  background: #5d184a;
+}
+main table thead tr .heading__secondary {
+  background: #5d184a;
+}
+main table thead td,
+main table thead th {
+  padding: 1rem 0.5rem;
+  vertical-align: middle;
+}
+main table tbody {
+  color: #1e1e1e;
+  background: #ffffff;
+}
+main table tbody tr:hover {
+  background-color: #e5e5e5;
+}
+main table tbody th,
+main table tbody td {
+  padding: 0.5rem;
+  vertical-align: bottom;
+}
+
+/* Banned embeds – these are not accessible so cannot be allowed on the website. */
+iframe[src*=issuu], iframe[src*=prezi] {
+  display: none !important;
 }
 
 .global-footer {
