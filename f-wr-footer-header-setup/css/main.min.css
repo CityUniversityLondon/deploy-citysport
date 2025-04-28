@@ -2921,9 +2921,16 @@ iframe[src*=issuu], iframe[src*=prezi] {
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.5px;
-  font-size: 2.5rem;
-  font-family: "ff-meta-web", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
   display: flex;
+}
+.global-footer__header-logo a {
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.global-footer__header-logo a i,
+.global-footer__header-logo a em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
 }
 .global-footer__header-logo a:visited {
   color: #ffffff;
@@ -3262,17 +3269,25 @@ hr {
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.5px;
-  font-size: 2.5rem;
-  font-family: "ff-meta-web", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
   display: inherit;
   grid-column-start: 1;
   grid-column-end: 5;
   display: flex;
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .global-header__logo {
     grid-column-end: 9;
   }
+}
+.global-header__logo a {
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.global-header__logo a i,
+.global-header__logo a em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
 }
 .global-header__logo a:visited {
   color: #ffffff;
