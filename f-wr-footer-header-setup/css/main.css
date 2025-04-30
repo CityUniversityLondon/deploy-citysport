@@ -789,6 +789,31 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f0c0\f0c0";
 }
 
+.fa-xmark {
+  --fa: "\f00d";
+  --fa--fa: "\f00d\f00d";
+}
+
+.fa-close {
+  --fa: "\f00d";
+  --fa--fa: "\f00d\f00d";
+}
+
+.fa-multiply {
+  --fa: "\f00d";
+  --fa--fa: "\f00d\f00d";
+}
+
+.fa-remove {
+  --fa: "\f00d";
+  --fa--fa: "\f00d\f00d";
+}
+
+.fa-times {
+  --fa: "\f00d";
+  --fa--fa: "\f00d\f00d";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
@@ -911,6 +936,50 @@ readers do not read off random characters that represent icons */
 .far,
 .fa-regular {
   font-weight: 400;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-sharp: "Font Awesome 6 Sharp";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Sharp";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-sharp-solid-900.woff2") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
+}
+.fass,
+.fa-solid {
+  font-weight: 900;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-sharp: "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Sharp";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("../webfonts/fa-sharp-light-300.woff2") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
+}
+.fasl,
+.fa-light {
+  font-weight: 300;
 }
 
 .alpha-type {
