@@ -7796,7 +7796,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./patterns/accordion/accordion.js */ "./src/patterns/accordion/accordion.js");
 /* harmony import */ var _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./patterns/notice-ribbon/notice-ribbon.js */ "./src/patterns/notice-ribbon/notice-ribbon.js");
-/* harmony import */ var _patterns_navigation_navigation_mobile_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./patterns/navigation/navigation--mobile.js */ "./src/patterns/navigation/navigation--mobile.js");
+/* harmony import */ var _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./patterns/navigation/navigation.js */ "./src/patterns/navigation/navigation.js");
 
 
 /**
@@ -7812,7 +7812,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_mobile_js__WEBPACK_IMPORTED_MODULE_2__["default"]]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"]]);
 
 /***/ }),
 
@@ -7898,10 +7898,10 @@ function devcorate(elem, param, value) {
 
 /***/ }),
 
-/***/ "./src/patterns/navigation/navigation--mobile-formatter.js":
-/*!*****************************************************************!*\
-  !*** ./src/patterns/navigation/navigation--mobile-formatter.js ***!
-  \*****************************************************************/
+/***/ "./src/patterns/navigation/navigation-formatter.js":
+/*!*********************************************************!*\
+  !*** ./src/patterns/navigation/navigation-formatter.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7994,7 +7994,7 @@ function toggleSubNavigation(button, rootClass) {
  * @param {HTMLLIElement} navigationItem - The list item representing button navigation item.
  * @param {string} rootClass - The class of the navigation element.
  */
-function prepareSubNavigation(navigationItem, rootClass) {
+function prepareSubNavigation(navigationItem, rootClass, pageload) {
   var navigationItemBtn = document.createElement('button'),
     iconSpan = document.createElement('span'),
     textSpan = document.createElement('span'),
@@ -8011,7 +8011,11 @@ function prepareSubNavigation(navigationItem, rootClass) {
   textSpan.className = "".concat(buttonTextClassName);
   (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.appendAll)(navigationItemBtn, [iconSpan, textSpan]);
   controlsWrapper.appendChild(navigationItemBtn);
-  if (navigationItem.className.indexOf(currentClassName) >= 0 || navigationItem.className.indexOf(hierarchyClassName) >= 0) {
+  var desktopMenu = window.innerWidth >= (0,_util_js__WEBPACK_IMPORTED_MODULE_8__.screenWidth)('small') ? true : false;
+  if ((navigationItem.className.indexOf(currentClassName) >= 0 || navigationItem.className.indexOf(hierarchyClassName) >= 0) && (
+  // bug fix to make mobile menu compatible to be also the desktop menu
+  // this addtional condition ensures that when on desktop and page load that page doesn't load showing the menu and current item open
+  !pageload && desktopMenu || !desktopMenu)) {
     setNavigationItemButtonDetails(navigationItemBtn, true, rootClass);
   } else {
     setNavigationItemButtonDetails(navigationItemBtn, false, rootClass);
@@ -8028,7 +8032,7 @@ function prepareSubNavigation(navigationItem, rootClass) {
 function prepareNavigation(navigation, rootClass) {
   Array.from(navigation.querySelectorAll('li')).forEach(function (navigationItem) {
     var subNavigation = navigationItem.querySelector('ul');
-    subNavigation && subNavigation.firstElementChild && prepareSubNavigation(navigationItem, rootClass);
+    subNavigation && subNavigation.firstElementChild && prepareSubNavigation(navigationItem, rootClass, true);
   });
 }
 
@@ -8073,10 +8077,10 @@ function listenForNavigationToggles(subNavigation, rootClass) {
 
 /***/ }),
 
-/***/ "./src/patterns/navigation/navigation--mobile.js":
-/*!*******************************************************!*\
-  !*** ./src/patterns/navigation/navigation--mobile.js ***!
-  \*******************************************************/
+/***/ "./src/patterns/navigation/navigation.js":
+/*!***********************************************!*\
+  !*** ./src/patterns/navigation/navigation.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8095,7 +8099,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var focus_trap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! focus-trap */ "./node_modules/focus-trap/dist/focus-trap.esm.js");
 /* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
 /* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
-/* harmony import */ var _navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navigation--mobile-formatter.js */ "./src/patterns/navigation/navigation--mobile-formatter.js");
+/* harmony import */ var _navigation_formatter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navigation-formatter.js */ "./src/patterns/navigation/navigation-formatter.js");
 
 
 
@@ -8237,8 +8241,8 @@ function launchMenu(menu) {
   createMenuToggle(label, button, setMenu, veil);
   label.appendChild(button);
   setMenu(false);
-  (0,_navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__.prepareNavigation)(menu.querySelector(".".concat(level1ClassName)), className);
-  (0,_navigation_mobile_formatter_js__WEBPACK_IMPORTED_MODULE_10__.listenForNavigationToggles)(menu.querySelector(".".concat(level1ClassName)), className);
+  (0,_navigation_formatter_js__WEBPACK_IMPORTED_MODULE_10__.prepareNavigation)(menu.querySelector(".".concat(level1ClassName)), className);
+  (0,_navigation_formatter_js__WEBPACK_IMPORTED_MODULE_10__.listenForNavigationToggles)(menu.querySelector(".".concat(level1ClassName)), className);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: launchMenu,

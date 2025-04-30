@@ -3205,33 +3205,36 @@ hr {
     margin-right: auto;
   }
 }
-.global-header .navigation--primary {
-  grid-column-start: 5;
-  grid-column-end: 14;
-  grid-row-start: 1;
+.global-header .global-header__logo {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
-@media (max-width: 768px) {
-  .global-header .navigation--primary {
-    display: none;
-  }
-}
-.global-header .navigation--secondary {
-  grid-column-start: 6;
-  grid-column-end: 14;
-  grid-row-start: 2;
-}
-@media (max-width: 768px) {
-  .global-header .navigation--secondary {
-    display: none;
+@media (max-width: 1023px) {
+  .global-header .global-header__logo {
+    grid-column-end: 9;
   }
 }
 .global-header .menu {
   grid-column-end: 25;
   grid-column-start: 14;
+  grid-row-start: 1;
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   .global-header .menu {
-    display: none;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 2;
+  }
+}
+
+.global-header__container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 901px) {
+  .global-header__container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -3239,16 +3242,6 @@ hr {
   display: grid;
   border-bottom: 0.1875rem solid #222222;
   padding-bottom: 1.5rem;
-}
-.global-header__content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 901px) {
-  .global-header__content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 .global-header__content {
   grid-column-gap: 0;
@@ -3271,15 +3264,8 @@ hr {
   letter-spacing: -0.5px;
   font-size: 2rem;
   display: inherit;
-  grid-column-start: 1;
-  grid-column-end: 5;
   display: flex;
   margin-top: 0;
-}
-@media (max-width: 767px) {
-  .global-header__logo {
-    grid-column-end: 9;
-  }
 }
 .global-header__logo a {
   font-family: "ff-meta-web-pro", sans-serif;
@@ -3310,7 +3296,7 @@ hr {
   flex-direction: row;
   justify-content: flex-end;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .global-header__membership-ctas {
     grid-row-start: 2;
     grid-column-start: 1;
@@ -3321,18 +3307,679 @@ hr {
   margin-right: 1rem;
 }
 
-.navigation.navigation--primary {
-  border-left: 0.125rem solid #979797;
-  padding-left: 1.5rem;
+@media (min-width: 1024px) {
+  .no-js .menu .menu__content .menu__content__header, .js .menu .menu__content .menu__content__header {
+    display: none;
+  }
+  .no-js .menu .menu__display__button, .js .menu .menu__display__button {
+    display: none;
+  }
 }
 
-.navigation__level1 {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
+@media (min-width: 1024px) {
+  .js .global-header .menu {
+    z-index: 5;
+    position: relative;
+    display: block;
+  }
+  .js .global-header .menu .menu__content {
+    display: inherit;
+  }
+  .js .global-header .menu .menu__content .menu__level1 {
+    display: flex;
+    flex-direction: row;
+  }
+  .js .global-header .menu .menu__content .menu__level1 ul {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+  }
+  .js .global-header .menu > .menu__display__button > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
 }
-.navigation__level1 > li {
-  margin-right: 0.5rem;
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu > .menu__display__button > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu > .menu__display__button > button:focus, .js .global-header .menu > .menu__display__button > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu > .menu__display__button > button {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    transition: background-color 0.6s;
+  }
+  .js .global-header .menu > .menu__display__button > button, .js .global-header .menu > .menu__display__button > button:focus, .js .global-header .menu > .menu__display__button > button:active {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .js .global-header .menu > .menu__display__button > button:focus .text {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu > .menu__display__button > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu > .menu__display__button > button {
+    display: flex;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+  .js .global-header .menu > .menu__display__button > button:active, .js .global-header .menu > .menu__display__button > button:focus {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu > .menu__display__button > button .menu__button__icon:before {
+    content: "\f00d";
+  }
+  .js .global-header .menu > .menu__content {
+    display: flex;
+  }
+  .js .global-header .menu > .menu__content ul li {
+    position: relative;
+  }
+  .js .global-header .menu > .menu__content ul li[data-open=true] > ul {
+    visibility: visible;
+    max-height: inherit;
+  }
+  .js .global-header .menu > .menu__content ul .menu-animation__slideOpen > ul {
+    animation-duration: 0.4s;
+    animation-name: slideOpen;
+  }
+  @keyframes slideOpen {
+    0% {
+      max-height: 0;
+      visibility: visible;
+    }
+    100% {
+      max-height: 100vh;
+    }
+  }
+  .js .global-header .menu .menu__level1,
+  .js .global-header .menu .menu__level2 {
+    list-style: none;
+    margin-left: 0;
+    margin-top: 0;
+    max-width: unset;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button .menu__button__icon:before,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before {
+    content: "\f078";
+    font-weight: 300;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button .menu__button__text,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button .menu__button__text {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
+    content: "\f077";
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > a > span,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > a > span {
+    display: inline;
+    border-bottom: 0.125rem solid #d61726;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-family: "ff-meta-web-pro", sans-serif;
+    font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    max-width: 55ch;
+    font-style: normal;
+    font-weight: 400;
+    font-family: "ibm-plex-sans", sans-serif;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    /**
+     * IBM Plex OpenType stylistic sets:
+     *
+     * ss01: 0/1 double-storey/simple 'a'
+     * ss02: 0/1 double-storey/simple 'g'
+     * ss03: 0/1 plain/slashed '0'
+     * ss04: 0/1 plain/dotted '0'
+     */
+    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li b,
+  .js .global-header .menu .menu__level1 li strong,
+  .js .global-header .menu .menu__level2 li b,
+  .js .global-header .menu .menu__level2 li strong {
+    font-weight: 700;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-style: italic;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-weight: 400;
+    max-width: unset;
+  }
+  .js .global-header .menu .menu__level1 li.menu__hierarchy > .menu__controls > a span,
+  .js .global-header .menu .menu__level2 li.menu__hierarchy > .menu__controls > a span {
+    border-bottom: 0.125rem solid #e5e5e5;
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > span:focus,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > span:focus {
+    outline: none;
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > span:focus > span,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > span:focus > span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level1 {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level1 > li {
+    font-size: 1.125rem;
+    line-height: 1.3333333333;
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.011em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.014em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li {
+    line-height: 1.625;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls {
+    border-bottom: 0.0625rem solid #494949;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus span, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #1e1e1e;
+    border: 0.25rem solid #1e1e1e;
+    border-bottom: 0.25rem solid #1e1e1e;
+    width: 2rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active, .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #1e1e1e;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a, .js .global-header .menu .menu__level1 > li > .menu__controls > span {
+    padding-left: 0.5rem;
+  }
+  .js .global-header .menu .menu__level1 > li:last-of-type[data-open=false] > .menu__controls {
+    border-bottom: none;
+  }
+  .js .global-header .menu .menu__level2 {
+    background-color: #303030;
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level2 > li {
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: -0.005em;
+    line-height: 1.625;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls {
+    border-bottom: 0.0625rem solid #696969;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a {
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus span, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #303030;
+    border: 0.25rem solid #303030;
+    border-bottom: 0.25rem solid #303030;
+    width: 2rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button {
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active, .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #303030;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a, .js .global-header .menu .menu__level2 > li > .menu__controls > span {
+    padding-left: 1rem;
+  }
+  .js .global-header .menu .menu__level2 > li:last-of-type[data-open=false] > .menu__controls {
+    border-bottom: none;
+  }
+  .js .global-header .menu .menu__controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+  }
+  .js .global-header .menu a,
+  .js .global-header .menu .menu__current > .menu__controls > span {
+    display: block;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  .js .global-header .menu li {
+    margin: 0;
+  }
 }
 
 .navigation-secondary {
@@ -3396,31 +4043,19 @@ hr {
     display: block;
   }
   .menu .menu__level1,
-  .menu .menu__level2,
-  .menu .menu__level3,
-  .menu .menu__level4,
-  .menu .menu__level5,
-  .menu .menu__level6 {
+  .menu .menu__level2 {
     list-style: none;
     margin-left: 0;
     margin-top: 0;
     max-width: unset;
   }
   .menu .menu__level1 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level3 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level4 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level5 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level6 > li > .menu__controls > button .menu__button__icon:before {
+  .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before {
     content: "\f078";
     font-weight: 300;
   }
   .menu .menu__level1 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level2 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level3 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level4 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level5 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level6 > li > .menu__controls > button .menu__button__text {
+  .menu .menu__level2 > li > .menu__controls > button .menu__button__text {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -3431,19 +4066,11 @@ hr {
     width: 1px;
   }
   .menu .menu__level1 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level3 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level4 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level5 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level6 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
+  .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
     content: "\f077";
   }
   .menu .menu__level1 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level2 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level3 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level4 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level5 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level6 li.menu__current > .menu__controls > a > span {
+  .menu .menu__level2 li.menu__current > .menu__controls > a > span {
     display: inline;
     border-bottom: 0.125rem solid #d61726;
   }
@@ -3543,171 +4170,6 @@ hr {
   .menu .menu__level1 li.menu__current > .menu__controls > span:focus > span,
   .menu .menu__level2 li.menu__current > .menu__controls > span:focus > span {
     outline-color: #ffffff;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-size: 0.889rem;
-    line-height: 1.625;
-    letter-spacing: 0em;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    max-width: 55ch;
-    font-style: normal;
-    font-weight: 400;
-    font-family: "ibm-plex-sans", sans-serif;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-size: 1rem;
-    line-height: 1.625;
-    letter-spacing: -0.005em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1280px) and (max-width: 1919px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.008em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1920px) and (max-width: 3839px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.013em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 3840px) and (max-width: 7679px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 7680px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    /**
-     * IBM Plex OpenType stylistic sets:
-     *
-     * ss01: 0/1 double-storey/simple 'a'
-     * ss02: 0/1 double-storey/simple 'g'
-     * ss03: 0/1 plain/slashed '0'
-     * ss04: 0/1 plain/dotted '0'
-     */
-    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
-  }
-  .menu .menu__level3 li i,
-  .menu .menu__level3 li em,
-  .menu .menu__level4 li i,
-  .menu .menu__level4 li em,
-  .menu .menu__level5 li i,
-  .menu .menu__level5 li em,
-  .menu .menu__level6 li i,
-  .menu .menu__level6 li em {
-    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
-  }
-  .menu .menu__level3 li b,
-  .menu .menu__level3 li strong,
-  .menu .menu__level4 li b,
-  .menu .menu__level4 li strong,
-  .menu .menu__level5 li b,
-  .menu .menu__level5 li strong,
-  .menu .menu__level6 li b,
-  .menu .menu__level6 li strong {
-    font-weight: 700;
-  }
-  .menu .menu__level3 li i,
-  .menu .menu__level3 li em,
-  .menu .menu__level4 li i,
-  .menu .menu__level4 li em,
-  .menu .menu__level5 li i,
-  .menu .menu__level5 li em,
-  .menu .menu__level6 li i,
-  .menu .menu__level6 li em {
-    font-style: italic;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1280px) and (max-width: 1919px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.005em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1920px) and (max-width: 3839px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.01em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 3840px) and (max-width: 7679px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 7680px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-weight: 400;
-    max-width: unset;
-  }
-  .menu .menu__level3 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level4 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level5 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level6 li.menu__hierarchy > .menu__controls > a span {
-    border-bottom: 0.125rem solid #303030;
-  }
-  .menu .menu__level3 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level4 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level5 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level6 li.menu__current > .menu__controls > span:focus {
-    outline: none;
-  }
-  .menu .menu__level3 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level4 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level5 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level6 li.menu__current > .menu__controls > span:focus > span {
-    outline-color: #0c0c0e;
     outline-offset: 0.1875rem;
     outline-style: solid;
     outline-width: 0.125rem;
@@ -4096,634 +4558,6 @@ hr {
   .menu .menu__level2 > li:last-of-type[data-open=false] > .menu__controls {
     border-bottom: none;
   }
-  .menu .menu__level3 {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-  }
-  .menu .menu__level3 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level3 > li > .menu__controls > a {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level3 > li > .menu__controls > a:focus span, .menu .menu__level3 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > a:hover {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #f2f2f2;
-    border: 0.25rem solid #f2f2f2;
-    border-bottom: 0.25rem solid #f2f2f2;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level3 > li > .menu__controls > button {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level3 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > button:hover {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active, .menu .menu__level3 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #f2f2f2;
-  }
-  .menu .menu__level3 > li > .menu__controls > a, .menu .menu__level3 > li > .menu__controls > span {
-    padding-left: 1.5rem;
-  }
-  .menu .menu__level4 {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-  }
-  .menu .menu__level4 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level4 > li > .menu__controls > a {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level4 > li > .menu__controls > a:focus span, .menu .menu__level4 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > a:hover {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #e5e5e5;
-    border: 0.25rem solid #e5e5e5;
-    border-bottom: 0.25rem solid #e5e5e5;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level4 > li > .menu__controls > button {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level4 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > button:hover {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active, .menu .menu__level4 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #e5e5e5;
-  }
-  .menu .menu__level4 > li > .menu__controls > a, .menu .menu__level4 > li > .menu__controls > span {
-    padding-left: 2rem;
-  }
-  .menu .menu__level5 {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-  .menu .menu__level5 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > a:focus, .menu .menu__level5 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level5 > li > .menu__controls > a {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level5 > li > .menu__controls > a:focus, .menu .menu__level5 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level5 > li > .menu__controls > a:focus span, .menu .menu__level5 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > a:hover {
-    background-color: #bebebe;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #d8d8d8;
-    border: 0.25rem solid #d8d8d8;
-    border-bottom: 0.25rem solid #d8d8d8;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level5 > li > .menu__controls > button {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level5 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > button:hover {
-    background-color: #bebebe;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active, .menu .menu__level5 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #d8d8d8;
-  }
-  .menu .menu__level5 > li > .menu__controls > a, .menu .menu__level5 > li > .menu__controls > span {
-    padding-left: 2.5rem;
-  }
-  .menu .menu__level6 {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-  .menu .menu__level6 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > a:focus, .menu .menu__level6 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level6 > li > .menu__controls > a {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level6 > li > .menu__controls > a:focus, .menu .menu__level6 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level6 > li > .menu__controls > a:focus span, .menu .menu__level6 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > a:hover {
-    background-color: #a1a1a1;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #cbcbcb;
-    border: 0.25rem solid #cbcbcb;
-    border-bottom: 0.25rem solid #cbcbcb;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level6 > li > .menu__controls > button {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level6 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > button:hover {
-    background-color: #a1a1a1;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active, .menu .menu__level6 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #cbcbcb;
-  }
-  .menu .menu__level6 > li > .menu__controls > a, .menu .menu__level6 > li > .menu__controls > span {
-    padding-left: 3rem;
-  }
   .menu .menu__controls {
     display: flex;
     flex-direction: row;
@@ -4747,15 +4581,6 @@ hr {
   }
 }
 
-.no-js .menu {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .js .menu {
-    display: none;
-  }
-}
 .js .menu .menu__content {
   display: none;
 }
@@ -5422,10 +5247,5 @@ hr {
   }
   100% {
     background-color: rgba(30, 30, 30, 0);
-  }
-}
-@media (min-width: 1024px) {
-  .js .menu__veil[data-on=true] {
-    display: none;
   }
 }
