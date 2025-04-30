@@ -8767,7 +8767,6 @@ function launchPattern(pattern) {
   }
 }
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('this launched');
   if (/(Trident|MSIE)/.test(navigator.userAgent)) {
     return;
   } else {
