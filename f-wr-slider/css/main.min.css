@@ -5751,7 +5751,6 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0.1875rem;
@@ -5761,6 +5760,10 @@ hr {
   font-size: 0.889rem;
   line-height: 1.625;
   letter-spacing: 0em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #ffffff;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   .js .slider[data-style=arrows] + .slider__controls .slider__indicator,
@@ -5787,10 +5790,12 @@ hr {
   }
 }
 .js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__current,
-.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__divider,
-.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__current,
-.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__divider {
-  color: #696969;
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__current {
+  font-weight: 700;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__current:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__current:before {
+  content: "0";
 }
 .js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__divider,
 .js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__divider {
@@ -5808,19 +5813,27 @@ hr {
   position: absolute;
   width: 1px;
 }
-.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__total,
-.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__total {
-  color: #d61726;
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__total:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__total:before {
+  content: "0";
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__line,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__line {
+  width: 15rem;
+  display: inline-block;
+  border-top: 0.125rem solid #d61726;
+  margin: 0.5rem;
 }
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev,
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__next,
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev,
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__next {
   background-color: transparent;
-  border-color: #d61726;
+  border-color: #ffffff;
   border-style: solid;
   border-width: 0.0625rem;
-  color: #d61726;
+  border-radius: 50%;
+  color: #ffffff;
   padding: 0.75rem;
   transition: background-color 0.2s ease-in, border-color 0.2s ease-in, color 0.2s ease-in;
 }
@@ -5840,7 +5853,7 @@ hr {
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:active:not(:disabled),
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:focus:not(:disabled),
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:active:not(:disabled) {
-  outline-color: #0c0c0e;
+  outline-color: #d61726;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -5850,15 +5863,17 @@ hr {
   .js .slider[data-style=arrows] + .slider__controls .slider__controls__next:hover:not(:disabled),
   .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:hover:not(:disabled),
   .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:hover:not(:disabled) {
-    background-color: #d61726;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #0c0c0e;
   }
 }
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:disabled,
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__next:disabled,
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:disabled,
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:disabled {
-  border-color: transparent;
+  border-color: #696969;
+  border-style: solid;
+  border-width: 0.0625rem;
   color: #696969;
   cursor: default;
 }
@@ -6093,5 +6108,41 @@ hr {
   .js main article:first-child .slider[data-cardsperrow][data-small=true][data-nonav-cardsperrow="2"] .card--casestudy .card__details {
     height: 100%;
   }
+}
+
+.card__details__heading {
+  font-size: 2.28rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.017em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+.card__details__heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.card__details__text {
+  display: flex;
+  flex-direction: row;
 }
 /*# sourceMappingURL=main.min.css.map */
