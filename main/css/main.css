@@ -2960,6 +2960,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
   color: #ffffff;
   display: inline-block;
   position: relative;
+  z-index: 0;
   margin-left: 0.75rem;
 }
 .slanted-txt-bg:before {
