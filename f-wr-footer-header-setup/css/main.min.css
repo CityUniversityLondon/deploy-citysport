@@ -699,6 +699,46 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f077\f077";
 }
 
+.fa-circle-chevron-down {
+  --fa: "\f13a";
+  --fa--fa: "\f13a\f13a";
+}
+
+.fa-chevron-circle-down {
+  --fa: "\f13a";
+  --fa--fa: "\f13a\f13a";
+}
+
+.fa-circle-chevron-left {
+  --fa: "\f137";
+  --fa--fa: "\f137\f137";
+}
+
+.fa-chevron-circle-left {
+  --fa: "\f137";
+  --fa--fa: "\f137\f137";
+}
+
+.fa-circle-chevron-right {
+  --fa: "\f138";
+  --fa--fa: "\f138\f138";
+}
+
+.fa-chevron-circle-right {
+  --fa: "\f138";
+  --fa--fa: "\f138\f138";
+}
+
+.fa-circle-chevron-up {
+  --fa: "\f139";
+  --fa--fa: "\f139\f139";
+}
+
+.fa-chevron-circle-up {
+  --fa: "\f139";
+  --fa--fa: "\f139\f139";
+}
+
 .fa-clock {
   --fa: "\f017";
   --fa--fa: "\f017\f017";
@@ -3650,7 +3690,7 @@ hr {
     outline-width: 0.125rem;
   }
   .js .global-header .menu .menu__level1 {
-    background-color: #1e1e1e;
+    background-color: #0c0c0e;
     color: #ffffff;
   }
   .js .global-header .menu .menu__level1 > li {
@@ -3682,9 +3722,6 @@ hr {
 @media (min-width: 1024px) {
   .js .global-header .menu .menu__level1 > li {
     line-height: 1.625;
-  }
-  .js .global-header .menu .menu__level1 > li > .menu__controls {
-    border-bottom: 0.0625rem solid #494949;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > a {
     background-color: initial;
@@ -3736,7 +3773,7 @@ hr {
     text-decoration: none;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > a {
-    background-color: #1e1e1e;
+    background-color: #0c0c0e;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -3771,9 +3808,9 @@ hr {
     outline-style: none;
     outline-width: 0;
     text-decoration: none;
-    background: #1e1e1e;
-    border: 0.25rem solid #1e1e1e;
-    border-bottom: 0.25rem solid #1e1e1e;
+    background: #0c0c0e;
+    border: 0.25rem solid #0c0c0e;
+    border-bottom: 0.25rem solid #0c0c0e;
     width: 2rem;
   }
 }
@@ -3817,7 +3854,7 @@ hr {
     outline-width: 0.125rem;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > button {
-    background-color: #1e1e1e;
+    background-color: #0c0c0e;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -3834,7 +3871,7 @@ hr {
 @media (min-width: 1024px) {
   .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active, .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
     outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #1e1e1e;
+    border-bottom: 0.25rem solid #0c0c0e;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > a, .js .global-header .menu .menu__level1 > li > .menu__controls > span {
     padding-left: 0.5rem;
