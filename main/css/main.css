@@ -699,6 +699,46 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f077\f077";
 }
 
+.fa-circle-chevron-down {
+  --fa: "\f13a";
+  --fa--fa: "\f13a\f13a";
+}
+
+.fa-chevron-circle-down {
+  --fa: "\f13a";
+  --fa--fa: "\f13a\f13a";
+}
+
+.fa-circle-chevron-left {
+  --fa: "\f137";
+  --fa--fa: "\f137\f137";
+}
+
+.fa-chevron-circle-left {
+  --fa: "\f137";
+  --fa--fa: "\f137\f137";
+}
+
+.fa-circle-chevron-right {
+  --fa: "\f138";
+  --fa--fa: "\f138\f138";
+}
+
+.fa-chevron-circle-right {
+  --fa: "\f138";
+  --fa--fa: "\f138\f138";
+}
+
+.fa-circle-chevron-up {
+  --fa: "\f139";
+  --fa--fa: "\f139\f139";
+}
+
+.fa-chevron-circle-up {
+  --fa: "\f139";
+  --fa--fa: "\f139\f139";
+}
+
 .fa-clock {
   --fa: "\f017";
   --fa--fa: "\f017\f017";
