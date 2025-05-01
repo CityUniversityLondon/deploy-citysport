@@ -2955,6 +2955,24 @@ iframe[src*=issuu], iframe[src*=prezi] {
   display: none !important;
 }
 
+.slanted-txt-bg {
+  background: #d61726;
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  margin-left: 0.75rem;
+}
+.slanted-txt-bg:before {
+  display: block;
+  content: "";
+  width: calc(100% + 1.5rem);
+  transform: translateX(-0.75rem) skew(-20deg);
+  height: 100%;
+  position: absolute;
+  background: #d61726;
+  z-index: -1;
+}
+
 .global-footer {
   background: #0c0c0e;
   color: #ffffff;
