@@ -3002,9 +3002,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
   color: #ffffff;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 3rem;
+  padding: 3rem 0 2rem 0;
   font-size: 1rem;
   line-height: 1.625;
   letter-spacing: -0.005em;
