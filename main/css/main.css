@@ -18,7 +18,7 @@
 }
 
 html {
-  background-color: #0c0c0e;
+  background-color: #111111;
   color: #ffffff;
   box-sizing: border-box;
   min-height: 100%;
@@ -55,7 +55,7 @@ body {
 }
 
 main article {
-  background-color: #0c0c0e;
+  background-color: #111111;
   grid-column: 1/-1;
   height: max-content;
   padding-bottom: 2rem;
@@ -1359,7 +1359,7 @@ readers do not read off random characters that represent icons */
 .cta:focus, .cta:active,
 .cta--basic:focus,
 .cta--basic:active {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -1459,7 +1459,7 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
 }
 .cta--white:focus, .cta--white:active {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -1548,7 +1548,7 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
 }
 .cta--member:focus, .cta--member:active {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -1572,20 +1572,20 @@ readers do not read off random characters that represent icons */
 }
 .cta--member, .cta--member:focus, .cta--member:active {
   background-color: #CCCCCC;
-  color: #0c0c0e;
+  color: #111111;
   border: 0.125rem solid #CCCCCC;
 }
 .cta--member span, .cta--member:focus span, .cta--member:active span {
-  color: #0c0c0e;
+  color: #111111;
 }
 @media (hover: hover) {
   .cta--member:hover {
     background-color: rgb(188.7, 188.7, 188.7);
-    color: #0c0c0e;
+    color: #111111;
     border: 0.125rem solid rgb(188.7, 188.7, 188.7);
   }
   .cta--member:hover span {
-    color: #0c0c0e;
+    color: #111111;
   }
 }
 
@@ -1637,7 +1637,7 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
 }
 .cta--book-class:focus, .cta--book-class:active {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -1726,7 +1726,7 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
 }
 .cta--white--viewpro:focus, .cta--white--viewpro:active {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -2998,7 +2998,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
 }
 
 .global-footer {
-  background: #0c0c0e;
+  background: #111111;
   color: #ffffff;
   margin-left: 0;
   margin-right: 0;
@@ -3588,7 +3588,7 @@ hr {
     padding-top: 0;
   }
   .js .global-header .menu > .menu__display__button > button:active, .js .global-header .menu > .menu__display__button > button:focus {
-    outline-color: #0c0c0e;
+    outline-color: #111111;
     outline-offset: 0.1875rem;
     outline-style: solid;
     outline-width: 0.125rem;
@@ -3752,7 +3752,7 @@ hr {
     outline-width: 0.125rem;
   }
   .js .global-header .menu .menu__level1 {
-    background-color: #0c0c0e;
+    background-color: #111111;
     color: #ffffff;
   }
   .js .global-header .menu .menu__level1 > li {
@@ -3835,7 +3835,7 @@ hr {
     text-decoration: none;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > a {
-    background-color: #0c0c0e;
+    background-color: #111111;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -3870,9 +3870,9 @@ hr {
     outline-style: none;
     outline-width: 0;
     text-decoration: none;
-    background: #0c0c0e;
-    border: 0.25rem solid #0c0c0e;
-    border-bottom: 0.25rem solid #0c0c0e;
+    background: #111111;
+    border: 0.25rem solid #111111;
+    border-bottom: 0.25rem solid #111111;
     width: 2rem;
   }
 }
@@ -3916,7 +3916,7 @@ hr {
     outline-width: 0.125rem;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > button {
-    background-color: #0c0c0e;
+    background-color: #111111;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -3933,7 +3933,7 @@ hr {
 @media (min-width: 1024px) {
   .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active, .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
     outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #0c0c0e;
+    border-bottom: 0.25rem solid #111111;
   }
   .js .global-header .menu .menu__level1 > li > .menu__controls > a, .js .global-header .menu .menu__level1 > li > .menu__controls > span {
     padding-left: 0.5rem;
@@ -4852,7 +4852,7 @@ hr {
   padding-top: 0;
 }
 .js .menu[data-open=true] > .menu__display__button > button:active, .js .menu[data-open=true] > .menu__display__button > button:focus {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -5063,7 +5063,7 @@ hr {
   position: relative;
 }
 .js .menu > .menu__display__button .menu__display__button__button:active, .js .menu > .menu__display__button .menu__display__button__button:focus {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -5495,7 +5495,7 @@ hr {
   margin-top: 0;
 }
 .js .slider .slide:focus {
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
@@ -5898,7 +5898,7 @@ hr {
   .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:hover:not(:disabled),
   .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:hover:not(:disabled) {
     background-color: #ffffff;
-    color: #0c0c0e;
+    color: #111111;
   }
 }
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:disabled,
@@ -6081,7 +6081,7 @@ hr {
 .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:focus {
   background-color: #1e1e1e;
   border: 0.125rem dotted #1e1e1e;
-  outline-color: #0c0c0e;
+  outline-color: #111111;
   outline-offset: 0.1875rem;
   outline-style: dotted;
   outline-width: 0.125rem;
