@@ -8634,6 +8634,7 @@ function handleNextPrevClick(slider, controls, direction) {
       previous.dataset.sliderposition = 0;
       previous.dataset.smallposition = 0;
       // Updates pagination to current slide
+      console.log(currentPage.innerText = slides.indexOf(previous));
       currentPage.innerText = slides.indexOf(previous) + 1;
     }
   }
@@ -8693,6 +8694,7 @@ function launchArrow(slider) {
     indicator = document.createElement('div'),
     currentPage = document.createElement('span'),
     totalPages = document.createElement('span'),
+    indicatorLine = document.createElement('span'),
     divider = document.createElement('span'),
     dividerVisible = document.createElement('span'),
     dividerScreenReader = document.createElement('span');
@@ -8755,7 +8757,7 @@ function launchArrow(slider) {
   currentPage.className = className + '__indicator__current';
 
   // Divider between 1 / 4 etc.
-  dividerVisible.appendChild(document.createTextNode('/'));
+  dividerVisible.appendChild(document.createTextNode(' of '));
   dividerVisible.className = className + '__indicator__divider--visible';
   dividerVisible.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_20__["default"].hidden, 'true');
   dividerScreenReader.appendChild(document.createTextNode(' of '));
@@ -8768,10 +8770,14 @@ function launchArrow(slider) {
   totalPages.className = className + '__indicator__total';
   totalPages.appendChild(document.createTextNode(slides.length));
 
+  // Indicator line
+  indicatorLine.className = className + '__indicator__line';
+
   // Add to page
   indicator.appendChild(currentPage);
   indicator.appendChild(divider);
   indicator.appendChild(totalPages);
+  indicator.appendChild(indicatorLine);
   indicator.className = className + '__indicator';
 
   // Wrap element around slider__controls
