@@ -54,37 +54,37 @@ body {
   width: 4rem;
 }
 
-main {
+main article {
+  background-color: #0c0c0e;
+  grid-column: 1/-1;
+  height: max-content;
+}
+main article {
   margin-left: 1rem;
   margin-right: 1rem;
   max-width: 80rem;
 }
 @media (min-width: 901px) {
-  main {
+  main article {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 }
-main {
+main article {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 @media (min-width: 901px) {
-  main {
+  main article {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 @media (min-width: 1441px) {
-  main {
+  main article {
     margin-left: auto;
     margin-right: auto;
   }
-}
-main article {
-  background-color: #0c0c0e;
-  grid-column: 1/-1;
-  height: max-content;
 }
 main article .content-wrapper {
   display: grid;
@@ -1020,6 +1020,28 @@ readers do not read off random characters that represent icons */
 .fasl,
 .fa-light {
   font-weight: 300;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-sharp: "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Sharp";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-sharp-regular-400.woff2") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
+}
+.fasr,
+.fa-regular {
+  font-weight: 400;
 }
 
 .alpha-type {
@@ -2955,6 +2977,25 @@ iframe[src*=issuu], iframe[src*=prezi] {
   display: none !important;
 }
 
+.slanted-txt-bg {
+  background: #d61726;
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  margin-left: 0.75rem;
+}
+.slanted-txt-bg:before {
+  display: block;
+  content: "";
+  width: calc(100% + 1.5rem);
+  transform: translateX(-0.75rem) skew(-20deg);
+  height: 100%;
+  position: absolute;
+  background: #d61726;
+  z-index: -1;
+}
+
 .global-footer {
   background: #0c0c0e;
   color: #ffffff;
@@ -2963,33 +3004,52 @@ iframe[src*=issuu], iframe[src*=prezi] {
   padding-left: 0;
   padding-right: 0;
   padding-top: 3rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  letter-spacing: -0.005em;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) and (max-width: 1919px) {
   .global-footer {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 80rem;
+    letter-spacing: -0.008em;
   }
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .global-footer {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .global-footer {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .global-footer {
+    letter-spacing: -0.017em;
+  }
+}
+.global-footer {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 80rem;
+}
+@media (min-width: 901px) {
   .global-footer {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
-  .global-footer {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+.global-footer {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 901px) {
   .global-footer {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
-@media (min-width: 1024px) and (min-width: 1441px) {
+@media (min-width: 1441px) {
   .global-footer {
     margin-left: auto;
     margin-right: auto;
@@ -3012,27 +3072,26 @@ iframe[src*=issuu], iframe[src*=prezi] {
   }
 }
 
-.global-footer__container {
-  padding-bottom: 2rem;
-}
-.global-footer__container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 901px) {
-  .global-footer__container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
 .global-footer__header-logo {
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.5px;
-  font-size: 2.5rem;
-  font-family: "ff-meta-web", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
   display: flex;
+  justify-content: center;
+}
+@media (min-width: 900px) {
+  .global-footer__header-logo {
+    justify-content: flex-start;
+  }
+}
+.global-footer__header-logo a {
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.global-footer__header-logo a i,
+.global-footer__header-logo a em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
 }
 .global-footer__header-logo a:visited {
   color: #ffffff;
@@ -3051,12 +3110,24 @@ iframe[src*=issuu], iframe[src*=prezi] {
 .global-footer__social-media {
   display: flex;
   align-items: self-end;
-  justify-content: flex-end;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .global-footer__social-media {
+    grid-column: 1/-1;
+  }
+}
+@media (min-width: 900px) {
+  .global-footer__social-media {
+    grid-column: auto/auto;
+    justify-content: flex-end;
+  }
 }
 
 .global-footer__social-media__icons {
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }
 .global-footer__social-media__icons .global-footer__social-media__icon {
   margin-right: 1.5rem;
@@ -3065,34 +3136,66 @@ iframe[src*=issuu], iframe[src*=prezi] {
   margin-right: 0;
 }
 
+.global-footer__top {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .global-footer__top {
+    text-align: left;
+    grid-template-columns: repeat(3, auto);
+  }
+}
+@media (min-width: 900px) {
+  .global-footer__top {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+@media (min-width: 1024px) {
+  .global-footer__top {
+    grid-template-columns: repeat(3, 1fr) auto;
+  }
+}
+
+.global-footer__btm {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .global-footer__btm {
+    text-align: left;
+    grid-template-columns: 75% 1fr;
+  }
+}
+
+.global-footer__btm__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .global-footer__btm__logo {
+    justify-content: flex-end;
+  }
+}
+
 .global-footer__row {
+  display: grid;
+  gap: 1rem;
   margin-top: 1rem;
-  display: flex;
-  column-gap: 1rem;
-}
-.global-footer__row:nth-of-type(2) .global-footer__content {
-  display: flex;
-  width: 100%;
-}
-.global-footer__row:nth-of-type(2) .global-footer__content__text {
-  flex-basis: 75%;
-}
-.global-footer__row:nth-of-type(2) .global-footer__content__text p, .global-footer__row:nth-of-type(2) .global-footer__content__text ul {
-  margin-bottom: 1rem;
-}
-.global-footer__row:nth-of-type(2) .global-footer__content__logo {
-  flex-basis: 25%;
-  display: flex;
-  justify-content: flex-end;
-}
-.global-footer__row:nth-of-type(2) .logo {
-  height: 100%;
 }
 
 .global-footer__useful-links {
   list-style-type: none;
   display: flex;
   flex-direction: row;
+  margin: 1rem 0;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .global-footer__useful-links {
+    justify-content: flex-start;
+  }
 }
 .global-footer__useful-links li {
   border-right: thin solid white;
@@ -3107,14 +3210,12 @@ iframe[src*=issuu], iframe[src*=prezi] {
   font-weight: 700;
 }
 
-.global-footer__col {
-  flex-basis: 25%;
-}
 .global-footer__col ul {
   list-style-type: none;
 }
 
 hr {
+  border-style: solid;
   border-color: #979797;
   margin-top: 3rem;
 }
@@ -3124,35 +3225,31 @@ hr {
 }
 
 .footer-oh {
-  width: 100%;
   padding-top: 3rem;
+  padding-bottom: 2rem;
 }
-@media (min-width: 1024px) {
-  .footer-oh {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 80rem;
-  }
+.footer-oh {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 80rem;
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 901px) {
   .footer-oh {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
-  .footer-oh {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+.footer-oh {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 901px) {
   .footer-oh {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
-@media (min-width: 1024px) and (min-width: 1441px) {
+@media (min-width: 1441px) {
   .footer-oh {
     margin-left: auto;
     margin-right: auto;
@@ -3172,20 +3269,6 @@ hr {
 @media (min-width: 1024px) and (min-width: 901px) {
   .footer-oh {
     grid-column-gap: 1.5rem;
-  }
-}
-
-.footer-oh__container {
-  padding-bottom: 2rem;
-}
-.footer-oh__container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 901px) {
-  .footer-oh__container {
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 }
 
@@ -3276,64 +3359,52 @@ hr {
 .global-header {
   margin-top: 2rem;
 }
-@media (min-width: 1024px) {
-  .global-header {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 80rem;
-  }
+.global-header {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 80rem;
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 901px) {
   .global-header {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
-  .global-header {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+.global-header {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 901px) {
   .global-header {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
-@media (min-width: 1024px) and (min-width: 1441px) {
+@media (min-width: 1441px) {
   .global-header {
     margin-left: auto;
     margin-right: auto;
   }
 }
-.global-header .navigation--primary {
-  grid-column-start: 5;
-  grid-column-end: 14;
-  grid-row-start: 1;
+.global-header .global-header__logo {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
-@media (max-width: 768px) {
-  .global-header .navigation--primary {
-    display: none;
-  }
-}
-.global-header .navigation--secondary {
-  grid-column-start: 6;
-  grid-column-end: 14;
-  grid-row-start: 2;
-}
-@media (max-width: 768px) {
-  .global-header .navigation--secondary {
-    display: none;
+@media (max-width: 1023px) {
+  .global-header .global-header__logo {
+    grid-column-end: 9;
   }
 }
 .global-header .menu {
   grid-column-end: 25;
   grid-column-start: 14;
+  grid-row-start: 1;
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   .global-header .menu {
-    display: none;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-start: 2;
   }
 }
 
@@ -3341,16 +3412,6 @@ hr {
   display: grid;
   border-bottom: 0.1875rem solid #222222;
   padding-bottom: 1.5rem;
-}
-.global-header__content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 901px) {
-  .global-header__content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 .global-header__content {
   grid-column-gap: 0;
@@ -3371,17 +3432,18 @@ hr {
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.5px;
-  font-size: 2.5rem;
-  font-family: "ff-meta-web", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
   display: inherit;
-  grid-column-start: 1;
-  grid-column-end: 5;
   display: flex;
+  margin-top: 0;
 }
-@media (max-width: 767px) {
-  .global-header__logo {
-    grid-column-end: 9;
-  }
+.global-header__logo a {
+  font-family: "ff-meta-web-pro", sans-serif;
+  font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+}
+.global-header__logo a i,
+.global-header__logo a em {
+  font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
 }
 .global-header__logo a:visited {
   color: #ffffff;
@@ -3404,7 +3466,7 @@ hr {
   flex-direction: row;
   justify-content: flex-end;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .global-header__membership-ctas {
     grid-row-start: 2;
     grid-column-start: 1;
@@ -3415,18 +3477,676 @@ hr {
   margin-right: 1rem;
 }
 
-.navigation.navigation--primary {
-  border-left: 0.125rem solid #979797;
-  padding-left: 1.5rem;
+@media (min-width: 1024px) {
+  .no-js .menu .menu__content .menu__content__header, .js .menu .menu__content .menu__content__header {
+    display: none;
+  }
+  .no-js .menu .menu__display__button, .js .menu .menu__display__button {
+    display: none;
+  }
 }
 
-.navigation__level1 {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
+@media (min-width: 1024px) {
+  .js .global-header .menu {
+    z-index: 5;
+    position: relative;
+    display: block;
+  }
+  .js .global-header .menu .menu__content {
+    display: inherit;
+  }
+  .js .global-header .menu .menu__content .menu__level1 {
+    display: flex;
+    flex-direction: row;
+  }
+  .js .global-header .menu .menu__content .menu__level1 ul {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+  }
+  .js .global-header .menu > .menu__display__button > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
 }
-.navigation__level1 > li {
-  margin-right: 0.5rem;
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu > .menu__display__button > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu > .menu__display__button > button:focus, .js .global-header .menu > .menu__display__button > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu > .menu__display__button > button {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    transition: background-color 0.6s;
+  }
+  .js .global-header .menu > .menu__display__button > button, .js .global-header .menu > .menu__display__button > button:focus, .js .global-header .menu > .menu__display__button > button:active {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .js .global-header .menu > .menu__display__button > button:focus .text {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu > .menu__display__button > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu > .menu__display__button > button {
+    display: flex;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+  .js .global-header .menu > .menu__display__button > button:active, .js .global-header .menu > .menu__display__button > button:focus {
+    outline-color: #0c0c0e;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu > .menu__display__button > button .menu__button__icon:before {
+    content: "\f00d";
+  }
+  .js .global-header .menu > .menu__content {
+    display: flex;
+  }
+  .js .global-header .menu > .menu__content ul li {
+    position: relative;
+  }
+  .js .global-header .menu > .menu__content ul li[data-open=true] > ul {
+    visibility: visible;
+    max-height: inherit;
+  }
+  .js .global-header .menu > .menu__content ul .menu-animation__slideOpen > ul {
+    animation-duration: 0.4s;
+    animation-name: slideOpen;
+  }
+  @keyframes slideOpen {
+    0% {
+      max-height: 0;
+      visibility: visible;
+    }
+    100% {
+      max-height: 100vh;
+    }
+  }
+  .js .global-header .menu .menu__level1,
+  .js .global-header .menu .menu__level2 {
+    list-style: none;
+    margin-left: 0;
+    margin-top: 0;
+    max-width: unset;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button .menu__button__icon:before,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before {
+    content: "\f078";
+    font-weight: 300;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button .menu__button__text,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button .menu__button__text {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
+    content: "\f077";
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > a > span,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > a > span {
+    display: inline;
+    border-bottom: 0.125rem solid #d61726;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-family: "ff-meta-web-pro", sans-serif;
+    font-feature-settings: "ss01" 1, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    max-width: 55ch;
+    font-style: normal;
+    font-weight: 400;
+    font-family: "ibm-plex-sans", sans-serif;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    /**
+     * IBM Plex OpenType stylistic sets:
+     *
+     * ss01: 0/1 double-storey/simple 'a'
+     * ss02: 0/1 double-storey/simple 'g'
+     * ss03: 0/1 plain/slashed '0'
+     * ss04: 0/1 plain/dotted '0'
+     */
+    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li b,
+  .js .global-header .menu .menu__level1 li strong,
+  .js .global-header .menu .menu__level2 li b,
+  .js .global-header .menu .menu__level2 li strong {
+    font-weight: 700;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-style: italic;
+  }
+  .js .global-header .menu .menu__level1 li i,
+  .js .global-header .menu .menu__level1 li em,
+  .js .global-header .menu .menu__level2 li i,
+  .js .global-header .menu .menu__level2 li em {
+    font-feature-settings: "ss01" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "liga" 1;
+  }
+  .js .global-header .menu .menu__level1 li,
+  .js .global-header .menu .menu__level2 li {
+    font-weight: 400;
+    max-width: unset;
+  }
+  .js .global-header .menu .menu__level1 li.menu__hierarchy > .menu__controls > a span,
+  .js .global-header .menu .menu__level2 li.menu__hierarchy > .menu__controls > a span {
+    border-bottom: 0.125rem solid #e5e5e5;
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > span:focus,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > span:focus {
+    outline: none;
+  }
+  .js .global-header .menu .menu__level1 li.menu__current > .menu__controls > span:focus > span,
+  .js .global-header .menu .menu__level2 li.menu__current > .menu__controls > span:focus > span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level1 {
+    background-color: #0c0c0e;
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level1 > li {
+    font-size: 1.125rem;
+    line-height: 1.3333333333;
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.011em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.014em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level1 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li {
+    line-height: 1.625;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a {
+    background-color: #0c0c0e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:focus span, .js .global-header .menu .menu__level1 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #0c0c0e;
+    border: 0.25rem solid #0c0c0e;
+    border-bottom: 0.25rem solid #0c0c0e;
+    width: 2rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button {
+    background-color: #0c0c0e;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    background-color: #494949;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level1 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level1 > li > .menu__controls > button:active, .js .global-header .menu .menu__level1 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #0c0c0e;
+  }
+  .js .global-header .menu .menu__level1 > li > .menu__controls > a, .js .global-header .menu .menu__level1 > li > .menu__controls > span {
+    padding-left: 0.5rem;
+  }
+  .js .global-header .menu .menu__level1 > li:last-of-type[data-open=false] > .menu__controls {
+    border-bottom: none;
+  }
+  .js .global-header .menu .menu__level2 {
+    background-color: #303030;
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level2 > li {
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: -0.005em;
+    line-height: 1.625;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1280px) and (max-width: 1919px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.008em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1920px) and (max-width: 3839px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.013em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 3840px) and (max-width: 7679px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) and (min-width: 7680px) {
+  .js .global-header .menu .menu__level2 > li {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls {
+    border-bottom: 0.0625rem solid #696969;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a {
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active {
+    color: #ffffff;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:focus span, .js .global-header .menu .menu__level2 > li > .menu__controls > a:active span {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+    background: #303030;
+    border: 0.25rem solid #303030;
+    border-bottom: 0.25rem solid #303030;
+    width: 2rem;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active {
+    outline-color: #ffffff;
+    outline-offset: 0.1875rem;
+    outline-style: solid;
+    outline-width: 0.125rem;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button {
+    background-color: #303030;
+    color: #ffffff;
+    transition: background-color ease-out 0.2s;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus span {
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    background-color: #696969;
+    color: #ffffff;
+  }
+}
+@media (min-width: 1024px) {
+  .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active, .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
+    outline-offset: -0.0625rem;
+    border-bottom: 0.25rem solid #303030;
+  }
+  .js .global-header .menu .menu__level2 > li > .menu__controls > a, .js .global-header .menu .menu__level2 > li > .menu__controls > span {
+    padding-left: 1rem;
+  }
+  .js .global-header .menu .menu__level2 > li:last-of-type[data-open=false] > .menu__controls {
+    border-bottom: none;
+  }
+  .js .global-header .menu .menu__controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+  }
+  .js .global-header .menu a,
+  .js .global-header .menu .menu__current > .menu__controls > span {
+    display: block;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  .js .global-header .menu li {
+    margin: 0;
+  }
 }
 
 .navigation-secondary {
@@ -3490,31 +4210,19 @@ hr {
     display: block;
   }
   .menu .menu__level1,
-  .menu .menu__level2,
-  .menu .menu__level3,
-  .menu .menu__level4,
-  .menu .menu__level5,
-  .menu .menu__level6 {
+  .menu .menu__level2 {
     list-style: none;
     margin-left: 0;
     margin-top: 0;
     max-width: unset;
   }
   .menu .menu__level1 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level3 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level4 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level5 > li > .menu__controls > button .menu__button__icon:before,
-  .menu .menu__level6 > li > .menu__controls > button .menu__button__icon:before {
+  .menu .menu__level2 > li > .menu__controls > button .menu__button__icon:before {
     content: "\f078";
     font-weight: 300;
   }
   .menu .menu__level1 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level2 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level3 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level4 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level5 > li > .menu__controls > button .menu__button__text,
-  .menu .menu__level6 > li > .menu__controls > button .menu__button__text {
+  .menu .menu__level2 > li > .menu__controls > button .menu__button__text {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -3525,19 +4233,11 @@ hr {
     width: 1px;
   }
   .menu .menu__level1 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level3 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level4 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level5 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before,
-  .menu .menu__level6 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
+  .menu .menu__level2 > li > .menu__controls > button[aria-expanded=true] .menu__button__icon:before {
     content: "\f077";
   }
   .menu .menu__level1 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level2 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level3 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level4 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level5 li.menu__current > .menu__controls > a > span,
-  .menu .menu__level6 li.menu__current > .menu__controls > a > span {
+  .menu .menu__level2 li.menu__current > .menu__controls > a > span {
     display: inline;
     border-bottom: 0.125rem solid #d61726;
   }
@@ -3637,171 +4337,6 @@ hr {
   .menu .menu__level1 li.menu__current > .menu__controls > span:focus > span,
   .menu .menu__level2 li.menu__current > .menu__controls > span:focus > span {
     outline-color: #ffffff;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-size: 0.889rem;
-    line-height: 1.625;
-    letter-spacing: 0em;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    max-width: 55ch;
-    font-style: normal;
-    font-weight: 400;
-    font-family: "ibm-plex-sans", sans-serif;
-  }
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-size: 1rem;
-    line-height: 1.625;
-    letter-spacing: -0.005em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1280px) and (max-width: 1919px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.008em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1920px) and (max-width: 3839px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.013em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 3840px) and (max-width: 7679px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 7680px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    /**
-     * IBM Plex OpenType stylistic sets:
-     *
-     * ss01: 0/1 double-storey/simple 'a'
-     * ss02: 0/1 double-storey/simple 'g'
-     * ss03: 0/1 plain/slashed '0'
-     * ss04: 0/1 plain/dotted '0'
-     */
-    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
-  }
-  .menu .menu__level3 li i,
-  .menu .menu__level3 li em,
-  .menu .menu__level4 li i,
-  .menu .menu__level4 li em,
-  .menu .menu__level5 li i,
-  .menu .menu__level5 li em,
-  .menu .menu__level6 li i,
-  .menu .menu__level6 li em {
-    font-feature-settings: "ss01" 0, "ss02" 1, "ss03" 1, "ss04" 0, "lnum" 1, "onum" 0, "pnum" 1, "tnum" 0, "frac" 0, "liga" 1;
-  }
-  .menu .menu__level3 li b,
-  .menu .menu__level3 li strong,
-  .menu .menu__level4 li b,
-  .menu .menu__level4 li strong,
-  .menu .menu__level5 li b,
-  .menu .menu__level5 li strong,
-  .menu .menu__level6 li b,
-  .menu .menu__level6 li strong {
-    font-weight: 700;
-  }
-  .menu .menu__level3 li i,
-  .menu .menu__level3 li em,
-  .menu .menu__level4 li i,
-  .menu .menu__level4 li em,
-  .menu .menu__level5 li i,
-  .menu .menu__level5 li em,
-  .menu .menu__level6 li i,
-  .menu .menu__level6 li em {
-    font-style: italic;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1280px) and (max-width: 1919px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.005em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 1920px) and (max-width: 3839px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.01em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 3840px) and (max-width: 7679px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) and (min-width: 7680px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    letter-spacing: -0.017em;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 li,
-  .menu .menu__level4 li,
-  .menu .menu__level5 li,
-  .menu .menu__level6 li {
-    font-weight: 400;
-    max-width: unset;
-  }
-  .menu .menu__level3 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level4 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level5 li.menu__hierarchy > .menu__controls > a span,
-  .menu .menu__level6 li.menu__hierarchy > .menu__controls > a span {
-    border-bottom: 0.125rem solid #303030;
-  }
-  .menu .menu__level3 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level4 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level5 li.menu__current > .menu__controls > span:focus,
-  .menu .menu__level6 li.menu__current > .menu__controls > span:focus {
-    outline: none;
-  }
-  .menu .menu__level3 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level4 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level5 li.menu__current > .menu__controls > span:focus > span,
-  .menu .menu__level6 li.menu__current > .menu__controls > span:focus > span {
-    outline-color: #0c0c0e;
     outline-offset: 0.1875rem;
     outline-style: solid;
     outline-width: 0.125rem;
@@ -4190,634 +4725,6 @@ hr {
   .menu .menu__level2 > li:last-of-type[data-open=false] > .menu__controls {
     border-bottom: none;
   }
-  .menu .menu__level3 {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-  }
-  .menu .menu__level3 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level3 > li > .menu__controls > a {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level3 > li > .menu__controls > a:focus, .menu .menu__level3 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level3 > li > .menu__controls > a:focus span, .menu .menu__level3 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > a:hover {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #f2f2f2;
-    border: 0.25rem solid #f2f2f2;
-    border-bottom: 0.25rem solid #f2f2f2;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level3 > li > .menu__controls > button {
-    background-color: #f2f2f2;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level3 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level3 > li > .menu__controls > button:hover {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level3 > li > .menu__controls > button:focus, .menu .menu__level3 > li > .menu__controls > button:active, .menu .menu__level3 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #f2f2f2;
-  }
-  .menu .menu__level3 > li > .menu__controls > a, .menu .menu__level3 > li > .menu__controls > span {
-    padding-left: 1.5rem;
-  }
-  .menu .menu__level4 {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-  }
-  .menu .menu__level4 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level4 > li > .menu__controls > a {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level4 > li > .menu__controls > a:focus, .menu .menu__level4 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level4 > li > .menu__controls > a:focus span, .menu .menu__level4 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > a:hover {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #e5e5e5;
-    border: 0.25rem solid #e5e5e5;
-    border-bottom: 0.25rem solid #e5e5e5;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level4 > li > .menu__controls > button {
-    background-color: #e5e5e5;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level4 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level4 > li > .menu__controls > button:hover {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level4 > li > .menu__controls > button:focus, .menu .menu__level4 > li > .menu__controls > button:active, .menu .menu__level4 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #e5e5e5;
-  }
-  .menu .menu__level4 > li > .menu__controls > a, .menu .menu__level4 > li > .menu__controls > span {
-    padding-left: 2rem;
-  }
-  .menu .menu__level5 {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-  }
-  .menu .menu__level5 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > a:focus, .menu .menu__level5 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level5 > li > .menu__controls > a {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level5 > li > .menu__controls > a:focus, .menu .menu__level5 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level5 > li > .menu__controls > a:focus span, .menu .menu__level5 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > a:hover {
-    background-color: #bebebe;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #d8d8d8;
-    border: 0.25rem solid #d8d8d8;
-    border-bottom: 0.25rem solid #d8d8d8;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level5 > li > .menu__controls > button {
-    background-color: #d8d8d8;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level5 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level5 > li > .menu__controls > button:hover {
-    background-color: #bebebe;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level5 > li > .menu__controls > button:focus, .menu .menu__level5 > li > .menu__controls > button:active, .menu .menu__level5 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #d8d8d8;
-  }
-  .menu .menu__level5 > li > .menu__controls > a, .menu .menu__level5 > li > .menu__controls > span {
-    padding-left: 2.5rem;
-  }
-  .menu .menu__level6 {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-  }
-  .menu .menu__level6 > li > .menu__controls > a {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > a:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > a:focus, .menu .menu__level6 > li > .menu__controls > a:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level6 > li > .menu__controls > a {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level6 > li > .menu__controls > a:focus, .menu .menu__level6 > li > .menu__controls > a:active {
-    color: #0c0c0e;
-  }
-  .menu .menu__level6 > li > .menu__controls > a:focus span, .menu .menu__level6 > li > .menu__controls > a:active span {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > a:hover {
-    background-color: #a1a1a1;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-    background: #cbcbcb;
-    border: 0.25rem solid #cbcbcb;
-    border-bottom: 0.25rem solid #cbcbcb;
-    width: 2rem;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > button:hover {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active {
-    background-color: initial;
-    background-image: initial;
-    background-size: initial;
-    border-bottom-color: initial;
-    border-bottom-style: none;
-    border-bottom-width: 0;
-    color: initial;
-    cursor: pointer;
-    outline-color: initial;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    text-decoration: none;
-  }
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active {
-    outline-color: #0c0c0e;
-    outline-offset: 0.1875rem;
-    outline-style: solid;
-    outline-width: 0.125rem;
-  }
-  .menu .menu__level6 > li > .menu__controls > button {
-    background-color: #cbcbcb;
-    color: #0c0c0e;
-    transition: background-color ease-out 0.2s;
-  }
-  .menu .menu__level6 > li > .menu__controls > button:focus span {
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) and (hover: hover) {
-  .menu .menu__level6 > li > .menu__controls > button:hover {
-    background-color: #a1a1a1;
-    color: #0c0c0e;
-  }
-}
-@media (max-width: 1023px) {
-  .menu .menu__level6 > li > .menu__controls > button:focus, .menu .menu__level6 > li > .menu__controls > button:active, .menu .menu__level6 > li > .menu__controls > button:hover {
-    outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #cbcbcb;
-  }
-  .menu .menu__level6 > li > .menu__controls > a, .menu .menu__level6 > li > .menu__controls > span {
-    padding-left: 3rem;
-  }
   .menu .menu__controls {
     display: flex;
     flex-direction: row;
@@ -4841,15 +4748,6 @@ hr {
   }
 }
 
-.no-js .menu {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .js .menu {
-    display: none;
-  }
-}
 .js .menu .menu__content {
   display: none;
 }
@@ -5518,8 +5416,766 @@ hr {
     background-color: rgba(30, 30, 30, 0);
   }
 }
-@media (min-width: 1024px) {
-  .js .menu__veil[data-on=true] {
+.js .slider {
+  display: flex;
+  max-width: inherit;
+}
+@media (max-width: 767px) {
+  .js .slider[data-small=true] {
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+  }
+  .js .slider[data-small=true] .slide {
+    top: 0;
+    transition: left 0.4s ease-in-out;
+    width: 100%;
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .js .slider[data-small=true] .slide {
+    transition: none;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-small=true] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider:not([data-small=true]) {
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+    margin: 1rem;
+  }
+  .js .slider:not([data-small=true]) .slide {
+    top: 0;
+    transition: left 0.4s ease-in-out;
+    width: 100%;
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .js .slider:not([data-small=true]) .slide {
+    transition: none;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider:not([data-small=true]) {
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+  }
+  .js .slider:not([data-small=true]) .slide {
+    top: 0;
+    transition: left 0.4s ease-in-out;
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
+  .js .slider:not([data-small=true]) .slide {
+    transition: none;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider:not([data-small=true])[data-style=buttons] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+.js .slider .slide {
+  width: 100%;
+  list-style: none;
+  padding: 0.1875rem;
+  margin-top: 0;
+}
+.js .slider .slide:focus {
+  outline-color: #0c0c0e;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+  outline-offset: -0.1875rem;
+}
+.js .slider .slide:last-of-type {
+  margin-bottom: 0;
+}
+.js .slider .slide.card--research {
+  padding: 1rem;
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="1"][data-small=true] .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="1"][data-small=true] .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="1"][data-small=true] .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="1"][data-small=true] .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="1"][data-small=true] .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+.js .slider[data-cardsperrow="1"]:not([data-small=true]) .slide[data-smallposition="-1"] {
+  left: -100%;
+  position: absolute;
+}
+.js .slider[data-cardsperrow="1"]:not([data-small=true]) .slide[data-smallposition="-1"][data-smallhidden=true] {
+  visibility: hidden;
+}
+.js .slider[data-cardsperrow="1"]:not([data-small=true]) .slide[data-smallposition="0"] {
+  left: 0;
+  position: relative;
+}
+.js .slider[data-cardsperrow="1"]:not([data-small=true]) .slide[data-smallposition="1"] {
+  left: 100%;
+  position: absolute;
+}
+.js .slider[data-cardsperrow="1"]:not([data-small=true]) .slide[data-smallposition="1"][data-smallhidden=true] {
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="2"][data-small=true] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+    grid-gap: 1.5rem;
+    list-style-type: none;
+    margin: 1rem 0;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide {
+    margin: 0 1.5rem 0 0;
+  }
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide:nth-of-type(3n) {
+    margin: 0;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="2"][data-small=true] .slide {
+    margin-right: 1.5rem;
+    flex: 1;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide {
+    margin-right: 1.5rem;
+    flex: 1;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="-2"], .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="-2"][data-hidden=true], .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="-1"][data-hidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="0"], .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="1"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="2"], .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="3"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="2"][data-hidden=true], .js .slider[data-cardsperrow="2"]:not([data-small=true]) .slide[data-sliderposition="3"][data-hidden=true] {
+    visibility: hidden;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="3"][data-small=true] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+    grid-gap: 1.5rem;
+    list-style-type: none;
+    margin: 1rem 0;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide {
+    margin: 0 1.5rem 0 0;
+  }
+  .js .slider[data-cardsperrow="3"][data-small=true] .slide:nth-of-type(3n) {
+    margin: 0;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide {
+    margin-right: 1.25rem;
+    width: calc(33% - 1.25rem);
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-3"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-2"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-3"][data-hidden=true], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-2"][data-hidden=true], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="-1"][data-hidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="0"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="1"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="2"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="3"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="4"], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="5"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="3"][data-hidden=true], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="4"][data-hidden=true], .js .slider[data-cardsperrow="3"]:not([data-small=true]) .slide[data-sliderposition="5"][data-hidden=true] {
+    visibility: hidden;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="4"][data-small=true] .slide {
+    margin-right: 1.5rem;
+    flex: 1;
+  }
+}
+@media (max-width: 767px) {
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-smallposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-smallposition="-1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-smallposition="0"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-smallposition="1"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-smallposition="1"][data-smallhidden=true] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide {
+    margin-right: 1.5rem;
+    flex: 1;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-3"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-2"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-1"] {
+    left: -100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-3"][data-hidden=true], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-2"][data-hidden=true], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="-1"][data-hidden=true] {
+    visibility: hidden;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="0"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="1"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="2"] {
+    left: 0;
+    position: relative;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="3"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="4"], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="5"] {
+    left: 100%;
+    position: absolute;
+  }
+  .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="3"][data-hidden=true], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="4"][data-hidden=true], .js .slider[data-cardsperrow="4"]:not([data-small=true]) .slide[data-sliderposition="5"][data-hidden=true] {
+    visibility: hidden;
+  }
+}
+.js .slider[data-style=arrows] + .slider__controls,
+.js .slider[data-style=responsive] + .slider__controls {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.1875rem;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #ffffff;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__indicator,
+  .js .slider[data-style=responsive] + .slider__controls .slider__indicator {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__indicator,
+  .js .slider[data-style=responsive] + .slider__controls .slider__indicator {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__indicator,
+  .js .slider[data-style=responsive] + .slider__controls .slider__indicator {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__indicator,
+  .js .slider[data-style=responsive] + .slider__controls .slider__indicator {
+    letter-spacing: -0.017em;
+  }
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__current,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__current {
+  font-weight: 700;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__current:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__current:before {
+  content: "0";
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__divider,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__divider {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__divider .slider__indicator__divider--sr,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__divider .slider__indicator__divider--sr {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__total:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__total:before {
+  content: "0";
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__indicator .slider__indicator__line,
+.js .slider[data-style=responsive] + .slider__controls .slider__indicator .slider__indicator__line {
+  width: 15rem;
+  display: inline-block;
+  border-top: 0.125rem solid #d61726;
+  margin: 0.5rem;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev,
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next {
+  background-color: transparent;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 0.0625rem;
+  border-radius: 50%;
+  color: #ffffff;
+  padding: 0.75rem;
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, color 0.2s ease-in;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev,
+  .js .slider[data-style=arrows] + .slider__controls .slider__controls__next,
+  .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev,
+  .js .slider[data-style=responsive] + .slider__controls .slider__controls__next {
+    /* We can't completely disable the transition becasuse we action on transitionend */
+    transition: background-color 0.001s ease-in, border-color 0.001s ease-in, color 0.001s ease-in;
+  }
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:focus:not(:disabled), .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:active:not(:disabled),
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next:focus:not(:disabled),
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next:active:not(:disabled),
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:focus:not(:disabled),
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:active:not(:disabled),
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next:focus:not(:disabled),
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next:active:not(:disabled) {
+  outline-color: #d61726;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+@media (hover: hover) {
+  .js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:hover:not(:disabled),
+  .js .slider[data-style=arrows] + .slider__controls .slider__controls__next:hover:not(:disabled),
+  .js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:hover:not(:disabled),
+  .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:hover:not(:disabled) {
+    background-color: #ffffff;
+    color: #0c0c0e;
+  }
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:disabled,
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next:disabled,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:disabled,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next:disabled {
+  border-color: #696969;
+  border-style: solid;
+  border-width: 0.0625rem;
+  color: #696969;
+  cursor: default;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev,
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next {
+  font-family: "Font Awesome 6 Sharp";
+  font-weight: 400;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev span,
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next span,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev span,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next span {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev {
+  margin-left: 1rem;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev:before {
+  content: "\f060";
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__prev + .slider__controls__next,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__prev + .slider__controls__next {
+  margin-left: 1rem;
+}
+.js .slider[data-style=arrows] + .slider__controls .slider__controls__next:before,
+.js .slider[data-style=responsive] + .slider__controls .slider__controls__next:before {
+  content: "\f061";
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .js .slider[data-style=arrows][data-small=true] + .slider__controls,
+  .js .slider[data-style=responsive][data-small=true] + .slider__controls {
     display: none;
   }
+}
+.js .slider[data-style=arrows].related-content .card.card--contact + .card--contact,
+.js .slider[data-style=responsive].related-content .card.card--contact + .card--contact {
+  border-top: none;
+  padding-top: 0;
+}
+.js .slider[data-style=arrows] + .slider__controls {
+  max-width: 44.4rem;
+  margin-right: 0;
+  margin-left: 1rem;
+}
+.js .content-hub .slider[data-style=arrows] + .slider__controls {
+  max-width: 47.4rem;
+}
+.js .slider[data-style=responsive] {
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (min-width: 768px) {
+  .js .slider[data-style=responsive] {
+    padding: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .js .slider[data-style=responsive][data-count="1"]:not([data-small=true]) + .slider__controls {
+    display: none;
+  }
+}
+.js .slider[data-style=responsive][data-optimised=true] li {
+  margin-top: 0;
+}
+.js .slider[data-style=responsive][data-optimised=true] li ul li {
+  padding: 0.1875rem;
+}
+.js .slider[data-style=responsive][data-optimised=true] li ul li a {
+  height: 100%;
+}
+.js .slider[data-style=responsive] .slide .card__anchor {
+  margin: 0;
+}
+.js .slider[data-style=responsive] .slide ul {
+  display: flex;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+  grid-gap: 1.5rem;
+  list-style-type: none;
+  margin: 1rem 0;
+}
+@media (max-width: 767px) {
+  .js .slider[data-style=responsive] .slide ul {
+    margin: 1rem 0;
+  }
+}
+.js .slider[data-style=responsive] .slide ul li {
+  flex-basis: 50%;
+}
+.js .slider[data-style=responsive] .slide ul li:nth-child(2) {
+  margin-left: 0.5rem;
+  margin-bottom: 0;
+}
+.js .slider[data-style=responsive] .slide ul li:last-of-type {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .js .related-content[data-style=responsive]:not(.slider),
+  .js .related-content[data-style=arrows]:not(.slider) {
+    justify-content: initial;
+    grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+    grid-gap: 1.5rem;
+    display: grid;
+  }
+}
+.js .related-content:not(.slider) {
+  margin: 1rem 0;
+}
+.js .related-content:not(.slider) li:only-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]),
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) .slide[data-sliderposition="1"], .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) .slide[data-sliderposition="-1"], .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) .slide[data-sliderposition="0"],
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) .slide[data-sliderposition="1"],
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) .slide[data-sliderposition="-1"],
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) .slide[data-sliderposition="0"] {
+    visibility: visible;
+    position: static;
+  }
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls,
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls {
+    display: none;
+  }
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button {
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #696969;
+  margin-right: 1rem;
+  border: 0.125rem dotted transparent;
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button:last-of-type,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:last-of-type {
+  margin-right: 0;
+}
+@media (hover: hover) {
+  .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button:hover,
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:hover {
+    background-color: #1e1e1e;
+  }
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button:active, .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button:focus,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:active,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:focus {
+  background-color: #1e1e1e;
+  border: 0.125rem dotted #1e1e1e;
+  outline-color: #0c0c0e;
+  outline-offset: 0.1875rem;
+  outline-style: dotted;
+  outline-width: 0.125rem;
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button:focus,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button:focus {
+  outline-color: #696969;
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button[aria-expanded=true],
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button[aria-expanded=true] {
+  background-color: #1e1e1e;
+}
+@media (hover: hover) {
+  .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button[aria-expanded=true]:hover,
+  .js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button[aria-expanded=true]:hover {
+    box-shadow: none;
+  }
+}
+.js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button[aria-expanded=true]:active, .js .slider[data-style=dots]:not([data-small=true]):not([data-count="0"]) + .slider__controls button[aria-expanded=true]:focus,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button[aria-expanded=true]:active,
+.js .slider[data-style=dots][data-small=true]:not([data-count="0"]) + .slider__controls button[aria-expanded=true]:focus {
+  box-shadow: none;
+}
+
+.js .statistics-block .ksp__items.slider {
+  grid-gap: 0;
+}
+.js .statistics-block .ksp__items.slider[data-small=true] {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+}
+.js .statistics-block .ksp__items.slider[data-small=true] .ksp__item {
+  margin-right: 0;
+  flex: 1;
+}
+.js .statistics-block .ksp__item__overline,
+.js .statistics-block .ksp__item__description p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.js .statistics-block .slider__controls {
+  margin-top: 1rem;
+}
+@media (min-width: 1024px) and (min-width: 768px) {
+  .js main article:first-child .slider[data-cardsperrow][data-small=true][data-nonav-cardsperrow="2"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+    grid-gap: 1.5rem;
+    list-style-type: none;
+    margin: 1rem 0;
+  }
+  .js main article:first-child .slider[data-cardsperrow][data-small=true][data-nonav-cardsperrow="2"] .slide {
+    margin: 0 1.5rem 0 0;
+  }
+  .js main article:first-child .slider[data-cardsperrow][data-small=true][data-nonav-cardsperrow="2"] .slide:nth-of-type(3n) {
+    margin: 0;
+  }
+  .js main article:first-child .slider[data-cardsperrow][data-small=true][data-nonav-cardsperrow="2"] .card--casestudy .card__details {
+    height: 100%;
+  }
+}
+
+.card__details__heading {
+  font-size: 2.28rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.017em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .card__details__heading {
+    letter-spacing: -0.017em;
+  }
+}
+.card__details__heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.card__details__text {
+  display: flex;
+  flex-direction: row;
 }
