@@ -3271,9 +3271,27 @@ hr {
   }
 }
 
+.footer-oh__heading {
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footer-oh__heading {
+    text-align: left;
+  }
+}
+
 .footer-oh__content {
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footer-oh__content {
+    text-align: left;
+    flex-direction: row;
+  }
 }
 
 .footer-oh__col {
@@ -3287,7 +3305,12 @@ hr {
 
 .footer-oh__col--cta {
   display: flex;
-  align-items: self-end;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .footer-oh__col--cta {
+    align-items: self-end;
+  }
 }
 
 .global-header__wrap {
