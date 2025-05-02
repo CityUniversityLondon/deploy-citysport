@@ -1022,6 +1022,28 @@ readers do not read off random characters that represent icons */
   font-weight: 300;
 }
 
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-sharp: "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Sharp";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-sharp-regular-400.woff2") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
+}
+.fasr,
+.fa-regular {
+  font-weight: 400;
+}
+
 .alpha-type {
   font-size: 1rem;
   line-height: 1.625;
@@ -5923,6 +5945,7 @@ hr {
 .js .slider[data-style=arrows] + .slider__controls .slider__controls__next:before,
 .js .slider[data-style=responsive] + .slider__controls .slider__controls__next:before {
   content: "\f061";
+  font-weight: 400;
 }
 @media (min-width: 768px) {
   .js .slider[data-style=arrows][data-small=true] + .slider__controls,
