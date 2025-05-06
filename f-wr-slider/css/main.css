@@ -2997,6 +2997,34 @@ iframe[src*=issuu], iframe[src*=prezi] {
   z-index: -1;
 }
 
+.skewed-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: white;
+}
+
+.skew-line {
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  margin-bottom: 0.2em;
+  z-index: 1;
+}
+
+.skew-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  right: -5px;
+  bottom: 0;
+  background-color: #d62828;
+  transform: skewX(-20deg);
+  z-index: -1;
+  border-radius: 2px;
+}
+
 .global-footer {
   background: #111111;
   color: #ffffff;
@@ -6318,6 +6346,10 @@ hr {
   margin-bottom: 4rem;
   position: relative;
 }
+.js .slider__wrapper .slider[data-style=arrows] .card--homepage {
+  min-height: 20rem;
+  padding-bottom: 4.5rem;
+}
 .js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__details__heading {
   font-size: 2.28rem;
   line-height: 1.3333333333;
@@ -6417,17 +6449,24 @@ hr {
   }
 }
 .js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__col {
-  height: 20rem;
+  flex-basis: 50%;
+}
+.js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__col:last-child {
+  display: flex;
+  justify-content: center;
 }
 .js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__svg-shape {
   position: absolute;
   display: block;
   height: 5rem;
+  z-index: 1;
 }
 .js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__svg-shape svg {
   width: 100%;
   height: 100%;
 }
 .js .slider__wrapper .slider[data-style=arrows] .card--homepage .card__image img {
-  max-height: 20rem;
+  position: absolute;
+  right: 0;
+  height: 100%;
 }
