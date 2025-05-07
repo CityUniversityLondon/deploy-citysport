@@ -3555,7 +3555,7 @@ hr {
   .global-header__membership-ctas {
     grid-row-start: 2;
     grid-column-start: 1;
-    grid-column-end: 13;
+    grid-column-end: -1;
   }
 }
 .global-header__membership-ctas .global-header__membership-cta:first-of-type {
