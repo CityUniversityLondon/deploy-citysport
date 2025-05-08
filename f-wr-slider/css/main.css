@@ -3013,8 +3013,8 @@ iframe[src*=issuu], iframe[src*=prezi] {
 .skew-line {
   position: relative;
   display: inline-block;
-  padding: 0.2em 0.4em;
-  margin-bottom: 0.2em;
+  padding: 0.01rem 0.2em;
+  margin-bottom: -0.4em;
   z-index: 1;
 }
 
