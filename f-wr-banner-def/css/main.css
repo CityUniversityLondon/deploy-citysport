@@ -3164,7 +3164,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
 .banner--default .standfirst {
   text-align: center;
 }
-.banner--default .banner__svg__right {
+.banner--default .banner__svg--right {
   display: flex;
   justify-content: flex-end;
 }
