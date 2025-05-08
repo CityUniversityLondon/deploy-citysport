@@ -3160,6 +3160,9 @@ iframe[src*=issuu], iframe[src*=prezi] {
 }
 .banner--default .banner__heading {
   width: fit-content;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
 }
 .banner--default .standfirst {
   text-align: center;
