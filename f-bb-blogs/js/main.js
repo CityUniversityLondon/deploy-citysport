@@ -8776,17 +8776,17 @@ function launchArrow(slider) {
   totalPages.appendChild(document.createTextNode(slides.length));
 
   // Indicator line
-  indicatorLine.className = className + '__indicator__line';
+  indicatorLine.className = className + '__indicator-line';
 
   // Add to page
   indicator.appendChild(currentPage);
   indicator.appendChild(divider);
   indicator.appendChild(totalPages);
-  indicator.appendChild(indicatorLine);
   indicator.className = className + '__indicator';
 
   // Wrap element around slider__controls
   controlsWrapper.appendChild(indicator);
+  controlsWrapper.appendChild(indicatorLine);
   controlsWrapper.appendChild(prevButton);
   controlsWrapper.appendChild(nextButton);
   controlsWrapper.className = className + '__controls';
