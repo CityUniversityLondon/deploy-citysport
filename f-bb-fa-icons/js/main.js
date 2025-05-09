@@ -8304,13 +8304,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+
 
 
 function launchRibbonNotice(el) {
   var closeButton = el.querySelectorAll('.global-header__ribbon__close')[0];
   closeButton.addEventListener('click', function () {
-    console.log('cliecked');
-    el.remove();
+    console.log('clicked');
+    el.classList.add('global-header__ribbon__animation-close');
+    setTimeout(function () {
+      el.remove();
+    }, 600);
   });
 }
 var className = 'global-header__ribbon';
@@ -8771,17 +8776,17 @@ function launchArrow(slider) {
   totalPages.appendChild(document.createTextNode(slides.length));
 
   // Indicator line
-  indicatorLine.className = className + '__indicator__line';
+  indicatorLine.className = className + '__indicator-line';
 
   // Add to page
   indicator.appendChild(currentPage);
   indicator.appendChild(divider);
   indicator.appendChild(totalPages);
-  indicator.appendChild(indicatorLine);
   indicator.className = className + '__indicator';
 
   // Wrap element around slider__controls
   controlsWrapper.appendChild(indicator);
+  controlsWrapper.appendChild(indicatorLine);
   controlsWrapper.appendChild(prevButton);
   controlsWrapper.appendChild(nextButton);
   controlsWrapper.className = className + '__controls';
