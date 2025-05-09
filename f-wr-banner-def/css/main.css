@@ -3153,10 +3153,16 @@ iframe[src*=issuu], iframe[src*=prezi] {
   border-radius: 2px;
 }
 
+.banner--default {
+  margin-top: 1rem;
+  overflow: hidden;
+}
 .banner--default .banner__text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .banner--default .banner__heading {
   width: fit-content;
@@ -3168,9 +3174,39 @@ iframe[src*=issuu], iframe[src*=prezi] {
 .banner--default .standfirst {
   text-align: center;
 }
-.banner--default .banner__svg--right {
+.banner--default.banner--default--dark .banner__svg--right {
   display: flex;
   justify-content: flex-end;
+}
+.banner--default.banner--default--vi {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner--default.banner--default--vi .banner__svg {
+  width: 100%;
+}
+.banner--default.banner--default--vi .banner__svg svg {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .banner--default.banner--default--vi .banner__svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+.banner--default.banner--default--vi .banner__text {
+  position: absolute;
+}
+@media (max-width: 1024px) {
+  .banner--default.banner--default--vi .banner__text {
+    position: relative;
+    margin: 3rem 1rem;
+  }
 }
 
 .global-footer {
