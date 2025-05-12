@@ -3678,7 +3678,7 @@ main > .news .news__social-icons li {
   }
 }
 .social-icon:visited {
-  color: #ffffff;
+  color: #111111;
 }
 .social-icon:active, .social-icon:hover, .social-icon:focus, .social-icon:visited {
   border-bottom-style: none;
@@ -3717,6 +3717,9 @@ main > .news .news__social-icons li {
   color: #696969;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   .banner-news .labels {
