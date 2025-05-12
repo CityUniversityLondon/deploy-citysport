@@ -768,6 +768,16 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f139\f139";
 }
 
+.fa-circle-info {
+  --fa: "\f05a";
+  --fa--fa: "\f05a\f05a";
+}
+
+.fa-info-circle {
+  --fa: "\f05a";
+  --fa--fa: "\f05a\f05a";
+}
+
 .fa-clock {
   --fa: "\f017";
   --fa--fa: "\f017\f017";
