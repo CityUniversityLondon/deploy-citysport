@@ -1621,7 +1621,7 @@ readers do not read off random characters that represent icons */
   padding-top: 0.5rem;
   transition: background-color 0.6s, transform 0.6s;
   border: 0.125rem solid #ffffff;
-  border-radius: 0.25rem;
+  border-radius: 3rem;
 }
 .cta-outline--white:after {
   opacity: 0;
@@ -1630,7 +1630,7 @@ readers do not read off random characters that represent icons */
   border: 0.125rem solid #ffffff;
 }
 .cta-outline--white, .cta-outline--white:focus, .cta-outline--white:active {
-  background-color: "transparent";
+  background-color: transparent;
   color: #ffffff;
   border: 0.125rem solid #ffffff;
 }
@@ -6901,24 +6901,33 @@ hr {
 }
 
 .card--blog__meta {
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .card--blog__meta-cat {
-  color: #d61726;
+  padding: 0.125rem 0.25rem;
+  color: #ffffff;
+  background-color: #d61726;
 }
 
 .card--blog__meta-date {
-  color: #999999;
+  color: #dddddd;
 }
 
 .card--blog__text {
+  color: #dddddd;
   padding: 1rem 0;
 }
 
 .card--blog__heading {
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.card__anchor .card--blog__heading {
+  text-decoration: underline;
 }
 
 .card--blog__body {
