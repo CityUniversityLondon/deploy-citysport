@@ -3106,45 +3106,22 @@ iframe[src*=issuu], iframe[src*=prezi] {
   display: none !important;
 }
 
-.slanted-txt-bg {
-  /*
-  background: $color-sport-red;
-  color: $color-purewhite;
-  display: inline-block;
-  position: relative;
-  z-index: z-index("default");
-  margin-left: $measure--threequarters; // 0.75rem ~ 10px
-  */
-  font-size: 2.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-  color: white;
-}
 .slanted-txt-bg .slanted-line {
+  color: #ffffff;
   position: relative;
   display: inline-block;
   padding: 0.01rem 0.2em;
   margin-bottom: -0.4em;
-  z-index: 1;
+  z-index: 0;
 }
 .slanted-txt-bg .slanted-line:before {
-  /*
-  display: block;
-  content: "";
-  width: calc(100% + $measure--small2);
-  transform: translateX(-$measure--threequarters) skew(-20deg);
-  height: 100%;
-  position: absolute;
-  background: $color-sport-red;
-  z-index: z-index("below");
-  */
   content: "";
   position: absolute;
   top: 0;
   left: -5px;
   right: -5px;
   bottom: 0;
-  background-color: #d62828;
+  background: #d61726;
   transform: skewX(-20deg);
   z-index: -1;
   border-radius: 2px;
@@ -3166,7 +3143,30 @@ iframe[src*=issuu], iframe[src*=prezi] {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 700;
+  font-size: 2.28rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.017em;
   font-size: 3rem;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .banner--default .banner__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .banner--default .banner__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .banner--default .banner__heading {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .banner--default .banner__heading {
+    letter-spacing: -0.017em;
+  }
 }
 .banner--default .standfirst {
   text-align: center;
