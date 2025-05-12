@@ -3265,13 +3265,18 @@ iframe[src*=issuu], iframe[src*=prezi] {
   margin-left: 0.5rem;
 }
 
+.slanted-txt-bg {
+  display: flex;
+  flex-direction: column;
+}
 .slanted-txt-bg .slanted-line {
   color: #ffffff;
   position: relative;
   display: inline-block;
-  padding: 0.01rem 0.2em;
-  margin-bottom: -0.4em;
+  padding: 0.01rem 0.2rem;
+  margin-bottom: -0.1rem;
   z-index: 0;
+  width: fit-content;
 }
 .slanted-txt-bg .slanted-line:before {
   content: "";
