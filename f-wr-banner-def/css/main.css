@@ -3273,7 +3273,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
   color: #ffffff;
   position: relative;
   display: inline-block;
-  padding: 0.01rem 0.2rem;
+  padding: 0rem 0.6rem;
   margin-bottom: -0.1rem;
   z-index: 0;
   width: fit-content;
@@ -3571,6 +3571,10 @@ main > .news .news__social-icons li {
 }
 .banner--default .standfirst {
   text-align: center;
+}
+.banner--default.banner--default--dark .banner__svg--left {
+  display: flex;
+  justify-content: flex-start;
 }
 .banner--default.banner--default--dark .banner__svg--right {
   display: flex;
