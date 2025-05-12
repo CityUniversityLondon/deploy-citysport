@@ -3126,6 +3126,145 @@ iframe[src*=issuu], iframe[src*=prezi] {
   display: none !important;
 }
 
+.card__anchor {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+  background-color: transparent;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.2s ease-in;
+}
+@media (hover: hover) {
+  .card__anchor:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+.card__anchor:focus, .card__anchor:active {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+.card__anchor:focus, .card__anchor:active {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+.card__anchor, .card__anchor:focus, .card__anchor:active, .card__anchor:visited {
+  color: #ffffff;
+}
+@media (hover: hover) {
+  .card__anchor:hover {
+    background-color: #111111;
+    color: #ffffff;
+  }
+  .card__anchor:hover:after {
+    background-color: #d61726;
+    color: #ffffff;
+  }
+}
+.card__anchor:after {
+  background-color: #0c0c0e;
+  color: #ffffff;
+}
+@media (max-width: 900px) {
+  .card__anchor {
+    background-color: #111111;
+  }
+  .card__anchor:after {
+    background-color: #d61726;
+  }
+}
+.card__anchor .card__type {
+  color: #d61726;
+}
+.card__anchor .card__tag .icon {
+  color: #d61726;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card__anchor {
+    transition: none;
+  }
+}
+@media (hover: hover) {
+  .card__anchor:hover .card__thumbnail {
+    transform: scale(1.02);
+  }
+}
+.card__anchor:after {
+  font-family: "Font Awesome 6 Sharp";
+  align-items: center;
+  bottom: 0;
+  content: "\f178";
+  display: flex;
+  font-weight: 300;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  transition: background-color 0.2s ease-in;
+  width: 2rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card__anchor:after {
+    transition: none;
+  }
+}
+.card__anchor .card__thumbnail {
+  align-self: flex-start;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card__anchor .card__thumbnail {
+    transition: none;
+  }
+}
+.card__anchor .card__heading {
+  border-bottom-style: solid;
+  border-bottom-width: 0.125rem;
+}
+.card__anchor .card__heading .icon {
+  margin-left: 0.5rem;
+}
+
 .slanted-txt-bg .slanted-line {
   color: #ffffff;
   position: relative;
@@ -6755,6 +6894,10 @@ hr {
 
 .listing--blogs {
   margin-bottom: 2.25rem;
+}
+
+.card--blog.card__anchor::after {
+  content: none;
 }
 
 .card--blog__meta {
