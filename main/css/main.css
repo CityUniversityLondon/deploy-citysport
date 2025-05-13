@@ -3173,7 +3173,6 @@ iframe[src*=issuu], iframe[src*=prezi] {
   font-size: 2.28rem;
   line-height: 1.3333333333;
   letter-spacing: -0.017em;
-  font-size: 3rem;
   display: flex;
   flex-direction: column;
 }
@@ -3195,6 +3194,11 @@ iframe[src*=issuu], iframe[src*=prezi] {
 @media (min-width: 7680px) {
   .slanted-txt-bg {
     letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 768px) {
+  .slanted-txt-bg {
+    font-size: 3rem;
   }
 }
 .slanted-txt-bg[data-count="2"] {
@@ -7182,7 +7186,26 @@ hr {
   top: 0;
   width: 100%;
   height: 100%;
+}
+.home-banner--video video {
   background-size: cover;
+  overflow: hidden;
+  object-fit: cover;
+}
+@media (max-width: 1023px) {
+  .home-banner--video video {
+    min-height: 450px;
+  }
+}
+@media (min-width: 1024px) {
+  .home-banner--video video {
+    min-height: 600px;
+  }
+}
+@media (min-width: 1280px) {
+  .home-banner--video video {
+    max-height: 70vh;
+  }
 }
 .home-banner--video .banner__video__button__wrap {
   max-width: 55ch;
