@@ -3705,7 +3705,7 @@ main > .news .news__social-icons li {
   max-height: 400px;
 }
 .banner-news .banner__block-color {
-  background-color: #d61726;
+  background-color: #111111;
   grid-column: 1/-1;
   height: 8rem;
 }
