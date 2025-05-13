@@ -708,6 +708,11 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f073\f073";
 }
 
+.fa-check {
+  --fa: "\f00c";
+  --fa--fa: "\f00c\f00c";
+}
+
 .fa-chevron-down {
   --fa: "\f078";
   --fa--fa: "\f078\f078";
@@ -726,6 +731,16 @@ readers do not read off random characters that represent icons */
 .fa-chevron-up {
   --fa: "\f077";
   --fa--fa: "\f077\f077";
+}
+
+.fa-circle-check {
+  --fa: "\f058";
+  --fa--fa: "\f058\f058";
+}
+
+.fa-check-circle {
+  --fa: "\f058";
+  --fa--fa: "\f058\f058";
 }
 
 .fa-circle-chevron-down {
