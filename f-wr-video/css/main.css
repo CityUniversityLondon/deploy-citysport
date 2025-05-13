@@ -3266,8 +3266,51 @@ iframe[src*=issuu], iframe[src*=prezi] {
 }
 
 .slanted-txt-bg {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.28rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.017em;
+  font-size: 3rem;
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .slanted-txt-bg {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .slanted-txt-bg {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .slanted-txt-bg {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .slanted-txt-bg {
+    letter-spacing: -0.017em;
+  }
+}
+.slanted-txt-bg[data-count="2"] {
+  flex-direction: row;
+}
+@media (min-width: 768px) {
+  .slanted-txt-bg[data-count="2"] .slanted-line:first-child {
+    padding-right: 0.4rem;
+  }
+  .slanted-txt-bg[data-count="2"] .slanted-line:last-child {
+    padding-left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .slanted-txt-bg[data-count="2"] {
+    flex-direction: column;
+  }
 }
 .slanted-txt-bg .slanted-line {
   color: #ffffff;
@@ -3754,33 +3797,6 @@ main > .news .news__social-icons li {
 }
 .banner--default .banner__heading {
   width: fit-content;
-  text-transform: uppercase;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 2.28rem;
-  line-height: 1.3333333333;
-  letter-spacing: -0.017em;
-  font-size: 3rem;
-}
-@media (min-width: 1280px) and (max-width: 1919px) {
-  .banner--default .banner__heading {
-    letter-spacing: -0.017em;
-  }
-}
-@media (min-width: 1920px) and (max-width: 3839px) {
-  .banner--default .banner__heading {
-    letter-spacing: -0.017em;
-  }
-}
-@media (min-width: 3840px) and (max-width: 7679px) {
-  .banner--default .banner__heading {
-    letter-spacing: -0.017em;
-  }
-}
-@media (min-width: 7680px) {
-  .banner--default .banner__heading {
-    letter-spacing: -0.017em;
-  }
 }
 .banner--default .standfirst {
   text-align: center;
@@ -7189,6 +7205,56 @@ hr {
 @media (max-width: 1024px) {
   .js .slider__wrapper .related-content + .slider__controls {
     position: relative;
+  }
+}
+
+.home-banner--video {
+  margin: 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.home-banner--video .home-banner__content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  color: #ffffff;
+  width: 100%;
+  z-index: 2;
+  width: 100%;
+  max-width: inherit;
+  display: flex;
+  justify-content: center;
+}
+.home-banner--video .home-banner__content {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 901px) {
+  .home-banner--video .home-banner__content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.home-banner--video .home-banner__title {
+  width: fit-content;
+  /*
+  p {
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.65);
+  }
+
+  p,
+  ul {
+      text-align: left;
+  }
+      */
+}
+@media (min-width: 768px) {
+  .home-banner--video .home-banner__title p,
+  .home-banner--video .home-banner__title ul {
+    text-align: center;
   }
 }
 

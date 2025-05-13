@@ -9964,7 +9964,6 @@ function prepareSlides(slides, current) {
  *
  */
 function launchArrow(slider) {
-  console.log('arrow slider launched');
   // creates elements for pagination and controls
   var slides = Array.from(slider.children);
   var controlsWrapper = document.createElement('nav'),
