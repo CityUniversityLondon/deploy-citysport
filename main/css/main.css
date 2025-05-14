@@ -3656,13 +3656,11 @@ main > .news .news__social-icons li {
   border-bottom-style: none;
 }
 
-@media (min-width: 1024px) {
-  main > article .banner-news .banner__image {
-    grid-column: 1/span 24;
-  }
-  main > article .banner-news .banner-news__label {
-    grid-column: 3/23;
-  }
+main > article .banner-news .banner__image {
+  grid-column: 1/span 24;
+}
+main > article .banner-news .banner-news__label {
+  grid-column: 3/23;
 }
 
 .banner-news {
