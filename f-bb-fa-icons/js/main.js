@@ -774,6 +774,31 @@ module.exports = function (object, key, value) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/date-to-primitive.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/date-to-primitive.js ***!
+  \*************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var ordinaryToPrimitive = __webpack_require__(/*! ../internals/ordinary-to-primitive */ "./node_modules/core-js/internals/ordinary-to-primitive.js");
+
+var $TypeError = TypeError;
+
+// `Date.prototype[@@toPrimitive](hint)` method implementation
+// https://tc39.es/ecma262/#sec-date.prototype-@@toprimitive
+module.exports = function (hint) {
+  anObject(this);
+  if (hint === 'string' || hint === 'default') hint = 'string';
+  else if (hint !== 'number') throw new $TypeError('Incorrect hint');
+  return ordinaryToPrimitive(this, hint);
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/define-built-in-accessor.js":
 /*!********************************************************************!*\
   !*** ./node_modules/core-js/internals/define-built-in-accessor.js ***!
@@ -1412,6 +1437,53 @@ module.exports = !fails(function () {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/function-bind.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/function-bind.js ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+var arraySlice = __webpack_require__(/*! ../internals/array-slice */ "./node_modules/core-js/internals/array-slice.js");
+var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/core-js/internals/function-bind-native.js");
+
+var $Function = Function;
+var concat = uncurryThis([].concat);
+var join = uncurryThis([].join);
+var factories = {};
+
+var construct = function (C, argsLength, args) {
+  if (!hasOwn(factories, argsLength)) {
+    var list = [];
+    var i = 0;
+    for (; i < argsLength; i++) list[i] = 'a[' + i + ']';
+    factories[argsLength] = $Function('C,a', 'return new C(' + join(list, ',') + ')');
+  } return factories[argsLength](C, args);
+};
+
+// `Function.prototype.bind` method implementation
+// https://tc39.es/ecma262/#sec-function.prototype.bind
+// eslint-disable-next-line es/no-function-prototype-bind -- detection
+module.exports = NATIVE_BIND ? $Function.bind : function bind(that /* , ...args */) {
+  var F = aCallable(this);
+  var Prototype = F.prototype;
+  var partArgs = arraySlice(arguments, 1);
+  var boundFunction = function bound(/* args... */) {
+    var args = concat(partArgs, arraySlice(arguments));
+    return this instanceof boundFunction ? construct(F, args.length, args) : F.apply(that, args);
+  };
+  if (isObject(Prototype)) boundFunction.prototype = Prototype;
+  return boundFunction;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/function-call.js":
 /*!*********************************************************!*\
   !*** ./node_modules/core-js/internals/function-call.js ***!
@@ -1660,6 +1732,63 @@ module.exports = function (V, P) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/get-substitution.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/get-substitution.js ***!
+  \************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+
+var floor = Math.floor;
+var charAt = uncurryThis(''.charAt);
+var replace = uncurryThis(''.replace);
+var stringSlice = uncurryThis(''.slice);
+// eslint-disable-next-line redos/no-vulnerable -- safe
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
+
+// `GetSubstitution` abstract operation
+// https://tc39.es/ecma262/#sec-getsubstitution
+module.exports = function (matched, str, position, captures, namedCaptures, replacement) {
+  var tailPos = position + matched.length;
+  var m = captures.length;
+  var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+  if (namedCaptures !== undefined) {
+    namedCaptures = toObject(namedCaptures);
+    symbols = SUBSTITUTION_SYMBOLS;
+  }
+  return replace(replacement, symbols, function (match, ch) {
+    var capture;
+    switch (charAt(ch, 0)) {
+      case '$': return '$';
+      case '&': return matched;
+      case '`': return stringSlice(str, 0, position);
+      case "'": return stringSlice(str, tailPos);
+      case '<':
+        capture = namedCaptures[stringSlice(ch, 1, -1)];
+        break;
+      default: // \d\d?
+        var n = +ch;
+        if (n === 0) return match;
+        if (n > m) {
+          var f = floor(n / 10);
+          if (f === 0) return match;
+          if (f <= m) return captures[f - 1] === undefined ? charAt(ch, 1) : captures[f - 1] + charAt(ch, 1);
+          return match;
+        }
+        capture = captures[n - 1];
+    }
+    return capture === undefined ? '' : capture;
+  });
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/global-this.js":
 /*!*******************************************************!*\
   !*** ./node_modules/core-js/internals/global-this.js ***!
@@ -1802,6 +1931,36 @@ module.exports = fails(function () {
 }) ? function (it) {
   return classof(it) === 'String' ? split(it, '') : $Object(it);
 } : $Object;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/inherit-if-required.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/inherit-if-required.js ***!
+  \***************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
+
+// makes subclassing work correct for wrapped built-ins
+module.exports = function ($this, dummy, Wrapper) {
+  var NewTarget, NewTargetPrototype;
+  if (
+    // it can work only with native `setPrototypeOf`
+    setPrototypeOf &&
+    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+    isCallable(NewTarget = dummy.constructor) &&
+    NewTarget !== Wrapper &&
+    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    NewTargetPrototype !== Wrapper.prototype
+  ) setPrototypeOf($this, NewTargetPrototype);
+  return $this;
+};
 
 
 /***/ }),
@@ -2139,6 +2298,23 @@ module.exports = !construct || fails(function () {
     || !isConstructorModern(function () { called = true; })
     || called;
 }) ? isConstructorLegacy : isConstructorModern;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/is-data-descriptor.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/is-data-descriptor.js ***!
+  \**************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+
+module.exports = function (descriptor) {
+  return descriptor !== undefined && (hasOwn(descriptor, 'value') || hasOwn(descriptor, 'writable'));
+};
 
 
 /***/ }),
@@ -4491,6 +4667,23 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/this-number-value.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/this-number-value.js ***!
+  \*************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+
+// `thisNumberValue` abstract operation
+// https://tc39.es/ecma262/#sec-thisnumbervalue
+module.exports = uncurryThis(1.0.valueOf);
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/to-absolute-index.js":
 /*!*************************************************************!*\
   !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
@@ -5314,6 +5507,31 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.date.to-primitive.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.date.to-primitive.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+var defineBuiltIn = __webpack_require__(/*! ../internals/define-built-in */ "./node_modules/core-js/internals/define-built-in.js");
+var dateToPrimitive = __webpack_require__(/*! ../internals/date-to-primitive */ "./node_modules/core-js/internals/date-to-primitive.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
+var DatePrototype = Date.prototype;
+
+// `Date.prototype[@@toPrimitive]` method
+// https://tc39.es/ecma262/#sec-date.prototype-@@toprimitive
+if (!hasOwn(DatePrototype, TO_PRIMITIVE)) {
+  defineBuiltIn(DatePrototype, TO_PRIMITIVE, dateToPrimitive);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.date.to-string.js":
 /*!***********************************************************!*\
   !*** ./node_modules/core-js/modules/es.date.to-string.js ***!
@@ -5341,6 +5559,28 @@ if (String(new Date(NaN)) !== INVALID_DATE) {
     return value === value ? nativeDateToString(this) : INVALID_DATE;
   });
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.function.bind.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.function.bind.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+// TODO: Remove from `core-js@4`
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
+
+// `Function.prototype.bind` method
+// https://tc39.es/ecma262/#sec-function.prototype.bind
+// eslint-disable-next-line es/no-function-prototype-bind -- detection
+$({ target: 'Function', proto: true, forced: Function.bind !== bind }, {
+  bind: bind
+});
 
 
 /***/ }),
@@ -5486,6 +5726,132 @@ $({ target: 'Math', stat: true }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.number.constructor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.number.constructor.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/core-js/internals/global-this.js");
+var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
+var isPrototypeOf = __webpack_require__(/*! ../internals/object-is-prototype-of */ "./node_modules/core-js/internals/object-is-prototype-of.js");
+var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var getOwnPropertyNames = (__webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f);
+var getOwnPropertyDescriptor = (__webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f);
+var defineProperty = (__webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f);
+var thisNumberValue = __webpack_require__(/*! ../internals/this-number-value */ "./node_modules/core-js/internals/this-number-value.js");
+var trim = (__webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim);
+
+var NUMBER = 'Number';
+var NativeNumber = globalThis[NUMBER];
+var PureNumberNamespace = path[NUMBER];
+var NumberPrototype = NativeNumber.prototype;
+var TypeError = globalThis.TypeError;
+var stringSlice = uncurryThis(''.slice);
+var charCodeAt = uncurryThis(''.charCodeAt);
+
+// `ToNumeric` abstract operation
+// https://tc39.es/ecma262/#sec-tonumeric
+var toNumeric = function (value) {
+  var primValue = toPrimitive(value, 'number');
+  return typeof primValue == 'bigint' ? primValue : toNumber(primValue);
+};
+
+// `ToNumber` abstract operation
+// https://tc39.es/ecma262/#sec-tonumber
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, 'number');
+  var first, third, radix, maxCode, digits, length, index, code;
+  if (isSymbol(it)) throw new TypeError('Cannot convert a Symbol value to a number');
+  if (typeof it == 'string' && it.length > 2) {
+    it = trim(it);
+    first = charCodeAt(it, 0);
+    if (first === 43 || first === 45) {
+      third = charCodeAt(it, 2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (charCodeAt(it, 1)) {
+        // fast equal of /^0b[01]+$/i
+        case 66:
+        case 98:
+          radix = 2;
+          maxCode = 49;
+          break;
+        // fast equal of /^0o[0-7]+$/i
+        case 79:
+        case 111:
+          radix = 8;
+          maxCode = 55;
+          break;
+        default:
+          return +it;
+      }
+      digits = stringSlice(it, 2);
+      length = digits.length;
+      for (index = 0; index < length; index++) {
+        code = charCodeAt(digits, index);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+var FORCED = isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'));
+
+var calledWithNew = function (dummy) {
+  // includes check on 1..constructor(foo) case
+  return isPrototypeOf(NumberPrototype, dummy) && fails(function () { thisNumberValue(dummy); });
+};
+
+// `Number` constructor
+// https://tc39.es/ecma262/#sec-number-constructor
+var NumberWrapper = function Number(value) {
+  var n = arguments.length < 1 ? 0 : NativeNumber(toNumeric(value));
+  return calledWithNew(this) ? inheritIfRequired(Object(n), this, NumberWrapper) : n;
+};
+
+NumberWrapper.prototype = NumberPrototype;
+if (FORCED && !IS_PURE) NumberPrototype.constructor = NumberWrapper;
+
+$({ global: true, constructor: true, wrap: true, forced: FORCED }, {
+  Number: NumberWrapper
+});
+
+// Use `internal/copy-constructor-properties` helper in `core-js@4`
+var copyConstructorProperties = function (target, source) {
+  for (var keys = DESCRIPTORS ? getOwnPropertyNames(source) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES2015 (in case, if modules with ES2015 Number statics required before):
+    'EPSILON,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,isFinite,isInteger,isNaN,isSafeInteger,parseFloat,parseInt,' +
+    // ESNext
+    'fromString,range'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (hasOwn(source, key = keys[j]) && !hasOwn(target, key)) {
+      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+    }
+  }
+};
+
+if (IS_PURE && PureNumberNamespace) copyConstructorProperties(path[NUMBER], PureNumberNamespace);
+if (FORCED || IS_PURE) copyConstructorProperties(path[NUMBER], NativeNumber);
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.object.create.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/modules/es.object.create.js ***!
@@ -5553,6 +5919,33 @@ var FAILS_ON_PRIMITIVES = fails(function () { $freeze(1); });
 $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !FREEZING }, {
   freeze: function freeze(it) {
     return $freeze && isObject(it) ? $freeze(onFreeze(it)) : it;
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var nativeGetOwnPropertyDescriptor = (__webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f);
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+
+var FORCED = !DESCRIPTORS || fails(function () { nativeGetOwnPropertyDescriptor(1); });
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+$({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
+  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
+    return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
   }
 });
 
@@ -6203,6 +6596,110 @@ $({ target: 'Promise', stat: true, forced: IS_PURE || FORCED_PROMISE_CONSTRUCTOR
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.reflect.construct.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.construct.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var apply = __webpack_require__(/*! ../internals/function-apply */ "./node_modules/core-js/internals/function-apply.js");
+var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
+var aConstructor = __webpack_require__(/*! ../internals/a-constructor */ "./node_modules/core-js/internals/a-constructor.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+var nativeConstruct = getBuiltIn('Reflect', 'construct');
+var ObjectPrototype = Object.prototype;
+var push = [].push;
+
+// `Reflect.construct` method
+// https://tc39.es/ecma262/#sec-reflect.construct
+// MS Edge supports only 2 arguments and argumentsList argument is optional
+// FF Nightly sets third argument as `new.target`, but does not create `this` from it
+var NEW_TARGET_BUG = fails(function () {
+  function F() { /* empty */ }
+  return !(nativeConstruct(function () { /* empty */ }, [], F) instanceof F);
+});
+
+var ARGS_BUG = !fails(function () {
+  nativeConstruct(function () { /* empty */ });
+});
+
+var FORCED = NEW_TARGET_BUG || ARGS_BUG;
+
+$({ target: 'Reflect', stat: true, forced: FORCED, sham: FORCED }, {
+  construct: function construct(Target, args /* , newTarget */) {
+    aConstructor(Target);
+    anObject(args);
+    var newTarget = arguments.length < 3 ? Target : aConstructor(arguments[2]);
+    if (ARGS_BUG && !NEW_TARGET_BUG) return nativeConstruct(Target, args, newTarget);
+    if (Target === newTarget) {
+      // w/o altered newTarget, optimization for 0-4 arguments
+      switch (args.length) {
+        case 0: return new Target();
+        case 1: return new Target(args[0]);
+        case 2: return new Target(args[0], args[1]);
+        case 3: return new Target(args[0], args[1], args[2]);
+        case 4: return new Target(args[0], args[1], args[2], args[3]);
+      }
+      // w/o altered newTarget, lot of arguments case
+      var $args = [null];
+      apply(push, $args, args);
+      return new (apply(bind, Target, $args))();
+    }
+    // with altered newTarget, not support built-in constructors
+    var proto = newTarget.prototype;
+    var instance = create(isObject(proto) ? proto : ObjectPrototype);
+    var result = apply(Target, instance, args);
+    return isObject(result) ? result : instance;
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.reflect.get.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.get.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isDataDescriptor = __webpack_require__(/*! ../internals/is-data-descriptor */ "./node_modules/core-js/internals/is-data-descriptor.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+
+// `Reflect.get` method
+// https://tc39.es/ecma262/#sec-reflect.get
+function get(target, propertyKey /* , receiver */) {
+  var receiver = arguments.length < 3 ? target : arguments[2];
+  var descriptor, prototype;
+  if (anObject(target) === receiver) return target[propertyKey];
+  descriptor = getOwnPropertyDescriptorModule.f(target, propertyKey);
+  if (descriptor) return isDataDescriptor(descriptor)
+    ? descriptor.value
+    : descriptor.get === undefined ? undefined : call(descriptor.get, receiver);
+  if (isObject(prototype = getPrototypeOf(target))) return get(prototype, propertyKey, receiver);
+}
+
+$({ target: 'Reflect', stat: true }, {
+  get: get
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.regexp.exec.js":
 /*!********************************************************!*\
   !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
@@ -6298,6 +6795,159 @@ defineIterator(String, 'String', function (iterated) {
   state.index += point.length;
   return createIterResultObject(point, false);
 });
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.string.replace.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var apply = __webpack_require__(/*! ../internals/function-apply */ "./node_modules/core-js/internals/function-apply.js");
+var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/core-js/internals/is-null-or-undefined.js");
+var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/core-js/internals/to-integer-or-infinity.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
+var getSubstitution = __webpack_require__(/*! ../internals/get-substitution */ "./node_modules/core-js/internals/get-substitution.js");
+var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var REPLACE = wellKnownSymbol('replace');
+var max = Math.max;
+var min = Math.min;
+var concat = uncurryThis([].concat);
+var push = uncurryThis([].push);
+var stringIndexOf = uncurryThis(''.indexOf);
+var stringSlice = uncurryThis(''.slice);
+
+var maybeToString = function (it) {
+  return it === undefined ? it : String(it);
+};
+
+// IE <= 11 replaces $0 with the whole match, as if it was $&
+// https://stackoverflow.com/questions/6024666/getting-ie-to-replace-a-regex-with-the-literal-string-0
+var REPLACE_KEEPS_$0 = (function () {
+  // eslint-disable-next-line regexp/prefer-escape-replacement-dollar-char -- required for testing
+  return 'a'.replace(/./, '$0') === '$0';
+})();
+
+// Safari <= 13.0.3(?) substitutes nth capture where n>m with an empty string
+var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
+  if (/./[REPLACE]) {
+    return /./[REPLACE]('a', '$0') === '';
+  }
+  return false;
+})();
+
+var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
+  var re = /./;
+  re.exec = function () {
+    var result = [];
+    result.groups = { a: '7' };
+    return result;
+  };
+  // eslint-disable-next-line regexp/no-useless-dollar-replacements -- false positive
+  return ''.replace(re, '$<a>') !== '7';
+});
+
+// @@replace logic
+fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNative) {
+  var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
+
+  return [
+    // `String.prototype.replace` method
+    // https://tc39.es/ecma262/#sec-string.prototype.replace
+    function replace(searchValue, replaceValue) {
+      var O = requireObjectCoercible(this);
+      var replacer = isNullOrUndefined(searchValue) ? undefined : getMethod(searchValue, REPLACE);
+      return replacer
+        ? call(replacer, searchValue, O, replaceValue)
+        : call(nativeReplace, toString(O), searchValue, replaceValue);
+    },
+    // `RegExp.prototype[@@replace]` method
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
+    function (string, replaceValue) {
+      var rx = anObject(this);
+      var S = toString(string);
+
+      if (
+        typeof replaceValue == 'string' &&
+        stringIndexOf(replaceValue, UNSAFE_SUBSTITUTE) === -1 &&
+        stringIndexOf(replaceValue, '$<') === -1
+      ) {
+        var res = maybeCallNative(nativeReplace, rx, S, replaceValue);
+        if (res.done) return res.value;
+      }
+
+      var functionalReplace = isCallable(replaceValue);
+      if (!functionalReplace) replaceValue = toString(replaceValue);
+
+      var global = rx.global;
+      var fullUnicode;
+      if (global) {
+        fullUnicode = rx.unicode;
+        rx.lastIndex = 0;
+      }
+
+      var results = [];
+      var result;
+      while (true) {
+        result = regExpExec(rx, S);
+        if (result === null) break;
+
+        push(results, result);
+        if (!global) break;
+
+        var matchStr = toString(result[0]);
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+      }
+
+      var accumulatedResult = '';
+      var nextSourcePosition = 0;
+      for (var i = 0; i < results.length; i++) {
+        result = results[i];
+
+        var matched = toString(result[0]);
+        var position = max(min(toIntegerOrInfinity(result.index), S.length), 0);
+        var captures = [];
+        var replacement;
+        // NOTE: This is equivalent to
+        //   captures = result.slice(1).map(maybeToString)
+        // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
+        // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
+        // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
+        for (var j = 1; j < result.length; j++) push(captures, maybeToString(result[j]));
+        var namedCaptures = result.groups;
+        if (functionalReplace) {
+          var replacerArgs = concat([matched], captures, position, S);
+          if (namedCaptures !== undefined) push(replacerArgs, namedCaptures);
+          replacement = toString(apply(replaceValue, undefined, replacerArgs));
+        } else {
+          replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
+        }
+        if (position >= nextSourcePosition) {
+          accumulatedResult += stringSlice(S, nextSourcePosition, position) + replacement;
+          nextSourcePosition = position + matched.length;
+        }
+      }
+
+      return accumulatedResult + stringSlice(S, nextSourcePosition);
+    }
+  ];
+}, !REPLACE_SUPPORTS_NAMED_GROUPS || !REPLACE_KEEPS_$0 || REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE);
 
 
 /***/ }),
@@ -6864,6 +7514,28 @@ $({ target: 'Symbol', stat: true, forced: !NATIVE_SYMBOL_REGISTRY }, {
     if (hasOwn(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
   }
 });
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.symbol.to-primitive.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.to-primitive.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var defineWellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol-define */ "./node_modules/core-js/internals/well-known-symbol-define.js");
+var defineSymbolToPrimitive = __webpack_require__(/*! ../internals/symbol-define-to-primitive */ "./node_modules/core-js/internals/symbol-define-to-primitive.js");
+
+// `Symbol.toPrimitive` well-known symbol
+// https://tc39.es/ecma262/#sec-symbol.toprimitive
+defineWellKnownSymbol('toPrimitive');
+
+// `Symbol.prototype[@@toPrimitive]` method
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
+defineSymbolToPrimitive();
 
 
 /***/ }),
@@ -9112,7 +9784,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./patterns/notice-ribbon/notice-ribbon.js */ "./src/patterns/notice-ribbon/notice-ribbon.js");
 /* harmony import */ var _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./patterns/navigation/navigation.js */ "./src/patterns/navigation/navigation.js");
 /* harmony import */ var _patterns_slider_slider_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./patterns/slider/slider.js */ "./src/patterns/slider/slider.js");
-/* harmony import */ var _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./patterns/video/video-homepage.js */ "./src/patterns/video/video-homepage.js");
+/* harmony import */ var _patterns_image_carousel_image_carousel_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./patterns/image-carousel/image-carousel.js */ "./src/patterns/image-carousel/image-carousel.js");
+/* harmony import */ var _patterns_image_carousel_default_carousel_default_carousel_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./patterns/image-carousel/default-carousel/default-carousel.js */ "./src/patterns/image-carousel/default-carousel/default-carousel.js");
+/* harmony import */ var _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./patterns/video/video-homepage.js */ "./src/patterns/video/video-homepage.js");
 
 
 /**
@@ -9130,7 +9804,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"], _patterns_slider_slider_js__WEBPACK_IMPORTED_MODULE_3__["default"], _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_4__["default"]]);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"], _patterns_slider_slider_js__WEBPACK_IMPORTED_MODULE_3__["default"], _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_6__["default"], _patterns_image_carousel_image_carousel_js__WEBPACK_IMPORTED_MODULE_4__["default"], _patterns_image_carousel_default_carousel_default_carousel_js__WEBPACK_IMPORTED_MODULE_5__["default"]]);
 
 /***/ }),
 
@@ -9213,6 +9889,894 @@ function devcorate(elem, param, value) {
     }
   });
 }
+
+/***/ }),
+
+/***/ "./src/patterns/image-carousel/carousel-constructor.js":
+/*!*************************************************************!*\
+  !*** ./src/patterns/image-carousel/carousel-constructor.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Carousel)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_to_primitive_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.to-primitive.js */ "./node_modules/core-js/modules/es.symbol.to-primitive.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_date_to_primitive_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.date.to-primitive.js */ "./node_modules/core-js/modules/es.date.to-primitive.js");
+/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.function.bind.js */ "./node_modules/core-js/modules/es.function.bind.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_math_sign_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.math.sign.js */ "./node_modules/core-js/modules/es.math.sign.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.parse-int.js */ "./node_modules/core-js/modules/es.parse-int.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
+
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+var ie = (0,_util_js__WEBPACK_IMPORTED_MODULE_19__.detectIE)();
+var Carousel = /*#__PURE__*/function () {
+  function Carousel(elem, options) {
+    _classCallCheck(this, Carousel);
+    this.elem = elem;
+    this.config = options ? options : {};
+    this.i = 0;
+    this.x0 = null;
+    this.locked = false;
+    this.sliderTranslateCoOr = 0;
+  }
+
+  /**
+   * Set the number indicators Number
+   *
+   * @param {number} carousel index - current carousel index
+   * @param {HTMLelement} indicator html - pass HTML containing the indicator
+   */
+  return _createClass(Carousel, [{
+    key: "numIndicator",
+    value: function numIndicator(index, e) {
+      e.querySelector('.swiper-indicator__active-slider').innerText = index + 1;
+    }
+
+    /**
+     *
+     * Set active slider
+     *
+     * @param {number} carousel index - current carousel index
+     * @param {HTMLelement} sliders html - pass HTML containing the sliders
+     */
+  }, {
+    key: "activeSlider",
+    value: function activeSlider(index, sliders) {
+      var a = (0,_util_js__WEBPACK_IMPORTED_MODULE_19__.toArray)(sliders.querySelectorAll('.swiper-slide'));
+      a.forEach(function (e) {
+        e.classList.remove('active');
+        e.querySelectorAll('a').forEach(function (a) {
+          return a.tabIndex = -1;
+        }); // disable focus on non active slider with hyperlinks
+        e.setAttribute('aria-hidden', 'true');
+      });
+      a[index].classList.toggle('active');
+      a[index].querySelectorAll('a').forEach(function (a) {
+        return a.tabIndex = 0;
+      });
+      a[index].setAttribute('aria-hidden', 'false');
+    }
+
+    /**
+     *
+     * Toggle next button
+     *
+     * @param {number} carousel index - current carousel index
+     * @param {number} length of sliders -
+     * @param {event} user event - interaction event perform by user
+     */
+  }, {
+    key: "toogleNextBtn",
+    value: function toogleNextBtn(index, length, e) {
+      var nextBtn = this.checkEventType(e);
+      if (index + 1 === length) {
+        nextBtn.querySelector('.swiper-button-next button').disabled = true;
+        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+      } else if (this.i + 1 < length) {
+        nextBtn.querySelector('.swiper-button-next button').disabled = false;
+        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+      }
+      this.activeSlider(index, nextBtn);
+      if (!this.config.hidNumInd) {
+        this.numIndicator(index, nextBtn);
+      }
+    }
+
+    /**
+     *
+     * Toggle previous button
+     *
+     * @param {number} carousel index - current carousel index
+     * @param {number} length of sliders -
+     * @param {event} user event - interaction event perform by user
+     */
+  }, {
+    key: "tooglePrevBtn",
+    value: function tooglePrevBtn(index, length, e) {
+      var prevBtn = this.checkEventType(e);
+      if (index + 1 === 1) {
+        prevBtn.querySelector('.swiper-button-prev button').disabled = true;
+        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+      } else if (this.i + 1 > 1) {
+        prevBtn.querySelector('.swiper-button-prev button').disabled = false;
+        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+      }
+      this.activeSlider(index, prevBtn);
+      if (!this.config.hidNumInd) {
+        this.numIndicator(index, prevBtn);
+      }
+    }
+
+    /**
+     *
+     * Move slide either forwards or backwards
+     *
+     * @param {event} user event - interaction event perform by user from onClick on btn or thumbnail
+     * @param {boolean} boolean for either next or pervious - boolean to check if next or previous is called
+     */
+  }, {
+    key: "moveSlide",
+    value: function moveSlide(e, t) {
+      var sl = this.checkEventType(e).querySelector('.swiper-wrapper');
+      if (sl.classList.contains('smooth')) {
+        sl.classList.toggle('smooth');
+      }
+      if (!ie) {
+        if (this.config.defaultCarousel && e.target.tagName === 'INPUT') {
+          sl.style.setProperty('--i', this.i);
+        } else {
+          t ? sl.style.setProperty('--i', this.i !== 0 ? this.i += 1 : this.i = 1) : sl.style.setProperty('--i', this.i !== 0 ? this.i -= 1 : this.i = 1);
+        }
+        sl.classList.toggle('smooth');
+        t ? this.toogleNextBtn(this.i, sl.children.length, e) : this.tooglePrevBtn(this.i, sl.children.length, e);
+      } else {
+        var sliderWidthIndex = this.totalSliderWidth(e) / sl.children.length * this.i,
+          sliderWidth = this.totalSliderWidth(e) / sl.children.length;
+        t ? this.sliderTranslateCoOr -= sliderWidth : this.sliderTranslateCoOr += sliderWidth;
+        sl.classList.toggle('smooth');
+        if (this.config.defaultCarousel && e.target.tagName === 'INPUT') {
+          this.sliderTranslateCoOr = -sliderWidthIndex;
+          sl.style.setProperty('transform', 'translate(-' + sliderWidthIndex + 'px)');
+          sl.style.setProperty('--i', this.i);
+        } else {
+          sl.style.setProperty('transform', 'translate(' + this.sliderTranslateCoOr + 'px)');
+          t ? this.i !== 0 ? this.i += 1 : this.i = 1 : this.i !== 0 ? this.i -= 1 : this.i = 1;
+        }
+        t ? this.toogleNextBtn(this.i, sl.children.length, e) : this.tooglePrevBtn(this.i, sl.children.length, e);
+      }
+      if (this.config.defaultCarousel) {
+        this.activeThumbnail(this.i, e);
+      }
+    }
+
+    /**
+     *
+     * Next slide
+     *
+     * @param {event} user event - interaction event perform by user from onClick on btn or thumbnail
+     */
+  }, {
+    key: "next",
+    value: function next(e) {
+      e.preventDefault();
+      this.moveSlide(e, true);
+    }
+
+    /**
+     *
+     * Prvious slide
+     *
+     * @param {event} user event - interaction event perform by user from onClick on btn or thumbnail
+     */
+  }, {
+    key: "previous",
+    value: function previous(e) {
+      e.preventDefault();
+      this.moveSlide(e, false);
+    }
+
+    /**
+     *
+     * Return touch points of either touch or mouse
+     *
+     * @param {event} user event - event on silder from either mouse or touch events
+     * @returns {event | object} - either return the event back or the object of touch events
+     */
+  }, {
+    key: "unify",
+    value: function unify(e) {
+      return e.changedTouches ? e.changedTouches[0] : e;
+    }
+
+    /**
+     *
+     * Start of slider move Set mousedown value to global and toggle smooth class for css transition on mouse down or touch start
+     *
+     * @param {event} user event - user action either mosuedown or touch start
+     */
+  }, {
+    key: "lock",
+    value: function lock(e) {
+      this.x0 = this.unify(e).clientX; //set mousedown clientX value
+      e.target.classList.toggle('smooth', !(this.locked = true));
+    }
+
+    /**
+     *
+     * Moving the slider - moving the slider trigger by mouse move or touch move
+     *
+     * @param {event} user event - mousetouch or touchmove
+     */
+  }, {
+    key: "drag",
+    value: function drag(e) {
+      if (this.i !== e.target.children.length - 1 && this.i !== 0) {
+        if (this.locked) {
+          e.target.style.setProperty('--tx', "".concat(Math.round(this.unify(e).clientX - this.x0), "px"));
+        }
+      }
+    }
+
+    /**
+     *
+     * Move slider
+     *
+     * @param {event} user event - mouseup or touchend
+     */
+  }, {
+    key: "move",
+    value: function move(e) {
+      if (this.locked) {
+        var dx = this.unify(e).clientX - this.x0,
+          //dx is value calculate by using clientX mousedown and after value
+          s = Math.sign(dx),
+          //check if swipe is left or right by checking value is negative or positive
+          tx = getComputedStyle(e.target).getPropertyValue('--tx'),
+          p = parseInt(tx.replace(/\D/g, '')); // MAY use the drag length as a condition to move slider
+
+        if ((this.i > 0 || s < 0) && (this.i < e.target.children.length - 1 || s > 0) && (p > 100 || this.i === 0 || this.i === e.target.children.length - 1) //conditions to swip to slider
+        ) {
+          if (!ie) {
+            e.target.style.setProperty('--i', this.i -= s); //increment i (i repersent the slider)
+            e.target.style.setProperty('--tx', '0px'); //reset touch x value
+            e.target.classList.toggle('smooth', !(this.locked = false));
+            this.x0 = null;
+            if (s === -1) {
+              this.toogleNextBtn(this.i, e.target.children.length, e);
+            } else {
+              this.tooglePrevBtn(this.i, e.target.children.length, e);
+            }
+          } else {
+            this.animateSlider(e, s);
+            s === -1 ? this.toogleNextBtn(this.i, e.target.children.length, e) : this.tooglePrevBtn(this.i, e.target.children.length, e);
+          }
+          if (this.config.defaultCarousel) {
+            this.activeThumbnail(this.i, e);
+          }
+        }
+      }
+    }
+
+    /**
+     *
+     * Stop drag when mouse or touch move outside the slider element
+     *
+     * @param {event} user event - mouseup or touchend
+     */
+  }, {
+    key: "stopDrag",
+    value: function stopDrag(e) {
+      e.target.style.setProperty('--tx', '0px');
+      e.stopPropagation();
+      e.target.classList.toggle('smooth', !(this.locked = false));
+    }
+
+    /**
+     *
+     * Check event type and passing the correct parent node
+     *
+     * @param {event} user event - either mouse, touch, click events and thumbnail click events
+     * @returns {HTMLSliderElement} -
+     */
+  }, {
+    key: "checkEventType",
+    value: function checkEventType(e) {
+      if (e.target.parentElement.classList.contains('galleria-thumbnail')) {
+        return e.target.parentElement.parentElement.parentElement.parentElement;
+      } else {
+        switch (e.type) {
+          case 'mouseup':
+            return e.target.parentElement.parentElement;
+          case 'touchend':
+            return e.target.parentElement.parentElement;
+          default:
+            return e.target.parentElement.parentElement.parentElement;
+        }
+      }
+    }
+
+    /**
+     *
+     * For edge browsers calculate silders total width
+     *
+     * @param {event} user event -
+     * @returns {number} - total width of slider
+     */
+    //edge fall back cannot use CSS var inside a cal()
+  }, {
+    key: "totalSliderWidth",
+    value: function totalSliderWidth(e) {
+      var sliders = (0,_util_js__WEBPACK_IMPORTED_MODULE_19__.toArray)(this.checkEventType(e).querySelectorAll('.swiper-slide'));
+      var totalWidth = 0;
+      sliders.forEach(function (s) {
+        var style = window.getComputedStyle ? getComputedStyle(s, null) : s.currentStyle;
+        totalWidth += s.offsetWidth + parseInt(style.marginRight) || 0;
+      });
+      return totalWidth;
+    }
+
+    /**
+     *
+     * Animate slider by setting translate value
+     *
+     * @param {event} user event -
+     * @param {number}  - number either negative or a positive number
+     */
+  }, {
+    key: "animateSlider",
+    value: function animateSlider(e, lr) {
+      var sliderWidth = this.totalSliderWidth(e) / e.target.children.length;
+      lr === -1 ? this.sliderTranslateCoOr -= sliderWidth : this.sliderTranslateCoOr += sliderWidth;
+      e.target.style.setProperty('transform', 'translate(' + this.sliderTranslateCoOr + 'px)');
+      e.target.classList.toggle('smooth');
+      this.i -= lr;
+    }
+
+    /**
+     *
+     * Adds and setups carousel controls
+     * e.g.
+     *
+     *  <div class="swiper-viewport">
+     *      <div class="swiper-container">
+     *
+     *          <ul class="swiper-wrapper">
+     *              <li class="swiper-slide">
+     *                  <div class="swiper-slide__image-wrapper">
+     *                      <picture>
+     *                          <img src="https://web2020.city.ac.uk/documentation/patterns/carousel/_DP57645_1920x1080.jpg" alt="Image">
+     *                      </picture>
+     *                  </div>
+     *                  <div class="swiper-slide__text">
+     *                      <p>We are a leading provider of healthcare .....</p>
+     *                  </div>
+     *              </li>
+     *              <li class="swiper-slide">
+     *                  <div class="swiper-slide__image-wrapper">
+     *                      <img class="lazy" src="https://web2020.city.ac.uk/documentation/patterns/carousel/_DP57645_1920x1080.jpg" alt="Image">
+     *                  </div>
+     *                  <div class="swiper-slide__text">
+     *                      <p>We are a leading provider of healthcare .....</p>
+     *                  </div>
+     *              </li>
+     *          </ul>
+     *
+     *      </div>
+     *  </div>
+     *
+     *@param {HTMLElement} elem - The element to carousel.
+     *@param {Object} object - Object containing setting to setup defualt carousel. if using full width carousel
+     * then do not pass in object unless you want to hide the number indicators.
+     * To intialise the defualt carousel pass this object
+     * {
+     *  defaultCarousel: true,
+     *  hidNumInd: true,
+     *  }
+     *
+     */
+  }, {
+    key: "init",
+    value: function init() {
+      var lazyImages = [].slice.call(this.elem.querySelectorAll('img.lazy'));
+      if ('IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
+        var lazyImageObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry, i) {
+            if (i === 0) {
+              entry.target.querySelector('img').classList.remove('lazy');
+            }
+            if (entry.isIntersecting) {
+              var lazyImage = entry.target.parentNode.parentNode.nextSibling.firstElementChild.querySelector('img');
+              var sourceSet = entry.target.parentNode.parentNode.nextSibling.firstElementChild.querySelectorAll('source');
+              sourceSet.forEach(function (item) {
+                item.srcset = item.dataset.srcset;
+              });
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove('lazy');
+              lazyImageObserver.unobserve(entry.target);
+            }
+          });
+        });
+        lazyImages.forEach(function (lazyImage, i, a) {
+          if (i !== a.length - 1) {
+            lazyImageObserver.observe(lazyImage.parentNode);
+          } else {
+            lazyImage.classList.remove('lazy');
+          }
+        });
+      } else {
+        lazyImages.forEach(function (e) {
+          if (e.dataset.src) {
+            e.src = e.dataset.src;
+          }
+          e.classList.remove('lazy');
+        });
+      }
+      var _C = this.elem.querySelector('.swiper-wrapper'),
+        numInd = document.createElement('div'),
+        numIndActiveSl = document.createElement('span'),
+        numIndSeparator = document.createElement('span'),
+        numbIndSlLength = document.createElement('span'),
+        buttonsWrap = document.createElement('div'),
+        prevBtnWrap = document.createElement('div'),
+        nextBtnWrap = document.createElement('div'),
+        nextBtn = document.createElement('BUTTON'),
+        prevBtn = document.createElement('BUTTON');
+      //setup carousel buttons
+      buttonsWrap.className = 'swiper-buttons-wrap';
+      prevBtnWrap.className = 'swiper-button-prev';
+      nextBtnWrap.className = 'swiper-button-next';
+      nextBtn.name = 'nextButton';
+      nextBtn.type = 'button';
+      nextBtn.className = 'fas fa-arrow-right swiper-slider-arrow arrow-right--btn-next';
+      nextBtn.setAttribute('aria-label', 'Next slider');
+      nextBtn.addEventListener('click', this.next.bind(this), false);
+      prevBtn.name = 'prevButton';
+      prevBtn.type = 'button';
+      prevBtn.className = 'fas fa-arrow-left swiper-slider-arrow arrow-left--btn-prev';
+      prevBtn.setAttribute('aria-label', 'Previous slider');
+      prevBtn.addEventListener('click', this.previous.bind(this), false);
+      prevBtn.disabled = true;
+      nextBtnWrap.appendChild(nextBtn);
+      prevBtnWrap.appendChild(prevBtn);
+      buttonsWrap.appendChild(prevBtnWrap);
+      buttonsWrap.appendChild(nextBtnWrap);
+      if (!this.config.hidNumInd) {
+        //perpare the indicators to append to html
+        numInd.className = 'swiper-indicator';
+        numIndActiveSl.className = 'swiper-indicator__active-slider';
+        numbIndSlLength.className = 'swiper-indicator__slider-length';
+        numIndActiveSl.innerText = this.i + 1;
+        numbIndSlLength.innerText = _C.children.length;
+        numIndSeparator.innerText = ' /';
+        numInd.appendChild(numIndActiveSl);
+        numInd.appendChild(numIndSeparator);
+        numInd.appendChild(numbIndSlLength);
+        this.elem.appendChild(numInd);
+      }
+      this.elem.appendChild(buttonsWrap);
+      this.config.sliderLength = _C.children.length;
+      if (this.config.defaultCarousel) {
+        this.elem.querySelector('.galleria-thumbnails-list').style.setProperty('--thumbnails', this.config.sliderLength);
+      }
+      _C.style.setProperty('--n', this.config.sliderLength);
+      //add event listeners
+      _C.addEventListener('mousedown', this.lock.bind(this), false);
+      _C.addEventListener('touchstart', this.lock.bind(this), false);
+      _C.addEventListener('mousemove', this.drag.bind(this), false);
+      _C.addEventListener('touchmove', this.drag.bind(this), false);
+      _C.addEventListener('mouseup', this.move.bind(this), false);
+      _C.addEventListener('touchend', this.move.bind(this), false);
+      _C.addEventListener('mouseout', this.stopDrag.bind(this), false);
+      _C.firstElementChild.classList.toggle('active');
+      this.activeSlider(this.i, _C);
+    }
+  }]);
+}();
+
+
+/***/ }),
+
+/***/ "./src/patterns/image-carousel/default-carousel/default-carousel-constructor.js":
+/*!**************************************************************************************!*\
+  !*** ./src/patterns/image-carousel/default-carousel/default-carousel-constructor.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Defaultcarousel)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_to_primitive_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.to-primitive.js */ "./node_modules/core-js/modules/es.symbol.to-primitive.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_date_to_primitive_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.date.to-primitive.js */ "./node_modules/core-js/modules/es.date.to-primitive.js");
+/* harmony import */ var core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.date.to-string.js */ "./node_modules/core-js/modules/es.date.to-string.js");
+/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.function.bind.js */ "./node_modules/core-js/modules/es.function.bind.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.object.create.js */ "./node_modules/core-js/modules/es.object.create.js");
+/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
+/* harmony import */ var core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.object.get-prototype-of.js */ "./node_modules/core-js/modules/es.object.get-prototype-of.js");
+/* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.object.set-prototype-of.js */ "./node_modules/core-js/modules/es.object.set-prototype-of.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.parse-int.js */ "./node_modules/core-js/modules/es.parse-int.js");
+/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
+/* harmony import */ var core_js_modules_es_reflect_get_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.reflect.get.js */ "./node_modules/core-js/modules/es.reflect.get.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../../util.js */ "./src/util.js");
+/* harmony import */ var _carousel_constructor_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../carousel-constructor.js */ "./src/patterns/image-carousel/carousel-constructor.js");
+
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _superPropGet(t, o, e, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
+function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
+function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+var keyCodeTab = 9,
+  keyCodeEnter = 13;
+var Defaultcarousel = /*#__PURE__*/function (_Carousel) {
+  function Defaultcarousel(elem, options) {
+    _classCallCheck(this, Defaultcarousel);
+    return _callSuper(this, Defaultcarousel, [elem, options]);
+  }
+  _inherits(Defaultcarousel, _Carousel);
+  return _createClass(Defaultcarousel, [{
+    key: "inital",
+    value: function inital() {
+      _superPropGet(Defaultcarousel, "init", this, 3)([]);
+      var self = this;
+      var thumbnails = [].slice.call(this.elem.querySelector('.galleria-thumbnails-list').querySelectorAll('li'));
+      //edge work around intersectionObserver not triggering using isIntersecting
+      var options = {
+          rootMargin: '0px',
+          threshold: [0, 1]
+        },
+        edge = document.documentElement.classList.contains('edge');
+      var edgeThumbnailsObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.intersectionRatio === 1) {
+            entry.target.setAttribute('aria-hidden', 'false');
+          } else {
+            entry.target.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }, options);
+      var thumbnailsObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute('aria-hidden', 'false');
+          } else if (!entry.isIntersecting) {
+            entry.target.setAttribute('aria-hidden', 'true');
+          }
+        });
+      });
+      thumbnails.forEach(function (e, i) {
+        if (i === 0) {
+          e.classList.add('active');
+        }
+        e.addEventListener('click', function (t) {
+          self.onClickThunbnail(t, i);
+        }, false);
+        e.addEventListener('keyup', function (e) {
+          switch (e.keyCode) {
+            case keyCodeEnter:
+              self.onClickThunbnail(e, i);
+              break;
+            case keyCodeTab:
+              self.translateThumbnails(i, e);
+              break;
+            default:
+              break;
+          }
+        }, false);
+        e.setAttribute('aria-hidden', 'false');
+        if (_util_js__WEBPACK_IMPORTED_MODULE_27__.checkIntersectionObserver && !edge) {
+          thumbnailsObserver.observe(e);
+        } else if (_util_js__WEBPACK_IMPORTED_MODULE_27__.checkIntersectionObserver && edge) {
+          edgeThumbnailsObserver.observe(e);
+        }
+      });
+    }
+
+    /**
+     *
+     * Exported function for defualt caousel to preform when thumbnail it cliked on
+     * move slider forward or backwards
+     *
+     * @param {event} user event - onlcik event on thumbnail
+     * @param {number} thumbnail index -
+     */
+  }, {
+    key: "onClickThunbnail",
+    value: function onClickThunbnail(thumbnail, thumbindex) {
+      if (thumbindex > this.i) {
+        this.i = thumbindex;
+        this.next(thumbnail);
+      } else if (thumbindex < this.i) {
+        this.i = thumbindex;
+        this.previous(thumbnail);
+      }
+      this.activeThumbnail(thumbindex, thumbnail);
+    }
+
+    /**
+     *
+     * Set click on thumbnail to be active
+     *
+     * @param {number} thumbnail index -
+     * @param {event} user event - onlcik event on thumbnail
+     */
+  }, {
+    key: "activeThumbnail",
+    value: function activeThumbnail(thumbindex, e) {
+      var thumbnail = this.checkEventType(e),
+        currentThumbnailSpan = document.createElement('span'),
+        listThumbnail = thumbnail.querySelector('.galleria-thumbnails-list').getElementsByTagName('li');
+      currentThumbnailSpan.innerText = 'Current thumbnail';
+      currentThumbnailSpan.className = 'galleria-thumbnail__current-thumbnail';
+      var _iterator = _createForOfIteratorHelper(listThumbnail),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var li = _step.value;
+          li.classList.remove('active');
+          if (li.querySelector('.galleria-thumbnail__current-thumbnail')) {
+            li.querySelector('.galleria-thumbnail__current-thumbnail').remove();
+          }
+        }
+
+        /*slider === 1
+         ? listThumbnail[thumbindex + 3].classList.add('fade')
+         : slider > lastTwoSlider
+         ? null
+         : listThumbnail[thumbindex + 2].classList.add('fade');*/
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      listThumbnail[thumbindex].classList.add('active');
+      listThumbnail[thumbindex].appendChild(currentThumbnailSpan);
+      this.translateThumbnails(thumbindex, e);
+    }
+
+    /**
+     *
+     * Move thumbnail
+     *
+     * @param {number} thumbnail index -
+     * @param {event} user event - onlcik event on thumbnail
+     */
+  }, {
+    key: "translateThumbnails",
+    value: function translateThumbnails(thumbindex, e) {
+      var thumbnailLi = this.checkEventType(e).querySelector('.galleria-thumbnails-list'),
+        thumbnailLength = thumbnailLi.getElementsByTagName('li').length,
+        translate = 0;
+      if (thumbindex !== 0 && thumbnailLength > 4) {
+        var galleria = thumbnailLi.getElementsByTagName('li');
+        Array.from(galleria).forEach(function (e, i) {
+          if (i < thumbindex - 1) {
+            var style = window.getComputedStyle ? getComputedStyle(e, null) : e.currentStyle;
+            var width = parseInt(style.width) + parseInt(style.marginRight);
+            translate += width;
+          }
+        });
+        if (thumbindex >= 2) {
+          thumbnailLi.style.setProperty('transform', 'translate(-' + translate + 'px)');
+        } else {
+          thumbnailLi.style.setProperty('transform', 'translate(0px)');
+        }
+      }
+    }
+  }]);
+}(_carousel_constructor_js__WEBPACK_IMPORTED_MODULE_28__["default"]);
+
+
+/***/ }),
+
+/***/ "./src/patterns/image-carousel/default-carousel/default-carousel.js":
+/*!**************************************************************************!*\
+  !*** ./src/patterns/image-carousel/default-carousel/default-carousel.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _default_carousel_constructor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./default-carousel-constructor.js */ "./src/patterns/image-carousel/default-carousel/default-carousel-constructor.js");
+
+
+
+var className = 'carousel-gallery';
+
+/**
+ *
+ * Init the defualt gallery
+ *
+ *
+ *
+ * HTML e.g.
+ *
+ *  <div class="carousel-gallery-default">
+ *      <div class="carousel-gallery">
+ *          <h3>Gallery title</h3>
+ *          <ul class="swiper-wrapper">
+ *              <li class="swiper-slide">
+ *                  <div class="swiper-slide__image-wrapper">
+ *                      <img src="centre-healthcare-innovation-research.jpg" alt="Banner depicting ">
+ *                  </div>
+ *              </li>
+ *              <li class="swiper-slide">
+ *                  <div class="swiper-slide__image-wrapper">
+ *                      <img class="lazy" src="centre-healthcare-innovation-research.jpg" alt="Banner depicting ">
+ *                  </div>
+ *              </li>
+ *              <li class="swiper-slide">
+ *                  <div class="swiper-slide__image-wrapper">
+ *                      <img class="lazy" src="centre-healthcare-innovation-research.jpg" alt="Banner depicting ">
+ *                      <noscript>
+ *                          <img class="lazy" src="https://web2020.city.ac.uk/__data/assets/image/0019/341236/Phonetics-lab.jpg" alt="Woman using the phonetics lab">
+ *                      </noscript>
+ *                  </div>
+ *              </li>
+ *          </ul>
+ *          <div class="galleria-thumbnails-wrap">
+ *              <ul class="galleria-thumbnails-list">
+ *                  <li class="galleria-thumbnail">
+ *                      <img src="big_thumbnail.jpg" alt="Banner depicting "/>
+ *                  </li>
+ *                  <li class="galleria-thumbnail">
+ *                      <img src="big_thumbnail.jpg" alt="Banner depicting "/>
+ *                  </li>
+ *                  <li class="galleria-thumbnail">
+ *                      <img src="big_thumbnail.jpg" alt="Banner depicting "/>
+ *                  </li>
+ *              </ul>
+ *          </div>
+ *      </div>
+ *  </div>
+ *
+ * @param {HTMLElement} elem - The element to carousel.
+ */
+
+function carouselGallery(elem) {
+  var dc = new _default_carousel_constructor_js__WEBPACK_IMPORTED_MODULE_0__["default"](elem, {
+    defaultCarousel: true,
+    hidNumInd: true
+  });
+  dc.inital();
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  launchFn: carouselGallery,
+  launchQuery: ".".concat(className)
+});
+
+/***/ }),
+
+/***/ "./src/patterns/image-carousel/image-carousel.js":
+/*!*******************************************************!*\
+  !*** ./src/patterns/image-carousel/image-carousel.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _carousel_constructor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./carousel-constructor.js */ "./src/patterns/image-carousel/carousel-constructor.js");
+
+
+
+var className = 'swiper-container';
+function init(elem) {
+  var c = new _carousel_constructor_js__WEBPACK_IMPORTED_MODULE_0__["default"](elem);
+  c.init();
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  launchFn: init,
+  launchQuery: ".".concat(className)
+});
 
 /***/ }),
 
