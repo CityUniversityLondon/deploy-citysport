@@ -3273,8 +3273,43 @@ article a:active {
   padding: 0;
 }
 
-.figcaption__caption {
+figure figcaption,
+.figcaption-like {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
   color: #979797;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-top: 0.25rem;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  figure figcaption,
+  .figcaption-like {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  figure figcaption,
+  .figcaption-like {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  figure figcaption,
+  .figcaption-like {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  figure figcaption,
+  .figcaption-like {
+    letter-spacing: -0.017em;
+  }
+}
+
+.figcaption__credit {
+  display: block;
 }
 
 main > .news {
