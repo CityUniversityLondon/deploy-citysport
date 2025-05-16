@@ -3232,6 +3232,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
 
 .content-announcement__wrapper {
   display: inline-block;
+  margin-top: 0.5rem;
 }
 
 .content-announcement {
@@ -3280,6 +3281,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
 
 .content-pdf__wrapper {
   display: inline-block;
+  margin-top: 0.5rem;
 }
 
 .content-pdf {
