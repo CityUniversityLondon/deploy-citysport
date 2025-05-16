@@ -766,6 +766,11 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f0e0\f0e0";
 }
 
+.fa-file-pdf {
+  --fa: "\f1c1";
+  --fa--fa: "\f1c1\f1c1";
+}
+
 .fa-graduation-cap {
   --fa: "\f19d";
   --fa--fa: "\f19d\f19d";
@@ -7941,20 +7946,20 @@ hr {
 }
 
 .swiper-slider-arrow {
-  color: #0c0c0e;
-  border: 0.0625rem solid #0c0c0e;
+  color: #d61726;
+  border: 0.0625rem solid #d61726;
   padding: 0.75rem;
   font-weight: 400;
 }
 @media (hover: hover) {
   .swiper-slider-arrow:hover {
     color: #ffffff;
-    background: #0c0c0e;
+    background: #d61726;
   }
 }
 .swiper-slider-arrow:focus, .swiper-slider-arrow:active {
   color: #ffffff;
-  background: #0c0c0e;
+  background: #d61726;
 }
 .swiper-slider-arrow:focus:focus, .swiper-slider-arrow:focus:active, .swiper-slider-arrow:active:focus, .swiper-slider-arrow:active:active {
   outline-color: #111111;
