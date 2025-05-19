@@ -4176,6 +4176,173 @@ figure figcaption,
   display: block;
 }
 
+@media screen {
+  .js .accordion > .accordion__body {
+    padding: 1rem;
+  }
+  .js .accordion > .accordion__heading {
+    border-bottom: 0.0625rem solid #e5e5e5;
+    margin-top: 0;
+  }
+  .js .accordion > .accordion__heading:focus {
+    outline: 0.125rem dotted #ffffff;
+    border: 0;
+  }
+  .js .accordion > .accordion__heading:active {
+    border: 0;
+    border-bottom: 0.0625rem solid transparent;
+    outline: 0;
+  }
+  .js .accordion > .accordion__heading button {
+    font-size: 1.125rem;
+    line-height: 1.3333333333;
+    letter-spacing: -0.008em;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    color: #ffffff;
+    outline: 0.125rem solid transparent;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1919px) {
+  .js .accordion > .accordion__heading button {
+    letter-spacing: -0.011em;
+  }
+}
+@media screen and (min-width: 1920px) and (max-width: 3839px) {
+  .js .accordion > .accordion__heading button {
+    letter-spacing: -0.014em;
+  }
+}
+@media screen and (min-width: 3840px) and (max-width: 7679px) {
+  .js .accordion > .accordion__heading button {
+    letter-spacing: -0.017em;
+  }
+}
+@media screen and (min-width: 7680px) {
+  .js .accordion > .accordion__heading button {
+    letter-spacing: -0.017em;
+  }
+}
+@media screen {
+  .js .accordion > .accordion__heading button div {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-column-gap: 0;
+  }
+  .js .accordion > .accordion__heading button .accordion__heading__indicator {
+    align-self: center;
+    text-align: right;
+    height: 100%;
+    color: #ffffff;
+  }
+  .js .accordion > .accordion__heading button .accordion__heading__indicator:before {
+    display: inline-block;
+    text-decoration: none;
+    border: 0.125rem solid #ffffff;
+    background: #111111;
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition-property: transform;
+    transition-duration: 0.2s;
+  }
+}
+@media screen and (hover: hover) {
+  .js .accordion > .accordion__heading button:hover {
+    text-decoration: underline;
+    color: #ffffff;
+    outline: 0.125rem solid transparent;
+  }
+}
+@media screen {
+  .js .accordion > .accordion__heading button:focus {
+    outline: 0.125rem dotted #ffffff;
+    border: 0;
+  }
+  .js .accordion > .accordion__heading button:active {
+    outline: 0.125rem dotted #ffffff;
+  }
+  .js .accordion > .accordion__heading:first-of-type {
+    margin-top: 1rem;
+  }
+  .js .accordion > .accordion__heading[data-open=true] {
+    margin-top: 1rem;
+    border-bottom: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true]:focus, .js .accordion > .accordion__heading[data-open=true]:active {
+    outline: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] button {
+    border-top: 0.125rem dotted #ffffff;
+    border-left: 0.125rem dotted #ffffff;
+    border-right: 0.125rem dotted #ffffff;
+    border-bottom: 0.0625rem solid #d8d8d8;
+    color: #ffffff;
+    padding: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__text,
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator {
+    padding: 1rem;
+  }
+}
+@media screen and (hover: hover) {
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__text:hover {
+    text-decoration: underline;
+  }
+}
+@media screen {
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator:before {
+    display: inline-block;
+    text-decoration: none;
+    transform: rotate(180deg);
+    border: 0.125rem solid #d61726;
+    background: #d61726;
+  }
+  .js .accordion > .accordion__heading[data-open=true] button:focus, .js .accordion > .accordion__heading[data-open=true] button:active {
+    border-top: 0.125rem dotted #ffffff;
+    border-left: 0.125rem dotted #ffffff;
+    border-right: 0.125rem dotted #ffffff;
+    border-bottom: 0.0625rem solid #d8d8d8;
+    outline: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body {
+    border-top: 0;
+    border-left: 0.125rem dotted #ffffff;
+    border-right: 0.125rem dotted #ffffff;
+    border-bottom: 0.125rem dotted #ffffff;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body p {
+    margin: 1rem 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body:focus, .js .accordion > .accordion__heading[data-open=true] + .accordion__body:active {
+    border-style: dotted;
+    border-color: #ffffff;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body > :first-child {
+    margin-top: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body > :last-child {
+    margin-bottom: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body:first-child {
+    margin-top: 0;
+  }
+  .js .accordion > .accordion__heading[data-open=true] + .accordion__body {
+    margin-bottom: 1rem;
+  }
+  .js .accordion > .accordion__heading + .accordion__body {
+    overflow-y: hidden;
+    transition-duration: 0.2s;
+    transition-property: height;
+    transition-timing-function: ease-in-out;
+  }
+  .js .accordion > .accordion__heading + .accordion__body[data-closed=true] {
+    display: none;
+  }
+}
+
 .banner--default {
   margin-top: 1rem;
   overflow: hidden;
