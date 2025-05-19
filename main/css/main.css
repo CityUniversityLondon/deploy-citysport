@@ -2993,7 +2993,7 @@ main .standard-content .content {
   text-decoration: none;
 }
 .cta--book-class:focus, .cta--book-class:active {
-  outline-color: #111111;
+  outline-color: #ffffff;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
