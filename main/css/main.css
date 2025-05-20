@@ -7135,6 +7135,37 @@ hr {
   margin-right: 1rem;
 }
 
+.home__accreditations .container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 80rem;
+}
+@media (min-width: 901px) {
+  .home__accreditations .container {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
+.home__accreditations .container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 901px) {
+  .home__accreditations .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1441px) {
+  .home__accreditations .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.home__accreditations .accreditations {
+  list-style-type: none;
+}
+
 .js .slider {
   display: flex;
   max-width: inherit;
