@@ -4176,6 +4176,9 @@ figure figcaption,
   display: block;
 }
 
+.js .accordion {
+  margin-top: 2rem;
+}
 @media screen {
   .js .accordion > .accordion__body {
     padding: 1rem;
