@@ -7164,6 +7164,10 @@ hr {
 }
 .home__accreditations .accreditations {
   list-style-type: none;
+  margin-left: 0;
+}
+.home__accreditations .accreditations .logo {
+  width: 8rem;
 }
 
 .js .slider {
