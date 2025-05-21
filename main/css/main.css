@@ -1341,7 +1341,7 @@ readers do not read off random characters that represent icons */
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1920px) {
   .listing {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -2687,7 +2687,7 @@ main .standard-content .content {
     grid-column: span 24;
   }
   main > .membership .content {
-    grid-column: 4/span 18;
+    grid-column: 1/span -1;
   }
 }
 main .membership .content {
@@ -2719,7 +2719,7 @@ main .membership .content {
     grid-column: span 24;
   }
   main > .membership .content {
-    grid-column: 2/span 22;
+    grid-column: 1/span -1;
   }
 }
 @media (min-width: 1280px) {
@@ -2760,7 +2760,14 @@ main .membership .content {
 }
 @media (min-width: 768px) {
   .membership .content {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (min-width: 1920px) {
+  .membership .content {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -8690,7 +8697,7 @@ hr {
 }
 
 .tiles__wrap {
-  margin: 5.5rem 0;
+  margin: 2.5rem 0;
 }
 
 .tile {
