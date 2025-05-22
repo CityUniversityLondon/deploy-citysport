@@ -4438,15 +4438,13 @@ figure figcaption,
   display: flex;
   justify-content: flex-start;
 }
-.banner--default.banner--default--dark .banner__svg--left svg {
-  height: 100%;
-}
 .banner--default.banner--default--dark .banner__svg--right {
   display: flex;
   justify-content: flex-end;
 }
-.banner--default.banner--default--dark .banner__svg--right svg {
+.banner--default.banner--default--dark svg {
   height: 100%;
+  width: 15rem;
 }
 .banner--default.banner--default--vi {
   position: relative;
