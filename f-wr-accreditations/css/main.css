@@ -1341,7 +1341,7 @@ readers do not read off random characters that represent icons */
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1920px) {
   .listing {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -2687,7 +2687,7 @@ main .standard-content .content {
     grid-column: span 24;
   }
   main > .membership .content {
-    grid-column: 4/span 18;
+    grid-column: 1/span -1;
   }
 }
 main .membership .content {
@@ -2719,7 +2719,7 @@ main .membership .content {
     grid-column: span 24;
   }
   main > .membership .content {
-    grid-column: 2/span 22;
+    grid-column: 1/span -1;
   }
 }
 @media (min-width: 1280px) {
@@ -2760,7 +2760,14 @@ main .membership .content {
 }
 @media (min-width: 768px) {
   .membership .content {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (min-width: 1920px) {
+  .membership .content {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -8401,10 +8408,17 @@ hr {
   margin-top: 0.5rem;
 }
 
+main .standard-content .content {
+  overflow: visible !important;
+}
+
 .swiper-viewport {
   display: grid;
   overflow: hidden;
   width: 100%;
+  width: 100vw;
+  margin-left: calc(0px - (100vw - 100%) / 2);
+  overflow: visible;
 }
 .swiper-viewport {
   grid-column-gap: 0;
@@ -8425,16 +8439,19 @@ hr {
   grid-column: 1/-1;
   position: relative;
   width: 100%;
-  padding-bottom: 3.25rem;
 }
 @media (min-width: 901px) {
   .swiper-container {
-    width: 70%;
-    grid-column: 4/-1;
+    grid-column: 7/19;
   }
 }
 .swiper-container .slider__controls {
   margin-top: 0;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+.swiper-container .slider__controls .slider__indicator-line {
+  width: 50rem;
 }
 
 .js .swiper-wrapper {
@@ -8467,7 +8484,7 @@ hr {
 }
 @media (min-width: 901px) {
   .swiper-slide {
-    margin-right: 1rem;
+    margin: 1rem 1rem 0 1rem;
   }
 }
 .swiper-slide picture {
@@ -8490,7 +8507,7 @@ hr {
   top: -2rem;
   padding: 1.5rem;
   color: #ffffff;
-  background-color: #0c0c0e;
+  background-color: #303030;
   width: calc(100% - 5rem);
   margin-right: auto;
   margin-left: auto;
@@ -8702,7 +8719,7 @@ hr {
 }
 
 .tiles__wrap {
-  margin: 5.5rem 0;
+  margin: 2.5rem 0;
 }
 
 .tile {
