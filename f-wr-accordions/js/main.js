@@ -10250,7 +10250,7 @@ var Carousel = /*#__PURE__*/function () {
   return _createClass(Carousel, [{
     key: "numIndicator",
     value: function numIndicator(index, e) {
-      e.querySelector('.swiper-indicator__active-slider').innerText = index + 1;
+      e.querySelector('.slider__indicator__current').innerText = index + 1;
     }
 
     /**
@@ -10291,11 +10291,11 @@ var Carousel = /*#__PURE__*/function () {
     value: function toogleNextBtn(index, length, e) {
       var nextBtn = this.checkEventType(e);
       if (index + 1 === length) {
-        nextBtn.querySelector('.swiper-button-next button').disabled = true;
-        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+        nextBtn.querySelector('.slider__controls__next').disabled = true;
+        nextBtn.querySelector('.slider__controls__prev').disabled = false;
       } else if (this.i + 1 < length) {
-        nextBtn.querySelector('.swiper-button-next button').disabled = false;
-        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+        nextBtn.querySelector('.slider__controls__next').disabled = false;
+        nextBtn.querySelector('.slider__controls__prev').disabled = false;
       }
       this.activeSlider(index, nextBtn);
       if (!this.config.hidNumInd) {
@@ -10316,11 +10316,11 @@ var Carousel = /*#__PURE__*/function () {
     value: function tooglePrevBtn(index, length, e) {
       var prevBtn = this.checkEventType(e);
       if (index + 1 === 1) {
-        prevBtn.querySelector('.swiper-button-prev button').disabled = true;
-        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+        prevBtn.querySelector('.slider__controls__prev').disabled = true;
+        prevBtn.querySelector('.slider__controls__next').disabled = false;
       } else if (this.i + 1 > 1) {
-        prevBtn.querySelector('.swiper-button-prev button').disabled = false;
-        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+        prevBtn.querySelector('.slider__controls__prev').disabled = false;
+        prevBtn.querySelector('.slider__controls__next').disabled = false;
       }
       this.activeSlider(index, prevBtn);
       if (!this.config.hidNumInd) {
@@ -10637,43 +10637,55 @@ var Carousel = /*#__PURE__*/function () {
         numIndActiveSl = document.createElement('span'),
         numIndSeparator = document.createElement('span'),
         numbIndSlLength = document.createElement('span'),
-        buttonsWrap = document.createElement('div'),
-        prevBtnWrap = document.createElement('div'),
-        nextBtnWrap = document.createElement('div'),
+        numbIndSlLine = document.createElement('span'),
+        buttonsWrap = document.createElement('nav'),
+        // prevBtnWrap = document.createElement('div'),
+        // nextBtnWrap = document.createElement('div'),
         nextBtn = document.createElement('BUTTON'),
         prevBtn = document.createElement('BUTTON');
       //setup carousel buttons
-      buttonsWrap.className = 'swiper-buttons-wrap';
-      prevBtnWrap.className = 'swiper-button-prev';
-      nextBtnWrap.className = 'swiper-button-next';
+      buttonsWrap.className = 'slider__controls';
+      // prevBtnWrap.className = 'slider__controls__prev';
+      // nextBtnWrap.className = 'slider__controls__next';
       nextBtn.name = 'nextButton';
       nextBtn.type = 'button';
-      nextBtn.className = 'fas fa-arrow-right swiper-slider-arrow arrow-right--btn-next';
+      // nextBtn.className =
+      //     'fas fa-arrow-right swiper-slider-arrow arrow-right--btn-next';
+      nextBtn.className = 'slider__controls__next';
       nextBtn.setAttribute('aria-label', 'Next slider');
       nextBtn.addEventListener('click', this.next.bind(this), false);
       prevBtn.name = 'prevButton';
       prevBtn.type = 'button';
-      prevBtn.className = 'fas fa-arrow-left swiper-slider-arrow arrow-left--btn-prev';
+      // prevBtn.className =
+      //     'fas fa-arrow-left swiper-slider-arrow arrow-left--btn-prev';
+      prevBtn.className = 'slider__controls__prev';
       prevBtn.setAttribute('aria-label', 'Previous slider');
       prevBtn.addEventListener('click', this.previous.bind(this), false);
       prevBtn.disabled = true;
-      nextBtnWrap.appendChild(nextBtn);
-      prevBtnWrap.appendChild(prevBtn);
-      buttonsWrap.appendChild(prevBtnWrap);
-      buttonsWrap.appendChild(nextBtnWrap);
+
+      // nextBtnWrap.appendChild(nextBtn);
+      // prevBtnWrap.appendChild(prevBtn);
+      // buttonsWrap.appendChild(prevBtnWrap);
+      // buttonsWrap.appendChild(nextBtnWrap);
+
       if (!this.config.hidNumInd) {
         //perpare the indicators to append to html
-        numInd.className = 'swiper-indicator';
-        numIndActiveSl.className = 'swiper-indicator__active-slider';
-        numbIndSlLength.className = 'swiper-indicator__slider-length';
+        numInd.className = 'slider__indicator';
+        numIndActiveSl.className = 'slider__indicator__current';
+        numbIndSlLength.className = 'slider__indicator__total';
+        numIndSeparator.className = 'slider__indicator__divider';
+        numbIndSlLine.className = 'slider__indicator-line';
         numIndActiveSl.innerText = this.i + 1;
         numbIndSlLength.innerText = _C.children.length;
-        numIndSeparator.innerText = ' /';
+        numIndSeparator.innerText = ' of ';
         numInd.appendChild(numIndActiveSl);
         numInd.appendChild(numIndSeparator);
         numInd.appendChild(numbIndSlLength);
-        this.elem.appendChild(numInd);
+        buttonsWrap.appendChild(numInd);
+        buttonsWrap.appendChild(numbIndSlLine);
       }
+      buttonsWrap.appendChild(prevBtn);
+      buttonsWrap.appendChild(nextBtn);
       this.elem.appendChild(buttonsWrap);
       this.config.sliderLength = _C.children.length;
       if (this.config.defaultCarousel) {
