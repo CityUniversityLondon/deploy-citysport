@@ -4184,11 +4184,11 @@ figure figcaption,
     padding: 1rem;
   }
   .js .accordion > .accordion__heading {
-    border-bottom: 0.0625rem solid #e5e5e5;
+    border-bottom: 0.0625rem solid #696969;
     margin-top: 0;
   }
   .js .accordion > .accordion__heading:focus {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
     border: 0;
   }
   .js .accordion > .accordion__heading:active {
@@ -4261,11 +4261,11 @@ figure figcaption,
 }
 @media screen {
   .js .accordion > .accordion__heading button:focus {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
     border: 0;
   }
   .js .accordion > .accordion__heading button:active {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
   }
   .js .accordion > .accordion__heading:first-of-type {
     margin-top: 1rem;
@@ -4278,10 +4278,10 @@ figure figcaption,
     outline: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] button {
-    border-top: 0.125rem dotted #ffffff;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
-    border-bottom: 0.0625rem solid #d8d8d8;
+    border-top: 0.125rem solid #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
+    border-bottom: 0.0625rem solid transparent;
     color: #ffffff;
     padding: 0;
   }
@@ -4296,6 +4296,9 @@ figure figcaption,
   }
 }
 @media screen {
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator {
+    padding: 1rem 1rem 0;
+  }
   .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator:before {
     display: inline-block;
     text-decoration: none;
@@ -4304,23 +4307,24 @@ figure figcaption,
     background: #d61726;
   }
   .js .accordion > .accordion__heading[data-open=true] button:focus, .js .accordion > .accordion__heading[data-open=true] button:active {
-    border-top: 0.125rem dotted #ffffff;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
+    border-top: 0.125rem solid #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
     border-bottom: 0.0625rem solid #d8d8d8;
     outline: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body {
     border-top: 0;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
-    border-bottom: 0.125rem dotted #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
+    border-bottom: 0.125rem solid #ffffff;
+    padding-top: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body p {
     margin: 1rem 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body:focus, .js .accordion > .accordion__heading[data-open=true] + .accordion__body:active {
-    border-style: dotted;
+    border-style: solid;
     border-color: #ffffff;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body > :first-child {
