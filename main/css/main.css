@@ -4059,14 +4059,13 @@ main .news-landing .content {
 }
 
 .content-announcement__wrapper {
-  display: inline-block;
   margin-top: 0.5rem;
 }
 
 .content-announcement {
   border: 0.0625rem solid #696969;
   padding: 0.5rem;
-  display: flex;
+  display: inline-flex;
   border-radius: 0.5rem;
 }
 
@@ -4108,12 +4107,11 @@ main .news-landing .content {
 }
 
 .content-pdf__wrapper {
-  display: inline-block;
   margin-top: 0.5rem;
 }
 
 .content-pdf {
-  display: flex;
+  display: inline-flex;
 }
 
 .content-pdf__icon,
@@ -4206,6 +4204,25 @@ main .news-landing .content {
   outline-style: none;
   outline-width: 0;
   text-decoration: none;
+}
+@media (hover: hover) {
+  .content-pdf__text a:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.125rem;
+  }
+}
+.content-pdf__text a:focus {
+  color: #ffffff;
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+.content-pdf__text a:active {
+  color: #111111;
+  background-color: #ffffff;
 }
 
 figure figcaption,
