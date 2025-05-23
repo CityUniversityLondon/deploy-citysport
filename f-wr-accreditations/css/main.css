@@ -7186,6 +7186,9 @@ hr {
   width: auto;
   max-height: 5rem;
 }
+.home__accreditations .accreditations__item .logo--5rem--svg {
+  max-height: 5rem;
+}
 
 .js .slider {
   display: flex;
