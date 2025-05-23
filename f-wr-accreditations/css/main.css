@@ -3989,11 +3989,11 @@ main .news-landing .content {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 2.28rem;
   line-height: 1.3333333333;
   letter-spacing: -0.017em;
-  display: flex;
-  flex-direction: column;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   .slanted-txt-bg {
@@ -4020,22 +4020,6 @@ main .news-landing .content {
     font-size: 3rem;
   }
 }
-.slanted-txt-bg[data-count="2"] {
-  flex-direction: row;
-}
-@media (min-width: 768px) {
-  .slanted-txt-bg[data-count="2"] .slanted-line:first-child {
-    padding-right: 0.4rem;
-  }
-  .slanted-txt-bg[data-count="2"] .slanted-line:last-child {
-    padding-left: 0;
-  }
-}
-@media (max-width: 767px) {
-  .slanted-txt-bg[data-count="2"] {
-    flex-direction: column;
-  }
-}
 .slanted-txt-bg .slanted-line {
   color: #ffffff;
   position: relative;
@@ -4059,14 +4043,13 @@ main .news-landing .content {
 }
 
 .content-announcement__wrapper {
-  display: inline-block;
   margin-top: 0.5rem;
 }
 
 .content-announcement {
   border: 0.0625rem solid #696969;
   padding: 0.5rem;
-  display: flex;
+  display: inline-flex;
   border-radius: 0.5rem;
 }
 
@@ -4076,7 +4059,8 @@ main .news-landing .content {
 }
 
 .content-announcement__icon {
-  padding-right: 0.5rem;
+  padding-right: 0.75rem;
+  padding-left: 0.25rem;
   font-size: 1.802rem;
   line-height: 1.3333333333;
   letter-spacing: -0.016em;
@@ -4108,21 +4092,15 @@ main .news-landing .content {
 }
 
 .content-pdf__wrapper {
-  display: inline-block;
   margin-top: 0.5rem;
 }
 
 .content-pdf {
-  display: flex;
-}
-
-.content-pdf__icon,
-.content-pdf__text {
-  padding: 0.5rem;
+  display: inline-flex;
 }
 
 .content-pdf__icon {
-  padding-right: 0.5rem;
+  padding: 0.75rem 1rem;
   font-size: 1.802rem;
   line-height: 1.3333333333;
   letter-spacing: -0.016em;
@@ -4153,6 +4131,7 @@ main .news-landing .content {
   background-color: #9e111c;
   display: flex;
   align-items: center;
+  padding: 0.75rem 1.25rem;
 }
 .content-pdf__text p {
   margin: 0;
@@ -4207,6 +4186,25 @@ main .news-landing .content {
   outline-width: 0;
   text-decoration: none;
 }
+@media (hover: hover) {
+  .content-pdf__text a:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.125rem;
+  }
+}
+.content-pdf__text a:focus {
+  color: #ffffff;
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+.content-pdf__text a:active {
+  color: #111111;
+  background-color: #ffffff;
+}
 
 figure figcaption,
 .figcaption-like {
@@ -4255,11 +4253,11 @@ figure figcaption,
     padding: 1rem;
   }
   .js .accordion > .accordion__heading {
-    border-bottom: 0.0625rem solid #e5e5e5;
+    border-bottom: 0.0625rem solid #696969;
     margin-top: 0;
   }
   .js .accordion > .accordion__heading:focus {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
     border: 0;
   }
   .js .accordion > .accordion__heading:active {
@@ -4332,11 +4330,11 @@ figure figcaption,
 }
 @media screen {
   .js .accordion > .accordion__heading button:focus {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
     border: 0;
   }
   .js .accordion > .accordion__heading button:active {
-    outline: 0.125rem dotted #ffffff;
+    outline: 0.125rem solid #ffffff;
   }
   .js .accordion > .accordion__heading:first-of-type {
     margin-top: 1rem;
@@ -4349,10 +4347,10 @@ figure figcaption,
     outline: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] button {
-    border-top: 0.125rem dotted #ffffff;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
-    border-bottom: 0.0625rem solid #d8d8d8;
+    border-top: 0.125rem solid #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
+    border-bottom: 0.0625rem solid transparent;
     color: #ffffff;
     padding: 0;
   }
@@ -4367,6 +4365,9 @@ figure figcaption,
   }
 }
 @media screen {
+  .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator {
+    padding: 1rem 1rem 0;
+  }
   .js .accordion > .accordion__heading[data-open=true] button .accordion__heading__indicator:before {
     display: inline-block;
     text-decoration: none;
@@ -4375,23 +4376,24 @@ figure figcaption,
     background: #d61726;
   }
   .js .accordion > .accordion__heading[data-open=true] button:focus, .js .accordion > .accordion__heading[data-open=true] button:active {
-    border-top: 0.125rem dotted #ffffff;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
+    border-top: 0.125rem solid #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
     border-bottom: 0.0625rem solid #d8d8d8;
     outline: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body {
     border-top: 0;
-    border-left: 0.125rem dotted #ffffff;
-    border-right: 0.125rem dotted #ffffff;
-    border-bottom: 0.125rem dotted #ffffff;
+    border-left: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
+    border-bottom: 0.125rem solid #ffffff;
+    padding-top: 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body p {
     margin: 1rem 0;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body:focus, .js .accordion > .accordion__heading[data-open=true] + .accordion__body:active {
-    border-style: dotted;
+    border-style: solid;
     border-color: #ffffff;
   }
   .js .accordion > .accordion__heading[data-open=true] + .accordion__body > :first-child {
@@ -4438,15 +4440,13 @@ figure figcaption,
   display: flex;
   justify-content: flex-start;
 }
-.banner--default.banner--default--dark .banner__svg--left svg {
-  height: 100%;
-}
 .banner--default.banner--default--dark .banner__svg--right {
   display: flex;
   justify-content: flex-end;
 }
-.banner--default.banner--default--dark .banner__svg--right svg {
+.banner--default.banner--default--dark svg {
   height: 100%;
+  width: 15rem;
 }
 .banner--default.banner--default--vi {
   position: relative;
