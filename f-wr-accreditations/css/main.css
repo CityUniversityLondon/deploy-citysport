@@ -7241,6 +7241,9 @@ hr {
   margin-right: 1rem;
 }
 
+.home__accreditations {
+  grid-column: 1/-1;
+}
 .home__accreditations .container {
   margin-left: 1rem;
   margin-right: 1rem;
