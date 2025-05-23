@@ -3989,11 +3989,11 @@ main .news-landing .content {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 2.28rem;
   line-height: 1.3333333333;
   letter-spacing: -0.017em;
-  display: flex;
-  flex-direction: column;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   .slanted-txt-bg {
@@ -4018,22 +4018,6 @@ main .news-landing .content {
 @media (min-width: 768px) {
   .slanted-txt-bg {
     font-size: 3rem;
-  }
-}
-.slanted-txt-bg[data-count="2"] {
-  flex-direction: row;
-}
-@media (min-width: 768px) {
-  .slanted-txt-bg[data-count="2"] .slanted-line:first-child {
-    padding-right: 0.4rem;
-  }
-  .slanted-txt-bg[data-count="2"] .slanted-line:last-child {
-    padding-left: 0;
-  }
-}
-@media (max-width: 767px) {
-  .slanted-txt-bg[data-count="2"] {
-    flex-direction: column;
   }
 }
 .slanted-txt-bg .slanted-line {
