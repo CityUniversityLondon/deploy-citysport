@@ -7241,6 +7241,9 @@ hr {
   margin-right: 1rem;
 }
 
+.home__accreditations {
+  grid-column: 1/-1;
+}
 .home__accreditations .container {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -7252,24 +7255,41 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.home__accreditations .container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 901px) {
-  .home__accreditations .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
 @media (min-width: 1441px) {
   .home__accreditations .container {
     margin-left: auto;
     margin-right: auto;
   }
 }
-.home__accreditations .accreditations {
+.home__accreditations .accreditations__heading {
+  margin-bottom: inherit;
+}
+.home__accreditations .accreditations__list {
   list-style-type: none;
+  margin-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: inherit;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media (max-width: 431px) {
+  .home__accreditations .accreditations__item {
+    flex-basis: 45%;
+    display: flex;
+    justify-content: center;
+  }
+}
+.home__accreditations .accreditations__item .logo {
+  width: 8rem;
+}
+.home__accreditations .accreditations__item .logo--5rem {
+  width: auto;
+  max-height: 5rem;
+}
+.home__accreditations .accreditations__item .logo--5rem--svg {
+  max-height: 5rem;
 }
 
 .js .slider {
@@ -8423,24 +8443,22 @@ hr {
   font-size: 1.75rem;
   display: flex;
   align-items: center;
-  height: 2.25rem;
   margin-bottom: 0.75rem;
 }
 .icon-diamond::before, .icon-diamond--lrg::before {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134 134'%3E%3Cpath fill='%23d61726' d='M33.261 0L66.522 33.261 33.261 66.522 0 33.261 33.261 0ZM100.056 0L133.318 33.261 100.056 66.522 66.795 33.261 100.056 0ZM33.261 66.795L66.522 100.056 33.261 133.317 0 100.056 33.261 66.795ZM100.056 66.795L133.318 100.056 100.056 133.317 66.795 100.056 100.056 66.795Z'/%3E%3C/svg%3E");
   display: inline-block;
-  height: 100%;
   aspect-ratio: 1/1;
   margin-right: 0.75rem;
+  height: 2.25rem;
 }
 .icon-diamond--lrg {
   font-size: 2.25rem;
-  height: 5.9rem;
   margin-bottom: 2.25rem;
-  height: 5.9rem;
 }
 .icon-diamond--lrg::before {
   margin-right: 2.25rem;
+  height: 3.5rem;
 }
 
 .blogs__container {
