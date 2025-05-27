@@ -1341,13 +1341,23 @@ readers do not read off random characters that represent icons */
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1024px) {
   .listing {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 .listing--membership {
   gap: 2.5rem 2.75rem;
+}
+@media (min-width: 768px) {
+  .listing--membership {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1920px) {
+  .listing--membership {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 html {
@@ -4303,6 +4313,30 @@ main .news-landing .content {
 .content-pdf__text a:active {
   color: #111111;
   background-color: #ffffff;
+}
+
+.icon-diamond, .icon-diamond--lrg {
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.icon-diamond::before, .icon-diamond--lrg::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134 134'%3E%3Cpath fill='%23d61726' d='M33.261 0L66.522 33.261 33.261 66.522 0 33.261 33.261 0ZM100.056 0L133.318 33.261 100.056 66.522 66.795 33.261 100.056 0ZM33.261 66.795L66.522 100.056 33.261 133.317 0 100.056 33.261 66.795ZM100.056 66.795L133.318 100.056 100.056 133.317 66.795 100.056 100.056 66.795Z'/%3E%3C/svg%3E");
+  display: inline-block;
+  height: 100%;
+  aspect-ratio: 1/1;
+  margin-right: 0.75rem;
+}
+.icon-diamond--lrg {
+  font-size: 2.25rem;
+  height: 5.9rem;
+  margin-bottom: 2.25rem;
+  height: 5.9rem;
+}
+.icon-diamond--lrg::before {
+  margin-right: 2.25rem;
 }
 
 figure figcaption,
@@ -8439,31 +8473,8 @@ hr {
   padding-top: 0;
 }
 
-.icon-diamond, .icon-diamond--lrg {
-  font-size: 1.75rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-.icon-diamond::before, .icon-diamond--lrg::before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134 134'%3E%3Cpath fill='%23d61726' d='M33.261 0L66.522 33.261 33.261 66.522 0 33.261 33.261 0ZM100.056 0L133.318 33.261 100.056 66.522 66.795 33.261 100.056 0ZM33.261 66.795L66.522 100.056 33.261 133.317 0 100.056 33.261 66.795ZM100.056 66.795L133.318 100.056 100.056 133.317 66.795 100.056 100.056 66.795Z'/%3E%3C/svg%3E");
-  display: inline-block;
-  aspect-ratio: 1/1;
-  margin-right: 0.75rem;
-  height: 2.25rem;
-}
-.icon-diamond--lrg {
-  font-size: 2.25rem;
-  margin-bottom: 2.25rem;
-}
-.icon-diamond--lrg::before {
-  margin-right: 2.25rem;
-  height: 3.5rem;
-}
-
 .blogs__container {
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  margin: 2rem 0;
 }
 
 .listing--blogs {
@@ -8478,6 +8489,7 @@ hr {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 0.889rem;
 }
 
 .card--blog__meta-cat {
@@ -8499,6 +8511,7 @@ hr {
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: #ffffff;
+  line-height: 1.3333333333;
 }
 .card__anchor .card--blog__heading {
   text-decoration: underline;
@@ -8506,6 +8519,7 @@ hr {
 
 .card--blog__body {
   font-size: 0.889rem;
+  line-height: 1.3333333333;
 }
 
 .card--blog__est-time {
