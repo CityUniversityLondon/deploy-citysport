@@ -4612,6 +4612,54 @@ figure figcaption,
   }
 }
 
+.banner--image {
+  margin-top: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.banner--image .banner__image {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.banner--image .banner__image img {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.banner--image .banner__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.banner--image .banner__heading {
+  width: fit-content;
+}
+.banner--image .standfirst {
+  text-align: center;
+}
+.banner--image .banner__svg--left {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+.banner--image .banner__svg--right {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 1;
+}
+.banner--image svg {
+  height: 100%;
+  width: 15rem;
+}
+
 .global-footer {
   background: #111111;
   color: #ffffff;
