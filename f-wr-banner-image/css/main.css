@@ -4622,18 +4622,21 @@ figure figcaption,
   width: 100%;
   left: 0;
   top: 0;
+  bottom: 0;
 }
 .banner--image .banner__image img {
   position: relative;
   display: block;
   width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 .banner--image .banner__text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 7rem;
+  margin-bottom: 7rem;
   position: relative;
   z-index: 1;
 }
@@ -4642,22 +4645,6 @@ figure figcaption,
 }
 .banner--image .standfirst {
   text-align: center;
-}
-.banner--image .banner__svg--left {
-  display: flex;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-.banner--image .banner__svg--right {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  z-index: 1;
-}
-.banner--image svg {
-  height: 100%;
-  width: 15rem;
 }
 
 .global-footer {
