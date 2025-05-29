@@ -1731,7 +1731,7 @@ pre em {
 }
 
 p code {
-  background: #303030;
+  background: #232323;
   border-radius: 0.25rem;
   color: #ffffff;
   padding-left: 0.25rem;
@@ -5645,7 +5645,7 @@ hr {
     border-bottom: none;
   }
   .js .global-header .menu .menu__level2 {
-    background-color: #303030;
+    background-color: #232323;
     color: #ffffff;
   }
   .js .global-header .menu .menu__level2 > li {
@@ -5729,7 +5729,7 @@ hr {
     text-decoration: none;
   }
   .js .global-header .menu .menu__level2 > li > .menu__controls > a {
-    background-color: #303030;
+    background-color: #232323;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -5764,9 +5764,9 @@ hr {
     outline-style: none;
     outline-width: 0;
     text-decoration: none;
-    background: #303030;
-    border: 0.25rem solid #303030;
-    border-bottom: 0.25rem solid #303030;
+    background: #232323;
+    border: 0.25rem solid #232323;
+    border-bottom: 0.25rem solid #232323;
     width: 2rem;
   }
 }
@@ -5810,7 +5810,7 @@ hr {
     outline-width: 0.125rem;
   }
   .js .global-header .menu .menu__level2 > li > .menu__controls > button {
-    background-color: #303030;
+    background-color: #232323;
     color: #ffffff;
     transition: background-color ease-out 0.2s;
   }
@@ -5827,7 +5827,7 @@ hr {
 @media (min-width: 1024px) {
   .js .global-header .menu .menu__level2 > li > .menu__controls > button:focus, .js .global-header .menu .menu__level2 > li > .menu__controls > button:active, .js .global-header .menu .menu__level2 > li > .menu__controls > button:hover {
     outline-offset: -0.0625rem;
-    border-bottom: 0.25rem solid #303030;
+    border-bottom: 0.25rem solid #232323;
   }
   .js .global-header .menu .menu__level2 > li > .menu__controls > a, .js .global-header .menu .menu__level2 > li > .menu__controls > span {
     padding-left: 1rem;
@@ -8517,6 +8517,31 @@ hr {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.pathway p {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .pathway p {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .pathway p {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .pathway p {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .pathway p {
+    letter-spacing: -0.017em;
+  }
+}
 
 .pathway__list {
   list-style: none;
@@ -8552,7 +8577,7 @@ hr {
   outline-style: none;
   outline-width: 0;
   text-decoration: none;
-  background-color: #303030;
+  background-color: #232323;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in-out;
   color: #ffffff;
   display: block;
@@ -8596,18 +8621,18 @@ hr {
 }
 @media (hover: hover) {
   .pathway__list__card a:hover {
-    background-color: #494949;
+    background-color: #323232;
   }
 }
 .pathway__list__card a:active {
-  background-color: #494949;
+  background-color: #323232;
 }
 .pathway__list__card a:focus {
-  background-color: #494949;
+  background-color: #323232;
 }
 @media (max-width: 1024px) {
   .pathway__list__card a {
-    background-color: #494949;
+    background-color: #323232;
   }
 }
 .pathway__list__card a .h3 {
@@ -8856,7 +8881,7 @@ main .standard-content .content {
   top: -2rem;
   padding: 1.5rem;
   color: #ffffff;
-  background-color: #303030;
+  background-color: #232323;
   width: calc(100% - 5rem);
   margin-right: auto;
   margin-left: auto;
@@ -9076,7 +9101,7 @@ main .standard-content .content {
   border-radius: 0.5rem;
   text-align: center;
   color: #ffffff;
-  background-color: #303030;
+  background-color: #232323;
   line-height: 1.625;
 }
 
