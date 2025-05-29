@@ -4020,7 +4020,7 @@ main .news-landing .content {
     grid-column: span 24;
   }
   main > .home .content {
-    grid-column: 4/span 18;
+    grid-column: 1/-1;
   }
 }
 
@@ -4049,12 +4049,12 @@ main .news-landing .content {
     grid-column: span 24;
   }
   main > .home .content {
-    grid-column: 6/span 14;
+    grid-column: 4/span 18;
   }
 }
 @media (min-width: 1280px) {
   main > .home .content {
-    grid-column: 7/span 12;
+    grid-column: 4/span 18;
   }
 }
 
@@ -4162,9 +4162,12 @@ main .news-landing .content {
   border-radius: 0.5rem;
 }
 
-.content-announcement__icon,
 .content-announcement__text {
   align-self: center;
+}
+
+.content-announcement__icon {
+  align-self: auto;
 }
 
 .content-announcement__icon {
@@ -4195,7 +4198,7 @@ main .news-landing .content {
   }
 }
 
-.content-announcement__text p {
+.content-announcement__text *:first-child {
   margin: 0;
   padding: 0;
 }
@@ -4610,6 +4613,41 @@ figure figcaption,
     position: relative;
     margin: 3rem 1rem;
   }
+}
+
+.banner--image {
+  margin-top: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.banner--image .banner__image {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.banner--image .banner__image img {
+  position: relative;
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+.banner--image .banner__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+  position: relative;
+  z-index: 1;
+}
+.banner--image .banner__heading {
+  width: fit-content;
+}
+.banner--image .standfirst {
+  text-align: center;
 }
 
 .global-footer {
@@ -7275,9 +7313,6 @@ hr {
   margin-right: 1rem;
 }
 
-.home__accreditations {
-  grid-column: 1/-1;
-}
 .home__accreditations .container {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -8471,6 +8506,200 @@ hr {
 .tabs__panel__body > .embedded-video:first-child,
 .wrapper--accordion__body__content > .embedded-video:first-child {
   padding-top: 0;
+}
+
+.pathway {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+.pathway .pathway__heading {
+  margin-top: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.pathway__list {
+  list-style: none;
+  margin: 0;
+  max-width: unset;
+  padding-bottom: 1.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+@media (min-width: 769px) {
+  .pathway__list {
+    display: grid;
+    grid-column: 2/-2;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+  }
+}
+
+.pathway__list__card {
+  margin-top: 1rem;
+}
+.pathway__list__card a {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+  background-color: #303030;
+  transition: background-color 0.2s ease-in, transform 0.2s ease-in-out;
+  color: #ffffff;
+  display: block;
+}
+@media (hover: hover) {
+  .pathway__list__card a:hover {
+    background-color: initial;
+    background-image: initial;
+    background-size: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    color: initial;
+    cursor: pointer;
+    outline-color: initial;
+    outline-offset: 0;
+    outline-style: none;
+    outline-width: 0;
+    text-decoration: none;
+  }
+}
+.pathway__list__card a:focus, .pathway__list__card a:active {
+  background-color: initial;
+  background-image: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  color: initial;
+  cursor: pointer;
+  outline-color: initial;
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  text-decoration: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathway__list__card a {
+    transition: none;
+  }
+}
+@media (hover: hover) {
+  .pathway__list__card a:hover {
+    background-color: #494949;
+  }
+}
+.pathway__list__card a:active {
+  background-color: #494949;
+}
+.pathway__list__card a:focus {
+  background-color: #494949;
+}
+@media (max-width: 1024px) {
+  .pathway__list__card a {
+    background-color: #494949;
+  }
+}
+.pathway__list__card a .h3 {
+  color: #ffffff;
+}
+.pathway__list__card a p {
+  color: #dddddd;
+}
+.pathway__list__card a .card__content__img {
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathway__list__card a {
+    transition: none;
+  }
+}
+@media (hover: hover) {
+  .pathway__list__card a:hover .card__content__img {
+    transform: scale(1.02);
+  }
+  .pathway__list__card a:hover h3 {
+    color: #ffffff;
+  }
+  .pathway__list__card a:hover p {
+    color: #ffffff;
+  }
+}
+.pathway__list__card a:active, .pathway__list__card a:focus {
+  outline-color: #ffffff;
+  outline-offset: 0.1875rem;
+  outline-style: solid;
+  outline-width: 0.125rem;
+}
+.pathway__list__card a:active h3, .pathway__list__card a:focus h3 {
+  color: #ffffff;
+}
+.pathway__list__card a:active p, .pathway__list__card a:focus p {
+  color: #ffffff;
+}
+.pathway__list__card a:visited .h3 {
+  color: #ffffff;
+}
+.pathway__list__card a:visited p {
+  color: #dddddd;
+}
+.pathway__list__card .card__content {
+  overflow: hidden;
+}
+.pathway__list__card .card__content img {
+  display: block;
+  width: 100%;
+}
+@media (min-width: 433px) and (max-width: 768px) {
+  .pathway__list__card .card__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .pathway__list__card .card__content picture {
+    max-width: 10rem;
+  }
+}
+.pathway__list__card .card__content__text {
+  padding-bottom: 1.75rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+.pathway__list__card .h3 {
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  letter-spacing: -0.008em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .pathway__list__card .h3 {
+    letter-spacing: -0.011em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .pathway__list__card .h3 {
+    letter-spacing: -0.014em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .pathway__list__card .h3 {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .pathway__list__card .h3 {
+    letter-spacing: -0.017em;
+  }
 }
 
 .blogs__container {
