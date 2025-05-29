@@ -8710,6 +8710,9 @@ hr {
   margin-bottom: 2.25rem;
 }
 
+.card--blog {
+  font-weight: 400;
+}
 .card--blog.card__anchor::after {
   content: none;
 }
@@ -8719,7 +8722,6 @@ hr {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.889rem;
-  font-weight: 400;
 }
 
 .card--blog__meta-cat {
