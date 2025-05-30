@@ -8635,11 +8635,6 @@ hr {
 .pathway__list__card a:focus {
   background-color: #323232;
 }
-@media (max-width: 1024px) {
-  .pathway__list__card a {
-    background-color: #323232;
-  }
-}
 .pathway__list__card a .h3 {
   color: #ffffff;
 }
