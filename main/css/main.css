@@ -8547,6 +8547,14 @@ hr {
     letter-spacing: -0.017em;
   }
 }
+.pathway .wrap--icon {
+  margin-top: 1rem;
+}
+.pathway .wrap--icon .wrap--icon__img {
+  height: 2.5rem;
+  max-width: 2.5rem;
+  height: 2.5rem;
+}
 
 .pathway__list {
   list-style: none;
