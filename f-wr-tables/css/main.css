@@ -2518,34 +2518,36 @@ main table {
   border-collapse: collapse;
   font-weight: 400;
 }
+main table tr {
+  border-bottom: 0.0625rem solid #696969;
+}
 main table tr th,
 main table tr td {
-  border: 0.0625rem solid #d8d8d8;
   vertical-align: top;
 }
 main table tr th:first-child,
 main table tr td:first-child {
   text-align: left;
-}
-main table tr th:not(:first-child),
-main table tr td:not(:first-child) {
-  text-align: right;
+  font-weight: 600;
 }
 main table th,
 main table strong {
   font-weight: 600;
 }
 main table thead tr {
-  color: #ffffff;
+  color: #dddddd;
+}
+main table thead tr:first-child {
+  border-bottom: 0;
 }
 main table thead tr:first-child th {
-  background: #3e1031;
+  background: #303030;
 }
 main table thead tr:nth-child(2) th {
-  background: #5d184a;
+  background: #303030;
 }
 main table thead tr .heading__secondary {
-  background: #5d184a;
+  background: #303030;
 }
 main table thead td,
 main table thead th {
@@ -2553,8 +2555,7 @@ main table thead th {
   vertical-align: middle;
 }
 main table tbody {
-  color: #1e1e1e;
-  background: #ffffff;
+  color: #dddddd;
 }
 main table tbody tr:hover {
   background-color: #e5e5e5;
@@ -8733,27 +8734,20 @@ hr {
 }
 
 @media (max-width: 899px) {
-  table thead tr {
+  .js table thead tr {
     display: none;
   }
-  table tbody tr {
+  .js table tbody tr {
     display: flex;
     flex-direction: column;
   }
-  table tbody tr td {
+  .js table tbody tr td {
     display: flex;
     justify-content: space-between;
   }
-  table tbody tr td span {
-    margin-right: 2rem;
-  }
-  table tbody tr td:first-child {
-    background-color: black;
-    color: white;
-  }
 }
 @media (min-width: 900px) {
-  table tbody td span {
+  .js table tbody td span {
     display: none;
   }
 }
