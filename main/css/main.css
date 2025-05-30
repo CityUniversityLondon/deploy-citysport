@@ -6452,6 +6452,10 @@ hr {
   }
 }
 
+.no-js .menu {
+  display: none;
+}
+
 .js .menu .menu__content {
   display: none;
 }
@@ -7120,6 +7124,7 @@ hr {
     background-color: rgba(30, 30, 30, 0);
   }
 }
+
 .skip-links {
   background-color: #1e1e1e;
   border: 0;
