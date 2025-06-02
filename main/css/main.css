@@ -761,6 +761,16 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f017\f017";
 }
 
+.fa-court-sport {
+  --fa: "\e643";
+  --fa--fa: "\e643\e643";
+}
+
+.fa-dumbbell {
+  --fa: "\f44b";
+  --fa--fa: "\f44b\f44b";
+}
+
 .fa-envelope {
   --fa: "\f0e0";
   --fa--fa: "\f0e0\f0e0";
@@ -771,6 +781,26 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f1c1\f1c1";
 }
 
+.fa-football-helmet {
+  --fa: "\f44f";
+  --fa--fa: "\f44f\f44f";
+}
+
+.fa-futbol {
+  --fa: "\f1e3";
+  --fa--fa: "\f1e3\f1e3";
+}
+
+.fa-futbol-ball {
+  --fa: "\f1e3";
+  --fa--fa: "\f1e3\f1e3";
+}
+
+.fa-soccer-ball {
+  --fa: "\f1e3";
+  --fa--fa: "\f1e3\f1e3";
+}
+
 .fa-graduation-cap {
   --fa: "\f19d";
   --fa--fa: "\f19d\f19d";
@@ -779,6 +809,11 @@ readers do not read off random characters that represent icons */
 .fa-mortar-board {
   --fa: "\f19d";
   --fa--fa: "\f19d\f19d";
+}
+
+.fa-id-badge {
+  --fa: "\f2c1";
+  --fa--fa: "\f2c1\f2c1";
 }
 
 .fa-link {
@@ -846,9 +881,19 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f549\f549";
 }
 
+.fa-shuttlecock {
+  --fa: "\f45b";
+  --fa--fa: "\f45b\f45b";
+}
+
 .fa-user {
   --fa: "\f007";
   --fa--fa: "\f007\f007";
+}
+
+.fa-user-graduate {
+  --fa: "\f501";
+  --fa--fa: "\f501\f501";
 }
 
 .fa-users {
@@ -1003,6 +1048,28 @@ readers do not read off random characters that represent icons */
 .far,
 .fa-regular {
   font-weight: 400;
+}
+
+/*!
+ * Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-classic: "Font Awesome 6 Pro";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
+}
+.fal,
+.fa-light {
+  font-weight: 300;
 }
 
 /*!
