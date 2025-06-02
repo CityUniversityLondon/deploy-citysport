@@ -12231,36 +12231,24 @@ __webpack_require__.r(__webpack_exports__);
 
 var className = 'table';
 function launchTable(table) {
-  console.log("table launched");
-  var viewportWidth = window.innerWidth;
   var headings = Array.from(table.querySelectorAll("thead th")),
     bodyRow = Array.from(table.querySelectorAll("tbody tr"));
-  console.log("headings : ".concat(headings.length));
   for (var i = 0; i < headings.length; i++) {
     console.log(headings[i].innerText);
   }
-  console.log("bodyRow : ".concat(bodyRow.length));
   for (var _i = 0; _i < bodyRow.length; _i++) {
     var tableCells = bodyRow[_i].querySelectorAll("td");
-    console.log("tableCells : ".concat(tableCells.length));
     for (var _i2 = 0; _i2 < tableCells.length; _i2++) {
-      if (_i2 !== 0) {
-        var node = document.createElement("span");
-        var textnode = document.createTextNode(headings[_i2].innerText);
-        node.appendChild(textnode);
-
-        //document.getElementById("myList").appendChild(node);
-        //tableCells[i].appendChild(node);
-
-        //parent.insertBefore(newElement, parent.firstChild);
-        tableCells[_i2].insertBefore(node, tableCells[_i2].firstChild);
+      if (_i2 === 0) {
+        var thRow = document.createElement('th');
+        thRow.innerHTML = tableCells[_i2].innerHTML;
+        thRow.setAttribute('scope', 'row');
+        tableCells[_i2].replaceWith(thRow);
+      } else if (_i2 > 0) {
+        tableCells[_i2].setAttribute('data-label', headings[_i2].innerText);
       }
     }
   }
-
-  /**
-   * Checks if hash ID is present in the URL then on page load it will open the corresponding accordordion
-   */
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: launchTable,

@@ -2510,7 +2510,7 @@ main li {
   margin-top: 0.75rem;
 }
 main table {
-  display: block;
+  display: table;
   margin-top: 0.75rem;
   min-width: 66%;
   max-width: 100%;
@@ -2558,7 +2558,7 @@ main table tbody {
   color: #dddddd;
 }
 main table tbody tr:hover {
-  background-color: #e5e5e5;
+  background-color: #696969;
 }
 main table tbody th,
 main table tbody td {
@@ -8741,9 +8741,28 @@ hr {
     display: flex;
     flex-direction: column;
   }
+  .js table tbody tr:not(:last-child) {
+    border-bottom: 0;
+  }
+  .js table tbody tr th {
+    background: #303030;
+  }
   .js table tbody tr td {
     display: flex;
     justify-content: space-between;
+  }
+  .js table tbody tr td:before {
+    content: attr(data-label);
+  }
+}
+@media (max-width: 767px) {
+  .js table {
+    min-width: 80%;
+  }
+}
+@media (max-width: 431px) {
+  .js table {
+    width: 100%;
   }
 }
 @media (min-width: 900px) {
