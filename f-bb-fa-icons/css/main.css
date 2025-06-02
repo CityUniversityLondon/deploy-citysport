@@ -651,6 +651,16 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f062\f062";
 }
 
+.fa-ban {
+  --fa: "\f05e";
+  --fa--fa: "\f05e\f05e";
+}
+
+.fa-cancel {
+  --fa: "\f05e";
+  --fa--fa: "\f05e\f05e";
+}
+
 .fa-building {
   --fa: "\f1ad";
   --fa--fa: "\f1ad\f1ad";
@@ -9275,7 +9285,7 @@ main .standard-content .content {
   margin: 0;
   display: flex;
 }
-.membership__benefits li:not(.membership__benefits--no-tick):before {
+.membership__benefits li:before {
   color: #ffffff;
   margin-top: -1px;
   content: "\f058";
@@ -9286,5 +9296,9 @@ main .standard-content .content {
 }
 .membership__benefits li.membership__benefits--no-tick {
   color: #999999;
+}
+.membership__benefits li.membership__benefits--no-tick:before {
+  color: #999999;
+  content: "\f05e";
 }
 /*# sourceMappingURL=main.css.map */
