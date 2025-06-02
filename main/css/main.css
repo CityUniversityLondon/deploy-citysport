@@ -8622,20 +8622,20 @@ hr {
 }
 .pathway .wrap--icon .wrap--icon__img {
   height: 2.5rem;
-  font-size: 1.424rem;
+  font-size: 1.802rem;
   line-height: 1.3333333333;
-  letter-spacing: -0.013em;
+  letter-spacing: -0.016em;
   max-width: 2.5rem;
   height: 2.5rem;
 }
 @media (min-width: 1280px) and (max-width: 1919px) {
   .pathway .wrap--icon .wrap--icon__img {
-    letter-spacing: -0.015em;
+    letter-spacing: -0.016em;
   }
 }
 @media (min-width: 1920px) and (max-width: 3839px) {
   .pathway .wrap--icon .wrap--icon__img {
-    letter-spacing: -0.016em;
+    letter-spacing: -0.017em;
   }
 }
 @media (min-width: 3840px) and (max-width: 7679px) {
@@ -8736,7 +8736,8 @@ hr {
 .pathway__list__card a:focus {
   background-color: #323232;
 }
-.pathway__list__card a .h3 {
+.pathway__list__card a h3,
+.pathway__list__card a .wrap--icon__img {
   color: #ffffff;
 }
 .pathway__list__card a p {
@@ -8755,7 +8756,8 @@ hr {
   .pathway__list__card a:hover .card__content__img {
     transform: scale(1.02);
   }
-  .pathway__list__card a:hover h3 {
+  .pathway__list__card a:hover h3,
+  .pathway__list__card a:hover .wrap--icon__img {
     color: #ffffff;
   }
   .pathway__list__card a:hover p {
@@ -8768,13 +8770,16 @@ hr {
   outline-style: solid;
   outline-width: 0.125rem;
 }
-.pathway__list__card a:active h3, .pathway__list__card a:focus h3 {
+.pathway__list__card a:active h3,
+.pathway__list__card a:active .wrap--icon__img, .pathway__list__card a:focus h3,
+.pathway__list__card a:focus .wrap--icon__img {
   color: #ffffff;
 }
 .pathway__list__card a:active p, .pathway__list__card a:focus p {
   color: #ffffff;
 }
-.pathway__list__card a:visited .h3 {
+.pathway__list__card a:visited h3,
+.pathway__list__card a:visited .wrap--icon__img {
   color: #ffffff;
 }
 .pathway__list__card a:visited p {
