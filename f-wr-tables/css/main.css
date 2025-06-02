@@ -2524,10 +2524,11 @@ main table tr {
 main table tr th,
 main table tr td {
   vertical-align: top;
+  text-align: left;
+  vertical-align: middle;
 }
 main table tr th:first-child,
 main table tr td:first-child {
-  text-align: left;
   font-weight: 600;
 }
 main table th,
@@ -2563,7 +2564,6 @@ main table tbody tr:hover {
 main table tbody th,
 main table tbody td {
   padding: 0.5rem;
-  vertical-align: bottom;
 }
 
 /* Banned embeds – these are not accessible so cannot be allowed on the website. */
@@ -8741,6 +8741,9 @@ hr {
     display: flex;
     flex-direction: column;
   }
+  .js table tbody tr:hover {
+    background-color: inherit;
+  }
   .js table tbody tr:not(:last-child) {
     border-bottom: 0;
   }
@@ -8750,6 +8753,9 @@ hr {
   .js table tbody tr td {
     display: flex;
     justify-content: space-between;
+  }
+  .js table tbody tr td:hover {
+    background-color: #696969;
   }
   .js table tbody tr td:before {
     content: attr(data-label);

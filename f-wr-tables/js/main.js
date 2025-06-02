@@ -12233,19 +12233,18 @@ var className = 'table';
 function launchTable(table) {
   var headings = Array.from(table.querySelectorAll("thead th")),
     bodyRow = Array.from(table.querySelectorAll("tbody tr"));
-  for (var i = 0; i < headings.length; i++) {
-    console.log(headings[i].innerText);
-  }
-  for (var _i = 0; _i < bodyRow.length; _i++) {
-    var tableCells = bodyRow[_i].querySelectorAll("td");
-    for (var _i2 = 0; _i2 < tableCells.length; _i2++) {
-      if (_i2 === 0) {
+
+  // cycle through body cells and add column heading to cell as data label attribute
+  for (var i = 0; i < bodyRow.length; i++) {
+    var tableCells = bodyRow[i].querySelectorAll("td");
+    for (var _i = 0; _i < tableCells.length; _i++) {
+      if (_i === 0) {
         var thRow = document.createElement('th');
-        thRow.innerHTML = tableCells[_i2].innerHTML;
+        thRow.innerHTML = tableCells[_i].innerHTML;
         thRow.setAttribute('scope', 'row');
-        tableCells[_i2].replaceWith(thRow);
-      } else if (_i2 > 0) {
-        tableCells[_i2].setAttribute('data-label', headings[_i2].innerText);
+        tableCells[_i].replaceWith(thRow);
+      } else if (_i > 0) {
+        tableCells[_i].setAttribute('data-label', headings[_i].innerText);
       }
     }
   }
