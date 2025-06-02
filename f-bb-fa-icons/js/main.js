@@ -9821,12 +9821,290 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
+/* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
+/* harmony import */ var zenscroll__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! zenscroll */ "./node_modules/zenscroll/zenscroll.js");
 
 
-function launchAccordion(el) {
-  console.log('accordion');
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Accordion
+ *
+ * @module patterns/accordion/accordion
+ * @author Web Development
+ * @copyright City St George's, University of London 2018-2019
+ */
+
+var className = 'accordion',
+  headingClassName = className + '__heading',
+  headingTextClassName = headingClassName + '__text',
+  headingIconClassName = headingClassName + '__indicator fa-sharp fa-solid fa-chevron-down',
+  bodyClassName = className + '__body',
+  oneSecond = 1000,
+  tenthOfASecond = 100,
+  scrollDuration = (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.reduceMotion)() ? 0 : oneSecond,
+  scrollTo = true;
+
+/**
+ * Sets a heading and the button nested within to be open or closed.
+ *
+ * @param {HTMLHeadingElement} heading - An accordion heading.
+ * @param {boolean} open - Set this section to be open?
+ */
+function setSection(heading, open) {
+  heading.dataset.open = open;
+  heading.firstElementChild.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_11__["default"].expanded, open);
 }
-var className = 'accordion';
+
+/**
+ * Open a section, calculate its height, then close it again.
+ *
+ * With no transition, this is essentially invisible to the user.
+ *
+ * @param {HTMLHeadingElement} heading - An accordion heading.
+ * @return {string} The pixel height of the section when open.
+ */
+function calculateAccordionBodyHeight(heading) {
+  var section = heading.nextElementSibling;
+  setSection(heading, true);
+  section.dataset.closed = 'false';
+  var height = section.offsetHeight + 'px';
+  setSection(heading, false);
+  section.dataset.closed = 'true';
+  return height;
+}
+
+/**
+ * Set style properties for transition.
+ *
+ * @param {HTMLElement} element - The section to transition.
+ * @param {string} initialHeight - The initial height from which to transition.
+ */
+function setupTransition(element, initialHeight) {
+  element.style.height = initialHeight;
+  element.dataset.closed = 'false';
+  return true;
+}
+
+/**
+ * Cleanup after transition.
+ *
+ * @param {HTMLElement} accordionSection - The section that transitioned.
+ */
+function cleanupTransition(section) {
+  var open = (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.toBool)(section.previousElementSibling.dataset.open);
+  section.style.height = null;
+  section.dataset.closed = open ? 'false' : 'true';
+}
+
+/**
+ * Respond to button clicks - open if closed, close if open.
+ *
+ * If opening, will also push the heading ID into the history, so C+Ping the URL
+ * will open the most recently viewed section. Closing a section removes any
+ * hash.
+ *
+ * @param {HTMLButtonElement} button - The button that was clicked.
+ * @param {HTMLElement[]} headings - All headings in this accordion.
+ * @param {boolean} [toggleOpen] - Should other accordion sections close? Default to false.
+ */
+function buttonClick(button, headings, toggleOpen) {
+  var heading = button.parentNode,
+    accordionSection = heading.nextElementSibling;
+
+  /**
+   * After we've transitioned the opening/closing, we want to revert to
+   * letting the CSS size the element. Add a listener to do this that will
+   * self-destruct after running.
+   */
+  accordionSection.addEventListener('transitionend', function () {
+    return cleanupTransition(accordionSection);
+  }, {
+    capture: true,
+    once: true
+  });
+  if ((0,_util_js__WEBPACK_IMPORTED_MODULE_10__.toBool)(button.getAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_11__["default"].expanded))) {
+    // Starting height is the current height
+    setupTransition(accordionSection, accordionSection.offsetHeight + 'px');
+    // setTimeout lets the DOM recalculate before we continue, so the transition will fire
+    setTimeout(function () {
+      accordionSection.style.height = '0px';
+    }, tenthOfASecond);
+    setSection(heading, false);
+    // updates URL hash, by removing hash from URL when accordion closes
+    history.pushState({}, null, location.href.split('#')[0]);
+  } else {
+    // Calclulate and save how big we're transitioning to
+    var sectionHeight = calculateAccordionBodyHeight(heading);
+    // Starting height is 0
+    setupTransition(accordionSection, '0px');
+    // setTimeout lets the DOM recalculate before we continue, so the transition will fire
+    setTimeout(function () {
+      accordionSection.style.height = sectionHeight;
+    }, tenthOfASecond);
+    if (toggleOpen) {
+      var sections = Array.from(heading.parentNode.parentNode.querySelectorAll("#".concat(heading.parentElement.id, " > .").concat(bodyClassName)));
+      headings.forEach(function (heading) {
+        return setSection(heading, false);
+      });
+      sections.filter(function (section) {
+        return section.id !== accordionSection.id;
+      }).forEach(function (section) {
+        section.dataset.closed = 'true';
+      });
+    }
+    setSection(heading, true);
+    if (scrollTo && !((0,_util_js__WEBPACK_IMPORTED_MODULE_10__.verticallyInWindow)(heading) && (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.verticallyInWindow)(accordionSection))) {
+      zenscroll__WEBPACK_IMPORTED_MODULE_12__.to(heading, scrollDuration);
+    }
+
+    // updates URL hash with accordion heading, when accordion opens
+    window.location.hash = event.currentTarget.parentElement.id;
+  }
+}
+
+/**
+ * Create a button from the text content of a heading.
+ *
+ * @param {HTMLElement} heading - An accordion heading.
+ * @returns {HTMLButtonElement} An accordion section button.
+ */
+function buttonFromHeading(heading) {
+  var button = document.createElement('button'),
+    // Chrome can't apply grid layout to buttons, need to wrap contents
+    wrapper = document.createElement('div'),
+    textSpan = document.createElement('span'),
+    iconSpan = document.createElement('span');
+  textSpan.className = headingTextClassName;
+  iconSpan.className = headingIconClassName;
+  iconSpan.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_11__["default"].hidden, true);
+  button.setAttribute('type', 'button');
+  textSpan.appendChild(document.createTextNode(heading.textContent));
+  (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.appendAll)(wrapper, [textSpan, iconSpan]);
+  button.appendChild(wrapper);
+  return button;
+}
+
+/**
+ * Transform an element with the accordion class into an accordion.
+ *
+ * accordions should contain an even number of children, alternating headings
+ * and content elements. The element type is unimportant - headings should have
+ * the headingClassName - but headings should contain only text, no other
+ * children.
+ *
+ * e.g.
+ *
+ * <div class="accordion">
+ * <h2 class="accordion__heading">Heading 1</h2>
+ * <div>Content 1</div>
+ * <h2 class="accordion__heading">Heading 2</h2>
+ * <div>Content 2</div>
+ * </div>
+ *
+ * @param {HTMLElement} accordion - An HTML element with the accordion class.
+ */
+function launchAccordion(accordion) {
+  var viewportWidth = window.innerWidth;
+  var toggleOpen = (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.toBool)(accordion.dataset.toggleopen),
+    defaultOpen = (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.toBool)(accordion.dataset.defaultopen),
+    allowSingle = (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.toBool)(accordion.dataset.allowsingle),
+    headings = Array.from(accordion.parentNode.querySelectorAll("#".concat(accordion.id, " > .").concat(headingClassName))),
+    body = Array.from(accordion.parentNode.querySelectorAll("#".concat(accordion.id, " > .").concat(bodyClassName)));
+  var idLinked = false;
+  if (!(allowSingle || headings.length > 1)) {
+    /**
+     * not enough content to accordion
+     */
+    (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.removeClass)(accordion, className, false);
+    return;
+  }
+
+  /**
+   * Set Iframe container to be scrollable if a tab accordion and is mobile
+   */
+  if (accordion.parentElement.className === 'tabs--accordion' && viewportWidth <= (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.screenWidth)('tablet')) {
+    body.forEach(function (elem) {
+      var iframe = elem.querySelector('iframe');
+      if (iframe) {
+        iframe.scrolling = 'auto';
+        iframe.style.height = '70vh';
+      }
+    });
+  }
+  headings.forEach(function (heading) {
+    var content = heading.nextElementSibling,
+      button = buttonFromHeading(heading);
+    content.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_11__["default"].labelledBy, heading.id);
+    content.setAttribute('role', 'region');
+    heading.replaceChild(button, heading.firstChild);
+    setSection(heading, false);
+    heading.nextElementSibling.dataset.closed = 'true';
+    button.addEventListener('click', function () {
+      return buttonClick(button, headings, toggleOpen);
+    }, true);
+  });
+
+  /* Show first item of accordion, if accordion is set to default open,
+         and we haven't linked to a specific section */
+  if (defaultOpen && !idLinked) {
+    setSection(headings[0], true);
+    headings[0].nextElementSibling.dataset.closed = 'false';
+  }
+
+  /**
+   * Checks if hash ID is present in the URL then on page load it will open the corresponding accordordion
+   */
+  if (window.location.hash) {
+    //finds accordion heading in URL
+    var urlHash = window.location.hash;
+    var heading = accordion.querySelector('' + urlHash + '');
+
+    // condition when hash in URL is of a 'always' accordion, regardless of viewport width
+    if (heading) {
+      // Wait for DOM to load before accessing selected accordion
+      window.onload = function () {
+        setSection(heading, true);
+        heading.nextElementSibling.dataset.closed = 'false';
+        zenscroll__WEBPACK_IMPORTED_MODULE_12__.to(heading, scrollDuration);
+      };
+    }
+
+    // determines if the hash is perhaps of an accordion which kicks in on smaller viewports, as part of a tabs / accordion pattern
+    if (accordion.parentElement.className === 'tabs--accordion' && accordion.parentElement.querySelector('' + urlHash + '') && viewportWidth <= (0,_util_js__WEBPACK_IMPORTED_MODULE_10__.screenWidth)('tablet')) {
+      var hashConvert = urlHash.replace('tabs', 'accordion').replace('link', 'header');
+
+      // Wait for DOM to load before accessing selected accordion
+      window.onload = function () {
+        heading = accordion.parentElement.querySelector('' + hashConvert + '');
+        setSection(heading, true);
+        heading.nextElementSibling.dataset.closed = 'false';
+        zenscroll__WEBPACK_IMPORTED_MODULE_12__.to(heading, scrollDuration);
+      };
+    }
+  }
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: launchAccordion,
   launchQuery: ".".concat(className)
@@ -9972,7 +10250,7 @@ var Carousel = /*#__PURE__*/function () {
   return _createClass(Carousel, [{
     key: "numIndicator",
     value: function numIndicator(index, e) {
-      e.querySelector('.swiper-indicator__active-slider').innerText = index + 1;
+      e.querySelector('.slider__indicator__current').innerText = index + 1;
     }
 
     /**
@@ -10013,11 +10291,11 @@ var Carousel = /*#__PURE__*/function () {
     value: function toogleNextBtn(index, length, e) {
       var nextBtn = this.checkEventType(e);
       if (index + 1 === length) {
-        nextBtn.querySelector('.swiper-button-next button').disabled = true;
-        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+        nextBtn.querySelector('.slider__controls__next').disabled = true;
+        nextBtn.querySelector('.slider__controls__prev').disabled = false;
       } else if (this.i + 1 < length) {
-        nextBtn.querySelector('.swiper-button-next button').disabled = false;
-        nextBtn.querySelector('.swiper-button-prev button').disabled = false;
+        nextBtn.querySelector('.slider__controls__next').disabled = false;
+        nextBtn.querySelector('.slider__controls__prev').disabled = false;
       }
       this.activeSlider(index, nextBtn);
       if (!this.config.hidNumInd) {
@@ -10038,11 +10316,11 @@ var Carousel = /*#__PURE__*/function () {
     value: function tooglePrevBtn(index, length, e) {
       var prevBtn = this.checkEventType(e);
       if (index + 1 === 1) {
-        prevBtn.querySelector('.swiper-button-prev button').disabled = true;
-        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+        prevBtn.querySelector('.slider__controls__prev').disabled = true;
+        prevBtn.querySelector('.slider__controls__next').disabled = false;
       } else if (this.i + 1 > 1) {
-        prevBtn.querySelector('.swiper-button-prev button').disabled = false;
-        prevBtn.querySelector('.swiper-button-next button').disabled = false;
+        prevBtn.querySelector('.slider__controls__prev').disabled = false;
+        prevBtn.querySelector('.slider__controls__next').disabled = false;
       }
       this.activeSlider(index, prevBtn);
       if (!this.config.hidNumInd) {
@@ -10359,43 +10637,55 @@ var Carousel = /*#__PURE__*/function () {
         numIndActiveSl = document.createElement('span'),
         numIndSeparator = document.createElement('span'),
         numbIndSlLength = document.createElement('span'),
-        buttonsWrap = document.createElement('div'),
-        prevBtnWrap = document.createElement('div'),
-        nextBtnWrap = document.createElement('div'),
+        numbIndSlLine = document.createElement('span'),
+        buttonsWrap = document.createElement('nav'),
+        // prevBtnWrap = document.createElement('div'),
+        // nextBtnWrap = document.createElement('div'),
         nextBtn = document.createElement('BUTTON'),
         prevBtn = document.createElement('BUTTON');
       //setup carousel buttons
-      buttonsWrap.className = 'swiper-buttons-wrap';
-      prevBtnWrap.className = 'swiper-button-prev';
-      nextBtnWrap.className = 'swiper-button-next';
+      buttonsWrap.className = 'slider__controls';
+      // prevBtnWrap.className = 'slider__controls__prev';
+      // nextBtnWrap.className = 'slider__controls__next';
       nextBtn.name = 'nextButton';
       nextBtn.type = 'button';
-      nextBtn.className = 'fas fa-arrow-right swiper-slider-arrow arrow-right--btn-next';
+      // nextBtn.className =
+      //     'fas fa-arrow-right swiper-slider-arrow arrow-right--btn-next';
+      nextBtn.className = 'slider__controls__next';
       nextBtn.setAttribute('aria-label', 'Next slider');
       nextBtn.addEventListener('click', this.next.bind(this), false);
       prevBtn.name = 'prevButton';
       prevBtn.type = 'button';
-      prevBtn.className = 'fas fa-arrow-left swiper-slider-arrow arrow-left--btn-prev';
+      // prevBtn.className =
+      //     'fas fa-arrow-left swiper-slider-arrow arrow-left--btn-prev';
+      prevBtn.className = 'slider__controls__prev';
       prevBtn.setAttribute('aria-label', 'Previous slider');
       prevBtn.addEventListener('click', this.previous.bind(this), false);
       prevBtn.disabled = true;
-      nextBtnWrap.appendChild(nextBtn);
-      prevBtnWrap.appendChild(prevBtn);
-      buttonsWrap.appendChild(prevBtnWrap);
-      buttonsWrap.appendChild(nextBtnWrap);
+
+      // nextBtnWrap.appendChild(nextBtn);
+      // prevBtnWrap.appendChild(prevBtn);
+      // buttonsWrap.appendChild(prevBtnWrap);
+      // buttonsWrap.appendChild(nextBtnWrap);
+
       if (!this.config.hidNumInd) {
         //perpare the indicators to append to html
-        numInd.className = 'swiper-indicator';
-        numIndActiveSl.className = 'swiper-indicator__active-slider';
-        numbIndSlLength.className = 'swiper-indicator__slider-length';
+        numInd.className = 'slider__indicator';
+        numIndActiveSl.className = 'slider__indicator__current';
+        numbIndSlLength.className = 'slider__indicator__total';
+        numIndSeparator.className = 'slider__indicator__divider';
+        numbIndSlLine.className = 'slider__indicator-line';
         numIndActiveSl.innerText = this.i + 1;
         numbIndSlLength.innerText = _C.children.length;
-        numIndSeparator.innerText = ' /';
+        numIndSeparator.innerText = ' of ';
         numInd.appendChild(numIndActiveSl);
         numInd.appendChild(numIndSeparator);
         numInd.appendChild(numbIndSlLength);
-        this.elem.appendChild(numInd);
+        buttonsWrap.appendChild(numInd);
+        buttonsWrap.appendChild(numbIndSlLine);
       }
+      buttonsWrap.appendChild(prevBtn);
+      buttonsWrap.appendChild(nextBtn);
       this.elem.appendChild(buttonsWrap);
       this.config.sliderLength = _C.children.length;
       if (this.config.defaultCarousel) {
