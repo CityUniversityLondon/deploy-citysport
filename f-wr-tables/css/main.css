@@ -2619,13 +2619,13 @@ main table thead tr:first-child {
   border-bottom: 0;
 }
 main table thead tr:first-child th {
-  background: #303030;
+  background: #232323;
 }
 main table thead tr:nth-child(2) th {
-  background: #303030;
+  background: #232323;
 }
 main table thead tr .heading__secondary {
-  background: #303030;
+  background: #232323;
 }
 main table thead td,
 main table thead th {
@@ -2636,7 +2636,7 @@ main table tbody {
   color: #dddddd;
 }
 main table tbody tr:hover {
-  background-color: #696969;
+  background-color: #323232;
 }
 main table tbody th,
 main table tbody td {
@@ -8822,7 +8822,37 @@ hr {
   text-decoration: underline solid white;
 }
 
+table {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+  line-height: 1.4rem;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  table {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  table {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  table {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  table {
+    letter-spacing: -0.017em;
+  }
+}
+
 @media (max-width: 899px) {
+  .js table {
+    width: 100%;
+  }
   .js table thead tr {
     display: none;
   }
@@ -8837,27 +8867,17 @@ hr {
     border-bottom: 0;
   }
   .js table tbody tr th {
-    background: #303030;
+    background: #232323;
   }
   .js table tbody tr td {
     display: flex;
     justify-content: space-between;
   }
   .js table tbody tr td:hover {
-    background-color: #696969;
+    background-color: #323232;
   }
   .js table tbody tr td:before {
     content: attr(data-label);
-  }
-}
-@media (max-width: 767px) {
-  .js table {
-    min-width: 80%;
-  }
-}
-@media (max-width: 431px) {
-  .js table {
-    width: 100%;
   }
 }
 @media (min-width: 900px) {
