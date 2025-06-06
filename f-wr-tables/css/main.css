@@ -8859,12 +8859,11 @@ table {
   .js table tbody tr {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
+    border-bottom: 0;
   }
   .js table tbody tr:hover {
     background-color: inherit;
-  }
-  .js table tbody tr:not(:last-child) {
-    border-bottom: 0;
   }
   .js table tbody tr th {
     background: #232323;
@@ -8872,6 +8871,7 @@ table {
   .js table tbody tr td {
     display: flex;
     justify-content: space-between;
+    border-bottom: 0.0625rem solid #696969;
   }
   .js table tbody tr td:hover {
     background-color: #323232;
