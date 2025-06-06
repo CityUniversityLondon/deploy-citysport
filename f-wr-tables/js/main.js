@@ -12213,10 +12213,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
 /* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
-/* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
-
-
 
 
 
@@ -12224,12 +12220,11 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Table
  *
- * @module patterns/accordion/accordion
+ * @module patterns/table/table
  * @author Web Development
- * @copyright City St George's, University of London 2018-2019
+ * @copyright City St George's, University of London 2025
  */
 
-var className = 'table';
 function launchTable(table) {
   var headings = Array.from(table.querySelectorAll("thead th")),
     bodyRow = Array.from(table.querySelectorAll("tbody tr"));
@@ -12251,7 +12246,6 @@ function launchTable(table) {
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: launchTable,
-  //launchQuery: `.${className}`,
   launchQuery: 'table'
 });
 
