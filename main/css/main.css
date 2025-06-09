@@ -4435,6 +4435,10 @@ main .news-landing .content {
   text-decoration: line-through;
 }
 
+.table__heading {
+  border-top: 0.5rem solid #dddddd;
+}
+
 figure figcaption,
 .figcaption-like {
   font-size: 0.889rem;
