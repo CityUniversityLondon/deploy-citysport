@@ -23,6 +23,17 @@ article a:active {
   color: #111111;
 }
 
+.screenreader-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 .standard-grid-wrapper {
   display: grid;
 }
@@ -4418,6 +4429,10 @@ main .news-landing .content {
 }
 .icon-diamond--lrg::before {
   margin-right: 2.25rem;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
 
 figure figcaption,
@@ -9503,4 +9518,9 @@ main .standard-content .content {
 
 .membership__disc {
   color: #999999;
+}
+
+.membership__prc--promo .promo-background {
+  background-color: #d61726;
+  display: inline;
 }
