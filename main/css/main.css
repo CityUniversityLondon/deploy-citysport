@@ -8841,6 +8841,93 @@ hr {
   text-decoration: underline solid white;
 }
 
+.promo-card__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  grid-column: 1/-1;
+  background-color: #d61726;
+}
+.promo-card__wrapper .promo-card__item__heading {
+  text-align: center;
+  color: #ffffff;
+}
+
+.promo-card__item {
+  margin-top: 0.5rem;
+}
+
+.promo-card__item {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 767px) {
+  .promo-card__item {
+    flex-direction: column;
+  }
+}
+.promo-card__item .promo-card__item__img {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 2rem;
+  align-self: stretch;
+  flex-basis: 50%;
+}
+@media (max-width: 767px) {
+  .promo-card__item .promo-card__item__img {
+    padding-bottom: 0;
+  }
+}
+.promo-card__item .promo-card__item__img img {
+  z-index: 1;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .promo-card__item .promo-card__item__img img {
+    margin-left: 1.75rem;
+  }
+}
+.promo-card__item .promo-card__item__img::after {
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-left: 2rem;
+  z-index: 0;
+  content: "";
+  left: 0;
+}
+@media (max-width: 767px) {
+  .promo-card__item .promo-card__item__img::after {
+    margin-left: 0;
+    margin-top: 1.75rem;
+    top: 0;
+  }
+}
+.promo-card__item .promo-card__item__block {
+  overflow: hidden;
+  align-self: stretch;
+  flex-basis: 50%;
+  display: flex;
+  padding-top: 2rem;
+}
+@media (max-width: 767px) {
+  .promo-card__item .promo-card__item__block {
+    padding-top: 0;
+  }
+}
+.promo-card__item .promo-card__item__block .promo-card__item__block__text {
+  height: 100%;
+  padding: 1.5rem;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .promo-card__item .promo-card__item__block .promo-card__item__block__text {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
 table {
   font-size: 0.889rem;
   line-height: 1.625;
@@ -9527,4 +9614,8 @@ main .standard-content .content {
 .membership__prc--promo .promo-background {
   background-color: #d61726;
   display: inline;
+}
+.membership__prc--promo .promo-background {
+  margin-left: 1rem;
+  padding: 0 0.5rem;
 }
