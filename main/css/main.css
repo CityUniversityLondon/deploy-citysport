@@ -8857,6 +8857,10 @@ hr {
   margin-top: 0.5rem;
 }
 
+.promo-card__wrapper--right .promo-card__item {
+  flex-direction: row-reverse;
+}
+
 .promo-card__item {
   display: flex;
   flex-direction: row;
