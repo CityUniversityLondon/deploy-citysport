@@ -8844,20 +8844,15 @@ hr {
 .promo-card__wrapper {
   display: flex;
   flex-direction: column;
+  padding: 2rem;
   padding-top: 0.5rem;
   grid-column: 1/-1;
-  padding: 2rem;
   background-color: transparent;
 }
 .promo-card__wrapper .promo-card__item__heading {
   text-align: center;
   color: #ffffff;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.promo-card__wrapper--right .promo-card__item {
-  flex-direction: row-reverse;
+  margin: 0 0 1rem 0;
 }
 
 .promo-card__item {
@@ -8869,12 +8864,17 @@ hr {
     flex-direction: column;
   }
 }
+@media (min-width: 768px) {
+  .promo-card__wrapper--right .promo-card__item {
+    flex-direction: row-reverse;
+  }
+}
 
 .promo-card__item__block {
-  overflow: hidden;
-  align-self: stretch;
-  flex-basis: 50%;
   display: flex;
+  flex-basis: 50%;
+  align-self: stretch;
+  overflow: hidden;
   padding-top: 2rem;
 }
 @media (max-width: 767px) {
@@ -8883,25 +8883,24 @@ hr {
   }
 }
 .promo-card__item__block .promo-card__item__block__text {
+  width: 100%;
   height: 100%;
   padding: 1.5rem;
-  width: 100%;
   background-color: #232323;
   color: #ffffff;
 }
 @media (max-width: 767px) {
   .promo-card__item__block .promo-card__item__block__text {
-    width: 100%;
     padding-top: 0;
   }
 }
 
 .promo-card__item__img {
-  overflow: hidden;
   position: relative;
-  padding-bottom: 2rem;
-  align-self: stretch;
   flex-basis: 50%;
+  align-self: stretch;
+  overflow: hidden;
+  padding-bottom: 2rem;
 }
 @media (max-width: 767px) {
   .promo-card__item__img {
@@ -8909,47 +8908,34 @@ hr {
   }
 }
 .promo-card__item__img img {
-  z-index: 1;
   position: relative;
+  z-index: 1;
   object-fit: cover;
   height: 100%;
 }
-@media (max-width: 767px) {
-  .promo-card__item__img img {
-    margin-left: 1.75rem;
-  }
-}
 .promo-card__item__img::after {
-  background-color: #232323;
+  content: "";
   position: absolute;
+  top: 0;
+  left: 2rem;
   width: 100%;
   height: 100%;
+  background-color: #232323;
   z-index: 0;
-  content: "";
-  left: 2rem;
 }
 @media (max-width: 767px) {
   .promo-card__item__img::after {
-    margin-left: 0;
+    left: 0;
     margin-top: 1.75rem;
-    top: 0;
   }
 }
-
 .promo-card__wrapper--right .promo-card__item__img::after {
-  background-color: #ffffff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  content: "";
-  right: 2rem;
+  transform: translateX(-2rem);
+  left: 0;
 }
 @media (max-width: 767px) {
   .promo-card__wrapper--right .promo-card__item__img::after {
-    margin-left: 0;
     margin-top: 1.75rem;
-    top: 0;
   }
 }
 
