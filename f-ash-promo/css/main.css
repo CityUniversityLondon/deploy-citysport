@@ -8944,7 +8944,6 @@ hr {
 .promo-card__item__img img {
   position: relative;
   z-index: 1;
-  height: 100%;
 }
 .promo-card__item__img::after {
   content: "";
