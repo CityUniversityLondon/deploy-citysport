@@ -8928,6 +8928,9 @@ hr {
     padding-top: 0;
   }
 }
+.promo-card__item__block .promo-card__item__block__text .cta {
+  margin-top: 1rem;
+}
 
 .promo-card__item__img {
   position: relative;
