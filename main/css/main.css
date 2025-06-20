@@ -3067,7 +3067,7 @@ main .membership .content {
 }
 
 .cta-outline--white,
-.cta-outline {
+.cta--outline {
   background-color: initial;
   background-image: initial;
   background-size: initial;
@@ -3084,7 +3084,7 @@ main .membership .content {
 }
 @media (hover: hover) {
   .cta-outline--white:hover,
-  .cta-outline:hover {
+  .cta--outline:hover {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -3101,8 +3101,8 @@ main .membership .content {
   }
 }
 .cta-outline--white:focus, .cta-outline--white:active,
-.cta-outline:focus,
-.cta-outline:active {
+.cta--outline:focus,
+.cta--outline:active {
   background-color: initial;
   background-image: initial;
   background-size: initial;
@@ -3118,15 +3118,15 @@ main .membership .content {
   text-decoration: none;
 }
 .cta-outline--white:focus, .cta-outline--white:active,
-.cta-outline:focus,
-.cta-outline:active {
+.cta--outline:focus,
+.cta--outline:active {
   outline-color: #ffffff;
   outline-offset: 0.1875rem;
   outline-style: solid;
   outline-width: 0.125rem;
 }
 .cta-outline--white,
-.cta-outline {
+.cta--outline {
   width: fit-content;
   display: inline-block;
   padding: 0.25rem 1.5rem;
@@ -3136,36 +3136,36 @@ main .membership .content {
   border-radius: 3rem;
 }
 .cta-outline--white:after,
-.cta-outline:after {
+.cta--outline:after {
   opacity: 0;
 }
 .cta-outline--white:visited,
-.cta-outline:visited {
+.cta--outline:visited {
   border: 0.125rem solid #ffffff;
 }
 .cta-outline--white, .cta-outline--white:focus, .cta-outline--white:active,
-.cta-outline,
-.cta-outline:focus,
-.cta-outline:active {
+.cta--outline,
+.cta--outline:focus,
+.cta--outline:active {
   background-color: transparent;
   color: #ffffff;
   border: 0.125rem solid #ffffff;
 }
 .cta-outline--white span, .cta-outline--white:focus span, .cta-outline--white:active span,
-.cta-outline span,
-.cta-outline:focus span,
-.cta-outline:active span {
+.cta--outline span,
+.cta--outline:focus span,
+.cta--outline:active span {
   color: #ffffff;
 }
 @media (hover: hover) {
   .cta-outline--white:hover,
-  .cta-outline:hover {
+  .cta--outline:hover {
     background-color: rgb(239.7, 239.7, 239.7);
     color: #1e1e1e;
     border: 0.125rem solid rgb(239.7, 239.7, 239.7);
   }
   .cta-outline--white:hover span,
-  .cta-outline:hover span {
+  .cta--outline:hover span {
     color: #1e1e1e;
   }
 }
