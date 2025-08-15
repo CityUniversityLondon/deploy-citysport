@@ -2728,6 +2728,9 @@ main .standard-content .content {
 .standard-content {
   padding-bottom: 1.5rem;
 }
+.standard-content .standfirst {
+  margin: 2.5rem 0;
+}
 .standard-content .content {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -2931,6 +2934,9 @@ main .membership .content {
 
 .membership {
   padding-bottom: 1.5rem;
+}
+.membership .standfirst {
+  margin: 2.5rem 0;
 }
 .membership .content {
   margin-left: 1rem;
@@ -4187,6 +4193,9 @@ main .news-landing .content {
 .news-landing {
   padding-bottom: 1.5rem;
 }
+.news-landing .standfirst {
+  margin: 2.5rem 0;
+}
 .news-landing .content {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -4285,6 +4294,9 @@ main .news-landing .content {
 
 .home {
   padding-bottom: 1.5rem;
+}
+.home .standfirst {
+  margin: 2.5rem 0;
 }
 .home .content {
   margin-left: 1rem;
