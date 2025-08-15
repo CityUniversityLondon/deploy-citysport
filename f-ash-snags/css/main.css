@@ -4,7 +4,7 @@ article a {
   text-decoration-color: #d61726;
   text-decoration-line: underline;
   text-decoration-thickness: 0.125rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 article a:hover {
   text-decoration-thickness: 0.1875rem;
