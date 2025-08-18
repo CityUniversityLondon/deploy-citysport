@@ -1442,11 +1442,6 @@ readers do not read off random characters that represent icons */
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1920px) {
-  .listing--membership {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 html {
   text-size-adjust: 100%;
