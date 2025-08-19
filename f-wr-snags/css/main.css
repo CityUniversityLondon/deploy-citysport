@@ -2679,7 +2679,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
     grid-column: span 24;
   }
   main > .standard-content .content {
-    grid-column: 4/-4;
+    grid-column: 1/-1;
   }
 }
 main .standard-content .content {
@@ -2711,7 +2711,7 @@ main .standard-content .content {
     grid-column: span 24;
   }
   main > .standard-content .content {
-    grid-column: 1/-1;
+    grid-column: 4/-4;
   }
 }
 @media (min-width: 1280px) {
