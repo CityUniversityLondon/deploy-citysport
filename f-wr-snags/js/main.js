@@ -11147,11 +11147,9 @@ function walkDOMCheckClassName(node) {
     return null;
   }
   if (checkClassName) {
-    //console.log('checkClassName',node.parentElement);
     return node.parentElement;
   }
   if (node.parentElement) {
-    //console.log('walkDOMCheckClassName',node.parentElement);
     return walkDOMCheckClassName(node.parentElement);
   }
   return null;
@@ -11256,10 +11254,8 @@ function launchImageCredit(picture) {
   wrapper.appendChild(label);
   var cardType = walkDOMCheckClassName(picture);
   if (cardType) {
-    //console.log('Image credit tooltip found parent card type:', cardType);
     (author || source) && cardType.querySelector('a').parentElement.prepend(wrapper);
   } else {
-    //console.log('Image credit tooltip could not find a parent card type. Appending to picture element.', picture);
     (author || source) && picture.appendChild(wrapper);
     picture.querySelector('img').classList.add('tooltip__overlay');
   }
