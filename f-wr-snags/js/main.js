@@ -11147,11 +11147,11 @@ function walkDOMCheckClassName(node) {
     return null;
   }
   if (checkClassName) {
-    console.log('checkClassName', node.parentElement);
+    //console.log('checkClassName',node.parentElement);
     return node.parentElement;
   }
   if (node.parentElement) {
-    console.log('walkDOMCheckClassName', node.parentElement);
+    //console.log('walkDOMCheckClassName',node.parentElement);
     return walkDOMCheckClassName(node.parentElement);
   }
   return null;
@@ -11256,10 +11256,10 @@ function launchImageCredit(picture) {
   wrapper.appendChild(label);
   var cardType = walkDOMCheckClassName(picture);
   if (cardType) {
-    console.log('Image credit tooltip found parent card type:', cardType);
+    //console.log('Image credit tooltip found parent card type:', cardType);
     (author || source) && cardType.querySelector('a').parentElement.prepend(wrapper);
   } else {
-    console.log('Image credit tooltip could not find a parent card type. Appending to picture element.', picture);
+    //console.log('Image credit tooltip could not find a parent card type. Appending to picture element.', picture);
     (author || source) && picture.appendChild(wrapper);
     picture.querySelector('img').classList.add('tooltip__overlay');
   }
@@ -11642,7 +11642,6 @@ __webpack_require__.r(__webpack_exports__);
 function launchRibbonNotice(el) {
   var closeButton = el.querySelectorAll('.global-header__ribbon__close')[0];
   closeButton.addEventListener('click', function () {
-    console.log('clicked');
     el.classList.add('global-header__ribbon__animation-close');
     setTimeout(function () {
       el.remove();
@@ -11970,7 +11969,6 @@ function handleNextPrevClick(slider, controls, direction) {
       previous.dataset.sliderposition = 0;
       previous.dataset.smallposition = 0;
       // Updates pagination to current slide
-      console.log(currentPage.innerText = slides.indexOf(previous));
       currentPage.innerText = slides.indexOf(previous) + 1;
     }
   }
