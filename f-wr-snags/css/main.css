@@ -9232,7 +9232,6 @@ main .standard-content .content {
   width: 100%;
   width: 100vw;
   margin-left: calc(0px - (100vw - 100%) / 2);
-  overflow: visible;
 }
 .swiper-viewport {
   grid-column-gap: 0;
