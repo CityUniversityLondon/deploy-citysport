@@ -2981,6 +2981,9 @@ main .membership .content {
   }
 }
 
+.cta-block {
+  margin-top: 1.5rem;
+}
 .cta-block--center {
   display: flex;
   justify-content: center;
@@ -4392,7 +4395,7 @@ main .news-landing .content {
 }
 
 .content-announcement__wrapper {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .content-announcement {
