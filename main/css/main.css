@@ -907,6 +907,11 @@ readers do not read off random characters that represent icons */
   --fa--fa: "\f45b\f45b";
 }
 
+.fa-subtitles {
+  --fa: "\e60f";
+  --fa--fa: "\e60f\e60f";
+}
+
 .fa-user {
   --fa: "\f007";
   --fa--fa: "\f007\f007";
@@ -8856,6 +8861,7 @@ hr {
 }
 
 .pathway__list__card {
+  position: relative;
   margin-top: 1rem;
 }
 .pathway__list__card a {
@@ -9171,6 +9177,19 @@ table {
 
 .listing--blogs {
   margin-bottom: 2.25rem;
+}
+.listing--blogs ul {
+  list-style: none;
+  max-width: initial;
+  padding-top: initial;
+  margin-left: initial;
+}
+.listing--blogs ul li {
+  margin-top: initial;
+}
+
+.listing--blogs__blog {
+  position: relative;
 }
 
 .card--blog {
@@ -9791,4 +9810,172 @@ main .standard-content .content {
 .membership__prc--promo .promo-background {
   margin-left: 1rem;
   padding: 0 0.5rem;
+}
+
+.wrapper--tooltip__label {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+  margin-top: initial;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .wrapper--tooltip__label {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .wrapper--tooltip__label {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .wrapper--tooltip__label {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .wrapper--tooltip__label {
+    letter-spacing: -0.017em;
+  }
+}
+.wrapper--tooltip__label[data-open=false] .tooltip__label {
+  display: none;
+}
+.wrapper--tooltip__label .tooltip__label {
+  display: inline-block;
+  margin-left: 1rem;
+  color: #ffffff;
+  padding: 0 0.5rem;
+  border-left: solid 0.1875rem;
+  font-size: 0.79rem;
+  line-height: 1.625;
+  letter-spacing: 0.005em;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .wrapper--tooltip__label .tooltip__label {
+    letter-spacing: 0em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .wrapper--tooltip__label .tooltip__label {
+    letter-spacing: -0.007em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .wrapper--tooltip__label .tooltip__label {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .wrapper--tooltip__label .tooltip__label {
+    letter-spacing: -0.017em;
+  }
+}
+.wrapper--tooltip__label .tooltip__label a {
+  display: inline;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 0.0625rem;
+  text-underline-offset: 0.1875rem;
+  transition: text-decoration-thickness 0.2s ease-in-out;
+}
+.wrapper--tooltip__label .tooltip__label a:visited {
+  color: #ffffff;
+}
+.wrapper--tooltip__label .tooltip__label a:hover, .wrapper--tooltip__label .tooltip__label a:active {
+  text-decoration-thickness: 0.125rem;
+}
+.wrapper--tooltip__label .tooltip__label a:focus {
+  text-decoration-thickness: 0.125rem;
+  outline-color: #d61726;
+}
+.wrapper--tooltip__label .tooltip__label a:before {
+  background: initial;
+  opacity: initial;
+  width: initial;
+  height: initial;
+}
+.wrapper--tooltip__label .tooltip--image-credit {
+  font-size: 0.889rem;
+  line-height: 1.625;
+  letter-spacing: 0em;
+  background-color: #1e1e1e;
+  border: 0;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0;
+  padding: 0.5rem;
+  width: auto;
+  pointer-events: auto;
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .wrapper--tooltip__label .tooltip--image-credit {
+    letter-spacing: -0.005em;
+  }
+}
+@media (min-width: 1920px) and (max-width: 3839px) {
+  .wrapper--tooltip__label .tooltip--image-credit {
+    letter-spacing: -0.01em;
+  }
+}
+@media (min-width: 3840px) and (max-width: 7679px) {
+  .wrapper--tooltip__label .tooltip--image-credit {
+    letter-spacing: -0.017em;
+  }
+}
+@media (min-width: 7680px) {
+  .wrapper--tooltip__label .tooltip--image-credit {
+    letter-spacing: -0.017em;
+  }
+}
+@media (hover: hover) {
+  .wrapper--tooltip__label .tooltip--image-credit:hover {
+    background-color: #d61726;
+  }
+}
+.wrapper--tooltip__label .tooltip--image-credit:focus {
+  background-color: #d61726;
+}
+.wrapper--tooltip__label .tooltip--image-credit:active, .wrapper--tooltip__label .tooltip--image-credit:focus {
+  outline: 0;
+}
+.wrapper--tooltip__label .tooltip--image-credit:active .icon, .wrapper--tooltip__label .tooltip--image-credit:focus .icon {
+  outline: 0.125rem solid #ffffff;
+}
+.wrapper--tooltip__label .tooltip--image-credit .icon {
+  min-width: 1.75rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.tooltip__overlay {
+  -moz-transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+img:has(~ .wrapper--tooltip__label[data-open=true]) {
+  -webkit-filter: brightness(0.2);
+  filter: brightness(0.2);
+}
+
+.listing--blogs__blog .wrapper--tooltip__label ~ a img,
+.pathway__list__card .wrapper--tooltip__label ~ a img {
+  -moz-transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.listing--blogs__blog .wrapper--tooltip__label[data-open=true] ~ a img,
+.pathway__list__card .wrapper--tooltip__label[data-open=true] ~ a img {
+  -webkit-filter: brightness(0.2);
+  filter: brightness(0.2);
+}
+
+.figure--image {
+  position: relative;
 }
