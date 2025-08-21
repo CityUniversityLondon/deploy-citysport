@@ -5087,6 +5087,11 @@ figure figcaption,
   margin: 1rem 0;
   justify-content: center;
 }
+@media (max-width: 431px) {
+  .global-footer__useful-links {
+    flex-wrap: wrap;
+  }
+}
 @media (min-width: 768px) {
   .global-footer__useful-links {
     justify-content: flex-start;
@@ -5333,6 +5338,12 @@ hr {
     margin-right: auto;
   }
 }
+@media (max-width: 431px) {
+  .global-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .global-header .global-header__logo {
   grid-column-start: 1;
   grid-column-end: 4;
@@ -5564,6 +5575,9 @@ hr {
     100% {
       max-height: 100vh;
     }
+  }
+  .js .global-header .menu .menu__level2 {
+    min-width: max-content;
   }
   .js .global-header .menu .menu__level1,
   .js .global-header .menu .menu__level2 {
@@ -6842,7 +6856,6 @@ hr {
 .js .menu > .menu__display__button {
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
-  padding-right: 1rem;
 }
 @media (min-width: 1024px) {
   .js .menu > .menu__display__button {
