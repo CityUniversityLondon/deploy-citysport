@@ -5507,6 +5507,31 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.some.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.some.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $some = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").some);
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
+
+var STRICT_METHOD = arrayMethodIsStrict('some');
+
+// `Array.prototype.some` method
+// https://tc39.es/ecma262/#sec-array.prototype.some
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD }, {
+  some: function some(callbackfn /* , thisArg */) {
+    return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.date.to-primitive.js":
 /*!**************************************************************!*\
   !*** ./node_modules/core-js/modules/es.date.to-primitive.js ***!
@@ -9788,6 +9813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patterns_image_carousel_default_carousel_default_carousel_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./patterns/image-carousel/default-carousel/default-carousel.js */ "./src/patterns/image-carousel/default-carousel/default-carousel.js");
 /* harmony import */ var _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./patterns/video/video-homepage.js */ "./src/patterns/video/video-homepage.js");
 /* harmony import */ var _patterns_table_table_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./patterns/table/table.js */ "./src/patterns/table/table.js");
+/* harmony import */ var _patterns_image_credit_imageCredit_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./patterns/image-credit/imageCredit.js */ "./src/patterns/image-credit/imageCredit.js");
 
 
 /**
@@ -9808,7 +9834,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"], _patterns_slider_slider_js__WEBPACK_IMPORTED_MODULE_3__["default"], _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_6__["default"], _patterns_image_carousel_image_carousel_js__WEBPACK_IMPORTED_MODULE_4__["default"], _patterns_image_carousel_default_carousel_default_carousel_js__WEBPACK_IMPORTED_MODULE_5__["default"], _patterns_table_table_js__WEBPACK_IMPORTED_MODULE_7__["default"]]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_patterns_accordion_accordion_js__WEBPACK_IMPORTED_MODULE_0__["default"], _patterns_notice_ribbon_notice_ribbon_js__WEBPACK_IMPORTED_MODULE_1__["default"], _patterns_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"], _patterns_slider_slider_js__WEBPACK_IMPORTED_MODULE_3__["default"], _patterns_video_video_homepage_js__WEBPACK_IMPORTED_MODULE_6__["default"], _patterns_image_carousel_image_carousel_js__WEBPACK_IMPORTED_MODULE_4__["default"], _patterns_image_carousel_default_carousel_default_carousel_js__WEBPACK_IMPORTED_MODULE_5__["default"], _patterns_table_table_js__WEBPACK_IMPORTED_MODULE_7__["default"], _patterns_image_credit_imageCredit_js__WEBPACK_IMPORTED_MODULE_8__["default"]]);
 
 /***/ }),
 
@@ -11068,6 +11095,178 @@ function init(elem) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   launchFn: init,
   launchQuery: ".".concat(className)
+});
+
+/***/ }),
+
+/***/ "./src/patterns/image-credit/imageCredit.js":
+/*!**************************************************!*\
+  !*** ./src/patterns/image-credit/imageCredit.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_some_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.some.js */ "./node_modules/core-js/modules/es.array.some.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var _aria_attributes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../aria-attributes.js */ "./src/aria-attributes.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util.js */ "./src/util.js");
+
+
+
+
+/**
+ * Image credit tooltip
+ *
+ * @module patterns/tooltip/image-credit
+ * @author Web Development
+ * @copyright City St George's, University of London
+ */
+
+
+
+var className = 'picture[data-authorname], picture[data-sourcename]',
+  openText = 'Show image credit',
+  closeText = 'Hide image credit';
+
+/**
+ * Recursively checks the parent nodes of a given DOM node to determine if it belongs to a specific card type.
+ *
+ * @param {HTMLElement} node - The DOM node to start the search from.
+ * @returns {HTMLElement|null} The parent node of the given node that matches the specified card types, or null if no match is found.
+ */
+function walkDOMCheckClassName(node) {
+  var cardsType = ['listing--blogs__blog', 'pathway__list__card'];
+  var checkClassName = cardsType.some(function (e) {
+    return node.parentElement.classList.contains(e);
+  });
+  if (node.tagName === 'BODY') {
+    return null;
+  }
+  if (checkClassName) {
+    console.log('checkClassName', node.parentElement);
+    return node.parentElement;
+  }
+  if (node.parentElement) {
+    console.log('walkDOMCheckClassName', node.parentElement);
+    return walkDOMCheckClassName(node.parentElement);
+  }
+  return null;
+}
+
+/**
+ * Toggle the image credit open or closed.
+ *
+ * @param  {HTMLElement} wrapper - The image credit container
+ */
+function toggleImageCredit(wrapper) {
+  var button = wrapper.querySelector('button'),
+    buttonText = button.querySelector('.sr-only'),
+    label = wrapper.querySelector('.tooltip__label'),
+    icon = button.querySelector('.tooltip__icon');
+  if ((0,_util_js__WEBPACK_IMPORTED_MODULE_3__.toBool)(wrapper.dataset.open)) {
+    wrapper.dataset.open = false;
+    button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_2__["default"].expanded, 'false');
+    buttonText.innerText = openText;
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-subtitles');
+    button.focus();
+  } else {
+    wrapper.dataset.open = true;
+    button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_2__["default"].expanded, 'true');
+    buttonText.innerText = closeText;
+    icon.classList.remove('fa-subtitles');
+    icon.classList.add('fa-xmark');
+    label.focus();
+  }
+}
+
+/**
+ * Render the credit label.
+ *
+ * @param  {string} text - The entity to credit
+ * @param  {string} url - Optional URL for the entity
+ * @returns {HTMLElement} A span or anchor.
+ */
+function createLabel(text, url) {
+  // If URL; create hyperlink
+  if (url) {
+    var element = document.createElement('a');
+    element.href = url;
+    element.appendChild(document.createTextNode(text));
+    return element;
+    // No URL; create span
+  } else {
+    var _element = document.createElement('span');
+    _element.appendChild(document.createTextNode(text));
+    return _element;
+  }
+}
+
+/**
+ * Create an image credit tooltip from the data attributes of an image.
+ *
+ * @param {HTMLElement} picture - A picture element with credit data attributes.
+ */
+function launchImageCredit(picture) {
+  var display = (0,_util_js__WEBPACK_IMPORTED_MODULE_3__.toBool)(picture.dataset.tooltipdisplay),
+    authorText = picture.dataset.authorname,
+    sourceText = picture.dataset.sourcename,
+    sourceUrl = picture.dataset.sourceurl,
+    licenceText = picture.dataset.licencetype;
+
+  // Pattern only launches if set to display and has either an author/source name
+  if (!display || !(authorText || sourceText)) {
+    return;
+  }
+  var wrapper = document.createElement('figure'),
+    button = document.createElement('button'),
+    spanIcon = document.createElement('span'),
+    spanText = document.createElement('span'),
+    label = document.createElement('figcaption'),
+    author = authorText ? createLabel(authorText) : null,
+    source = sourceText ? createLabel(sourceText, sourceUrl) : null,
+    licence = licenceText ? createLabel(licenceText) : null;
+  wrapper.className = 'wrapper--tooltip__label';
+  wrapper.dataset.open = false;
+  button.className = 'tooltip tooltip--image-credit';
+  button.setAttribute('type', 'button');
+  button.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_2__["default"].expanded, false);
+  button.addEventListener('click', function () {
+    return toggleImageCredit(wrapper);
+  }, true);
+  spanIcon.className = 'tooltip__icon icon fa-sharp fa-light fa-subtitles';
+  spanIcon.setAttribute(_aria_attributes_js__WEBPACK_IMPORTED_MODULE_2__["default"].hidden, true);
+  spanText.className = 'sr-only';
+  spanText.appendChild(document.createTextNode(openText));
+  button.appendChild(spanIcon);
+  button.appendChild(spanText);
+  label.className = 'tooltip__label';
+  label.setAttribute('tabindex', -1);
+  author && label.appendChild(author);
+  author && source && label.appendChild(document.createTextNode(', '));
+  source && label.appendChild(source);
+  source && licence && label.appendChild(document.createTextNode(' | '));
+  licence ? licence.className = 'tooltip__label__licence' : null;
+  licence && label.appendChild(licence);
+  wrapper.appendChild(button);
+  wrapper.appendChild(label);
+  var cardType = walkDOMCheckClassName(picture);
+  if (cardType) {
+    console.log('Image credit tooltip found parent card type:', cardType);
+    (author || source) && cardType.querySelector('a').parentElement.prepend(wrapper);
+  } else {
+    console.log('Image credit tooltip could not find a parent card type. Appending to picture element.', picture);
+    (author || source) && picture.appendChild(wrapper);
+    picture.querySelector('img').classList.add('tooltip__overlay');
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  launchFn: launchImageCredit,
+  launchQuery: "".concat(className)
 });
 
 /***/ }),
