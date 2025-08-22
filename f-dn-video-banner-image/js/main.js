@@ -12515,13 +12515,8 @@ function setAutoPlay(video) {
   //Add autoplay to the video if we're on screens larger than mobile
   var viewportWidth = window.innerWidth;
   video.play().then(function () {
-    if (viewportWidth > (0,_util_js__WEBPACK_IMPORTED_MODULE_16__.screenWidth)('mobile')) {
-      video.autoplay = true;
-      createControlButton(video, true);
-    } else {
-      video.autoplay = false;
-      createControlButton(video, false);
-    }
+    video.autoplay = true;
+    createControlButton(video, true);
   }, function (err) {
     video.autoplay = false;
     createControlButton(video, false);
