@@ -12514,13 +12514,19 @@ var className = 'home-banner__video';
 function setAutoPlay(video) {
   //Add autoplay to the video if we're on screens larger than mobile
   var viewportWidth = window.innerWidth;
-  video.play().then(function () {
-    video.autoplay = true;
-    createControlButton(video, true);
-  }, function (err) {
+  if (viewportWidth > (0,_util_js__WEBPACK_IMPORTED_MODULE_16__.screenWidth)('mobile')) {
+    // try to play the video
+    video.play().then(function () {
+      video.autoplay = true;
+      createControlButton(video, true);
+    }, function (err) {
+      video.autoplay = false;
+      createControlButton(video, false);
+    });
+  } else {
     video.autoplay = false;
     createControlButton(video, false);
-  });
+  }
 }
 function createControlButton(video, autoPlay) {
   var urlPlayButton = video.dataset.playButton;
