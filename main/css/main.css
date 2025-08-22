@@ -2745,11 +2745,13 @@ main .standard-content .content {
     margin-right: 1.5rem;
   }
 }
-.standard-content .content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .standard-content .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .standard-content .content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2847,11 +2849,13 @@ main .standard-content--narrow .content {
     margin-right: 1.5rem;
   }
 }
-.standard-content--narrow .content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .standard-content--narrow .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .standard-content--narrow .content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2952,11 +2956,13 @@ main .membership .content {
     margin-right: 1.5rem;
   }
 }
-.membership .content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .membership .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .membership .content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -4213,11 +4219,13 @@ main .news-landing .content {
     margin-right: 1.5rem;
   }
 }
-.news-landing .content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .news-landing .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .news-landing .content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -4315,11 +4323,13 @@ main .news-landing .content {
     margin-right: 1.5rem;
   }
 }
-.home .content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .home .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .home .content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -4583,6 +4593,14 @@ main .news-landing .content {
 }
 .icon-diamond--lrg::before {
   margin-right: 2.25rem;
+}
+@media (max-width: 767px) {
+  .icon-diamond, .icon-diamond--lrg {
+    height: auto;
+  }
+  .icon-diamond::before, .icon-diamond--lrg::before {
+    display: none;
+  }
 }
 
 .line-through {
@@ -4942,11 +4960,13 @@ figure figcaption,
     margin-right: 1.5rem;
   }
 }
-.global-footer {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .global-footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .global-footer {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5112,6 +5132,8 @@ figure figcaption,
 }
 .global-footer__useful-links li:last-of-type {
   border-right: none;
+  margin-right: 0;
+  padding-right: 0;
 }
 
 .global-footer__content__text__copyright {
@@ -5147,11 +5169,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.footer-oh {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .footer-oh {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .footer-oh {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5266,13 +5290,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-width: 769px) {
   .global-header__ribbon .global-header__ribbon__container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 1024px) and (min-width: 769px) and (min-width: 901px) {
   .global-header__ribbon .global-header__ribbon__container {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5330,11 +5354,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.global-header {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .global-header {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .global-header {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5344,12 +5370,6 @@ hr {
   .global-header {
     margin-left: auto;
     margin-right: auto;
-  }
-}
-@media (max-width: 431px) {
-  .global-header {
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 .global-header .global-header__logo {
@@ -7540,11 +7560,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.skip-links .skip-links__content {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .skip-links .skip-links__content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .skip-links .skip-links__content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -8384,11 +8406,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.js .slider__wrapper .related-content .card--homepage .card__container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .js .slider__wrapper .related-content .card--homepage .card__container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .js .slider__wrapper .related-content .card--homepage .card__container {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -8469,11 +8493,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-.js .slider__wrapper .related-content + .slider__controls {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 769px) {
+  .js .slider__wrapper .related-content + .slider__controls {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
-@media (min-width: 901px) {
+@media (min-width: 769px) and (min-width: 901px) {
   .js .slider__wrapper .related-content + .slider__controls {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -8556,13 +8582,13 @@ hr {
     margin-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-width: 769px) {
   .home-banner--video .banner__video__button__wrap {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) and (min-width: 901px) {
+@media (min-width: 1024px) and (min-width: 769px) and (min-width: 901px) {
   .home-banner--video .banner__video__button__wrap {
     padding-left: 2rem;
     padding-right: 2rem;
