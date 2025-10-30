@@ -15449,7 +15449,7 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
   position: absolute;
   top: 2.5rem;
   width: 100%;
-  z-index: z-index("above");
+  z-index: 1;
 }
 .finder__query__suggestions li {
   font-weight: 400;
@@ -15932,7 +15932,7 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
   background-color: #1e1e1e;
   padding: 0.25rem;
   color: #ffffff;
-  z-index: z-index(above);
+  z-index: 1;
   font-size: 0.889rem;
   line-height: 1.625;
   letter-spacing: 0em;
