@@ -3711,6 +3711,10 @@ article a:active {
 .card--news .card__anchor .card__type {
   color: #ffffff;
 }
+.card--news .card__anchor:after {
+  content: unset;
+  display: none;
+}
 
 main > .news {
   grid-column: 1/-1;
