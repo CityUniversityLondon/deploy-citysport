@@ -9483,7 +9483,7 @@ table {
 }
 
 .breadcrumbs {
-  border: 2px solid red;
+  border: 2px solid red !important;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
