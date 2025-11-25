@@ -9483,6 +9483,7 @@ table {
 }
 
 .breadcrumbs {
+  border: 2px solid red;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
