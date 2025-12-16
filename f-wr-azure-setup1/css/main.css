@@ -5252,7 +5252,6 @@ hr {
   width: 100%;
   position: relative;
   z-index: 4;
-  background-color: purple;
 }
 
 .global-header__ribbon {
@@ -5462,6 +5461,10 @@ hr {
 }
 .global-header__membership-ctas .global-header__membership-cta:first-of-type {
   margin-right: 1rem;
+}
+
+.test-class {
+  background-color: red;
 }
 
 @media (min-width: 1024px) {
