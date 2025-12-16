@@ -5252,7 +5252,7 @@ hr {
   width: 100%;
   position: relative;
   z-index: 4;
-  background-color: red;
+  background-color: green;
 }
 
 .global-header__ribbon {
