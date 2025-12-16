@@ -11321,6 +11321,7 @@ var oneSecond = 1000,
  * @param {string} buttonTextClassName - The class of the text span.
  */
 function setNavigationItemButtonDetails(button, open, rootClass) {
+  console.log('setNavigationItemButtonDetails called');
   var navigationItem = button.closest('li'),
     sectionText = navigationItem.dataset.title + ' section',
     buttonClassName = rootClass + '__button',

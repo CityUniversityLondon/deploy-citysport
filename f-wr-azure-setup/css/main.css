@@ -5463,6 +5463,10 @@ hr {
   margin-right: 1rem;
 }
 
+.test-class {
+  background-color: red;
+}
+
 @media (min-width: 1024px) {
   .no-js .menu .menu__content .menu__content__header, .js .menu .menu__content .menu__content__header {
     display: none;
