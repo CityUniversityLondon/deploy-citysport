@@ -5464,7 +5464,7 @@ hr {
 }
 
 .test-class {
-  background-color: red;
+  background-color: blue;
 }
 
 @media (min-width: 1024px) {
