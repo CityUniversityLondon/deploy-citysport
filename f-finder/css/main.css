@@ -15088,7 +15088,7 @@ iframe[src*=issuu], iframe[src*=prezi] {
     text-decoration: none;
   }
   .finder__reset:focus, .finder__reset:active {
-    outline-color: #0c0c0e;
+    outline-color: #ffffff;
     outline-offset: 0.1875rem;
     outline-style: solid;
     outline-width: 0.125rem;
@@ -17294,7 +17294,8 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
 }
 @media screen {
   .pagination__wrapper .pagination__controls a,
-  .pagination__wrapper .pagination__controls button {
+  .pagination__wrapper .pagination__controls button,
+  .pagination__wrapper .pagination__controls [aria-current] {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17323,7 +17324,8 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
 }
 @media screen and (hover: hover) {
   .pagination__wrapper .pagination__controls a:hover,
-  .pagination__wrapper .pagination__controls button:hover {
+  .pagination__wrapper .pagination__controls button:hover,
+  .pagination__wrapper .pagination__controls [aria-current]:hover {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17342,7 +17344,9 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
 @media screen {
   .pagination__wrapper .pagination__controls a:focus, .pagination__wrapper .pagination__controls a:active,
   .pagination__wrapper .pagination__controls button:focus,
-  .pagination__wrapper .pagination__controls button:active {
+  .pagination__wrapper .pagination__controls button:active,
+  .pagination__wrapper .pagination__controls [aria-current]:focus,
+  .pagination__wrapper .pagination__controls [aria-current]:active {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17360,19 +17364,21 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
 }
 @media screen and (prefers-reduced-motion: reduce) {
   .pagination__wrapper .pagination__controls a,
-  .pagination__wrapper .pagination__controls button {
+  .pagination__wrapper .pagination__controls button,
+  .pagination__wrapper .pagination__controls [aria-current] {
     transition: none;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a:focus,
-  .pagination__wrapper .pagination__controls button:focus {
+  .pagination__wrapper .pagination__controls a:not([aria-current]):focus,
+  .pagination__wrapper .pagination__controls button:not([aria-current]):focus,
+  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):focus {
     outline-color: #d61726;
     outline-offset: 0.1875rem;
     outline-style: solid;
     outline-width: 0.125rem;
     outline-offset: -0.1875rem;
-    background-image: linear-gradient(120deg, #ffffff 0%, #ffffff 100%);
+    background-color: #ffffff;
     border-color: #ffffff;
     border-style: solid;
     border-width: 0.125rem;
@@ -17381,28 +17387,31 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
   }
 }
 @media screen and (hover: hover) {
-  .pagination__wrapper .pagination__controls a:hover,
-  .pagination__wrapper .pagination__controls button:hover {
-    background-image: linear-gradient(120deg, #ffffff 0%, #ffffff 100%);
+  .pagination__wrapper .pagination__controls a:not([aria-current]):hover,
+  .pagination__wrapper .pagination__controls button:not([aria-current]):hover,
+  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):hover {
+    background-color: #ffffff;
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 100% 0;
     border-style: solid;
     border-width: 0.0625rem;
     border-color: #cbcbcb;
-    color: #ffffff;
+    color: #292929;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a:active,
-  .pagination__wrapper .pagination__controls button:active {
-    background-image: linear-gradient(120deg, #ffffff 0%, #ffffff 100%);
+  .pagination__wrapper .pagination__controls a:not([aria-current]):active,
+  .pagination__wrapper .pagination__controls button:not([aria-current]):active,
+  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):active {
+    background-color: #ffffff;
     background-size: 100% 100%;
     color: #292929;
     font-weight: 700;
   }
   .pagination__wrapper .pagination__controls a:disabled,
-  .pagination__wrapper .pagination__controls button:disabled {
+  .pagination__wrapper .pagination__controls button:disabled,
+  .pagination__wrapper .pagination__controls [aria-current]:disabled {
     background-size: 100% 0;
     border-color: #cbcbcb;
     border-style: solid;
@@ -17412,16 +17421,18 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
     font-weight: 400;
   }
   .pagination__wrapper .pagination__controls a:disabled span,
-  .pagination__wrapper .pagination__controls button:disabled span {
+  .pagination__wrapper .pagination__controls button:disabled span,
+  .pagination__wrapper .pagination__controls [aria-current]:disabled span {
     display: inline-block;
     padding-bottom: 0.0625rem;
   }
   .pagination__wrapper .pagination__controls a[aria-current],
-  .pagination__wrapper .pagination__controls button[aria-current] {
-    background-image: initial;
-    border-color: rgba(203, 203, 203, 0.3);
+  .pagination__wrapper .pagination__controls button[aria-current],
+  .pagination__wrapper .pagination__controls [aria-current][aria-current] {
+    background-color: #ffffff;
     border-style: solid;
     border-width: 0.0625rem;
+    border-color: #cbcbcb;
     color: #292929;
     cursor: default;
     font-weight: 700;
@@ -17431,13 +17442,15 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
     outline-width: 0;
   }
   .pagination__wrapper .pagination__controls a span,
-  .pagination__wrapper .pagination__controls button span {
+  .pagination__wrapper .pagination__controls button span,
+  .pagination__wrapper .pagination__controls [aria-current] span {
     display: inline-block;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
   .pagination__wrapper .pagination__controls a:not(a) span,
-  .pagination__wrapper .pagination__controls button:not(a) span {
+  .pagination__wrapper .pagination__controls button:not(a) span,
+  .pagination__wrapper .pagination__controls [aria-current]:not(a) span {
     background-color: red;
   }
   .pagination__wrapper .pagination__controls .pagination__controls__ellipsis {
@@ -17451,7 +17464,8 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
   }
   .pagination__wrapper .pagination__controls a,
   .pagination__wrapper .pagination__controls button,
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis {
+  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis,
+  .pagination__wrapper .pagination__controls [aria-current] {
     margin-right: 0.5rem;
     margin-top: 0.75rem;
     min-height: 1.75rem;
@@ -17462,8 +17476,17 @@ main > article .finder .finder__results__list.finder__results__list--three-up {
   .pagination__wrapper .pagination__controls button :before,
   .pagination__wrapper .pagination__controls button span,
   .pagination__wrapper .pagination__controls .pagination__controls__ellipsis :before,
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis span {
+  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis span,
+  .pagination__wrapper .pagination__controls [aria-current] :before,
+  .pagination__wrapper .pagination__controls [aria-current] span {
     align-self: center;
+  }
+  .pagination__wrapper .pagination__controls [aria-current] {
+    align-self: center;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    align-items: center;
   }
   .pagination__wrapper .pagination__controls [data-page] {
     display: none;
