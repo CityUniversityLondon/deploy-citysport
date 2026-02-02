@@ -15980,6 +15980,10 @@ iframe[src*=issuu], iframe[src*=prezi] {
   color: #d61726;
 }
 
+.wrapper--finder {
+  margin-top: 1rem;
+}
+
 @media (min-width: 768px) {
   main > article .finder .finder__results__list {
     display: grid;
