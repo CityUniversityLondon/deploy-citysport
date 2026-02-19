@@ -10497,31 +10497,6 @@ hr {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-.news p {
-  font-size: 0.889rem;
-  line-height: 1.625;
-  letter-spacing: 0em;
-}
-@media (min-width: 1280px) and (max-width: 1919px) {
-  .news p {
-    letter-spacing: -0.005em;
-  }
-}
-@media (min-width: 1920px) and (max-width: 3839px) {
-  .news p {
-    letter-spacing: -0.01em;
-  }
-}
-@media (min-width: 3840px) and (max-width: 7679px) {
-  .news p {
-    letter-spacing: -0.017em;
-  }
-}
-@media (min-width: 7680px) {
-  .news p {
-    letter-spacing: -0.017em;
-  }
-}
 .news .wrap--icon {
   margin-top: 1rem;
 }
