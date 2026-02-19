@@ -10293,7 +10293,7 @@ hr {
 .pathway .wrap--icon {
   margin-top: 1rem;
 }
-.pathway .wrap--icon + h3, .pathway .wrap--icon + p {
+.pathway .wrap--icon + .card__content__heading, .pathway .wrap--icon + p {
   margin-top: 0.25rem;
 }
 .pathway .wrap--icon .wrap--icon__img {
@@ -10413,7 +10413,7 @@ hr {
 .pathway__list__card a:focus {
   background-color: #323232;
 }
-.pathway__list__card a h3,
+.pathway__list__card a .card__content__heading,
 .pathway__list__card a .wrap--icon__img {
   color: #ffffff;
 }
@@ -10433,7 +10433,7 @@ hr {
   .pathway__list__card a:hover .card__content__img {
     transform: scale(1.02);
   }
-  .pathway__list__card a:hover h3,
+  .pathway__list__card a:hover .card__content__heading,
   .pathway__list__card a:hover .wrap--icon__img {
     color: #ffffff;
   }
@@ -10447,15 +10447,15 @@ hr {
   outline-style: solid;
   outline-width: 0.125rem;
 }
-.pathway__list__card a:active h3,
-.pathway__list__card a:active .wrap--icon__img, .pathway__list__card a:focus h3,
+.pathway__list__card a:active .card__content__heading,
+.pathway__list__card a:active .wrap--icon__img, .pathway__list__card a:focus .card__content__heading,
 .pathway__list__card a:focus .wrap--icon__img {
   color: #ffffff;
 }
 .pathway__list__card a:active p, .pathway__list__card a:focus p {
   color: #ffffff;
 }
-.pathway__list__card a:visited h3,
+.pathway__list__card a:visited .card__content__heading,
 .pathway__list__card a:visited .wrap--icon__img {
   color: #ffffff;
 }
@@ -10484,7 +10484,7 @@ hr {
   padding-left: 1.75rem;
   padding-right: 1.75rem;
 }
-.pathway__list__card h3 {
+.pathway__list__card .card__content__heading {
   text-decoration: underline solid white;
 }
 
