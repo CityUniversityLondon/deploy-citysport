@@ -17074,11 +17074,11 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
     margin-right: 0;
   }
 }
-.v26-finder .v26-finder__results .pagination__wrapper {
+.v26-finder .v26-finder__results .v26-pagination__wrapper {
   border-top: 0.0625rem solid #cbcbcb;
   max-width: unset;
 }
-.v26-finder .v26-finder__results .pagination__controls {
+.v26-finder .v26-finder__results .v26-pagination__controls {
   justify-content: center;
 }
 
@@ -17273,29 +17273,29 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
 }
 
 @media print {
-  .pagination__wrapper .pagination__controls,
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__controls,
+  .v26-pagination__wrapper .v26-pagination__summary {
     display: none;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls {
+  .v26-pagination__wrapper .v26-pagination__controls {
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
   }
 }
 @media screen and (max-width: 767px) {
-  .pagination__wrapper .pagination__controls {
+  .v26-pagination__wrapper .v26-pagination__controls {
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: center;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a,
-  .pagination__wrapper .pagination__controls button,
-  .pagination__wrapper .pagination__controls [aria-current] {
+  .v26-pagination__wrapper .v26-pagination__controls a,
+  .v26-pagination__wrapper .v26-pagination__controls button,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17323,9 +17323,9 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen and (hover: hover) {
-  .pagination__wrapper .pagination__controls a:hover,
-  .pagination__wrapper .pagination__controls button:hover,
-  .pagination__wrapper .pagination__controls [aria-current]:hover {
+  .v26-pagination__wrapper .v26-pagination__controls a:hover,
+  .v26-pagination__wrapper .v26-pagination__controls button:hover,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:hover {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17342,11 +17342,11 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a:focus, .pagination__wrapper .pagination__controls a:active,
-  .pagination__wrapper .pagination__controls button:focus,
-  .pagination__wrapper .pagination__controls button:active,
-  .pagination__wrapper .pagination__controls [aria-current]:focus,
-  .pagination__wrapper .pagination__controls [aria-current]:active {
+  .v26-pagination__wrapper .v26-pagination__controls a:focus, .v26-pagination__wrapper .v26-pagination__controls a:active,
+  .v26-pagination__wrapper .v26-pagination__controls button:focus,
+  .v26-pagination__wrapper .v26-pagination__controls button:active,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:focus,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:active {
     background-color: initial;
     background-image: initial;
     background-size: initial;
@@ -17363,16 +17363,16 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen and (prefers-reduced-motion: reduce) {
-  .pagination__wrapper .pagination__controls a,
-  .pagination__wrapper .pagination__controls button,
-  .pagination__wrapper .pagination__controls [aria-current] {
+  .v26-pagination__wrapper .v26-pagination__controls a,
+  .v26-pagination__wrapper .v26-pagination__controls button,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] {
     transition: none;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a:not([aria-current]):focus,
-  .pagination__wrapper .pagination__controls button:not([aria-current]):focus,
-  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):focus {
+  .v26-pagination__wrapper .v26-pagination__controls a:not([aria-current]):focus,
+  .v26-pagination__wrapper .v26-pagination__controls button:not([aria-current]):focus,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:not([aria-current]):focus {
     outline-color: #d61726;
     outline-offset: 0.1875rem;
     outline-style: solid;
@@ -17387,9 +17387,9 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen and (hover: hover) {
-  .pagination__wrapper .pagination__controls a:not([aria-current]):hover,
-  .pagination__wrapper .pagination__controls button:not([aria-current]):hover,
-  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):hover {
+  .v26-pagination__wrapper .v26-pagination__controls a:not([aria-current]):hover,
+  .v26-pagination__wrapper .v26-pagination__controls button:not([aria-current]):hover,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:not([aria-current]):hover {
     background-color: #ffffff;
     background-position: 0 100%;
     background-repeat: no-repeat;
@@ -17401,17 +17401,17 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls a:not([aria-current]):active,
-  .pagination__wrapper .pagination__controls button:not([aria-current]):active,
-  .pagination__wrapper .pagination__controls [aria-current]:not([aria-current]):active {
+  .v26-pagination__wrapper .v26-pagination__controls a:not([aria-current]):active,
+  .v26-pagination__wrapper .v26-pagination__controls button:not([aria-current]):active,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:not([aria-current]):active {
     background-color: #ffffff;
     background-size: 100% 100%;
     color: #292929;
     font-weight: 700;
   }
-  .pagination__wrapper .pagination__controls a:disabled,
-  .pagination__wrapper .pagination__controls button:disabled,
-  .pagination__wrapper .pagination__controls [aria-current]:disabled {
+  .v26-pagination__wrapper .v26-pagination__controls a:disabled,
+  .v26-pagination__wrapper .v26-pagination__controls button:disabled,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:disabled {
     background-size: 100% 0;
     border-color: #cbcbcb;
     border-style: solid;
@@ -17420,15 +17420,15 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
     cursor: default;
     font-weight: 400;
   }
-  .pagination__wrapper .pagination__controls a:disabled span,
-  .pagination__wrapper .pagination__controls button:disabled span,
-  .pagination__wrapper .pagination__controls [aria-current]:disabled span {
+  .v26-pagination__wrapper .v26-pagination__controls a:disabled span,
+  .v26-pagination__wrapper .v26-pagination__controls button:disabled span,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:disabled span {
     display: inline-block;
     padding-bottom: 0.0625rem;
   }
-  .pagination__wrapper .pagination__controls a[aria-current],
-  .pagination__wrapper .pagination__controls button[aria-current],
-  .pagination__wrapper .pagination__controls [aria-current][aria-current] {
+  .v26-pagination__wrapper .v26-pagination__controls a[aria-current],
+  .v26-pagination__wrapper .v26-pagination__controls button[aria-current],
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current][aria-current] {
     background-color: #ffffff;
     border-style: solid;
     border-width: 0.0625rem;
@@ -17441,124 +17441,124 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
     outline-style: none;
     outline-width: 0;
   }
-  .pagination__wrapper .pagination__controls a span,
-  .pagination__wrapper .pagination__controls button span,
-  .pagination__wrapper .pagination__controls [aria-current] span {
+  .v26-pagination__wrapper .v26-pagination__controls a span,
+  .v26-pagination__wrapper .v26-pagination__controls button span,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] span {
     display: inline-block;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  .pagination__wrapper .pagination__controls a:not(a) span,
-  .pagination__wrapper .pagination__controls button:not(a) span,
-  .pagination__wrapper .pagination__controls [aria-current]:not(a) span {
+  .v26-pagination__wrapper .v26-pagination__controls a:not(a) span,
+  .v26-pagination__wrapper .v26-pagination__controls button:not(a) span,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current]:not(a) span {
     background-color: red;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis {
     align-items: center;
     display: flex;
     justify-content: center;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis span {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis span {
     display: inline-block;
     padding-bottom: 0.125rem;
   }
-  .pagination__wrapper .pagination__controls a,
-  .pagination__wrapper .pagination__controls button,
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis,
-  .pagination__wrapper .pagination__controls [aria-current] {
+  .v26-pagination__wrapper .v26-pagination__controls a,
+  .v26-pagination__wrapper .v26-pagination__controls button,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] {
     margin-right: 0.5rem;
     margin-top: 0.75rem;
     min-height: 1.75rem;
     padding-bottom: 0.25rem;
   }
-  .pagination__wrapper .pagination__controls a :before,
-  .pagination__wrapper .pagination__controls a span,
-  .pagination__wrapper .pagination__controls button :before,
-  .pagination__wrapper .pagination__controls button span,
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis :before,
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis span,
-  .pagination__wrapper .pagination__controls [aria-current] :before,
-  .pagination__wrapper .pagination__controls [aria-current] span {
+  .v26-pagination__wrapper .v26-pagination__controls a :before,
+  .v26-pagination__wrapper .v26-pagination__controls a span,
+  .v26-pagination__wrapper .v26-pagination__controls button :before,
+  .v26-pagination__wrapper .v26-pagination__controls button span,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis :before,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis span,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] :before,
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] span {
     align-self: center;
   }
-  .pagination__wrapper .pagination__controls [aria-current] {
+  .v26-pagination__wrapper .v26-pagination__controls [aria-current] {
     align-self: center;
     display: inline-block;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     align-items: center;
   }
-  .pagination__wrapper .pagination__controls [data-page] {
+  .v26-pagination__wrapper .v26-pagination__controls [data-page] {
     display: none;
   }
-  .pagination__wrapper .pagination__controls [data-page][aria-expanded=true], .pagination__wrapper .pagination__controls [data-page][data-page="1"], .pagination__wrapper .pagination__controls [data-page].pagination__controls__button--last {
+  .v26-pagination__wrapper .v26-pagination__controls [data-page][aria-expanded=true], .v26-pagination__wrapper .v26-pagination__controls [data-page][data-page="1"], .v26-pagination__wrapper .v26-pagination__controls [data-page].v26-pagination__controls__button--last {
     display: flex;
   }
 }
 @media screen and (min-width: 768px) {
-  .pagination__wrapper .pagination__controls [data-page][data-proximity="1"], .pagination__wrapper .pagination__controls [data-page][data-proximity="-1"] {
+  .v26-pagination__wrapper .v26-pagination__controls [data-page][data-proximity="1"], .v26-pagination__wrapper .v26-pagination__controls [data-page][data-proximity="-1"] {
     display: flex;
   }
 }
 @media screen and (min-width: 1280px) {
-  .pagination__wrapper .pagination__controls [data-page][data-proximity="2"], .pagination__wrapper .pagination__controls [data-page][data-proximity="-2"] {
+  .v26-pagination__wrapper .v26-pagination__controls [data-page][data-proximity="2"], .v26-pagination__wrapper .v26-pagination__controls [data-page][data-proximity="-2"] {
     display: flex;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__ellipsis {
     display: none;
   }
 }
 @media screen and (max-width: 767px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen and (min-width: 1280px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]):not([data-proximity="3"]):not([data-proximity="-3"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) [data-page="1"]:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]):not([data-proximity="3"]):not([data-proximity="-3"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen and (max-width: 767px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="-1"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .v26-pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="-1"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .v26-pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen and (min-width: 1280px) {
-  .pagination__wrapper .pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]) + .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls:not([data-pagecount="2"]):not([data-pagecount="3"]):not([data-pagecount="4"]):not([data-pagecount="5"]) .v26-pagination__controls__button--penultimate:not([aria-expanded=true]):not([data-proximity="1"]):not([data-proximity="-1"]):not([data-proximity="2"]):not([data-proximity="-2"]) + .v26-pagination__controls__ellipsis {
     display: flex;
   }
 }
 @media screen {
-  .pagination__wrapper .pagination__controls span.pagination__controls__button--next,
-  .pagination__wrapper .pagination__controls span.pagination__controls__button--prev {
+  .v26-pagination__wrapper .v26-pagination__controls span.v26-pagination__controls__button--next,
+  .v26-pagination__wrapper .v26-pagination__controls span.v26-pagination__controls__button--prev {
     border-radius: 1rem;
     border-color: rgba(203, 203, 203, 0.3);
     border-style: solid;
     border-width: 0.0625rem;
     color: rgba(203, 203, 203, 0.3);
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--next,
-  .pagination__wrapper .pagination__controls .pagination__controls__button--prev {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--next,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--prev {
     display: flex;
     margin-right: 0.5rem;
     margin-top: 0.75rem;
     min-height: 1.75rem;
     padding-bottom: 0.25rem;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--next span,
-  .pagination__wrapper .pagination__controls .pagination__controls__button--prev span {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--next span,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--prev span {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -17568,8 +17568,8 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
     position: absolute;
     width: 1px;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--next:before,
-  .pagination__wrapper .pagination__controls .pagination__controls__button--prev:before {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--next:before,
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--prev:before {
     font-family: "Font Awesome 6 Sharp";
     align-self: center;
     font-size: 0.875em;
@@ -17577,30 +17577,30 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--next {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--next {
     margin-right: 0;
     padding-bottom: initial;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--next:before {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--next:before {
     content: "\f061";
     font-size: 0.875em;
     font-weight: 400;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--prev {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--prev {
     padding-bottom: initial;
   }
-  .pagination__wrapper .pagination__controls .pagination__controls__button--prev:before {
+  .v26-pagination__wrapper .v26-pagination__controls .v26-pagination__controls__button--prev:before {
     content: "\f060";
     font-size: 0.875em;
     font-weight: 400;
   }
-  .pagination__wrapper .pagination__controls[data-pagecount="2"] .pagination__controls__button, .pagination__wrapper .pagination__controls[data-pagecount="3"] .pagination__controls__button, .pagination__wrapper .pagination__controls[data-pagecount="4"] .pagination__controls__button, .pagination__wrapper .pagination__controls[data-pagecount="5"] .pagination__controls__button {
+  .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="2"] .v26-pagination__controls__button, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="3"] .v26-pagination__controls__button, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="4"] .v26-pagination__controls__button, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="5"] .v26-pagination__controls__button {
     display: flex;
   }
-  .pagination__wrapper .pagination__controls[data-pagecount="2"] .pagination__controls__ellipsis, .pagination__wrapper .pagination__controls[data-pagecount="3"] .pagination__controls__ellipsis, .pagination__wrapper .pagination__controls[data-pagecount="4"] .pagination__controls__ellipsis, .pagination__wrapper .pagination__controls[data-pagecount="5"] .pagination__controls__ellipsis {
+  .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="2"] .v26-pagination__controls__ellipsis, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="3"] .v26-pagination__controls__ellipsis, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="4"] .v26-pagination__controls__ellipsis, .v26-pagination__wrapper .v26-pagination__controls[data-pagecount="5"] .v26-pagination__controls__ellipsis {
     display: none;
   }
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__summary {
     font-size: 0.889rem;
     line-height: 1.625;
     letter-spacing: 0em;
@@ -17610,28 +17610,28 @@ main > article .v26-finder .v26-finder__results__list.v26-finder__results__list-
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1919px) {
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__summary {
     letter-spacing: -0.005em;
   }
 }
 @media screen and (min-width: 1920px) and (max-width: 3839px) {
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__summary {
     letter-spacing: -0.01em;
   }
 }
 @media screen and (min-width: 3840px) and (max-width: 7679px) {
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__summary {
     letter-spacing: -0.017em;
   }
 }
 @media screen and (min-width: 7680px) {
-  .pagination__wrapper .pagination__summary {
+  .v26-pagination__wrapper .v26-pagination__summary {
     letter-spacing: -0.017em;
   }
 }
 
 @media screen {
-  .content .pagination__wrapper {
+  .content .v26-pagination__wrapper {
     max-width: 65ch;
   }
 }
