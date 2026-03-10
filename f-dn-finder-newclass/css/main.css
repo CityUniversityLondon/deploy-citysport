@@ -1023,7 +1023,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-brands-400.woff2?20260202") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
+  src: url("../webfonts/fa-brands-400.woff2?") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
 }
 .fab,
 .fa-brands {
@@ -1077,7 +1077,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
 }
 .fas,
 .fa-solid {
@@ -1099,7 +1099,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
 }
 .far,
 .fa-regular {
@@ -1121,7 +1121,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
 }
 .fal,
 .fa-light {
@@ -1143,7 +1143,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-sharp-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-solid-900.woff2") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
 }
 .fass,
 .fa-solid {
@@ -1165,7 +1165,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-sharp-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-light-300.woff2") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
 }
 .fasl,
 .fa-light {
@@ -1187,7 +1187,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-sharp-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-regular-400.woff2") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
 }
 .fasr,
 .fa-regular {
@@ -4605,7 +4605,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-brands-400.woff2?20260202") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
+  src: url("../webfonts/fa-brands-400.woff2?") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
 }
 .fab,
 .fa-brands {
@@ -4659,7 +4659,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
 }
 .fas,
 .fa-solid {
@@ -4681,7 +4681,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
 }
 .far,
 .fa-regular {
@@ -4703,7 +4703,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
 }
 .fal,
 .fa-light {
@@ -4725,7 +4725,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-sharp-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-solid-900.woff2") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
 }
 .fass,
 .fa-solid {
@@ -4747,7 +4747,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-sharp-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-light-300.woff2") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
 }
 .fasl,
 .fa-light {
@@ -4769,7 +4769,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-sharp-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-regular-400.woff2") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
 }
 .fasr,
 .fa-regular {
@@ -12650,7 +12650,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-brands-400.woff2?20260202") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
+  src: url("../webfonts/fa-brands-400.woff2?") format("woff2"), url("../webfonts/fa-brands-400.ttf") format("truetype");
 }
 .fab,
 .fa-brands {
@@ -12704,7 +12704,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.ttf") format("truetype");
 }
 .fas,
 .fa-solid {
@@ -12726,7 +12726,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.ttf") format("truetype");
 }
 .far,
 .fa-regular {
@@ -12748,7 +12748,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.ttf") format("truetype");
 }
 .fal,
 .fa-light {
@@ -12770,7 +12770,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-sharp-solid-900.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-solid-900.woff2") format("woff2"), url("../webfonts/fa-sharp-solid-900.ttf") format("truetype");
 }
 .fass,
 .fa-solid {
@@ -12792,7 +12792,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-sharp-light-300.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-light-300.woff2") format("woff2"), url("../webfonts/fa-sharp-light-300.ttf") format("truetype");
 }
 .fasl,
 .fa-light {
@@ -12814,7 +12814,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-sharp-regular-400.woff2?20260202") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
+  src: url("../webfonts/fa-sharp-regular-400.woff2") format("woff2"), url("../webfonts/fa-sharp-regular-400.ttf") format("truetype");
 }
 .fasr,
 .fa-regular {
