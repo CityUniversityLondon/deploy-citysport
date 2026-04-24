@@ -5038,7 +5038,6 @@ readers do not read off random characters that represent icons */
 }
 .card--news .card__anchor .card__type {
   color: #ffffff;
-  background-color: lime;
 }
 .card--news .card__anchor:after {
   content: unset;
