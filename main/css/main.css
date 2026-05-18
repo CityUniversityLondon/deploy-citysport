@@ -3024,6 +3024,9 @@ main .membership .content {
   display: flex;
   justify-content: center;
 }
+.cta-block .icon-cs {
+  margin-left: 0.5rem;
+}
 
 .cta,
 .cta--basic {
@@ -14447,6 +14450,10 @@ iframe[src*=issuu], iframe[src*=prezi] {
 .cta-block--center {
   display: flex;
   justify-content: center;
+}
+
+.cta-block .icon-cs {
+  margin-left: 0.5rem;
 }
 
 .cta,
